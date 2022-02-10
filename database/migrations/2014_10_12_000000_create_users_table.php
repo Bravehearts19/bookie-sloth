@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
+            /* branch simo */
+
             /* aggiungere data di nascita e cognome */
             /* $table->string('surname');              DA RICONTROLLARE
             $table->date('date_of_birth'); */
