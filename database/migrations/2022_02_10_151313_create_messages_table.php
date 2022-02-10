@@ -17,6 +17,7 @@ class CreateMessagesTable extends Migration
             $table->id();
             $table->text("message");
             $table->timestamps();
+            /* ciao */
         });
     }
 
