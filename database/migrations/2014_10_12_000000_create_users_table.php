@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('password');   /* required */
             $table->rememberToken();
             $table->timestamps();
+
+            /* Test */
         });
     }
 
