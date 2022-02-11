@@ -20,6 +20,7 @@ class CreateSponsorsTable extends Migration
             $table->number('duration');
             $table->string('badge');
             $table->timestamps();
+            /* test */
         });
     }
 
