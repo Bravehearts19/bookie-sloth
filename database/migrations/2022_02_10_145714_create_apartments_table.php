@@ -21,6 +21,7 @@ class CreateApartmentsTable extends Migration
             $table->tinyInteger("n_rooms");
             $table->tinyInteger("n_bathrooms");
             $table->smallInteger("size");  /* va fino a 32767 mq */
+            $table->float("price", 8, 2);
             $table->float("x_coordinate", 8, 5);
             $table->float("y_coordinate", 8, 5);
             $table->string("cover_img");
