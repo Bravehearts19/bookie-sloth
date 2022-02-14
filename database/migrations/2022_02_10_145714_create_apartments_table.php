@@ -25,9 +25,8 @@ class CreateApartmentsTable extends Migration
             $table->float("y_coordinate", 8, 5);
             $table->string("cover_img");
             $table->boolean("visible");
-            $table->string("province");
+            $table->string("location");
             $table->string("address");
-            $table->float("rating", 4, 2);
             $table->timestamps();
         });
     }
