@@ -19,6 +19,8 @@ import PrimeVue from 'primevue/config';
 
 Vue.use(PrimeVue);
 
+import router from './router.js';
+
 import ExampleComponent from './components/ExampleComponent'
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,5 +30,6 @@ import ExampleComponent from './components/ExampleComponent'
 
 const app = new Vue({
     el: '#app',
+    router,
     render: h => h(ExampleComponent)
 });
