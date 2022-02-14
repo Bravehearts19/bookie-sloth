@@ -27,6 +27,7 @@ class CreateApartmentsTable extends Migration
             $table->boolean("visible");
             $table->string("province");
             $table->string("address");
+            $table->float("rating", 4, 2);
             $table->timestamps();
         });
     }
