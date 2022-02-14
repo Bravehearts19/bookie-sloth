@@ -25,9 +25,11 @@ class CreateApartmentsTable extends Migration
             $table->float("x_coordinate", 8, 5);
             $table->float("y_coordinate", 8, 5);
             $table->string("cover_img");
-            $table->boolean("visible");
-            $table->string("location");
+            $table->boolean("visible")->default(true);
             $table->string("address");
+            $table->string("civic_number");
+            $table->string("location");
+            $table->string("cap");
             $table->timestamps();
         });
     }
