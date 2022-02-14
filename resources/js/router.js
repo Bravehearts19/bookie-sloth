@@ -14,20 +14,26 @@ const router = new VueRouter({
         component: Home,
       },
       {
-        path: "/",
-        name: "home",
-        component: Home,
+        path: "/advanced-research",
+        name: "advanced-research",
+        component: AdvancedResearch,
       },
       {
-        path: "/",
-        name: "home",
-        component: Home,
+        path: "/hotel",
+        name: "hotel",
+        component: Hotel,
       },
       {
-        path: "/",
-        name: "home",
-        component: Home,
+        path: "/send-message",
+        name: "send-message",
+        component: SendMessage,
       },
+      {
+        path: "/message-error",
+        name: "message-error",
+        component: MessageError,
+      },
+      
     ],
   });
   

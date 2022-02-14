@@ -19590,17 +19590,21 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: "home",
     component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: "/",
-    name: "home",
-    component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    path: "/advanced-research",
+    name: "advanced-research",
+    component: AdvancedResearch
   }, {
-    path: "/",
-    name: "home",
-    component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    path: "/hotel",
+    name: "hotel",
+    component: Hotel
   }, {
-    path: "/",
-    name: "home",
-    component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    path: "/send-message",
+    name: "send-message",
+    component: SendMessage
+  }, {
+    path: "/message-error",
+    name: "message-error",
+    component: MessageError
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
