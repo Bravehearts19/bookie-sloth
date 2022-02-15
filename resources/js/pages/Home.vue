@@ -19,6 +19,7 @@
 import MegaMenu from 'primevue/megamenu';
 
 export default {
+    name: 'Home',
     data() {
         return {
             items: [
