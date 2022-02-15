@@ -17,17 +17,15 @@ class CreateApartmentsTable extends Migration
             $table->id();
             $table->string("name");
             $table->tinyInteger("n_guests");  /* va fino a 127 */
-            $table->tinyInteger("n_beds");
             $table->tinyInteger("n_rooms");
             $table->tinyInteger("n_bathrooms");
             $table->smallInteger("size");  /* va fino a 32767 mq */
             $table->float("price", 8, 2);
             $table->float("x_coordinate", 8, 5);
             $table->float("y_coordinate", 8, 5);
-            $table->string("cover_img");
+            $table->string("cover_img")->default('url 404 not found');
             $table->boolean("visible")->default(true);
             $table->string("address");
-            $table->string("civic_number");
             $table->string("location");
             $table->string("cap");
             $table->timestamps();
