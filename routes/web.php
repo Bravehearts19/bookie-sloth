@@ -16,6 +16,26 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+/* Route::get(
+    return '/user/{id}/show';
+    ) */
+
+Route::namespace("User")
+->prefix("user")
+->name("user.")
+->middleware("auth")
+->group(function () {
+    Route::get('/', 'UserController@show')->name('dashboard');
+    
+    Route::resource('apartment', 'Apartment\ApartmentController');
+
+    Route::get('/apartment/message', 'Apartment\MessageController@index');
+
+    Route::get('/apartment/statistics', 'Apartment\ViewController@index');
+    
+    Route::get('/apartment/sponsor', 'Apartment\SponsorController@index');
+});
+
 Route::get('{any?}', function () {
     return view('welcome');
 })->where('any', '.*');

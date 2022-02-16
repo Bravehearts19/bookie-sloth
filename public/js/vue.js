@@ -20367,6 +20367,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: "message-error",
     component: _pages_MessageError_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
   }, {
+    path: "/message-error",
+    name: "message-error",
+    component: _pages_MessageError_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }, {
     path: "/*",
     name: "error-404",
     component: _pages_Error404_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
