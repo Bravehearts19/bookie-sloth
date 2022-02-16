@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User\Apartment;
 
+use App\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.apartment.create');
     }
 
     /**
@@ -38,51 +39,66 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newApartment = new Apartment;
+        $newApartment->fill($data);
+        $newApartment->user_id = Auth::user()->id;
+
+        $newApartment->save();
+
+        return redirect()->route('user.apartment.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        // SHOW UTILIZZATO CON UN BUTTON ALL'INTERNO DELL'INDEX DEGLI APARTMENT, RIMANDA A VUE
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Apartment $apartment
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Apartment $apartment)
     {
-        //
+        return view('user.apartment.edit', compact('apartment'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Apartment $apartment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Apartment $apartment)
     {
-        //
+        $data = $request->all();
+
+        $apartment->update($data);
+
+        $apartmentId = $apartment->id;
+
+        return redirect()->route('apartment/' . $apartmentId);  // **********  DA RICONTROLLARE  ***************
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param   Apartment $apartment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Apartment $apartment)
     {
-        //
+        $apartment->delete();
+
+        return redirect()->route('user.apartment.index');
     }
 }
