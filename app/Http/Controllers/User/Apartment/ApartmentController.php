@@ -124,13 +124,27 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|integer',
+            'image' => 'url',
+            'size' => 'integer|between:0,32.767',
+            'address' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'n_guests' => 'required|integer|between:0,255',
+            'n_rooms' => 'required|integer|between:0,255',
+            'n_bathrooms' => 'integer|between:0,255'
+        ]);
+
         $data = $request->all();
 
         $apartment->update($data);
 
         $apartmentId = $apartment->id;
 
-        return redirect()->route('apartment/' . $apartmentId);  // **********  DA RICONTROLLARE  ***************
+        //return redirect('/apartment/' . $apartmentId);  // **********  DA RICONTROLLARE  *************** 
+
+        return redirect()->route('user.apartment.index');
     }
 
     /**
