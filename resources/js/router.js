@@ -51,11 +51,15 @@ const router = new VueRouter({
         component: MessageError,
       },
       {
+        path: "/message-error",
+        name: "message-error",
+        component: MessageError,
+      },
+      {
         path: "/*",
         name: "error-404",
         component: Error404,
       },
-      
     ],
   });
   
