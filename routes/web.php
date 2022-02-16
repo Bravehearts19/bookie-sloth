@@ -29,7 +29,11 @@ Route::namespace("User")
     
     Route::resource('apartment', 'Apartment\ApartmentController');
 
+    Route::get('/apartment/message', 'Apartment\MessageController@index');
+
+    Route::get('/apartment/statistics', 'Apartment\ViewController@index');
     
+    Route::get('/apartment/sponsor', 'Apartment\SponsorController@index');
 });
 
 Route::get('{any?}', function () {
