@@ -26,6 +26,10 @@ Route::namespace("User")
 ->middleware("auth")
 ->group(function () {
     Route::get('/', 'UserController@show')->name('dashboard');
+    
+    Route::resource('apartment', 'Apartment\ApartmentController');
+
+    
 });
 
 Route::get('{any?}', function () {
