@@ -18,7 +18,8 @@ class Apartment extends Model
         "cover_img",
         "visible",
         "province",
-        "address"
+        "address",
+        "price",
     ];
 
     public function user() {
