@@ -19,6 +19,15 @@
         <div id="app">
 
         </div>
+
+        <form action="/api/search" method="POST">
+            @csrf
+
+            <input type="text" name="name" id="name">
+
+            <button class="btn btn-primary" type="submit">Cliccami</button>
+        </form>
+
         <h1 class="text-success">Nuova pagina</h1>
     <body>
 </html>

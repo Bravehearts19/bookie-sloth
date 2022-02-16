@@ -19,7 +19,11 @@ import PrimeVue from 'primevue/config';
 
 Vue.use(PrimeVue);
 
-import ExampleComponent from './components/ExampleComponent'
+import App from './App.vue';
+import router from './router.js';
+
+/* import ExampleComponent from './components/ExampleComponent' */
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -28,5 +32,6 @@ import ExampleComponent from './components/ExampleComponent'
 
 const app = new Vue({
     el: '#app',
-    render: h => h(ExampleComponent)
+    router,
+    render: h => h(App)
 });

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class Image extends Model
 {
-    protected $fillable = ["message","name","email","apartment_id"];
+    protected $fillable = ["img_url", "apartment_id"];
 
     public function apartment() {
         return $this->belongsTo("App\Apartment");

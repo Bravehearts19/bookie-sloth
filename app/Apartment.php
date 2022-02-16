@@ -21,5 +21,27 @@ class Apartment extends Model
         "address"
     ];
 
-    
+    public function user() {
+        return $this->belongsTo("App\User");
+    }
+
+    public function sponsors() {
+        return $this->belongsToMany("App\Sponsor");
+    }
+
+    public function services() {
+        return $this->belongsToMany("App\Service");
+    }
+
+    public function messages() {
+        return $this->hasMany("App\Message");
+    }
+
+    public function views() {
+        return $this->hasMany("App\View");
+    }
+
+    public function images() {
+        return $this->hasMany("App\Image");
+    }
 }
