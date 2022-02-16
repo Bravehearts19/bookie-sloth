@@ -4,7 +4,7 @@ use App\Apartment;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 
-
+/* ha saltato gli apartment con id 74 e 176 */
 
 function getHotelImage($hotelID){
     $ch = curl_init();

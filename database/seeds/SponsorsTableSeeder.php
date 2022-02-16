@@ -11,14 +11,17 @@ class SponsorsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        $sponsorLevelArray = ['bronze','silver','gold'];
-        $newSponsor = new Sponsor();
-        $newSponsor->level = $sponsorLevelArray[rand(0, count($sponsorLevelArray))];
-        $newSponsor->price = $faker->randomFloat();
-        $newSponsor->duration = $faker->time();
+        $sponsorArray = config('sponsorsDB');
 
-        $newSponsor->save();
+        for($i = 0; $i<count($sponsorArray);$i++){
+            $newSponsor = new Sponsor();
+            $newSponsor->level = $sponsorArray[$i]["level"];
+            $newSponsor->price = $sponsorArray[$i]["price"];
+            $newSponsor->duration = $sponsorArray[$i]["duration"];
+
+            $newSponsor->save();
+        }
     }
 }
