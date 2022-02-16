@@ -17,9 +17,9 @@ class CreateSponsorsTable extends Migration
             $table->id();
             $table->enum('level', ['no_sponsor', 'bronze', 'silver', 'gold'])->unique()->default('no_sponsor');
             $table->float('price', 3, 2);
-            $table->number('duration');
-            $table->string('badge');
+            $table->integer('duration');
             $table->timestamps();
+            /* test */
         });
     }
 

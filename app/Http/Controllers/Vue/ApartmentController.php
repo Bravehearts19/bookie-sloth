@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Vue;
 
-use App\Sponsor;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SponsorController extends Controller
+class ApartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $query = $request->query();
+        return var_dump($query);
     }
 
     /**
@@ -41,10 +42,10 @@ class SponsorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Sponsor  $sponsor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Sponsor $sponsor)
+    public function show($id)
     {
         //
     }
@@ -52,10 +53,10 @@ class SponsorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Sponsor  $sponsor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sponsor $sponsor)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +65,10 @@ class SponsorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sponsor  $sponsor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sponsor $sponsor)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +76,10 @@ class SponsorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Sponsor  $sponsor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sponsor $sponsor)
+    public function destroy($id)
     {
         //
     }
