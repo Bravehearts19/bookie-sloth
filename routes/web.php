@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+/* Route::get(
+    return '/user/{id}/show';
+    ) */
+
 Route::get('{any?}', function () {
     return view('welcome');
 })->where('any', '.*');
