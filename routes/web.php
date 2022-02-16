@@ -20,6 +20,18 @@ Auth::routes();
     return '/user/{id}/show';
     ) */
 
+Route::namespace("User")
+->prefix("user")
+->name("user.")
+->middleware("auth")
+->group(function () {
+    Route::get('/', 'UserController@show')->name('dashboard');
+    
+    Route::resource('apartment', 'Apartment\ApartmentController');
+
+    
+});
+
 Route::get('{any?}', function () {
     return view('welcome');
 })->where('any', '.*');
