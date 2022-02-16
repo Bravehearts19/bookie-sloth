@@ -20,6 +20,8 @@ class ServicesTableSeeder extends Seeder
             $newService = new Service();
             $newService->name = $serviceArray[$i]["name"];
             $newService->icon = $serviceArray[$i]["source"];
+
+            $newService->save();
         }
 
     }
