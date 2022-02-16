@@ -114,15 +114,13 @@
         </select>
       </div>
 
-      <div class="d-flex justify-content-between">
-        <button type="submit" class="btn btn-primary text-white">Modifica</button>
+      <button type="submit" class="btn btn-primary text-white">Modifica</button>
+      
+    </form>
 
-        <form class="delete-form" action="{{route('user.apartment.destroy', $apartment->id)}}" method="post">
-          @csrf
-          @method("DELETE")
-          <input type="submit" id="deleteButton" class="btn btn-danger text-white" value="Elimina">
-        </form>
-      </div>
-
-  </form>
+    <form action="{{route('user.apartment.destroy', $apartment->id)}}" method="post">
+      @csrf
+      @method("DELETE")
+      <button type="submit" id="deleteButton" class="btn btn-danger text-white mt-3">Elimina</button>
+    </form>
 @endsection
