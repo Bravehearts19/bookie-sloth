@@ -52,8 +52,37 @@ class ApartmentController extends Controller
         ]);
 
         $data = $request->all();
+        
+        $address = str_replace(' ', "%20", $data['address']);
+        $address = str_replace('/', '%2f', $address);
+        
+        $city = str_replace(' ', "%20", $data['location']);
+        $fullAddress = $address . '%20' . $city;
+        
+        $ch = curl_init();
 
+
+        curl_setopt_array($ch, [
+            CURLOPT_URL => "https://api.tomtom.com/search/2/geocode/" . $fullAddress . ".json?key=onx0t6tyRKJCe8Q2JIAWTMwu3Opxi7wH" ,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_SSL_VERIFYPEER => false
+            
+            
+        ]);
+    
+        $addressData = curl_exec($ch);
+        
+        $addressData = json_decode($addressData,true);
+    
+        curl_close($ch);
+
+
+        
+        
         $newApartment = new Apartment;
+        $newApartment->x_coordinate = $addressData['results'][0]['position']['lon'];
+        $newApartment->y_coordinate = $addressData['results'][0]['position']['lat'];
         $newApartment->fill($data);
         $newApartment->user_id = Auth::user()->id;
 
