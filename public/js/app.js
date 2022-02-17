@@ -27600,15 +27600,6 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.addEventListener("DOMContentLoaded", function () {
-  deleteButton = document.getElementById("deleteButton");
-  formDelete = document.querySelector(".delete-form");
-  console.log(formDelete.outerHTML);
-  formDelete.addEventListener("submit", function (e) {
-    e.preventDefault();
-  });
-});
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -27687,9 +27678,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\sass\_custom.scss */"./resources/sass/_custom.scss");
+__webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\sass\_custom.scss */"./resources/sass/_custom.scss");
 
 
 /***/ })
