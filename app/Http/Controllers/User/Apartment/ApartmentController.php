@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Service;
+
 class ApartmentController extends Controller
 {
     /**
@@ -28,7 +30,10 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('user.apartment.create');
+        $services = Service::all();
+
+
+        return view('user.apartment.create', [ 'services' => $services ]);
     }
 
     /**
@@ -90,6 +95,9 @@ class ApartmentController extends Controller
         $newApartment->user_id = Auth::user()->id;
 
         $newApartment->save();
+
+        $newApartment->services()->attach($data['services']);
+
 
         return redirect()->route('user.apartment.index');
     }
