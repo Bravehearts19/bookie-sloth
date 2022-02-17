@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+
   <form action="{{ route('user.apartment.update', $apartment->id) }}" method="post" enctype='multipart/form-data'>
       @csrf
       @method("PATCH")
@@ -58,7 +59,7 @@
 
       <div class="mb-3">
           <label for="price" class="form-label">Prezzo</label>
-          <input type="number" class="form-control @error('price') is-invalid @enderror" name='price' id="price" value="{{$apartment->price}}" min="0" max='32767' aria-describedby="emailHelp">
+          <input type="number" class="form-control @error('price') is-invalid @enderror" name='price' step="0.01" id="price" value="{{$apartment->price}}" min="0" max='32767' aria-describedby="emailHelp">
           @error('price')
             <span class="invalid-feedback">
               <strong>{{ $message }}</strong>
