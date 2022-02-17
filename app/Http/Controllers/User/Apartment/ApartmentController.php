@@ -37,11 +37,55 @@ class ApartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    //regex:/[\d]{6},[\d]{2}/'
+
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|numeric|min:0|max:32767',
+            'cover_img' => 'required|url',
+            'size' => 'required|integer|between:0,32.767',
+            'address' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'n_guests' => 'required|integer|between:0,255',
+            'n_rooms' => 'required|integer|between:0,255',
+            'n_bathrooms' => 'integer|between:0,255'
+        ]);
+
         $data = $request->all();
 
+        $address = str_replace(' ', "%20", $data['address']);
+        $address = str_replace('/', '%2f', $address);
+
+        $city = str_replace(' ', "%20", $data['location']);
+        $fullAddress = $address . '%20' . $city;
+
+        $ch = curl_init();
+
+
+        curl_setopt_array($ch, [
+            CURLOPT_URL => "https://api.tomtom.com/search/2/geocode/" . $fullAddress . ".json?key=onx0t6tyRKJCe8Q2JIAWTMwu3Opxi7wH",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_SSL_VERIFYPEER => false
+
+
+        ]);
+
+        $addressData = curl_exec($ch);
+
+        $addressData = json_decode($addressData, true);
+
+        curl_close($ch);
+
+
+
+
         $newApartment = new Apartment;
+        $newApartment->x_coordinate = $addressData['results'][0]['position']['lon'];
+        $newApartment->y_coordinate = $addressData['results'][0]['position']['lat'];
         $newApartment->fill($data);
         $newApartment->user_id = Auth::user()->id;
 
@@ -80,13 +124,65 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|numeric|min:0|max:32767',
+            'cover_img' => 'required|url',
+            'size' => 'required|integer|between:0,32.767',
+            'address' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'n_guests' => 'required|integer|between:0,255',
+            'n_rooms' => 'required|integer|between:0,255',
+            'n_bathrooms' => 'integer|between:0,255'
+        ]);
+
         $data = $request->all();
+
+        $oldAddress = $apartment['address'];
+        $oldCity = $apartment['location'];
+
+       
+        
+        
+        if( $oldAddress !== $data['address'] || $oldCity !== $data['location'] ){
+            
+            $address = str_replace(' ', "%20", $data['address']);
+            $address = str_replace('/', '%2f', $address);
+
+            $city = str_replace(' ', "%20", $data['location']);
+            $fullAddress = $address . '%20' . $city;
+
+            $ch = curl_init();
+
+
+            curl_setopt_array($ch, [
+                CURLOPT_URL => "https://api.tomtom.com/search/2/geocode/" . $fullAddress . ".json?key=onx0t6tyRKJCe8Q2JIAWTMwu3Opxi7wH",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_SSL_VERIFYPEER => false
+
+
+            ]);
+
+            $addressData = curl_exec($ch);
+
+            $addressData = json_decode($addressData, true);
+
+            curl_close($ch);
+
+            $apartment->x_coordinate = $addressData['results'][0]['position']['lon'];
+            $apartment->y_coordinate = $addressData['results'][0]['position']['lat'];
+        }
+        
+        
 
         $apartment->update($data);
 
         $apartmentId = $apartment->id;
 
-        return redirect()->route('apartment/' . $apartmentId);  // **********  DA RICONTROLLARE  ***************
+        //return redirect('/apartment/' . $apartmentId);  // **********  DA RICONTROLLARE  *************** 
+
+        return redirect()->route('user.apartment.index');
     }
 
     /**

@@ -13,12 +13,13 @@ class Apartment extends Model
         "n_rooms",
         "n_bathrooms",
         "size",
-        "x_coordinate",
-        "y_coordinate",
         "cover_img",
         "visible",
         "province",
-        "address"
+        "address",
+        "price",
+        'location',
+        'cap'
     ];
 
     public function user() {
@@ -26,7 +27,7 @@ class Apartment extends Model
     }
 
     public function sponsors() {
-        return $this->belongsToMany("App\Sponsor");
+        return $this->belongsToMany("App\Sponsor")->withPivot('expires_at');
     }
 
     public function services() {
