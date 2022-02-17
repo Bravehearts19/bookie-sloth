@@ -6,6 +6,7 @@ use App\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
@@ -45,7 +46,7 @@ class ApartmentController extends Controller
         $request->validate([
             'name' => 'required|string',
             'price' => 'required|numeric|min:0|max:32767',
-            'image' => 'required|url',
+            'cover_img' => 'required',
             'size' => 'required|integer|between:0,32.767',
             'address' => 'required|string|max:255',
             'location' => 'required|string|max:255',
@@ -86,6 +87,7 @@ class ApartmentController extends Controller
         $newApartment = new Apartment;
         $newApartment->x_coordinate = $addressData['results'][0]['position']['lon'];
         $newApartment->y_coordinate = $addressData['results'][0]['position']['lat'];
+        $data["cover_img"] = Storage::put('apartment_images', $data["cover_img"]);
         $newApartment->fill($data);
         $newApartment->user_id = Auth::user()->id;
 
@@ -127,7 +129,7 @@ class ApartmentController extends Controller
         $request->validate([
             'name' => 'required|string',
             'price' => 'required|numeric|min:0|max:32767',
-            'image' => 'url',
+            'cover_img' => 'file',
             'size' => 'required|integer|between:0,32.767',
             'address' => 'required|string|max:255',
             'location' => 'required|string|max:255',
@@ -137,6 +139,45 @@ class ApartmentController extends Controller
         ]);
 
         $data = $request->all();
+
+        $oldAddress = $apartment['address'];
+        $oldCity = $apartment['location'];
+
+
+
+
+        if ($oldAddress !== $data['address'] || $oldCity !== $data['location']) {
+
+            $address = str_replace(' ', "%20", $data['address']);
+            $address = str_replace('/', '%2f', $address);
+
+            $city = str_replace(' ', "%20", $data['location']);
+            $fullAddress = $address . '%20' . $city;
+
+            $ch = curl_init();
+
+
+            curl_setopt_array($ch, [
+                CURLOPT_URL => "https://api.tomtom.com/search/2/geocode/" . $fullAddress . ".json?key=onx0t6tyRKJCe8Q2JIAWTMwu3Opxi7wH",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_SSL_VERIFYPEER => false
+
+
+            ]);
+
+            $addressData = curl_exec($ch);
+
+            $addressData = json_decode($addressData, true);
+
+            curl_close($ch);
+
+            $apartment->x_coordinate = $addressData['results'][0]['position']['lon'];
+            $apartment->y_coordinate = $addressData['results'][0]['position']['lat'];
+        }
+        Storage::delete($apartment->cover_img); //deletes previous image in storage
+        $data["cover_img"] = Storage::put('apartment_images', $data["cover_img"]); //adds new image
+
 
         $apartment->update($data);
 

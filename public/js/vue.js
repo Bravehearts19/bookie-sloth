@@ -150,7 +150,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Apartment"
+  name: 'Apartment'
 });
 
 /***/ }),
@@ -4160,16 +4160,9 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div")
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("ciao")])])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -20363,7 +20356,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _pages_AdvancedResearch_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: "/apartment/:id",
-    name: "apartment.show",
+    name: "apartment",
     component: _pages_Apartment_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: "/send-message",

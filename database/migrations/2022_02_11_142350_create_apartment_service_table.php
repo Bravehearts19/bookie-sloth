@@ -15,7 +15,6 @@ class CreateApartmentServiceTable extends Migration
     {
         Schema::create('apartment_service', function (Blueprint $table) {
             $table->id();
-            $table->float("price", 8, 2);
             $table->foreignId("apartment_id")->constrained();
             $table->foreignId("service_id")->constrained();
             $table->timestamps();

@@ -27600,15 +27600,6 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.addEventListener("DOMContentLoaded", function () {
-  deleteButton = document.getElementById("deleteButton");
-  formDelete = document.querySelector(".delete-form");
-  console.log(formDelete.outerHTML);
-  formDelete.addEventListener("submit", function (e) {
-    e.preventDefault();
-  });
-});
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

@@ -21,24 +21,20 @@ class ApartmentSponsorTableSeeder extends Seeder
             $randomSponsorNumber = rand(1, 1);  /* assegnamo un numero random di servizi compreso tra 1 ed il numero totale di servizi */
             $shuffleSponsors = $sponsors->shuffle();  /* creiamo un array dove mescoliamo tutti i servizi */
             $apartmentSponsor = $shuffleSponsors->slice(0, $randomSponsorNumber); /* recuperiamo un numero random di servizi tramite lo slice e lo assegniamo ad una variabile */
-            $apartment->sponsors()->attach($apartmentSponsor);  /* li aggiungiamo al relativo appartamento */
 
-            $apartment->sponsors()->attach($apartment->id, ['expires_at' => ApartmentSponsorTableSeeder::expiresAt($apartmentSponsor)]);
-            dd(ApartmentSponsorTableSeeder::expiresAt($apartmentSponsor));
+            $apartment->sponsors()->attach($apartmentSponsor, ['expires_at' => ApartmentSponsorTableSeeder::expiresAt($apartmentSponsor[0])]); /* li aggiungiamo al relativo appartamento */
         }
     }
 
     static function expiresAt($apartmentSponsor) {
         $apartmentSponsor = DB::table('sponsors')->where('id', $apartmentSponsor)->first();
-        
-        dump($apartmentSponsor);
-        
-        $now = Carbon::now();
-        
+
+        $now = Carbon::now()->addHour(1);
+
         if(!$apartmentSponsor || $apartmentSponsor->level === 'no_sponsor') {
-            $now = $now;
+            $now = $now->toDateTimeString();
         } else {
-            $now = $now->addHours($apartmentSponsor->duration);
+            $now = $now->addHours($apartmentSponsor->duration)->toDateTimeString();
         }
         return $now;
     }
