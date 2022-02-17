@@ -59,21 +59,28 @@ Route::get('hotel/search/location', function(Request $request){
     return json_encode($apartments);
 });
 
+
+
+// nMinStanze
+
+// nMinPersone
+
+//
 /**
  * @description get 10 paginated hotel filtered by badge type
  * @param ?searchString={{ bronze | silver | gold}}
  */
-Route::get('hotel/search/badge', function(Request $request){
-    $badge = $request->query('badge');
-
-
-    $apartments = Apartment::All()
-        ->with('sponsors')
-        ->where('badge', 'like', ('%' . $badge . '%') )
-        ->paginate(10);
-
-    return json_encode($apartments);
-});
+//Route::get('hotel/search/badge', function(Request $request){
+//
+//    //get query string
+//    $badge = $request->query('badge');
+//
+//    $apartments = Apartment::with('sponsors')
+//        ->where('level', 'like', ('%' . $badge . '%') )
+//        ->paginate(10);
+//
+//    return json_encode($apartments);
+//});
 
 
 
