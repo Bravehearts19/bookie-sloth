@@ -80,7 +80,7 @@
       <div class="mb-3">
           <label for="cover_img" class="form-label">Immagine di copertina</label>
           <div class="input-group mb-3">
-            <input type="file" class="form-control" id="inputGroupFile02">
+            <input type="file" class="form-control" name="cover_img" id="inputGroupFile02">
             <label class="input-group-text" for="inputGroupFile02">Upload</label>
         </div>
           @error('cover_img')
