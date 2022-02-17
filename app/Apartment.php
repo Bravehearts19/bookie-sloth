@@ -13,12 +13,13 @@ class Apartment extends Model
         "n_rooms",
         "n_bathrooms",
         "size",
-        "x_coordinate",
-        "y_coordinate",
         "cover_img",
         "visible",
         "province",
-        "address"
+        "address",
+        "price",
+        'location',
+        'cap'
     ];
 
     public function user() {
