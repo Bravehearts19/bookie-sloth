@@ -6,6 +6,8 @@
             My apartments
         </h1>
 
+        <a href="{{route("user.apartment.create")}}" class="btn btn-success text-white mb-3">Aggiungi appartamento</a>
+
         @foreach($userApartments as $apartment)
         <div class="card mb-3">
             <img src="{{$apartment->cover_img}}" class="card-img-top" alt="{{$apartment->name}}">
