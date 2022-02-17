@@ -1,0 +1,17 @@
+#app{
+    position: relative;
+
+    footer{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 200%;
+        height: 20vh;
+        transform: rotate(-30deg);
+        //clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    }
+
+    .user-icon-container{
+        border-radius: 50%;
+    }
+}
