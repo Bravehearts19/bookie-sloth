@@ -23,6 +23,7 @@ class ApartmentSponsorTableSeeder extends Seeder
             $apartmentSponsor = $shuffleSponsors->slice(0, $randomSponsorNumber); /* recuperiamo un numero random di servizi tramite lo slice e lo assegniamo ad una variabile */
             $apartment->sponsors()->attach($apartmentSponsor);  /* li aggiungiamo al relativo appartamento */
 
+
             $apartment->sponsors()->attach($apartment->id, ['expires_at' => ApartmentSponsorTableSeeder::expiresAt($apartmentSponsor)]);
             dd(ApartmentSponsorTableSeeder::expiresAt($apartmentSponsor));
         }
@@ -30,11 +31,11 @@ class ApartmentSponsorTableSeeder extends Seeder
 
     static function expiresAt($apartmentSponsor) {
         $apartmentSponsor = DB::table('sponsors')->where('id', $apartmentSponsor)->first();
-        
+
         dump($apartmentSponsor);
-        
+
         $now = Carbon::now();
-        
+
         if(!$apartmentSponsor || $apartmentSponsor->level === 'no_sponsor') {
             $now = $now;
         } else {
