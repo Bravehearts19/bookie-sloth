@@ -14,8 +14,8 @@
             <div class="card-body">
                 <h4 class="card-title">{{$apartment->name}}</h4>
                 <ul>
-                    <li><strong>Prezzo: </strong> {{$apartment->price}}</li>
-                    <li><strong>Dimensione: </strong> {{$apartment->size}}</li>
+                    <li><strong>Prezzo: </strong> €{{$apartment->price}}</li>
+                    <li><strong>Dimensione: </strong> {{$apartment->size}} mq.</li>
                     <li><strong>Numero di ospiti: </strong> {{$apartment->n_guests}}</li>
                     <li><strong>Numero di bagni: </strong> {{$apartment->n_bathrooms}}</li>
                     <li><strong>Numero di stanze: </strong> {{$apartment->n_rooms}}</li>

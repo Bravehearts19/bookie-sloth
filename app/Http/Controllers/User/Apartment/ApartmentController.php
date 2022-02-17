@@ -44,9 +44,9 @@ class ApartmentController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'price' => 'required|integer',
-            'image' => 'file',
-            'size' => 'integer|between:0,32.767',
+            'price' => 'required|numeric|min:0|max:32767',
+            'cover_img' => 'required|url',
+            'size' => 'required|integer|between:0,32.767',
             'address' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'n_guests' => 'required|integer|between:0,255',
@@ -126,9 +126,9 @@ class ApartmentController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'price' => 'required|integer',
-            'image' => 'url',
-            'size' => 'integer|between:0,32.767',
+            'price' => 'required|numeric|min:0|max:32767',
+            'cover_img' => 'required|url',
+            'size' => 'required|integer|between:0,32.767',
             'address' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'n_guests' => 'required|integer|between:0,255',
