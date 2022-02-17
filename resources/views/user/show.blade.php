@@ -21,6 +21,8 @@
                         @endif
     
                         {{ __('You are logged in!') }}
+
+                        <a href="{{route("user.apartment.index")}}" class="btn btn-primary text-white d-block">I tuoi appartamenti</a>
                     </div>
                 </div>
             </div>
