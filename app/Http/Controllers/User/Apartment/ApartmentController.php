@@ -175,8 +175,10 @@ class ApartmentController extends Controller
             $apartment->x_coordinate = $addressData['results'][0]['position']['lon'];
             $apartment->y_coordinate = $addressData['results'][0]['position']['lat'];
         }
-        Storage::delete($apartment->cover_img); //deletes previous image in storage
-        $data["cover_img"] = Storage::put('apartment_images', $data["cover_img"]); //adds new image
+        if (isset($data["cover_img"])) {
+            Storage::delete($apartment->cover_img); //deletes previous image in storage
+            $data["cover_img"] = Storage::put('apartment_images', $data["cover_img"]); //adds new image
+        }
 
 
         $apartment->update($data);
