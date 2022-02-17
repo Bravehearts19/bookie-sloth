@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+@extends('layouts.app')
+
+@section('content')
+    <section id="hero-section">
+        <ul class="bg-primary list-unstyled list-rotated mb-0 w-100">
+            <li class="wooden-list py-3 px-5 text-black text-center w-100">Consigliati</li>
+            <li class="wooden-list py-3 px-5 text-black text-center w-100">Popolari</li>
+            <li class="wooden-list py-3 px-5 text-black text-center w-100">Profilo</li>
+            <li class="wooden-list py-3 px-5 text-black text-center w-100">Ricerca avanzata</li>
+            <li class="wooden-list py-3 px-5 text-black text-center w-100">About</li>
+        </ul>
+    </section>
+@endsection
+
+
+
+{{--<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -66,7 +82,7 @@
                 </div>
             </div>
         </nav>
-        
+
         <div id="app">
 
         </div>
@@ -82,3 +98,4 @@
         <h1 class="text-success">Nuova pagina</h1>
     <body>
 </html>
+    --}}

@@ -1,0 +1,41 @@
+
+#hero-section{
+    margin-left: -50%;
+    width:200%;
+    position: absolute;
+    bottom: 20vh;
+    transform: rotate(-30deg);
+    .list-rotated{
+        //transform: rotate(-30deg) translateY(100%);
+        li{
+            width: 150%;
+        }
+    }
+}
+
+.wooden-list{
+    background-image: url('/images/wood.svg');
+    background-size: contain;
+    //background-repeat: no-repeat;
+    //background-color: #000000;
+}
+
+.opacity-wood-1{
+    opacity: 0.2;
+}
+
+.opacity-wood-2{
+    opacity: 0.4;
+}
+
+.opacity-wood-3{
+    opacity: 0.6;
+}
+
+.opacity-wood-4{
+    opacity: 0.8;
+}
+
+.opacity-wood-5{
+    opacity: 1;
+}
