@@ -150,7 +150,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Apartment'
+  name: "Apartment"
 });
 
 /***/ }),
@@ -4160,9 +4160,16 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("ciao")])])
+  },
+]
 render._withStripped = true
 
 
@@ -20356,7 +20363,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _pages_AdvancedResearch_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: "/apartment/:id",
-    name: "apartment",
+    name: "apartment.show",
     component: _pages_Apartment_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: "/send-message",
@@ -20438,9 +20445,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
-
+module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
