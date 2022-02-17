@@ -6,6 +6,7 @@ use App\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
@@ -45,7 +46,7 @@ class ApartmentController extends Controller
         $request->validate([
             'name' => 'required|string',
             'price' => 'required|numeric|min:0|max:32767',
-            'cover_img' => 'required|url',
+            'cover_img' => 'required',
             'size' => 'required|integer|between:0,32.767',
             'address' => 'required|string|max:255',
             'location' => 'required|string|max:255',
@@ -86,6 +87,7 @@ class ApartmentController extends Controller
         $newApartment = new Apartment;
         $newApartment->x_coordinate = $addressData['results'][0]['position']['lon'];
         $newApartment->y_coordinate = $addressData['results'][0]['position']['lat'];
+        $data["cover_img"] = Storage::put('apartment_images', $data["cover_img"]);
         $newApartment->fill($data);
         $newApartment->user_id = Auth::user()->id;
 
@@ -141,11 +143,11 @@ class ApartmentController extends Controller
         $oldAddress = $apartment['address'];
         $oldCity = $apartment['location'];
 
-       
-        
-        
-        if( $oldAddress !== $data['address'] || $oldCity !== $data['location'] ){
-            
+
+
+
+        if ($oldAddress !== $data['address'] || $oldCity !== $data['location']) {
+
             $address = str_replace(' ', "%20", $data['address']);
             $address = str_replace('/', '%2f', $address);
 
@@ -173,8 +175,8 @@ class ApartmentController extends Controller
             $apartment->x_coordinate = $addressData['results'][0]['position']['lon'];
             $apartment->y_coordinate = $addressData['results'][0]['position']['lat'];
         }
-        
-        
+
+
 
         $apartment->update($data);
 
