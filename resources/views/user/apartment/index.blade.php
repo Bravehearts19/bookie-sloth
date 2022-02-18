@@ -8,6 +8,10 @@
 
         <a href="{{route("user.apartment.create")}}" class="btn btn-primary text-secondary mb-3">Aggiungi appartamento</a>
 
+        @if(session("msg"))
+            <div class="alert alert-primary d-flex justify-content-between" role="alert">{{session("msg")}}</div>
+        @endif
+
         @foreach($userApartments as $apartment)
         <div class="card mb-3">
             <img src="{{asset('storage/' . $apartment->cover_img)}}" class="card-img-top" alt="{{$apartment->name}}">

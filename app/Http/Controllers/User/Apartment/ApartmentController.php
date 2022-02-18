@@ -34,7 +34,7 @@ class ApartmentController extends Controller
         $services = Service::all();
 
 
-        return view('user.apartment.create', [ 'services' => $services ]);
+        return view('user.apartment.create', ['services' => $services]);
     }
 
     /**
@@ -100,8 +100,7 @@ class ApartmentController extends Controller
 
         $newApartment->services()->attach($data['services']);
 
-
-        return redirect()->route('user.apartment.index');
+        return redirect()->route('user.apartment.index')->with('msg', 'Appartamento aggiunto correttamente.');;
     }
 
     /**
@@ -123,8 +122,8 @@ class ApartmentController extends Controller
     public function edit(Apartment $apartment)
     {
         $services = Service::all();
-        
-        return view('user.apartment.edit', ['apartment' => $apartment , 'services' => $services ]);
+
+        return view('user.apartment.edit', ['apartment' => $apartment, 'services' => $services]);
     }
 
     /**
@@ -200,7 +199,7 @@ class ApartmentController extends Controller
 
         //return redirect('/apartment/' . $apartmentId);  // **********  DA RICONTROLLARE  *************** 
 
-        return redirect()->route('user.apartment.index');
+        return redirect()->route('user.apartment.index')->with('msg', "Appartamento modificato correttamente.");
     }
 
     /**
@@ -214,6 +213,6 @@ class ApartmentController extends Controller
         $apartment->services()->detach();
         $apartment->delete();
 
-        return redirect()->route('user.apartment.index');
+        return redirect()->route('user.apartment.index')->with('msg', 'Appartamento eliminato correttamente.');
     }
 }
