@@ -1,13 +1,10 @@
 <template>
-    <div>
 
         <!-- HEADER -->
 
         <router-view></router-view>
 
         <!-- FOOTER -->
-
-    </div>
 </template>
 
 <script>
