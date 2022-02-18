@@ -4,10 +4,11 @@ namespace App\Http\Controllers\User\Apartment;
 
 use App\Apartment;
 use App\Http\Controllers\Controller;
-use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+
+use App\Service;
 
 class ApartmentController extends Controller
 {
@@ -32,7 +33,8 @@ class ApartmentController extends Controller
     {
         $services = Service::all();
 
-        return view('user.apartment.create', compact('services'));
+
+        return view('user.apartment.create', [ 'services' => $services ]);
     }
 
     /**
@@ -96,6 +98,9 @@ class ApartmentController extends Controller
 
         $newApartment->save();
 
+        $newApartment->services()->attach($data['services']);
+
+
         return redirect()->route('user.apartment.index');
     }
 
@@ -117,7 +122,9 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        return view('user.apartment.edit', compact('apartment'));
+        $services = Service::all();
+        
+        return view('user.apartment.edit', ['apartment' => $apartment , 'services' => $services ]);
     }
 
     /**
@@ -186,6 +193,9 @@ class ApartmentController extends Controller
 
         $apartment->update($data);
 
+
+        $apartment->services()->sync($data['services']);
+
         $apartmentId = $apartment->id;
 
         //return redirect('/apartment/' . $apartmentId);  // **********  DA RICONTROLLARE  *************** 
@@ -201,6 +211,7 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
+        $apartment->services()->detach();
         $apartment->delete();
 
         return redirect()->route('user.apartment.index');

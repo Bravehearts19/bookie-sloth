@@ -106,17 +106,17 @@
                 </span>
             @enderror
         </div>
-
-        <select class="form-control" name="service_id">
-            <option>Scegli i tuoi servizi</option>
+        
+        <h5 class="text-primary">Servizi:</h5>
+        <select name='services[]' multiple class="form-select" aria-label="Default select example">
+            <option selected>Servizi</option>
             @foreach ($services as $service)
-                <option value="{{ $service->id }}" {{ ( $service->id == $selectedID) ? 'selected' : '' }}> 
-                    
-                </option>
-            @endforeach    
-        </select>
+                
+            <option  value="{{$service->id}}">{{ $service->name}}</option>
+            @endforeach
+          </select>
 
-        <button type="submit" class="btn btn-primary text-secondary">Aggiungi</button>
+        <button type="submit" class="btn btn-primary mx-4">Aggiungi</button>
 
     </form>
 
