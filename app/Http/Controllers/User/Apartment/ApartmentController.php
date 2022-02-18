@@ -122,7 +122,9 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        return view('user.apartment.edit', compact('apartment'));
+        $services = Service::all();
+        
+        return view('user.apartment.edit', ['apartment' => $apartment , 'services' => $services ]);
     }
 
     /**
@@ -191,6 +193,9 @@ class ApartmentController extends Controller
 
         $apartment->update($data);
 
+
+        $apartment->services()->sync($data['services']);
+
         $apartmentId = $apartment->id;
 
         //return redirect('/apartment/' . $apartmentId);  // **********  DA RICONTROLLARE  *************** 
@@ -206,6 +211,7 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
+        $apartment->services()->detach();
         $apartment->delete();
 
         return redirect()->route('user.apartment.index');

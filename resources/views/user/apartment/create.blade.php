@@ -106,13 +106,13 @@
                 </span>
             @enderror
         </div>
-
+        
         <h5 class="text-primary">Servizi:</h5>
         <select name='services[]' multiple class="form-select" aria-label="Default select example">
             <option selected>Servizi</option>
             @foreach ($services as $service)
                 
-            <option value="{{$service->id}}">{{ $service->name}}</option>
+            <option  value="{{$service->id}}">{{ $service->name}}</option>
             @endforeach
           </select>
 
