@@ -93,7 +93,7 @@ class ApartmentController extends Controller
 
         $newApartment->save();
 
-        return redirect()->route('user.apartment.index');
+        return redirect()->route('user.apartment.index')->with('msg', 'Appartamento aggiunto correttamente.');
     }
 
     /**
@@ -187,7 +187,7 @@ class ApartmentController extends Controller
 
         //return redirect('/apartment/' . $apartmentId);  // **********  DA RICONTROLLARE  *************** 
 
-        return redirect()->route('user.apartment.index');
+        return redirect()->route('user.apartment.index')->with('msg', "Appartamento modificato correttamente.");
     }
 
     /**
@@ -200,6 +200,6 @@ class ApartmentController extends Controller
     {
         $apartment->delete();
 
-        return redirect()->route('user.apartment.index');
+        return redirect()->route('user.apartment.index')->with('msg', 'Appartamento eliminato correttamente.');
     }
 }
