@@ -20,7 +20,7 @@
                             </div>
                         @endif
     
-                        {{ __('You are logged in!') }}
+                        <h2>Bentornato {{Auth::user()->name}}</h2>
 
                         <a href="{{route("user.apartment.index")}}" class="btn btn-primary text-white d-block">I tuoi appartamenti</a>
                     </div>

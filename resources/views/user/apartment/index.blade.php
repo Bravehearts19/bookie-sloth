@@ -2,11 +2,15 @@
 
 @section('content')
     <div class="container">
-        <h1>
+        <h1 class="text-white">
             My apartments
         </h1>
 
-        <a href="{{route("user.apartment.create")}}" class="btn btn-success text-white mb-3">Aggiungi appartamento</a>
+        <a href="{{route("user.apartment.create")}}" class="btn btn-primary text-secondary mb-3">Aggiungi appartamento</a>
+
+        @if(session("msg"))
+            <div class="alert alert-primary d-flex justify-content-between" role="alert">{{session("msg")}}</div>
+        @endif
 
         @foreach($userApartments as $apartment)
         <div class="card mb-3">
@@ -24,7 +28,7 @@
                     <li><strong>CAP: </strong> {{$apartment->cap}}</li>
                 </ul>
             </div>
-            <a href="{{route('user.apartment.edit', $apartment->id)}}" class="btn btn-primary text-white">Modifica appartamento</a>
+            <a href="{{route('user.apartment.edit', $apartment->id)}}" class="btn btn-primary text-secondary">Modifica appartamento</a>
         </div>
         @endforeach
         
