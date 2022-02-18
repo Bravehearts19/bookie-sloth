@@ -3,8 +3,11 @@
         <h1 class="text-primary text-center">
             {{ apartment.name }}
         </h1>
+        <div class="d-flex justify-content-around">
+            <div class="img_container">
+                <img :src="apartment.cover_img" alt="">
+            </div>
 
-        <div class="d-flex justify-content-center">
             <div id="map-div"></div>
         </div>
     </div>
@@ -46,5 +49,13 @@ export default {
 #map-div{
     height: 400px;
     width: 400px;
+}
+
+.img_container {
+    aspect-ratio: 1/1;
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
 </style>

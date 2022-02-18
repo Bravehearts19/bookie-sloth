@@ -70,7 +70,13 @@ Route::get('/hotel/index', function(Request $request){
 });
 
 Route::get('/hotel/{id}', function($id){
-    $apartment = Apartment::all()->where('id', $id);
+    $apartment = Apartment::with('services')
+                        ->with('sponsors')
+                        ->with('views')
+                        ->with('user')
+                        ->with('images')
+                        ->get()
+                        ->where('id', $id);
 
     return json_encode($apartment);
 });
