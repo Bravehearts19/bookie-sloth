@@ -1,9 +1,13 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-          <div class="card-container">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+        <section id="apartments-map-section" class="col-4 offset-1 bg-primary">
+            <div class="d-flex justify-content-center align-items-center h-100">
                 <div id="map-div"></div>
+            </div>
+        </section>
+        <section id="apartments-slider-section" class="col-5 overflow-auto bg-info">
+            <div class="card-container">
                 <div class="apartment-card py-5 border-top border-bottom border-primary"
                     :key="'hotel-'+index"
                     v-for="(hotel, index) in hotelArray.data">
@@ -17,8 +21,8 @@
                         <h6 class="text-white">sizes: {{hotel.size}} mq</h6>
 
                 </div>
-          </div>
-      </div>
+            </div>
+        </section>
     </div>
   </div>
 </template>
@@ -68,5 +72,13 @@ export default {
 #map-div{
     height: 400px;
     width: 400px;
+}
+
+section#apartments-map-section{
+    height: 60vh
+}
+
+section#apartments-slider-section{
+    height: 60vh
 }
 </style>

@@ -49,7 +49,7 @@ Route::get('/hotel/search', function(Request $request){
  * @description get 10 paginated hotel filtered by location
  * @param ?searchString={{pagination}}
  */
-Route::get('hotel/search/location', function(Request $request){
+Route::get('/hotel/search/location', function(Request $request){
     $searchString = $request->query('searchString');
 
     $apartments = DB::table('apartments')
@@ -59,6 +59,8 @@ Route::get('hotel/search/location', function(Request $request){
     return json_encode($apartments);
 });
 
+Route::get('/hotel/search/id/{id}', function($id){
+    echo($id);
 /**
  * @description get 10 paginated hotel
  * @param ?page={{pagination}}
@@ -82,6 +84,12 @@ Route::get('/hotel/{id}', function($id){
 });
 
 
+    $apartment = DB::table('apartments')
+        ->where('id', '=', $id );
+
+
+    return json_encode($apartment);
+});
 
 // nMinStanze
 
