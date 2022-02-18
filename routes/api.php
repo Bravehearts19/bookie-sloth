@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Apartment;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,73 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 
 });
+
+/**
+ * @description get 10 paginated hotel
+ * @param ?page={{pagination}}
+ */
+Route::get('/hotel/index', function(Request $request){
+    $apartments = DB::table('apartments')->paginate(10);
+
+    return json_encode($apartments);
+});
+
+/**
+ * @description get 10 paginated hotel filtered by searchstring
+ * @param ?searchString={{pagination}}
+ */
+Route::get('/hotel/search', function(Request $request){
+    $searchString = $request->query('searchString');
+
+    $apartments = DB::table('apartments')
+        ->where('name', 'like', ('%' . $searchString . '%') )
+        ->paginate(10);
+
+    return json_encode($apartments);
+});
+
+/**
+ * @description get 10 paginated hotel filtered by location
+ * @param ?searchString={{pagination}}
+ */
+Route::get('hotel/search/location', function(Request $request){
+    $searchString = $request->query('searchString');
+
+    $apartments = DB::table('apartments')
+        ->where('location', 'like', ('%' . $searchString . '%') )
+        ->paginate(10);
+
+    return json_encode($apartments);
+});
+
+
+
+// nMinStanze
+
+// nMinPersone
+
+//
+/**
+ * @description get 10 paginated hotel filtered by badge type
+ * @param ?searchString={{ bronze | silver | gold}}
+ */
+//Route::get('hotel/search/badge', function(Request $request){
+//
+//    //get query string
+//    $badge = $request->query('badge');
+//
+//    $apartments = Apartment::with('sponsors')
+//        ->where('level', 'like', ('%' . $badge . '%') )
+//        ->paginate(10);
+//
+//    return json_encode($apartments);
+//});
+
+
+
+
+
+
 
 
 

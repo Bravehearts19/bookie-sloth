@@ -28,7 +28,7 @@ class ApartmentSponsorTableSeeder extends Seeder
 
     static function expiresAt($apartmentSponsor) {
         $apartmentSponsor = DB::table('sponsors')->where('id', $apartmentSponsor)->first();
-        
+
         $now = Carbon::now()->addHour(1);
 
         if(!$apartmentSponsor || $apartmentSponsor->level === 'no_sponsor') {
