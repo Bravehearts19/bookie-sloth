@@ -12,6 +12,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <script src="{{ asset('js/vue.js') }}" defer></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -19,9 +21,13 @@
     <!-- Styles -->
     <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- TomTom -->
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps.css'>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps-web.min.js"></script>
 </head>
 <body>
-    <div id="app" class="bg-primary full-height d-flex flex-column">
+    <div class="bg-primary full-height d-flex flex-column">
         {{--
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -92,10 +98,11 @@
                 <input type="text" class="form-control bg-secondary text-white" placeholder="Surf around over 1000 hotels..." aria-label="hotelName" aria-describedby="searchBar">
             </div>
         </header>
+
         <main class="py-4 flex-grow-1 bg-secondary">
             @yield('content')
         </main>
-        <footer class="bg-primary d-flex justify-content-end align-items-center">
+        {{--<footer class="bg-primary d-flex justify-content-end align-items-center">
             <div class="user-icon-container border bg-secondary mt-5 mx-2">
                 <lord-icon
                     src="https://cdn.lordicon.com/eszyyflr.json"
@@ -105,7 +112,7 @@
                 </lord-icon>
             </div>
 
-        </footer>
+        </footer>--}}
     </div>
 </body>
 </html>
