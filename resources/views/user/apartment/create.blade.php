@@ -6,11 +6,7 @@
         @csrf
         
         <div class="mb-3">
-<<<<<<< HEAD
-            <label for="name" class="form-label text-primary">Nome Hotel</label>
-=======
             <label for="name" class="form-label text-primary">Nome Hotel *</label>
->>>>>>> dev
             <input type="text" class="form-control @error('name') is-invalid @enderror" name='name' id="name" aria-describedby="emailHelp" value="{{ old('name') }}" required>
             @error('name')
                 <span class="invalid-feedback">
@@ -20,11 +16,7 @@
         </div>
         
         <div class="mb-3">
-<<<<<<< HEAD
-            <label for="n_guests" class="form-label text-primary">Numero Ospiti</label>
-=======
             <label for="n_guests" class="form-label text-primary">Numero Ospiti *</label>
->>>>>>> dev
             <input type="number" class="form-control @error('n_guests') is-invalid @enderror" name='n_guests' id="n_guests" min="0" max="127" aria-describedby="emailHelp" value="{{ old('n_guests') }}" required>
             @error('n_guests')
                 <span class="invalid-feedback">
@@ -34,11 +26,7 @@
         </div> 
 
         <div class="mb-3">
-<<<<<<< HEAD
-            <label for="n_rooms" class="form-label text-primary">Numero Stanze</label>
-=======
             <label for="n_rooms" class="form-label text-primary">Numero Stanze *</label>
->>>>>>> dev
             <input type="number" class="form-control @error('n_rooms') is-invalid @enderror" name='n_rooms' id="n_rooms" min="0" aria-describedby="emailHelp" value="{{ old('n_rooms') }} required" >
             @error('n_rooms')
                 <span class="invalid-feedback">
@@ -58,11 +46,7 @@
         </div>
 
         <div class="mb-3">
-<<<<<<< HEAD
-            <label for="size" class="form-label text-primary">Dimensioni</label>
-=======
             <label for="size" class="form-label text-primary">Dimensioni *</label>
->>>>>>> dev
             <input type="number" class="form-control @error('size') is-invalid @enderror" name='size' id="size" min="0" max='32767' aria-describedby="emailHelp" value="{{ old('size') }}">
             @error('size')
                 <span class="invalid-feedback">
@@ -72,11 +56,7 @@
         </div>
 
         <div class="mb-3">
-<<<<<<< HEAD
-            <label for="price" class="form-label text-primary">Prezzo</label>
-=======
             <label for="price" class="form-label text-primary">Prezzo *</label>
->>>>>>> dev
             <input type="number" class="form-control @error('price') is-invalid @enderror" name='price' id="price" step="0.01" min="0" max='32767' aria-describedby="emailHelp" value="{{ old('price') }}" required>
             @error('price')
                 <span class="invalid-feedback">
