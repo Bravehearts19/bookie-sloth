@@ -108,6 +108,15 @@
             @enderror
         </div>
 
+        <select class="form-control" name="service_id">
+            <option>Scegli i tuoi servizi</option>
+            @foreach ($services as $service)
+                <option value="{{ $service->id }}" {{ ( $service->id == $selectedID) ? 'selected' : '' }}> 
+                    
+                </option>
+            @endforeach    
+        </select>
+
         <button type="submit" class="btn btn-primary text-secondary">Aggiungi</button>
 
     </form>
