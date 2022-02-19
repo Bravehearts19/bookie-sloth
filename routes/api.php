@@ -52,13 +52,24 @@ Route::get('hotel/search/location', function(Request $request){
  * @param ?page={{pagination}}
  */
 Route::get('/hotel/index', function(Request $request){
-    $apartments = DB::table('apartments')->paginate(10);
+    $searchString = $request->query('searchString');
+    if(!$searchString){
+        $apartments = DB::table('apartments')->get();
+    }else{
+        $apartments = Apartment::where('location', $searchString)->with('services')
+        ->with('sponsors')
+        ->with('views')
+        ->with('user')
+        ->with('images')
+        ->get()
+        ;
+    }
     return json_encode($apartments);
 });
 Route::get('/hotel/{id}', function($id){
-    $apartment = Apartment::with('views')
+    $apartment = Apartment::with('services')
                         ->with('sponsors')
-                        ->with('services')
+                        ->with('views')
                         ->with('user')
                         ->with('images')
                         ->get()
