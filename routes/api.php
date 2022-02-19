@@ -1,11 +1,9 @@
 <?php
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Apartment;
 use App\Service;
 use Illuminate\Support\Facades\DB;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,59 +14,45 @@ use Illuminate\Support\Facades\DB;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-
 });
-
 /**
  * @description get 10 paginated hotel
  * @param ?page={{pagination}}
  */
 Route::get('/hotel/index', function(Request $request){
     $apartments = DB::table('apartments')->paginate(10);
-
     return json_encode($apartments);
 });
-
 /**
  * @description get 10 paginated hotel filtered by searchstring
  * @param ?searchString={{pagination}}
  */
 Route::get('/hotel/search', function(Request $request){
     $searchString = $request->query('searchString');
-
     $apartments = DB::table('apartments')
         ->where('name', 'like', ('%' . $searchString . '%') )
         ->paginate(10);
-
     return json_encode($apartments);
 });
-
 /**
  * @description get 10 paginated hotel filtered by location
  * @param ?searchString={{pagination}}
  */
-Route::get('/hotel/search/location', function(Request $request){
+Route::get('hotel/search/location', function(Request $request){
     $searchString = $request->query('searchString');
-
     $apartments = DB::table('apartments')
         ->where('location', 'like', ('%' . $searchString . '%') )
         ->paginate(10);
-
     return json_encode($apartments);
 });
-
-Route::get('/hotel/search/id/{id}', function($id){
-    echo($id);
 /**
  * @description get 10 paginated hotel
  * @param ?page={{pagination}}
  */
 Route::get('/hotel/index', function(Request $request){
     $searchString = $request->query('searchString');
-
     if(!$searchString){
         $apartments = DB::table('apartments')->get();
     }else{
@@ -79,13 +63,9 @@ Route::get('/hotel/index', function(Request $request){
         ->with('images')
         ->get()
         ;
-        
     }
-
-
     return json_encode($apartments);
 });
-
 Route::get('/hotel/{id}', function($id){
     $apartment = Apartment::with('services')
                         ->with('sponsors')
@@ -94,21 +74,15 @@ Route::get('/hotel/{id}', function($id){
                         ->with('images')
                         ->get()
                         ->where('id', $id);
-
     return json_encode($apartment);
 });
-
 /* chiamata per prendere i servizi */
 Route::get('/services/index', function(Request $request){
     $apartments = DB::table('services')->get();
-
     return json_encode($apartments);
 });
-
 // nMinStanze
-
 // nMinPersone
-
 //
 /**
  * @description get 10 paginated hotel filtered by badge type
@@ -125,15 +99,6 @@ Route::get('/services/index', function(Request $request){
 //
 //    return json_encode($apartments);
 //});
-
-
-
-
-
-
-
-
-
 Route::get('/destinationID', function(Request $request){
     $curl = curl_init();
     $queryLocation = $request->query('location');
@@ -156,16 +121,10 @@ Route::get('/destinationID', function(Request $request){
         #SSL ERROR FIX
         CURLOPT_SSL_VERIFYPEER => false
     ]);
-
-
     $response = curl_exec($curl);
     $err = curl_error($curl);
-
     curl_close($curl);
-
-
     $data = json_decode($response, true);
-
     return json_decode($response, true);
 });
 //
@@ -176,12 +135,9 @@ Route::get('/destinationID', function(Request $request){
 //}
 //// api https://rapidapi.com/apidojo/api/hotels4/
 Route::get('/hotel', function(Request $request){
-
     //get query param location
     $queryDestinationID = $request->query('destinationID');
-
     $curl = curl_init();
-
     curl_setopt_array($curl, [
         CURLOPT_URL => "https://hotels4.p.rapidapi.com/properties/list?destinationId=". $queryDestinationID ."&pageNumber=1&pageSize=35&checkIn=2020-01-08&checkOut=2020-01-15&adults1=1&sortOrder=PRICE&locale=en_US&currency=USD",
         CURLOPT_RETURNTRANSFER => true,
@@ -198,27 +154,16 @@ Route::get('/hotel', function(Request $request){
         #SSL ERROR FIX
         CURLOPT_SSL_VERIFYPEER => false
     ]);
-
-
     $response = curl_exec($curl);
     $err = curl_error($curl);
-
     curl_close($curl);
-
-
     $data = json_decode($response, true);
-
     return json_decode($response, true);
     //return json_encode($results);
 });
-
-
-
 Route::get('/hotelImage', function(Request $request){
     $curl = curl_init();
-
     $hotelID = $request->query('hotelID');
-
     curl_setopt_array($curl, [
         CURLOPT_URL => "https://hotels4.p.rapidapi.com/properties/get-hotel-photos?id=" . $hotelID,
         CURLOPT_RETURNTRANSFER => true,
@@ -235,23 +180,15 @@ Route::get('/hotelImage', function(Request $request){
         #SSL ERROR FIX
         CURLOPT_SSL_VERIFYPEER => false
     ]);
-
     $imgUrl = curl_exec($curl);
     $err = curl_error($curl);
-
     curl_close($curl);
-
     if ($err) {
         echo $err;
     }
-
     $imgUrl = json_decode($imgUrl, true);
-
-
     //var_dump();
-
     $imgUrl = str_replace('{size}','z', $imgUrl["hotelImages"][0]["baseUrl"]);
-
     return $imgUrl;
 });
 
