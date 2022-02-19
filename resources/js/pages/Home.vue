@@ -36,6 +36,7 @@ export default {
     name: 'Home',
     data() {
         return {
+            initialHotelArray : [],
             hotelArray : [],
                   
         }
@@ -58,6 +59,7 @@ export default {
             }).then(resp => {
                 const data = resp.data 
                 this.hotelArray = data
+                this.initialHotelArray = data
 
 		    })
 
@@ -69,7 +71,7 @@ export default {
 
         searchedHotel(){
 
-            this.hotelArray = this.hotelArray.filter(this.searchLocation)
+            this.hotelArray = this.initialHotelArray.filter(this.searchLocation)
         }
         
     },
@@ -92,20 +94,25 @@ export default {
         
     },
 
-    /* computed: {
+    computed: {
         boolSearch: function () {
         return this.boolStartSearch
         },
 
-        searchedHotel: function (){
-            if(this.boolSearch){
+        startSearchHotel: function (){
+            if(!this.boolSearch){
 
+               if(this.searched === '') {
+                    this.hotelArray = this.initialHotelArray;
+                } else {
+                    this.searchedHotel()
+                } 
                
             }
-            this.boolSearch = false
+            
 
             }
-  } */
+  }
 }
 </script>
 

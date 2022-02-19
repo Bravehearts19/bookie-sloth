@@ -2000,7 +2000,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       toSearch: '',
-      boolStartSearch: false
+      boolStartSearch: true
     };
   },
   components: {
@@ -2008,7 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     startSearch: function startSearch() {
-      this.boolStartSearch = true;
+      this.boolStartSearch = false;
       this.$emit('catchBool', this.boolStartSearch);
     }
   }
@@ -2136,6 +2136,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Home',
   data: function data() {
     return {
+      initialHotelArray: [],
       hotelArray: []
     };
   },
@@ -2155,13 +2156,14 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (resp) {
         var data = resp.data;
         _this.hotelArray = data;
+        _this.initialHotelArray = data;
       });
     },
     searchLocation: function searchLocation(hotel) {
       return hotel.location.toLowerCase().includes(this.searched.toLowerCase());
     },
     searchedHotel: function searchedHotel() {
-      this.hotelArray = this.hotelArray.filter(this.searchLocation);
+      this.hotelArray = this.initialHotelArray.filter(this.searchLocation);
     }
   },
   mounted: function mounted() {
@@ -2180,19 +2182,21 @@ __webpack_require__.r(__webpack_exports__);
       center: GOLDEN_GATE_BRIDGE,
       zoom: 12
     });
+  },
+  computed: {
+    boolSearch: function boolSearch() {
+      return this.boolStartSearch;
+    },
+    startSearchHotel: function startSearchHotel() {
+      if (!this.boolSearch) {
+        if (this.searched === '') {
+          this.hotelArray = this.initialHotelArray;
+        } else {
+          this.searchedHotel();
+        }
+      }
+    }
   }
-  /* computed: {
-      boolSearch: function () {
-      return this.boolStartSearch
-      },
-        searchedHotel: function (){
-          if(this.boolSearch){
-               
-          }
-          this.boolSearch = false
-            }
-  } */
-
 });
 
 /***/ }),
