@@ -1,4 +1,4 @@
-import Vue from "vue";
+/* import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Home from "./pages/Home.vue";
@@ -63,4 +63,4 @@ const router = new VueRouter({
     ],
   });
   
-  export default router;
+  export default router; */

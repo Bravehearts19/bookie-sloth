@@ -110,6 +110,15 @@
             @enderror   
       </div>
 
+      <h5 class="text-primary">Servizi:</h5>
+        <select name='services[]' multiple class="form-select" aria-label="Default select example">
+            
+            @foreach ($services as $service)
+             
+            <option  {{ $apartment->services->contains($service) ? 'selected' : '' }} value="{{$service->id}}">{{ $service->name}}</option>
+            @endforeach
+          </select>
+
       <div class="mb-3">
         <label for="visibility" class="form-label text-primary">Visibilità *</label>
         <select class="form-select" name="visible">

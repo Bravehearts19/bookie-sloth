@@ -106,10 +106,18 @@
                 </span>
             @enderror
         </div>
+        
+        <h5 class="text-primary">Servizi:</h5>
+        <select name='services[]' multiple class="form-select" aria-label="Default select example">
+            <option selected>Servizi</option>
+            @foreach ($services as $service)
+                
+            <option  value="{{$service->id}}">{{ $service->name}}</option>
+            @endforeach
+          </select>
 
-        <div class="d-flex justify-content-center mt-5">
-            <button type="submit" class="btn btn-primary text-secondary">Aggiungi</button>
-        </div>
+        <button type="submit" class="btn btn-primary mx-4">Aggiungi</button>
+
     </form>
 
 

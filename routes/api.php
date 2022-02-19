@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Apartment;
+use App\Service;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -59,7 +60,48 @@ Route::get('hotel/search/location', function(Request $request){
     return json_encode($apartments);
 });
 
+/**
+ * @description get 10 paginated hotel
+ * @param ?page={{pagination}}
+ */
+Route::get('/hotel/index', function(Request $request){
+    $searchString = $request->query('searchString');
 
+    if(!$searchString){
+        $apartments = DB::table('apartments')->get();
+    }else{
+        $apartments = Apartment::where('location', $searchString)->with('services')
+        ->with('sponsors')
+        ->with('views')
+        ->with('user')
+        ->with('images')
+        ->get()
+        ;
+        
+    }
+
+
+    return json_encode($apartments);
+});
+
+Route::get('/hotel/{id}', function($id){
+    $apartment = Apartment::with('services')
+                        ->with('sponsors')
+                        ->with('views')
+                        ->with('user')
+                        ->with('images')
+                        ->get()
+                        ->where('id', $id);
+
+    return json_encode($apartment);
+});
+
+/* chiamata per prendere i servizi */
+Route::get('/services/index', function(Request $request){
+    $apartments = DB::table('services')->get();
+
+    return json_encode($apartments);
+});
 
 // nMinStanze
 
