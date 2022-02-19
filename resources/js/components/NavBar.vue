@@ -1,85 +1,5 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <script src="{{ asset('js/vue.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <!-- TomTom -->
-    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps.css'>
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps-web.min.js"></script>
-</head>
-<body>
-    <div class="bg-primary full-height d-flex flex-column">
-        {{--
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>--}}
-        {{-- <header class="bg-primary d-flex flex-column align-items-center px-3">
+<template>
+  <header class="bg-primary d-flex flex-column align-items-center px-3">
             <div class="logo-container d-flex align-items-center p-3">
                 <h1 class="mb-0 mx-3 ml-0">Slothel</h1>
                 <svg width="65" height="60" viewBox="0 0 65 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,30 +10,43 @@
                 <span class="input-group-text bg-secondary" id="searchBar">
                     <lord-icon
                         src="https://cdn.lordicon.com/msoeawqm.json"
-                        trigger="loop"
+                        trigger="loop-on-hover"
                         colors="primary:#c7ef00,secondary:#ffffff"
                         style="width:40px;height:40px">
                     </lord-icon>
                 </span>
-                <input type="text" class="form-control bg-secondary text-white" placeholder="Surf around over 1000 hotels..." aria-label="hotelName" aria-describedby="searchBar">
+                <input v-model="toSearch" @keyup="$emit('searching', toSearch)" @keyup.enter='startSearch()' type="text" class="form-control bg-secondary text-white" placeholder="Surf around over 1000 hotels..." aria-label="hotelName" aria-describedby="searchBar">
             </div>
-            
-        </header> --}}
+            <Services></Services>
+        </header>
+</template>
 
-        <main class="py-4 flex-grow-1 bg-secondary">
-            @yield('content')
-        </main>
-        {{--<footer class="bg-primary d-flex justify-content-end align-items-center">
-            <div class="user-icon-container border bg-secondary mt-5 mx-2">
-                <lord-icon
-                    src="https://cdn.lordicon.com/eszyyflr.json"
-                    trigger="loop"
-                    colors="primary:#c7ef00,secondary:#ffffff"
-                    style="width:70px;height:70px">
-                </lord-icon>
-            </div>
+<script>
+import Services from './Services';
 
-        </footer>--}}
-    </div>
-</body>
-</html>
+export default {
+    name: 'NavBar',
+
+    data(){
+        return {
+            toSearch : '',
+            boolStartSearch : true
+        }
+    },
+
+    components :{
+        Services,
+    },
+
+    methods :{
+        startSearch:function(){
+            this.boolStartSearch =  false
+            this.$emit('catchBool', this.boolStartSearch)
+        }
+    }
+}
+</script>
+
+<style>
+
+</style>

@@ -20,7 +20,7 @@ import PrimeVue from 'primevue/config';
 Vue.use(PrimeVue);
 
 import App from './App.vue';
-import router from './router.js';
+
 
 /* import ExampleComponent from './components/ExampleComponent' */
 
@@ -32,6 +32,5 @@ import router from './router.js';
 
 const app = new Vue({
     el: '#app',
-    router,
     render: h => h(App)
 });
