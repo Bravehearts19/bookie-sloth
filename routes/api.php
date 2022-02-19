@@ -19,14 +19,13 @@ use Illuminate\Support\Facades\DB;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-
 });
 
 /**
  * @description get 10 paginated hotel
  * @param ?page={{pagination}}
  */
-Route::get('/hotel/index', function(Request $request){
+Route::get('/hotel/index', function (Request $request) {
     $apartments = DB::table('apartments')->paginate(10);
 
     return json_encode($apartments);
@@ -36,11 +35,11 @@ Route::get('/hotel/index', function(Request $request){
  * @description get 10 paginated hotel filtered by searchstring
  * @param ?searchString={{pagination}}
  */
-Route::get('/hotel/search', function(Request $request){
+Route::get('/hotel/search', function (Request $request) {
     $searchString = $request->query('searchString');
 
     $apartments = DB::table('apartments')
-        ->where('name', 'like', ('%' . $searchString . '%') )
+        ->where('name', 'like', ('%' . $searchString . '%'))
         ->paginate(10);
 
     return json_encode($apartments);
@@ -50,11 +49,11 @@ Route::get('/hotel/search', function(Request $request){
  * @description get 10 paginated hotel filtered by location
  * @param ?searchString={{pagination}}
  */
-Route::get('hotel/search/location', function(Request $request){
+Route::get('hotel/search/location', function (Request $request) {
     $searchString = $request->query('searchString');
 
     $apartments = DB::table('apartments')
-        ->where('location', 'like', ('%' . $searchString . '%') )
+        ->where('location', 'like', ('%' . $searchString . '%'))
         ->paginate(10);
 
     return json_encode($apartments);
@@ -64,40 +63,38 @@ Route::get('hotel/search/location', function(Request $request){
  * @description get 10 paginated hotel
  * @param ?page={{pagination}}
  */
-Route::get('/hotel/index', function(Request $request){
+Route::get('/hotel/index', function (Request $request) {
     $searchString = $request->query('searchString');
 
-    if(!$searchString){
+    if (!$searchString) {
         $apartments = DB::table('apartments')->get();
-    }else{
+    } else {
         $apartments = Apartment::where('location', $searchString)->with('services')
-        ->with('sponsors')
-        ->with('views')
-        ->with('user')
-        ->with('images')
-        ->get()
-        ;
-        
+            ->with('sponsors')
+            ->with('views')
+            ->with('user')
+            ->with('images')
+            ->get();
     }
 
 
     return json_encode($apartments);
 });
 
-Route::get('/hotel/{id}', function($id){
+Route::get('/hotel/{id}', function ($id) {
     $apartment = Apartment::with('services')
-                        ->with('sponsors')
-                        ->with('views')
-                        ->with('user')
-                        ->with('images')
-                        ->get()
-                        ->where('id', $id);
+        ->with('sponsors')
+        ->with('views')
+        ->with('user')
+        ->with('images')
+        ->get()
+        ->where('id', $id);
 
     return json_encode($apartment);
 });
 
 /* chiamata per prendere i servizi */
-Route::get('/services/index', function(Request $request){
+Route::get('/services/index', function (Request $request) {
     $apartments = DB::table('services')->get();
 
     return json_encode($apartments);
@@ -132,12 +129,12 @@ Route::get('/services/index', function(Request $request){
 
 
 
-Route::get('/destinationID', function(Request $request){
+Route::get('/destinationID', function (Request $request) {
     $curl = curl_init();
     $queryLocation = $request->query('location');
     //set request headers
     curl_setopt_array($curl, [
-        CURLOPT_URL => "https://hotels4.p.rapidapi.com/locations/v2/search?query=". $queryLocation ."&locale=en_US&currency=USD",
+        CURLOPT_URL => "https://hotels4.p.rapidapi.com/locations/v2/search?query=" . $queryLocation . "&locale=en_US&currency=USD",
         //set request to return data
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_FOLLOWLOCATION => true,
@@ -173,7 +170,7 @@ Route::get('/destinationID', function(Request $request){
 //
 //}
 //// api https://rapidapi.com/apidojo/api/hotels4/
-Route::get('/hotel', function(Request $request){
+Route::get('/hotel', function (Request $request) {
 
     //get query param location
     $queryDestinationID = $request->query('destinationID');
@@ -181,7 +178,7 @@ Route::get('/hotel', function(Request $request){
     $curl = curl_init();
 
     curl_setopt_array($curl, [
-        CURLOPT_URL => "https://hotels4.p.rapidapi.com/properties/list?destinationId=". $queryDestinationID ."&pageNumber=1&pageSize=35&checkIn=2020-01-08&checkOut=2020-01-15&adults1=1&sortOrder=PRICE&locale=en_US&currency=USD",
+        CURLOPT_URL => "https://hotels4.p.rapidapi.com/properties/list?destinationId=" . $queryDestinationID . "&pageNumber=1&pageSize=35&checkIn=2020-01-08&checkOut=2020-01-15&adults1=1&sortOrder=PRICE&locale=en_US&currency=USD",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_ENCODING => "",
@@ -212,7 +209,7 @@ Route::get('/hotel', function(Request $request){
 
 
 
-Route::get('/hotelImage', function(Request $request){
+Route::get('/hotelImage', function (Request $request) {
     $curl = curl_init();
 
     $hotelID = $request->query('hotelID');
@@ -248,9 +245,40 @@ Route::get('/hotelImage', function(Request $request){
 
     //var_dump();
 
-    $imgUrl = str_replace('{size}','z', $imgUrl["hotelImages"][0]["baseUrl"]);
+    $imgUrl = str_replace('{size}', 'z', $imgUrl["hotelImages"][0]["baseUrl"]);
 
     return $imgUrl;
+});
+
+Route::get("/search/coordinates", function (Request $request) {
+
+    //get query param location
+    $locationName = $request->query('locationName');
+
+    $locationName = str_replace(' ', "%20", $locationName);
+    $locationName = str_replace('/', '%2f', $locationName);
+    $locationName = $locationName . "%20Italia";
+
+
+    $ch = curl_init();
+
+
+    curl_setopt_array($ch, [
+        CURLOPT_URL => "https://api.tomtom.com/search/2/geocode/" . $locationName . ".json?key=onx0t6tyRKJCe8Q2JIAWTMwu3Opxi7wH",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_SSL_VERIFYPEER => false
+
+
+    ]);
+
+    $addressData = curl_exec($ch);
+
+    curl_close($ch);
+    $addressData = json_decode($addressData, true);
+
+    return $addressData["results"][0]["position"];
+    //return json_encode($results);
 });
 
 
