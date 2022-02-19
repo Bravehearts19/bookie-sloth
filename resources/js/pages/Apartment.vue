@@ -10,6 +10,10 @@
 
             <div id="map-div"></div>
         </div>
+<!-- 
+        <p v-for="">
+
+        </p> -->
     </div>
 </template>
 
@@ -24,9 +28,8 @@ export default {
     mounted(){
         axios.get(`/api/hotel/` + this.$route.params.id)
         .then((resp) => {
-            console.log(resp.data);
             this.apartment = resp.data[this.$route.params.id - 1]; /* la resp.data ritorna un oggetto con chiave id dell'oggetto -1 */
-
+            console.log(this.apartment);
             const HOTEL_COORDINATES = {lng: this.apartment.x_coordinate, lat: this.apartment.y_coordinate};
 
             const API_KEY = 'onx0t6tyRKJCe8Q2JIAWTMwu3Opxi7wH';
@@ -41,6 +44,13 @@ export default {
             zoom: 18
             });
         })
+
+        let here = new URL(window.location.href);
+        here.searchParams.append('searchedString', this.searched);
+        console.log(here.href);
+
+        let here = new URL(window.location.href);
+        here.searchParams.id
     }
 }
 </script>
