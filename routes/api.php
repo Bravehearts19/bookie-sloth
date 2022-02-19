@@ -22,16 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /**
- * @description get 10 paginated hotel
- * @param ?page={{pagination}}
- */
-Route::get('/hotel/index', function (Request $request) {
-    $apartments = DB::table('apartments')->paginate(10);
-
-    return json_encode($apartments);
-});
-
-/**
  * @description get 10 paginated hotel filtered by searchstring
  * @param ?searchString={{pagination}}
  */
