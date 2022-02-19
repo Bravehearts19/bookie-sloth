@@ -7,7 +7,7 @@
                 </svg>
             </div>
             <div class="input-group mb-3 full-rounded-xl">
-                <span @click="$emit('searching', toSearch)" class="input-group-text bg-secondary" id="searchBar">
+                <span class="input-group-text bg-secondary" id="searchBar">
                     <lord-icon
                         src="https://cdn.lordicon.com/msoeawqm.json"
                         trigger="loop-on-hover"
@@ -15,7 +15,7 @@
                         style="width:40px;height:40px">
                     </lord-icon>
                 </span>
-                <input v-model="toSearch" type="text" class="form-control bg-secondary text-white" placeholder="Surf around over 1000 hotels..." aria-label="hotelName" aria-describedby="searchBar">
+                <input v-model="toSearch" @keyup="$emit('searching', toSearch)" @keyup.enter='startSearch()' type="text" class="form-control bg-secondary text-white" placeholder="Surf around over 1000 hotels..." aria-label="hotelName" aria-describedby="searchBar">
             </div>
             <Services></Services>
         </header>
@@ -30,7 +30,7 @@ export default {
     data(){
         return {
             toSearch : '',
-            
+            boolStartSearch : false
         }
     },
 
@@ -39,7 +39,10 @@ export default {
     },
 
     methods :{
-        
+        startSearch:function(){
+            this.boolStartSearch =  true
+            this.$emit('catchBool', this.boolStartSearch)
+        }
     }
 }
 </script>

@@ -1941,7 +1941,8 @@ __webpack_require__.r(__webpack_exports__);
   name: "App",
   data: function data() {
     return {
-      toSearch: ''
+      toSearch: '',
+      boolStartSearch: ''
     };
   },
   components: {
@@ -1951,6 +1952,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     searching: function searching(toSearch) {
       this.toSearch = toSearch;
+    },
+    catchBool: function catchBool(boolStartSearch) {
+      this.boolStartSearch = boolStartSearch;
     }
   }
 });
@@ -1995,13 +1999,19 @@ __webpack_require__.r(__webpack_exports__);
   name: 'NavBar',
   data: function data() {
     return {
-      toSearch: ''
+      toSearch: '',
+      boolStartSearch: false
     };
   },
   components: {
     Services: _Services__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  methods: {}
+  methods: {
+    startSearch: function startSearch() {
+      this.boolStartSearch = true;
+      this.$emit('catchBool', this.boolStartSearch);
+    }
+  }
 });
 
 /***/ }),
@@ -2131,19 +2141,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {},
   props: {
-    searched: String
+    searched: String,
+    boolStartSearch: Boolean
   },
   methods: {
-    /* async getHotelData(){
-        const {data} = await axios.get('api/hotel/index, {
-            params : {
-                query : this.searched,
-            }
-        });
-        this.hotelArray = data;
-        console.log(data[0]);
-       
-    } */
     getAllHotelData: function getAllHotelData() {
       var _this = this;
 
@@ -2157,7 +2158,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     searchLocation: function searchLocation(hotel) {
-      return hotel.location.toLowerCase() === this.searched.toLowerCase();
+      return hotel.location.toLowerCase().includes(this.searched.toLowerCase());
     },
     searchedHotel: function searchedHotel() {
       this.hotelArray = this.hotelArray.filter(this.searchLocation);
@@ -2180,6 +2181,18 @@ __webpack_require__.r(__webpack_exports__);
       zoom: 12
     });
   }
+  /* computed: {
+      boolSearch: function () {
+      return this.boolStartSearch
+      },
+        searchedHotel: function (){
+          if(this.boolSearch){
+               
+          }
+          this.boolSearch = false
+            }
+  } */
+
 });
 
 /***/ }),
@@ -6773,9 +6786,13 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("NavBar", { on: { searching: _vm.searching } }),
+      _c("NavBar", {
+        on: { searching: _vm.searching, catchBool: _vm.catchBool },
+      }),
       _vm._v(" "),
-      _c("Home", { attrs: { searched: _vm.toSearch } }),
+      _c("Home", {
+        attrs: { searched: _vm.toSearch, boolStartSearch: _vm.boolStartSearch },
+      }),
     ],
     1
   )
@@ -6841,11 +6858,6 @@ var render = function () {
           {
             staticClass: "input-group-text bg-secondary",
             attrs: { id: "searchBar" },
-            on: {
-              click: function ($event) {
-                return _vm.$emit("searching", _vm.toSearch)
-              },
-            },
           },
           [
             _c("lord-icon", {
@@ -6878,6 +6890,20 @@ var render = function () {
           },
           domProps: { value: _vm.toSearch },
           on: {
+            keyup: [
+              function ($event) {
+                return _vm.$emit("searching", _vm.toSearch)
+              },
+              function ($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.startSearch()
+              },
+            ],
             input: function ($event) {
               if ($event.target.composing) {
                 return

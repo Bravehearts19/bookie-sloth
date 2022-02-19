@@ -36,28 +36,20 @@ export default {
     name: 'Home',
     data() {
         return {
-            hotelArray : []
+            hotelArray : [],
+                  
         }
     },
     components: {
     },
 
     props : {
-      searched : String,   
+      searched : String,
+      boolStartSearch : Boolean,   
     },
 
     methods:{
-        /* async getHotelData(){
-            const {data} = await axios.get('api/hotel/index, {
-                params : {
-                    query : this.searched,
-                }
-            });
-            this.hotelArray = data;
-            console.log(data[0]);
-           
-        } */
-
+        
         getAllHotelData(){
             window.axios.get('api/hotel/index', {
                 params : {
@@ -72,13 +64,14 @@ export default {
         },
 
         searchLocation(hotel){
-            return hotel.location.toLowerCase() === this.searched.toLowerCase()
+            return hotel.location.toLowerCase().includes(this.searched.toLowerCase())
         },
 
         searchedHotel(){
-            this.hotelArray = this.hotelArray.filter(this.searchLocation)
 
+            this.hotelArray = this.hotelArray.filter(this.searchLocation)
         }
+        
     },
     mounted() {
         this.getAllHotelData()
@@ -95,7 +88,24 @@ export default {
         center: GOLDEN_GATE_BRIDGE,
         zoom: 12
         });
-    }
+
+        
+    },
+
+    /* computed: {
+        boolSearch: function () {
+        return this.boolStartSearch
+        },
+
+        searchedHotel: function (){
+            if(this.boolSearch){
+
+               
+            }
+            this.boolSearch = false
+
+            }
+  } */
 }
 </script>
 
