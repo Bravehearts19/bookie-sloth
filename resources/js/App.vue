@@ -1,8 +1,8 @@
 <template>
     <div>
-        <NavBar v-on:searching="searching"></NavBar>
+        <NavBar v-on:searching="searching" v-on:catchBool='catchBool'></NavBar>
         
-        <Home :searched='toSearch'></Home>
+        <Home :searched='toSearch' :boolStartSearch='boolStartSearch'></Home>
         
 
         <!-- FOOTER -->
@@ -21,6 +21,7 @@ export default {
         return {
             
           toSearch : '',  
+          boolStartSearch : ''
         }
     },
 
@@ -33,6 +34,10 @@ export default {
         searching(toSearch){
             this.toSearch = toSearch
         },
+
+        catchBool(boolStartSearch){
+            this.boolStartSearch = boolStartSearch
+        }
 
     
     },
