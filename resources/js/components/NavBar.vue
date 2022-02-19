@@ -30,7 +30,7 @@ export default {
     data(){
         return {
             toSearch : '',
-            boolStartSearch : false
+            boolStartSearch : true
         }
     },
 
@@ -40,7 +40,7 @@ export default {
 
     methods :{
         startSearch:function(){
-            this.boolStartSearch =  true
+            this.boolStartSearch =  false
             this.$emit('catchBool', this.boolStartSearch)
         }
     }
