@@ -77,7 +77,12 @@ export default {
           "/api/search/filters?locationName=" +
             this.searched.toSearch +
             "&radius=" +
-            this.searched.knobValue
+            this.searched.knobValue + 
+            '&rooms=' +
+            this.searched.roomsValue +
+            '&bed=' +
+            this.searched.bedValue 
+
         )
         .then((resp) => {
           this.hotelArray = resp.data;

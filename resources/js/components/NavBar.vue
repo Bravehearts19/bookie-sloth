@@ -27,7 +27,6 @@
       </span>
       <input
         v-model="toSearch"
-        @keyup="$emit('searching', { toSearch, knobValue })"
         @keyup.enter="startSearch()"
         type="text"
         class="form-control bg-secondary text-white"
@@ -42,8 +41,16 @@
     <div v-if="displayFilters">
       <h2>Servizi</h2>
       <Services></Services>
-      <h2>Raggio</h2>
-      <Knob v-model="knobValue" :min="0" :max="50" valueColor="Brown" />
+      <div class="d-flex">
+        <h2>Raggio</h2>
+          <Knob v-model="knobValue" :min="0" :max="50" valueColor="Green" />
+        <h2>Stanze</h2>
+          <Knob v-model="roomsValue" :min="0" :max="100" valueColor="Green" />
+          <h2>Letti</h2>
+          <Knob v-model="bedValue" :min="0" :max="100" valueColor="Green" />
+      </div>
+
+      
     </div>
   </header>
 </template>
@@ -58,8 +65,11 @@ export default {
     return {
       toSearch: "",
       boolStartSearch: true,
-      knobValue: 20,
       displayFilters: false,
+      knobValue: 20,
+      roomsValue: 1,
+      bedValue: 1,
+
     };
   },
 
@@ -72,6 +82,7 @@ export default {
     startSearch: function () {
       this.boolStartSearch = false;
       this.$emit("catchBool", this.boolStartSearch);
+      this.$emit('searching', {toSearch : this.toSearch , knobValue :this.knobValue, roomsValue :this.roomsValue, bedValue :this.bedValue } )
     },
 
     showFilters() {

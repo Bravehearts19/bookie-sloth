@@ -208,6 +208,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -216,8 +223,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       toSearch: "",
       boolStartSearch: true,
+      displayFilters: false,
       knobValue: 20,
-      displayFilters: false
+      roomsValue: 1,
+      bedValue: 1
     };
   },
   components: {
@@ -228,6 +237,12 @@ __webpack_require__.r(__webpack_exports__);
     startSearch: function startSearch() {
       this.boolStartSearch = false;
       this.$emit("catchBool", this.boolStartSearch);
+      this.$emit('searching', {
+        toSearch: this.toSearch,
+        knobValue: this.knobValue,
+        roomsValue: this.roomsValue,
+        bedValue: this.bedValue
+      });
     },
     showFilters: function showFilters() {
       this.displayFilters = !this.displayFilters;
@@ -405,7 +420,7 @@ __webpack_require__.r(__webpack_exports__);
     searchedHotel: function searchedHotel() {
       var _this2 = this;
 
-      window.axios.get("/api/search/filters?locationName=" + this.searched.toSearch + "&radius=" + this.searched.knobValue).then(function (resp) {
+      window.axios.get("/api/search/filters?locationName=" + this.searched.toSearch + "&radius=" + this.searched.knobValue + '&rooms=' + this.searched.roomsValue + '&bed=' + this.searched.bedValue).then(function (resp) {
         _this2.hotelArray = resp.data;
       }); //   this.hotelArray.forEach((hotel) => {
       //     const poiExample = {
@@ -3964,23 +3979,15 @@ var render = function () {
           },
           domProps: { value: _vm.toSearch },
           on: {
-            keyup: [
-              function ($event) {
-                return _vm.$emit("searching", {
-                  toSearch: _vm.toSearch,
-                  knobValue: _vm.knobValue,
-                })
-              },
-              function ($event) {
-                if (
-                  !$event.type.indexOf("key") &&
-                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                ) {
-                  return null
-                }
-                return _vm.startSearch()
-              },
-            ],
+            keyup: function ($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.startSearch()
+            },
             input: function ($event) {
               if ($event.target.composing) {
                 return
@@ -4012,18 +4019,51 @@ var render = function () {
               _vm._v(" "),
               _c("Services"),
               _vm._v(" "),
-              _c("h2", [_vm._v("Raggio")]),
-              _vm._v(" "),
-              _c("Knob", {
-                attrs: { min: 0, max: 50, valueColor: "Brown" },
-                model: {
-                  value: _vm.knobValue,
-                  callback: function ($$v) {
-                    _vm.knobValue = $$v
-                  },
-                  expression: "knobValue",
-                },
-              }),
+              _c(
+                "div",
+                { staticClass: "d-flex" },
+                [
+                  _c("h2", [_vm._v("Raggio")]),
+                  _vm._v(" "),
+                  _c("Knob", {
+                    attrs: { min: 0, max: 50, valueColor: "Green" },
+                    model: {
+                      value: _vm.knobValue,
+                      callback: function ($$v) {
+                        _vm.knobValue = $$v
+                      },
+                      expression: "knobValue",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("h2", [_vm._v("Stanze")]),
+                  _vm._v(" "),
+                  _c("Knob", {
+                    attrs: { min: 0, max: 100, valueColor: "Green" },
+                    model: {
+                      value: _vm.roomsValue,
+                      callback: function ($$v) {
+                        _vm.roomsValue = $$v
+                      },
+                      expression: "roomsValue",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("h2", [_vm._v("Letti")]),
+                  _vm._v(" "),
+                  _c("Knob", {
+                    attrs: { min: 0, max: 100, valueColor: "Green" },
+                    model: {
+                      value: _vm.bedValue,
+                      callback: function ($$v) {
+                        _vm.bedValue = $$v
+                      },
+                      expression: "bedValue",
+                    },
+                  }),
+                ],
+                1
+              ),
             ],
             1
           )
@@ -16720,7 +16760,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })

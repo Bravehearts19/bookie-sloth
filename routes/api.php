@@ -25,7 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * @description get 10 paginated hotel filtered by searchstring
  * @param ?searchString={{pagination}}
  */
-Route::get('/hotel/search', function (Request $request) {
+/* Route::get('/hotel/search', function (Request $request) {
     $searchString = $request->query('searchString');
 
     $apartments = DB::table('apartments')
@@ -33,13 +33,13 @@ Route::get('/hotel/search', function (Request $request) {
         ->paginate(10);
 
     return json_encode($apartments);
-});
+}); */
 
 /**
  * @description get 10 paginated hotel filtered by location
  * @param ?searchString={{pagination}}
  */
-Route::get('hotel/search/location', function (Request $request) {
+/* Route::get('hotel/search/location', function (Request $request) {
     $searchString = $request->query('searchString');
 
     $apartments = DB::table('apartments')
@@ -47,7 +47,7 @@ Route::get('hotel/search/location', function (Request $request) {
         ->paginate(10);
 
     return json_encode($apartments);
-});
+}); */
 
 /**
  * @description get 10 paginated hotel
@@ -244,12 +244,19 @@ Route::get("/search/filters", function (Request $request) {
 
     //get query param location
     $locationName = $request->query('locationName');
+    $locationName = Apartment::where('location','LIKE', $locationName . '%')->first()->location;
     $radius = $request->query('radius');
+    $rooms = $request->query('rooms');
+    $bed = $request->query('bed');
+
+
     $hotels = Apartment::with('services')
         ->with('sponsors')
         ->with('views')
         ->with('user')
         ->with('images')
+        ->where('n_rooms', '>', $rooms)
+        ->where('n_guests', '>', $bed)
         ->get()
         ->toArray();
 
