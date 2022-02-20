@@ -43,7 +43,7 @@
       <h2>Servizi</h2>
       <Services></Services>
       <h2>Raggio</h2>
-      <Knob v-model="knobValue" :min="20" :max="200" valueColor="Brown" />
+      <Knob v-model="knobValue" :min="0" :max="50" valueColor="Brown" />
     </div>
   </header>
 </template>
