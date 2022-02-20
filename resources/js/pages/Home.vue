@@ -22,6 +22,11 @@
             <h6 class="text-white">guests: {{ hotel.n_guests }}</h6>
             <h6 class="text-white">rooms: {{ hotel.n_rooms }}</h6>
             <h6 class="text-white">sizes: {{ hotel.size }} mq</h6>
+            <div class="text-white">
+              <ul>
+                <li v-for='service in hotel.services' :key='service.id'>{{ service.name }}</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -36,10 +41,13 @@ export default {
     return {
       initialHotelArray: [],
       hotelArray: [],
+
       searchCoordinates: {
         x: "",
         y: "",
       },
+
+      queryServices : ''
     };
   },
   components: {},
@@ -64,20 +72,23 @@ export default {
         });
     },
 
-    searchLocation(hotel) {
-      // return hotel.x_coordinate
-      //   .toString()
-      //   .slice(0, 5)
-      //   .includes(this.searchCoordinates.x.toString().slice(0, 5));
-    },
-
     searchedHotel() {
+        this.searched.servicesArray.forEach((service)=>{
+           this.queryServices += '&services[]=' + service 
+        })
+
       window.axios
         .get(
           "/api/search/filters?locationName=" +
             this.searched.toSearch +
             "&radius=" +
-            this.searched.knobValue
+            this.searched.knobValue + 
+            '&rooms=' +
+            this.searched.roomsValue +
+            '&bed=' +
+            this.searched.bedValue +
+            this.queryServices 
+
         )
         .then((resp) => {
           this.hotelArray = resp.data;

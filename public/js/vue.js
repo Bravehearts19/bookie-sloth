@@ -208,6 +208,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -216,8 +223,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       toSearch: "",
       boolStartSearch: true,
+      displayFilters: false,
       knobValue: 20,
-      displayFilters: false
+      roomsValue: 1,
+      bedValue: 1,
+      servicesArray: []
     };
   },
   components: {
@@ -226,11 +236,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     startSearch: function startSearch() {
+      var _this = this;
+
       this.boolStartSearch = false;
       this.$emit("catchBool", this.boolStartSearch);
+      setTimeout(function () {
+        _this.$emit('searching', {
+          toSearch: _this.toSearch,
+          knobValue: _this.knobValue,
+          roomsValue: _this.roomsValue,
+          bedValue: _this.bedValue,
+          servicesArray: _this.servicesArray
+        });
+      }, 1000);
     },
     showFilters: function showFilters() {
       this.displayFilters = !this.displayFilters;
+    },
+    catchArray: function catchArray(array) {
+      this.servicesArray = array;
     }
   }
 });
@@ -288,8 +312,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: "Services",
   data: function data() {
     return {
-      services: []
+      services: [],
+      checkedServices: []
     };
+  },
+  props: {
+    boolStartSearch: Boolean
   },
   mounted: function mounted() {
     var _this = this;
@@ -320,6 +348,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     capitalizeFirstLetter: function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
+    },
+    checked: function checked(serviceId) {
+      if (this.checkedServices.includes(serviceId)) {
+        this.checkedServices.pop(serviceId);
+      } else {
+        this.checkedServices.push(serviceId);
+      }
+    }
+  },
+  computed: {
+    toEmit: function toEmit() {
+      if (!this.boolStartSearch) {
+        this.$emit('catchArray', this.checkedServices);
+      }
     }
   }
 });
@@ -366,6 +408,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   data: function data() {
@@ -375,7 +422,8 @@ __webpack_require__.r(__webpack_exports__);
       searchCoordinates: {
         x: "",
         y: ""
-      }
+      },
+      queryServices: ''
     };
   },
   components: {},
@@ -397,15 +445,13 @@ __webpack_require__.r(__webpack_exports__);
         _this.initialHotelArray = data;
       });
     },
-    searchLocation: function searchLocation(hotel) {// return hotel.x_coordinate
-      //   .toString()
-      //   .slice(0, 5)
-      //   .includes(this.searchCoordinates.x.toString().slice(0, 5));
-    },
     searchedHotel: function searchedHotel() {
       var _this2 = this;
 
-      window.axios.get("/api/search/filters?locationName=" + this.searched.toSearch + "&radius=" + this.searched.knobValue).then(function (resp) {
+      this.searched.servicesArray.forEach(function (service) {
+        _this2.queryServices += '&services[]=' + service;
+      });
+      window.axios.get("/api/search/filters?locationName=" + this.searched.toSearch + "&radius=" + this.searched.knobValue + '&rooms=' + this.searched.roomsValue + '&bed=' + this.searched.bedValue + this.queryServices).then(function (resp) {
         _this2.hotelArray = resp.data;
       }); //   this.hotelArray.forEach((hotel) => {
       //     const poiExample = {
@@ -3964,23 +4010,15 @@ var render = function () {
           },
           domProps: { value: _vm.toSearch },
           on: {
-            keyup: [
-              function ($event) {
-                return _vm.$emit("searching", {
-                  toSearch: _vm.toSearch,
-                  knobValue: _vm.knobValue,
-                })
-              },
-              function ($event) {
-                if (
-                  !$event.type.indexOf("key") &&
-                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                ) {
-                  return null
-                }
-                return _vm.startSearch()
-              },
-            ],
+            keyup: function ($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.startSearch()
+            },
             input: function ($event) {
               if ($event.target.composing) {
                 return
@@ -4010,20 +4048,56 @@ var render = function () {
             [
               _c("h2", [_vm._v("Servizi")]),
               _vm._v(" "),
-              _c("Services"),
-              _vm._v(" "),
-              _c("h2", [_vm._v("Raggio")]),
-              _vm._v(" "),
-              _c("Knob", {
-                attrs: { min: 0, max: 50, valueColor: "Brown" },
-                model: {
-                  value: _vm.knobValue,
-                  callback: function ($$v) {
-                    _vm.knobValue = $$v
-                  },
-                  expression: "knobValue",
-                },
+              _c("Services", {
+                attrs: { boolStartSearch: _vm.boolStartSearch },
+                on: { catchArray: _vm.catchArray },
               }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "d-flex" },
+                [
+                  _c("h2", [_vm._v("Raggio")]),
+                  _vm._v(" "),
+                  _c("Knob", {
+                    attrs: { min: 0, max: 50, valueColor: "Green" },
+                    model: {
+                      value: _vm.knobValue,
+                      callback: function ($$v) {
+                        _vm.knobValue = $$v
+                      },
+                      expression: "knobValue",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("h2", [_vm._v("Stanze")]),
+                  _vm._v(" "),
+                  _c("Knob", {
+                    attrs: { min: 0, max: 100, valueColor: "Green" },
+                    model: {
+                      value: _vm.roomsValue,
+                      callback: function ($$v) {
+                        _vm.roomsValue = $$v
+                      },
+                      expression: "roomsValue",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("h2", [_vm._v("Letti")]),
+                  _vm._v(" "),
+                  _c("Knob", {
+                    attrs: { min: 0, max: 100, valueColor: "Green" },
+                    model: {
+                      value: _vm.bedValue,
+                      callback: function ($$v) {
+                        _vm.bedValue = $$v
+                      },
+                      expression: "bedValue",
+                    },
+                  }),
+                ],
+                1
+              ),
             ],
             1
           )
@@ -4065,7 +4139,12 @@ var render = function () {
             [
               _c("input", {
                 staticClass: "form-check-input",
-                attrs: { type: "checkbox", value: "", id: "flexCheckDefault" },
+                attrs: { type: "checkbox", id: "flexCheckDefault" },
+                on: {
+                  click: function ($event) {
+                    return _vm.checked(index + 1)
+                  },
+                },
               }),
               _vm._v(" "),
               _c("h3", [
@@ -4175,6 +4254,18 @@ var render = function () {
                   _vm._v(" "),
                   _c("h6", { staticClass: "text-white" }, [
                     _vm._v("sizes: " + _vm._s(hotel.size) + " mq"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-white" }, [
+                    _c(
+                      "ul",
+                      _vm._l(hotel.services, function (service) {
+                        return _c("li", { key: service.id }, [
+                          _vm._v(_vm._s(service.name)),
+                        ])
+                      }),
+                      0
+                    ),
                   ]),
                 ]
               )
@@ -16720,7 +16811,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
