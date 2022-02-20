@@ -120,16 +120,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   data: function data() {
     return {
-      toSearch: '',
-      boolStartSearch: ''
+      toSearch: "",
+      boolStartSearch: ""
     };
   },
   components: {
@@ -367,13 +365,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   data: function data() {
     return {
       initialHotelArray: [],
       hotelArray: [],
-      pointsOfInterest: [],
       searchCoordinates: {
         x: "",
         y: ""
@@ -382,7 +380,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {},
   props: {
-    searched: String,
+    searched: Object,
     boolStartSearch: Boolean
   },
   methods: {
@@ -391,7 +389,7 @@ __webpack_require__.r(__webpack_exports__);
 
       window.axios.get("api/hotel/index", {
         params: {
-          query: this.searched
+          query: this.searched.toSearch
         }
       }).then(function (resp) {
         var data = resp.data;
@@ -449,7 +447,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     startSearchHotel: function startSearchHotel() {
       if (!this.boolSearch) {
-        if (this.searched === "") {
+        if (this.searched.toSearch === "") {
           this.hotelArray = this.initialHotelArray;
         } else {
           this.searchedHotel();
@@ -4017,7 +4015,7 @@ var render = function () {
               _c("h2", [_vm._v("Raggio")]),
               _vm._v(" "),
               _c("Knob", {
-                attrs: { min: 20, max: 200, valueColor: "Brown" },
+                attrs: { min: 0, max: 50, valueColor: "Brown" },
                 model: {
                   value: _vm.knobValue,
                   callback: function ($$v) {
@@ -4116,6 +4114,10 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
+        _c("h2", { staticClass: "text-white" }, [
+          _vm._v("Risultati: " + _vm._s(_vm.hotelArray.length)),
+        ]),
+        _vm._v(" "),
         _c(
           "div",
           { staticClass: "card-container" },
