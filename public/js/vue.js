@@ -126,7 +126,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "App",
   data: function data() {
     return {
-      toSearch: "",
+      toSearch: Object,
       boolStartSearch: ""
     };
   },
@@ -380,7 +380,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {},
   props: {
-    searched: Object,
+    searched: "",
     boolStartSearch: Boolean
   },
   methods: {
@@ -405,7 +405,7 @@ __webpack_require__.r(__webpack_exports__);
     searchedHotel: function searchedHotel() {
       var _this2 = this;
 
-      window.axios.get("/api/search/coordinates?locationName=" + this.searched.toSearch + "&radius=" + this.searched.knobValue).then(function (resp) {
+      window.axios.get("/api/search/filters?locationName=" + this.searched.toSearch + "&radius=" + this.searched.knobValue).then(function (resp) {
         _this2.hotelArray = resp.data;
       }); //   this.hotelArray.forEach((hotel) => {
       //     const poiExample = {

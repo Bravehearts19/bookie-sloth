@@ -240,7 +240,7 @@ Route::get('/hotelImage', function (Request $request) {
     return $imgUrl;
 });
 
-Route::get("/search/coordinates", function (Request $request) {
+Route::get("/search/filters", function (Request $request) {
 
     //get query param location
     $locationName = $request->query('locationName');

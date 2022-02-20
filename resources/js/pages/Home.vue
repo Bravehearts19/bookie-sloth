@@ -45,7 +45,7 @@ export default {
   components: {},
 
   props: {
-    searched: Object,
+    searched: "",
     boolStartSearch: Boolean,
   },
 
@@ -74,7 +74,7 @@ export default {
     searchedHotel() {
       window.axios
         .get(
-          "/api/search/coordinates?locationName=" +
+          "/api/search/filters?locationName=" +
             this.searched.toSearch +
             "&radius=" +
             this.searched.knobValue
