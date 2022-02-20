@@ -19,6 +19,11 @@ const router = new VueRouter({
         path: "/",
         name: "home",
         component: Home,
+        props: route => (
+          { 
+            searchString: route.query.locationName ,
+            radius: route.query.radius
+          })
       },
       {
         path: "/featured",

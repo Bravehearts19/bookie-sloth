@@ -79,6 +79,8 @@
                 </div>
             </div>
         </nav>--}}
+
+        {{--
         <header class="bg-primary d-flex flex-column align-items-center px-3">
             <div class="logo-container d-flex align-items-center p-3">
                 <h1 class="mb-0 mx-3 ml-0">Slothel</h1>
@@ -97,9 +99,9 @@
                 </span>
                 <input type="text" class="form-control bg-secondary text-white" placeholder="Surf around over 1000 hotels..." aria-label="hotelName" aria-describedby="searchBar">
             </div>
-        </header>
+        </header>--}}
 
-        <main class="py-4 flex-grow-1 bg-secondary">
+        <main class="flex-grow-1 bg-secondary">
             @yield('content')
         </main>
         {{--<footer class="bg-primary d-flex justify-content-end align-items-center">
