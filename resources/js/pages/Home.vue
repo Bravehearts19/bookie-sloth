@@ -36,7 +36,6 @@ export default {
       initialHotelArray: [],
       hotelArray: [],
       pointsOfInterest: [],
-      radius: 20,
       searchCoordinates: {
         x: "",
         y: "",
@@ -70,31 +69,19 @@ export default {
       //   .toString()
       //   .slice(0, 5)
       //   .includes(this.searchCoordinates.x.toString().slice(0, 5));
-      if (
-        6372.795477598 *
-          Math.acos(
-            Math.sin(this.searchCoordinates.y) * Math.sin(hotel.y_coordinate) +
-              Math.cos(this.searchCoordinates.y) *
-                Math.cos(hotel.y_coordinate) *
-                Math.cos(this.searchCoordinates.x - hotel.x_coordinate)
-          ) <=
-        this.radius
-      ) {
-        return true;
-      } else {
-        return false;
-      }
     },
 
-    searchedHotel(radius = 20) {
-      this.radius = radius;
+    searchedHotel() {
       window.axios
-        .get("/api/search/coordinates?locationName=" + this.searched)
+        .get(
+          "/api/search/coordinates?locationName=" +
+            this.searched.toSearch +
+            "&radius=" +
+            this.searched.knobValue
+        )
         .then((resp) => {
-          this.searchCoordinates.y = resp.data.lat;
-          this.searchCoordinates.x = resp.data.lon;
+          this.hotelArray = resp.data;
         });
-      this.hotelArray = this.initialHotelArray.filter(this.searchLocation);
 
       //   this.hotelArray.forEach((hotel) => {
       //     const poiExample = {
@@ -140,7 +127,7 @@ export default {
         if (this.searched === "") {
           this.hotelArray = this.initialHotelArray;
         } else {
-          this.searchedHotel(1000);
+          this.searchedHotel();
         }
       }
     },
