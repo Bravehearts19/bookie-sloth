@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
+        <h2 class="text-white">Risultati: {{ hotelArray.length }}</h2>
         <div class="card-container">
           <div id="map-div"></div>
           <div
@@ -35,7 +36,6 @@ export default {
     return {
       initialHotelArray: [],
       hotelArray: [],
-      pointsOfInterest: [],
       searchCoordinates: {
         x: "",
         y: "",
@@ -45,7 +45,7 @@ export default {
   components: {},
 
   props: {
-    searched: String,
+    searched: Object,
     boolStartSearch: Boolean,
   },
 
@@ -54,7 +54,7 @@ export default {
       window.axios
         .get("api/hotel/index", {
           params: {
-            query: this.searched,
+            query: this.searched.toSearch,
           },
         })
         .then((resp) => {
@@ -65,21 +65,23 @@ export default {
     },
 
     searchLocation(hotel) {
-      return hotel.x_coordinate
-        .toString()
-        .slice(0, 3)
-        .includes(this.searchCoordinates.x.toString().slice(0, 3));
+      // return hotel.x_coordinate
+      //   .toString()
+      //   .slice(0, 5)
+      //   .includes(this.searchCoordinates.x.toString().slice(0, 5));
     },
 
     searchedHotel() {
       window.axios
-        .get("/api/search/coordinates?locationName=" + this.searched)
+        .get(
+          "/api/search/coordinates?locationName=" +
+            this.searched.toSearch +
+            "&radius=" +
+            this.searched.knobValue
+        )
         .then((resp) => {
-          this.searchCoordinates.y = resp.data.lat;
-          this.searchCoordinates.x = resp.data.lon;
+          this.hotelArray = resp.data;
         });
-
-      this.hotelArray = this.initialHotelArray.filter(this.searchLocation);
 
       //   this.hotelArray.forEach((hotel) => {
       //     const poiExample = {
@@ -122,7 +124,7 @@ export default {
 
     startSearchHotel() {
       if (!this.boolSearch) {
-        if (this.searched === "") {
+        if (this.searched.toSearch === "") {
           this.hotelArray = this.initialHotelArray;
         } else {
           this.searchedHotel();

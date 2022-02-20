@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-primary d-flex flex-column align-items-center px-3">
+  <header class="bg-primary d-flex flex-column align-items-center px-3 py-3">
     <div class="logo-container d-flex align-items-center p-3">
       <h1 class="mb-0 mx-3 ml-0">Slothel</h1>
       <svg
@@ -27,7 +27,7 @@
       </span>
       <input
         v-model="toSearch"
-        @keyup="$emit('searching', toSearch)"
+        @keyup="$emit('searching', { toSearch, knobValue })"
         @keyup.enter="startSearch()"
         type="text"
         class="form-control bg-secondary text-white"
@@ -36,8 +36,15 @@
         aria-describedby="searchBar"
       />
     </div>
-    <Services></Services>
-    <Knob v-model="knobValue" :min="20" :max="200" valueColor="Brown" />
+    <button class="btn btn-secondary" @click="showFilters()">
+      Ricerca avanzata
+    </button>
+    <div v-if="displayFilters">
+      <h2>Servizi</h2>
+      <Services></Services>
+      <h2>Raggio</h2>
+      <Knob v-model="knobValue" :min="0" :max="50" valueColor="Brown" />
+    </div>
   </header>
 </template>
 
@@ -51,7 +58,8 @@ export default {
     return {
       toSearch: "",
       boolStartSearch: true,
-      knobValue: 0,
+      knobValue: 20,
+      displayFilters: false,
     };
   },
 
@@ -64,6 +72,10 @@ export default {
     startSearch: function () {
       this.boolStartSearch = false;
       this.$emit("catchBool", this.boolStartSearch);
+    },
+
+    showFilters() {
+      this.displayFilters = !this.displayFilters;
     },
   },
 };

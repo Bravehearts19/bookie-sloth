@@ -120,16 +120,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   data: function data() {
     return {
-      toSearch: '',
-      boolStartSearch: ''
+      toSearch: "",
+      boolStartSearch: ""
     };
   },
   components: {
@@ -203,6 +201,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -211,7 +216,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       toSearch: "",
       boolStartSearch: true,
-      knobValue: 0
+      knobValue: 20,
+      displayFilters: false
     };
   },
   components: {
@@ -222,6 +228,9 @@ __webpack_require__.r(__webpack_exports__);
     startSearch: function startSearch() {
       this.boolStartSearch = false;
       this.$emit("catchBool", this.boolStartSearch);
+    },
+    showFilters: function showFilters() {
+      this.displayFilters = !this.displayFilters;
     }
   }
 });
@@ -265,8 +274,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Services',
+  name: "Services",
   data: function data() {
     return {
       services: []
@@ -283,7 +302,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return window.axios.get('/api/services/index');
+              return window.axios.get("/api/services/index");
 
             case 2:
               _yield$window$axios$g = _context.sent;
@@ -297,6 +316,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       }, _callee);
     }))();
+  },
+  methods: {
+    capitalizeFirstLetter: function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
   }
 });
 
@@ -341,13 +365,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   data: function data() {
     return {
       initialHotelArray: [],
       hotelArray: [],
-      pointsOfInterest: [],
       searchCoordinates: {
         x: "",
         y: ""
@@ -356,7 +380,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {},
   props: {
-    searched: String,
+    searched: Object,
     boolStartSearch: Boolean
   },
   methods: {
@@ -365,7 +389,7 @@ __webpack_require__.r(__webpack_exports__);
 
       window.axios.get("api/hotel/index", {
         params: {
-          query: this.searched
+          query: this.searched.toSearch
         }
       }).then(function (resp) {
         var data = resp.data;
@@ -373,17 +397,17 @@ __webpack_require__.r(__webpack_exports__);
         _this.initialHotelArray = data;
       });
     },
-    searchLocation: function searchLocation(hotel) {
-      return hotel.x_coordinate.toString().slice(0, 3).includes(this.searchCoordinates.x.toString().slice(0, 3));
+    searchLocation: function searchLocation(hotel) {// return hotel.x_coordinate
+      //   .toString()
+      //   .slice(0, 5)
+      //   .includes(this.searchCoordinates.x.toString().slice(0, 5));
     },
     searchedHotel: function searchedHotel() {
       var _this2 = this;
 
-      window.axios.get("/api/search/coordinates?locationName=" + this.searched).then(function (resp) {
-        _this2.searchCoordinates.y = resp.data.lat;
-        _this2.searchCoordinates.x = resp.data.lon;
-      });
-      this.hotelArray = this.initialHotelArray.filter(this.searchLocation); //   this.hotelArray.forEach((hotel) => {
+      window.axios.get("/api/search/coordinates?locationName=" + this.searched.toSearch + "&radius=" + this.searched.knobValue).then(function (resp) {
+        _this2.hotelArray = resp.data;
+      }); //   this.hotelArray.forEach((hotel) => {
       //     const poiExample = {
       //       poi: {
       //         name: hotel.name,
@@ -423,7 +447,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     startSearchHotel: function startSearchHotel() {
       if (!this.boolSearch) {
-        if (this.searched === "") {
+        if (this.searched.toSearch === "") {
           this.hotelArray = this.initialHotelArray;
         } else {
           this.searchedHotel();
@@ -3869,7 +3893,9 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "header",
-    { staticClass: "bg-primary d-flex flex-column align-items-center px-3" },
+    {
+      staticClass: "bg-primary d-flex flex-column align-items-center px-3 py-3",
+    },
     [
       _c(
         "div",
@@ -3940,7 +3966,10 @@ var render = function () {
           on: {
             keyup: [
               function ($event) {
-                return _vm.$emit("searching", _vm.toSearch)
+                return _vm.$emit("searching", {
+                  toSearch: _vm.toSearch,
+                  knobValue: _vm.knobValue,
+                })
               },
               function ($event) {
                 if (
@@ -3962,20 +3991,44 @@ var render = function () {
         }),
       ]),
       _vm._v(" "),
-      _c("Services"),
-      _vm._v(" "),
-      _c("Knob", {
-        attrs: { min: 20, max: 200, valueColor: "Brown" },
-        model: {
-          value: _vm.knobValue,
-          callback: function ($$v) {
-            _vm.knobValue = $$v
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          on: {
+            click: function ($event) {
+              return _vm.showFilters()
+            },
           },
-          expression: "knobValue",
         },
-      }),
-    ],
-    1
+        [_vm._v("\n    Ricerca avanzata\n  ")]
+      ),
+      _vm._v(" "),
+      _vm.displayFilters
+        ? _c(
+            "div",
+            [
+              _c("h2", [_vm._v("Servizi")]),
+              _vm._v(" "),
+              _c("Services"),
+              _vm._v(" "),
+              _c("h2", [_vm._v("Raggio")]),
+              _vm._v(" "),
+              _c("Knob", {
+                attrs: { min: 0, max: 50, valueColor: "Brown" },
+                model: {
+                  value: _vm.knobValue,
+                  callback: function ($$v) {
+                    _vm.knobValue = $$v
+                  },
+                  expression: "knobValue",
+                },
+              }),
+            ],
+            1
+          )
+        : _vm._e(),
+    ]
   )
 }
 var staticRenderFns = []
@@ -4004,7 +4057,7 @@ var render = function () {
     _c("form", { attrs: { action: "" } }, [
       _c(
         "ul",
-        { staticClass: "list-unstyled d-flex justify-content-around " },
+        { staticClass: "list-unstyled d-flex justify-content-around" },
         _vm._l(_vm.services, function (service, index) {
           return _c(
             "li",
@@ -4015,7 +4068,13 @@ var render = function () {
                 attrs: { type: "checkbox", value: "", id: "flexCheckDefault" },
               }),
               _vm._v(" "),
-              _c("h3", [_vm._v(_vm._s(service.name))]),
+              _c("h3", [
+                _vm._v(
+                  "\n          " +
+                    _vm._s(_vm.capitalizeFirstLetter(service.name)) +
+                    "\n        "
+                ),
+              ]),
               _vm._v(" "),
               _c("lord-icon", {
                 staticStyle: { width: "50px", height: "50px" },
@@ -4055,6 +4114,10 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
+        _c("h2", { staticClass: "text-white" }, [
+          _vm._v("Risultati: " + _vm._s(_vm.hotelArray.length)),
+        ]),
+        _vm._v(" "),
         _c(
           "div",
           { staticClass: "card-container" },
