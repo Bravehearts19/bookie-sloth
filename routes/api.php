@@ -244,10 +244,20 @@ Route::get("/search/coordinates", function (Request $request) {
 
     //get query param location
     $locationName = $request->query('locationName');
+    $radius = $request->query('radius');
+    $hotels = Apartment::with('services')
+        ->with('sponsors')
+        ->with('views')
+        ->with('user')
+        ->with('images')
+        ->get()
+        ->toArray();
+
+
 
     $locationName = str_replace(' ', "%20", $locationName);
     $locationName = str_replace('/', '%2f', $locationName);
-    $locationName = $locationName . "%20Italia";
+    $locationName = $locationName . "%20Italy";
 
 
     $ch = curl_init();
@@ -267,7 +277,18 @@ Route::get("/search/coordinates", function (Request $request) {
     curl_close($ch);
     $addressData = json_decode($addressData, true);
 
-    return $addressData["results"][0]["position"];
+    $searchCoordinates = $addressData["results"][0]["position"];
+
+    $hotels = array_filter($hotels, function ($hotel) use ($searchCoordinates, $radius) {
+        $distance = 6372.95477598 * acos(sin($searchCoordinates["lat"] * pi() / 180) * sin($hotel["y_coordinate"] * pi() / 180) + cos($searchCoordinates["lat"] * pi() / 180) * cos($hotel["y_coordinate"] * pi() / 180) * cos($searchCoordinates["lon"] * pi() / 180 - $hotel["x_coordinate"] * pi() / 180));
+        if ($distance <= $radius) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+
+    return $hotels;
     //return json_encode($results);
 });
 
