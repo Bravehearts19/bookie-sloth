@@ -218,7 +218,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       toSearch: "",
       boolStartSearch: true,
-      knobValue: 0,
+      knobValue: 20,
       displayFilters: false
     };
   },
@@ -374,7 +374,6 @@ __webpack_require__.r(__webpack_exports__);
       initialHotelArray: [],
       hotelArray: [],
       pointsOfInterest: [],
-      radius: 20,
       searchCoordinates: {
         x: "",
         y: ""
@@ -400,27 +399,17 @@ __webpack_require__.r(__webpack_exports__);
         _this.initialHotelArray = data;
       });
     },
-    searchLocation: function searchLocation(hotel) {
-      // return hotel.x_coordinate
+    searchLocation: function searchLocation(hotel) {// return hotel.x_coordinate
       //   .toString()
       //   .slice(0, 5)
       //   .includes(this.searchCoordinates.x.toString().slice(0, 5));
-      if (6372.795477598 * Math.acos(Math.sin(this.searchCoordinates.y) * Math.sin(hotel.y_coordinate) + Math.cos(this.searchCoordinates.y) * Math.cos(hotel.y_coordinate) * Math.cos(this.searchCoordinates.x - hotel.x_coordinate)) <= this.radius) {
-        return true;
-      } else {
-        return false;
-      }
     },
     searchedHotel: function searchedHotel() {
       var _this2 = this;
 
-      var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 20;
-      this.radius = radius;
-      window.axios.get("/api/search/coordinates?locationName=" + this.searched).then(function (resp) {
-        _this2.searchCoordinates.y = resp.data.lat;
-        _this2.searchCoordinates.x = resp.data.lon;
-      });
-      this.hotelArray = this.initialHotelArray.filter(this.searchLocation); //   this.hotelArray.forEach((hotel) => {
+      window.axios.get("/api/search/coordinates?locationName=" + this.searched.toSearch + "&radius=" + this.searched.knobValue).then(function (resp) {
+        _this2.hotelArray = resp.data;
+      }); //   this.hotelArray.forEach((hotel) => {
       //     const poiExample = {
       //       poi: {
       //         name: hotel.name,
@@ -463,7 +452,7 @@ __webpack_require__.r(__webpack_exports__);
         if (this.searched === "") {
           this.hotelArray = this.initialHotelArray;
         } else {
-          this.searchedHotel(1000);
+          this.searchedHotel();
         }
       }
     }
@@ -3979,7 +3968,10 @@ var render = function () {
           on: {
             keyup: [
               function ($event) {
-                return _vm.$emit("searching", _vm.toSearch)
+                return _vm.$emit("searching", {
+                  toSearch: _vm.toSearch,
+                  knobValue: _vm.knobValue,
+                })
               },
               function ($event) {
                 if (
