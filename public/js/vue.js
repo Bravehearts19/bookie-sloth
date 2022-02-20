@@ -203,6 +203,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -211,7 +218,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       toSearch: "",
       boolStartSearch: true,
-      knobValue: 0
+      knobValue: 0,
+      displayFilters: false
     };
   },
   components: {
@@ -222,6 +230,9 @@ __webpack_require__.r(__webpack_exports__);
     startSearch: function startSearch() {
       this.boolStartSearch = false;
       this.$emit("catchBool", this.boolStartSearch);
+    },
+    showFilters: function showFilters() {
+      this.displayFilters = !this.displayFilters;
     }
   }
 });
@@ -265,8 +276,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Services',
+  name: "Services",
   data: function data() {
     return {
       services: []
@@ -283,7 +304,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return window.axios.get('/api/services/index');
+              return window.axios.get("/api/services/index");
 
             case 2:
               _yield$window$axios$g = _context.sent;
@@ -297,6 +318,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       }, _callee);
     }))();
+  },
+  methods: {
+    capitalizeFirstLetter: function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
   }
 });
 
@@ -348,6 +374,7 @@ __webpack_require__.r(__webpack_exports__);
       initialHotelArray: [],
       hotelArray: [],
       pointsOfInterest: [],
+      radius: 20,
       searchCoordinates: {
         x: "",
         y: ""
@@ -374,11 +401,21 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     searchLocation: function searchLocation(hotel) {
-      return hotel.x_coordinate.toString().slice(0, 3).includes(this.searchCoordinates.x.toString().slice(0, 3));
+      // return hotel.x_coordinate
+      //   .toString()
+      //   .slice(0, 5)
+      //   .includes(this.searchCoordinates.x.toString().slice(0, 5));
+      if (6372.795477598 * Math.acos(Math.sin(this.searchCoordinates.y) * Math.sin(hotel.y_coordinate) + Math.cos(this.searchCoordinates.y) * Math.cos(hotel.y_coordinate) * Math.cos(this.searchCoordinates.x - hotel.x_coordinate)) <= this.radius) {
+        return true;
+      } else {
+        return false;
+      }
     },
     searchedHotel: function searchedHotel() {
       var _this2 = this;
 
+      var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 20;
+      this.radius = radius;
       window.axios.get("/api/search/coordinates?locationName=" + this.searched).then(function (resp) {
         _this2.searchCoordinates.y = resp.data.lat;
         _this2.searchCoordinates.x = resp.data.lon;
@@ -426,7 +463,7 @@ __webpack_require__.r(__webpack_exports__);
         if (this.searched === "") {
           this.hotelArray = this.initialHotelArray;
         } else {
-          this.searchedHotel();
+          this.searchedHotel(1000);
         }
       }
     }
@@ -3869,7 +3906,9 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "header",
-    { staticClass: "bg-primary d-flex flex-column align-items-center px-3" },
+    {
+      staticClass: "bg-primary d-flex flex-column align-items-center px-3 py-3",
+    },
     [
       _c(
         "div",
@@ -3962,20 +4001,44 @@ var render = function () {
         }),
       ]),
       _vm._v(" "),
-      _c("Services"),
-      _vm._v(" "),
-      _c("Knob", {
-        attrs: { min: 20, max: 200, valueColor: "Brown" },
-        model: {
-          value: _vm.knobValue,
-          callback: function ($$v) {
-            _vm.knobValue = $$v
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          on: {
+            click: function ($event) {
+              return _vm.showFilters()
+            },
           },
-          expression: "knobValue",
         },
-      }),
-    ],
-    1
+        [_vm._v("\n    Ricerca avanzata\n  ")]
+      ),
+      _vm._v(" "),
+      _vm.displayFilters
+        ? _c(
+            "div",
+            [
+              _c("h2", [_vm._v("Servizi")]),
+              _vm._v(" "),
+              _c("Services"),
+              _vm._v(" "),
+              _c("h2", [_vm._v("Raggio")]),
+              _vm._v(" "),
+              _c("Knob", {
+                attrs: { min: 20, max: 200, valueColor: "Brown" },
+                model: {
+                  value: _vm.knobValue,
+                  callback: function ($$v) {
+                    _vm.knobValue = $$v
+                  },
+                  expression: "knobValue",
+                },
+              }),
+            ],
+            1
+          )
+        : _vm._e(),
+    ]
   )
 }
 var staticRenderFns = []
@@ -4004,7 +4067,7 @@ var render = function () {
     _c("form", { attrs: { action: "" } }, [
       _c(
         "ul",
-        { staticClass: "list-unstyled d-flex justify-content-around " },
+        { staticClass: "list-unstyled d-flex justify-content-around" },
         _vm._l(_vm.services, function (service, index) {
           return _c(
             "li",
@@ -4015,7 +4078,13 @@ var render = function () {
                 attrs: { type: "checkbox", value: "", id: "flexCheckDefault" },
               }),
               _vm._v(" "),
-              _c("h3", [_vm._v(_vm._s(service.name))]),
+              _c("h3", [
+                _vm._v(
+                  "\n          " +
+                    _vm._s(_vm.capitalizeFirstLetter(service.name)) +
+                    "\n        "
+                ),
+              ]),
               _vm._v(" "),
               _c("lord-icon", {
                 staticStyle: { width: "50px", height: "50px" },
