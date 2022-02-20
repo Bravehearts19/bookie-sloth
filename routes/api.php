@@ -57,7 +57,7 @@ Route::get('/hotel/index', function (Request $request) {
     $searchString = $request->query('searchString');
 
     if (!$searchString) {
-        $apartments = DB::table('apartments')->get();
+        $apartments = Apartment::with('services')->get();
     } else {
         $apartments = Apartment::where('location', $searchString)->with('services')
             ->with('sponsors')
@@ -248,6 +248,8 @@ Route::get("/search/filters", function (Request $request) {
     $radius = $request->query('radius');
     $rooms = $request->query('rooms');
     $bed = $request->query('bed');
+    $services = $request->query('services');
+    
 
 
     $hotels = Apartment::with('services')
@@ -257,6 +259,9 @@ Route::get("/search/filters", function (Request $request) {
         ->with('images')
         ->where('n_rooms', '>', $rooms)
         ->where('n_guests', '>', $bed)
+        ->whereHas('services', function($q) use($services){
+            $q->where('service_id',$services);
+        })
         ->get()
         ->toArray();
 

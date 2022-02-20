@@ -40,7 +40,7 @@
     </button>
     <div v-if="displayFilters">
       <h2>Servizi</h2>
-      <Services></Services>
+      <Services :boolStartSearch='boolStartSearch' v-on:catchArray="catchArray"></Services>
       <div class="d-flex">
         <h2>Raggio</h2>
           <Knob v-model="knobValue" :min="0" :max="50" valueColor="Green" />
@@ -69,6 +69,7 @@ export default {
       knobValue: 20,
       roomsValue: 1,
       bedValue: 1,
+      servicesArray : []
 
     };
   },
@@ -82,12 +83,19 @@ export default {
     startSearch: function () {
       this.boolStartSearch = false;
       this.$emit("catchBool", this.boolStartSearch);
-      this.$emit('searching', {toSearch : this.toSearch , knobValue :this.knobValue, roomsValue :this.roomsValue, bedValue :this.bedValue } )
+      setTimeout(()=>{
+        this.$emit('searching', {toSearch : this.toSearch , knobValue :this.knobValue, roomsValue :this.roomsValue, bedValue :this.bedValue, servicesArray : this.servicesArray } )
+
+      },1000)
     },
 
     showFilters() {
       this.displayFilters = !this.displayFilters;
     },
+
+    catchArray(array){
+      this.servicesArray = array
+    }
   },
 };
 </script>

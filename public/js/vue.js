@@ -226,7 +226,8 @@ __webpack_require__.r(__webpack_exports__);
       displayFilters: false,
       knobValue: 20,
       roomsValue: 1,
-      bedValue: 1
+      bedValue: 1,
+      servicesArray: []
     };
   },
   components: {
@@ -235,17 +236,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     startSearch: function startSearch() {
+      var _this = this;
+
       this.boolStartSearch = false;
       this.$emit("catchBool", this.boolStartSearch);
-      this.$emit('searching', {
-        toSearch: this.toSearch,
-        knobValue: this.knobValue,
-        roomsValue: this.roomsValue,
-        bedValue: this.bedValue
-      });
+      setTimeout(function () {
+        _this.$emit('searching', {
+          toSearch: _this.toSearch,
+          knobValue: _this.knobValue,
+          roomsValue: _this.roomsValue,
+          bedValue: _this.bedValue,
+          servicesArray: _this.servicesArray
+        });
+      }, 1000);
     },
     showFilters: function showFilters() {
       this.displayFilters = !this.displayFilters;
+    },
+    catchArray: function catchArray(array) {
+      this.servicesArray = array;
     }
   }
 });
@@ -303,8 +312,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: "Services",
   data: function data() {
     return {
-      services: []
+      services: [],
+      checkedServices: []
     };
+  },
+  props: {
+    boolStartSearch: Boolean
   },
   mounted: function mounted() {
     var _this = this;
@@ -335,6 +348,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     capitalizeFirstLetter: function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
+    },
+    checked: function checked(serviceId) {
+      if (this.checkedServices.includes(serviceId)) {
+        this.checkedServices.pop(serviceId);
+      } else {
+        this.checkedServices.push(serviceId);
+      }
+    }
+  },
+  computed: {
+    toEmit: function toEmit() {
+      if (!this.boolStartSearch) {
+        this.$emit('catchArray', this.checkedServices);
+      }
     }
   }
 });
@@ -381,6 +408,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   data: function data() {
@@ -390,7 +422,8 @@ __webpack_require__.r(__webpack_exports__);
       searchCoordinates: {
         x: "",
         y: ""
-      }
+      },
+      queryServices: ''
     };
   },
   components: {},
@@ -412,15 +445,13 @@ __webpack_require__.r(__webpack_exports__);
         _this.initialHotelArray = data;
       });
     },
-    searchLocation: function searchLocation(hotel) {// return hotel.x_coordinate
-      //   .toString()
-      //   .slice(0, 5)
-      //   .includes(this.searchCoordinates.x.toString().slice(0, 5));
-    },
     searchedHotel: function searchedHotel() {
       var _this2 = this;
 
-      window.axios.get("/api/search/filters?locationName=" + this.searched.toSearch + "&radius=" + this.searched.knobValue + '&rooms=' + this.searched.roomsValue + '&bed=' + this.searched.bedValue).then(function (resp) {
+      this.searched.servicesArray.forEach(function (service) {
+        _this2.queryServices += '&services[]=' + service;
+      });
+      window.axios.get("/api/search/filters?locationName=" + this.searched.toSearch + "&radius=" + this.searched.knobValue + '&rooms=' + this.searched.roomsValue + '&bed=' + this.searched.bedValue + this.queryServices).then(function (resp) {
         _this2.hotelArray = resp.data;
       }); //   this.hotelArray.forEach((hotel) => {
       //     const poiExample = {
@@ -4017,7 +4048,10 @@ var render = function () {
             [
               _c("h2", [_vm._v("Servizi")]),
               _vm._v(" "),
-              _c("Services"),
+              _c("Services", {
+                attrs: { boolStartSearch: _vm.boolStartSearch },
+                on: { catchArray: _vm.catchArray },
+              }),
               _vm._v(" "),
               _c(
                 "div",
@@ -4105,7 +4139,12 @@ var render = function () {
             [
               _c("input", {
                 staticClass: "form-check-input",
-                attrs: { type: "checkbox", value: "", id: "flexCheckDefault" },
+                attrs: { type: "checkbox", id: "flexCheckDefault" },
+                on: {
+                  click: function ($event) {
+                    return _vm.checked(index + 1)
+                  },
+                },
               }),
               _vm._v(" "),
               _c("h3", [
@@ -4215,6 +4254,18 @@ var render = function () {
                   _vm._v(" "),
                   _c("h6", { staticClass: "text-white" }, [
                     _vm._v("sizes: " + _vm._s(hotel.size) + " mq"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-white" }, [
+                    _c(
+                      "ul",
+                      _vm._l(hotel.services, function (service) {
+                        return _c("li", { key: service.id }, [
+                          _vm._v(_vm._s(service.name)),
+                        ])
+                      }),
+                      0
+                    ),
                   ]),
                 ]
               )

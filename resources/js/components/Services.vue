@@ -10,7 +10,7 @@
           <input
             class="form-check-input"
             type="checkbox"
-            value=""
+            @click='checked(index+1)'
             id="flexCheckDefault"
           />
           <h3>
@@ -29,13 +29,20 @@
 </template>
 
 <script>
+
 export default {
   name: "Services",
   data() {
     return {
       services: [],
+      checkedServices : [],
     };
   },
+
+  props : {
+    boolStartSearch : Boolean,
+  },
+
   async mounted() {
     const { data } = await window.axios.get("/api/services/index");
     this.services = data;
@@ -44,6 +51,23 @@ export default {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
+
+    checked(serviceId){
+      if(this.checkedServices.includes(serviceId)){
+          this.checkedServices.pop(serviceId)
+      }else{
+        this.checkedServices.push(serviceId)
+
+      }
+    }
+  },
+
+  computed: {
+    toEmit(){
+      if(!this.boolStartSearch){
+        this.$emit('catchArray', this.checkedServices)
+      }
+    }
   },
 };
 </script>
