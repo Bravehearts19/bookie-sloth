@@ -27,7 +27,7 @@
       </span>
       <input
         v-model="toSearch"
-        @keyup="$emit('searching', toSearch)"
+        @keyup="$emit('searching', { toSearch, knobValue })"
         @keyup.enter="startSearch()"
         type="text"
         class="form-control bg-secondary text-white"
@@ -58,7 +58,7 @@ export default {
     return {
       toSearch: "",
       boolStartSearch: true,
-      knobValue: 0,
+      knobValue: 20,
       displayFilters: false,
     };
   },
