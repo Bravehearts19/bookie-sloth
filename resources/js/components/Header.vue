@@ -1,5 +1,6 @@
 <template>
-    <header class="bg-primary d-flex flex-column align-items-center px-3 py-3">
+  <header class="bg-primary d-flex flex-column align-items-center px-3 py-3">
+    <!-- Inizio logo container -->
     <div class="logo-container d-flex align-items-center p-3">
       <h1 class="mb-0 mx-3 ml-0">Slothel</h1>
       <svg
@@ -15,6 +16,9 @@
         />
       </svg>
     </div>
+    <!-- Fine logo container -->
+
+    <!-- Inizio barra di ricerca -->
     <div class="input-group mb-3 full-rounded-xl">
       <span @click='startSearch()' class="input-group-text bg-secondary" id="searchBar">
         <lord-icon
@@ -36,6 +40,11 @@
       />
       <router-link to='/advanced-research' class="input-group-text bg-secondary text-primary text-decoration-none">Ricerca Avanzata</router-link>
     </div>
+    <!-- Fine barra di ricerca -->
+
+    <!-- Inizio menu -->
+      
+    <!-- Fine menu -->
   </header>
 </template>
 
