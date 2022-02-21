@@ -3,12 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Message extends Model
 {
-    protected $fillable = ["message","name","email","apartment_id"];
+    use SoftDeletes;
 
-    public function apartment() {
+    protected $fillable = ["message", "name", "email", "apartment_id"];
+
+    public function apartment()
+    {
         return $this->belongsTo("App\Apartment");
     }
 }
