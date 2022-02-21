@@ -21,22 +21,21 @@ Auth::routes();
     ) */
 
 Route::namespace("User")
-->prefix("user")
-->name("user.")
-->middleware("auth")
-->group(function () {
-    Route::get('/', 'UserController@show')->name('dashboard');
-    
-    Route::resource('apartment', 'Apartment\ApartmentController');
+    ->prefix("user")
+    ->name("user.")
+    ->middleware("auth")
+    ->group(function () {
+        Route::get('/', 'UserController@show')->name('dashboard');
 
-    Route::get('/apartment/message', 'Apartment\MessageController@index');
+        Route::resource('apartment', 'Apartment\ApartmentController');
 
-    Route::get('/apartment/statistics', 'Apartment\ViewController@index');
-    
-    Route::get('/apartment/sponsor', 'Apartment\SponsorController@index');
-});
+        Route::resource('/{apartment}/message', 'Apartment\MessageController');
+
+        Route::get('/apartment/statistics', 'Apartment\ViewController@index');
+
+        Route::get('/apartment/sponsor', 'Apartment\SponsorController@index');
+    });
 
 Route::get('{any?}', function () {
     return view('welcome');
 })->where('any', '.*');
-
