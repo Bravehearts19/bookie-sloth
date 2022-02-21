@@ -1,22 +1,8 @@
 <template>
     <div id="vue-root">
         <!-- HEADER -->
-<<<<<<< HEAD
-        <Header 
-            @location="setLocationName"
-            @radius="setRadius"
-            @rooms="setRooms">
-        </Header>
-        <router-view :filters="{ 
-            location : locationName,
-            radius : radius,
-            rooms : rooms
-            }">
-        </router-view>
-=======
         <Header @location="setLocationName" @radius="setRadius"></Header>
         <router-view :locationName="locationName"></router-view>
->>>>>>> d46edf84ba3c737eed43231a84edbb0aa922e903
 
         <!-- FOOTER -->
     </div>
