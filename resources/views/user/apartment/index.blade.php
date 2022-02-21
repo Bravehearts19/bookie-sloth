@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1 class="text-white">
-            My apartments
+            I tuoi appartamenti
         </h1>
 
         <a href="{{route("user.apartment.create")}}" class="btn btn-primary text-secondary mb-3">Aggiungi appartamento</a>
@@ -29,6 +29,7 @@
                 </ul>
             </div>
             <a href="{{route('user.apartment.edit', $apartment->id)}}" class="btn btn-primary text-secondary">Modifica appartamento</a>
+            <a href="{{route('user.message.index', $apartment->id)}}" class="btn btn-secondary text-primary">Visualizza messaggi</a>
         </div>
         @endforeach
         
