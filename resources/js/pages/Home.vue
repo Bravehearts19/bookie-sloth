@@ -55,6 +55,7 @@ import MegaMenu from 'primevue/megamenu';
 import axios from "axios";
 import Paginator from 'primevue/paginator';
 
+
 export default {
     name: 'Home',
     data() {
@@ -86,6 +87,12 @@ export default {
     components: {
         Paginator
     },
+
+    props : {
+      searched : String,
+      boolStartSearch : Boolean,   
+    },
+
     methods:{
         async getHotelData(page){
             if(!page)
@@ -102,6 +109,7 @@ export default {
             console.log(data.last_page)
             this.totalPages = data.last_page
         }
+        
     },
     mounted() {
         this.getRecordsCount();
