@@ -68,7 +68,7 @@ class MessageController extends Controller
         $messageToDelete = Message::where('id', $message->id)
             ->where('apartment_id', $apartment->id)
             ->first();
-        Message::softDelete($messageToDelete->id);
+        Message::destroy($messageToDelete->id);
 
         return redirect()->route('user.message.index', $apartment->id);
     }
