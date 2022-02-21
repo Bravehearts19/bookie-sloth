@@ -6,15 +6,15 @@
         <li
           v-for="(service, index) in services"
           :key="'service-' + index"
-          class="m-1 d-flex"
+          class="m-1 d-flex align-items-center"
         >
           <input
             class="form-check-input"
             type="checkbox"
-            @click="selectService(index + 1)"
+            @click="selectService(service.id)"
             id="flexCheckDefault"
           />
-          <h3>
+          <h3 class="mb-0">
             {{ capitalizeFirstLetter(service.name) }}
           </h3>
           <lord-icon
@@ -45,12 +45,13 @@ export default {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
-    selectService(i){
-      if(this.selectedServices.includes(i)){
-        this.selectedServices.pop(i)
+   selectService(id){
+      if(this.selectedServices.includes(id)){
+        const indexOfService = this.selectedServices.indexOf(id);
+        this.selectedServices.splice(indexOfService, 1)
       }
       else{
-        this.selectedServices.push(i)
+        this.selectedServices.push(id)
       }
       this.$emit('services' , this.selectedServices);
     }

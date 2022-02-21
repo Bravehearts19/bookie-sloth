@@ -131,9 +131,9 @@
       
     </form>
 
-    <form action="{{route('user.apartment.destroy', $apartment->id)}}" method="post">
+    <form action="{{route('user.apartment.destroy', $apartment->id)}}" method="post" id="formDelete">
       @csrf
       @method("DELETE")
-      <button type="submit" id="deleteButton" class="btn btn-danger text-white mt-3">Elimina</button>
+      <button type="submit" class="btn btn-danger text-white mt-3">Elimina</button>
     </form>
 @endsection
