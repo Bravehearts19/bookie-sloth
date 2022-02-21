@@ -1932,20 +1932,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -12309,31 +12295,11 @@ var render = function () {
     "div",
     { attrs: { id: "vue-root" } },
     [
-      _vm._v("\n<<<<<<< HEAD\n        "),
-      _c("Header", {
-        on: {
-          location: _vm.setLocationName,
-          radius: _vm.setRadius,
-          rooms: _vm.setRooms,
-        },
-      }),
-      _vm._v(" "),
-      _c("router-view", {
-        attrs: {
-          filters: {
-            location: _vm.locationName,
-            radius: _vm.radius,
-            rooms: _vm.rooms,
-          },
-        },
-      }),
-      _vm._v("\n=======\n        "),
       _c("Header", {
         on: { location: _vm.setLocationName, radius: _vm.setRadius },
       }),
       _vm._v(" "),
       _c("router-view", { attrs: { locationName: _vm.locationName } }),
-      _vm._v("\n>>>>>>> d46edf84ba3c737eed43231a84edbb0aa922e903\n\n        "),
     ],
     1
   )
@@ -29384,7 +29350,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
