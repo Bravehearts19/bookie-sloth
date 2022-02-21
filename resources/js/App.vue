@@ -1,8 +1,17 @@
 <template>
     <div id="vue-root">
         <!-- HEADER -->
-        <Header @location="setLocationName" @radius="setRadius"></Header>
-        <router-view :locationName="locationName" :radius="radius"></router-view>
+        <Header 
+            @location="setLocationName"
+            @radius="setRadius"
+            @rooms="setRooms">
+        </Header>
+        <router-view :filters="{ 
+            location : locationName,
+            radius : radius,
+            rooms : rooms
+            }">
+        </router-view>
 
         <!-- FOOTER -->
     </div>
@@ -20,7 +29,8 @@ export default {
     data(){
         return {
             locationName : undefined,
-            radius : undefined
+            radius : 20,
+            rooms : 1
         }
     },
     methods:{
@@ -35,6 +45,9 @@ export default {
             console.log('radius: ')
             console.log(event)
             this.radius = event
+        },
+        setRooms(event){
+            this.rooms = event
         }
     }
     
