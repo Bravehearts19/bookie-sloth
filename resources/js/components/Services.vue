@@ -1,6 +1,7 @@
 <template>
   <div>
     <form action="">
+    <h2>Servizi</h2>
       <ul class="list-unstyled d-flex justify-content-around">
         <li
           v-for="(service, index) in services"
@@ -10,7 +11,7 @@
           <input
             class="form-check-input"
             type="checkbox"
-            value=""
+            @click="selectService(index + 1)"
             id="flexCheckDefault"
           />
           <h3>
@@ -33,6 +34,7 @@ export default {
   data() {
     return {
       services: [],
+      selectedServices: []
     };
   },
   async mounted() {
@@ -43,6 +45,15 @@ export default {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
+    selectService(i){
+      if(this.selectedServices.includes(i)){
+        this.selectedServices.pop(i)
+      }
+      else{
+        this.selectedServices.push(i)
+      }
+      this.$emit('services' , this.selectedServices);
+    }
   },
 };
 </script>
