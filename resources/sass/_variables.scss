@@ -21,4 +21,11 @@ $lime: #c7ef00;
 $brown: #4d1803;
 $dark-lime: #8b9802;
 
+$pagination-color: $lime;
+$pagination-bg: $brown;
+$pagination-active-bg: $lime;
+$pagination-active-color: $brown;
+$pagination-hover-bg: $dark-lime;
+$pagination-hover-color: $brown;
+
 $theme-colors: ("primary": $lime, "secondary": $brown, "info": $dark-lime, "danger": $red);
