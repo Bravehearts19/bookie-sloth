@@ -1,6 +1,7 @@
 
 
 <?php
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Apartment;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -64,13 +66,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * @description get 10 paginated hotel
  * @param ?page={{pagination}}
  */
-Route::get('/hotel/index', function(Request $request){
-    $apartments = DB::table('apartments')->paginate(10);
+Route::get('/hotel/index', function (Request $request) {
+    $apartments = Apartment::with('services')->paginate(10);
 
     return json_encode($apartments);
 });
 
-Route::get('/hotel/count', function(){
+Route::get('/hotel/count', function () {
     $apartments = DB::table('apartments')->paginate(10);
 
     return $apartments->lastPage();
@@ -205,15 +207,37 @@ Route::get('/hotelImage', function (Request $request) {
 Route::get("/search/filters", function (Request $request) {
     //get query param location
     $locationName = $request->query('locationName');
-    $locationName = Apartment::where('location','LIKE', $locationName . '%')->first()->location;
+    $locationName = Apartment::where('location', 'LIKE', $locationName . '%')->first()->location;
     $radius = $request->query('radius');
+    $rooms = $request->query('rooms');
+    $beds = $request->query('beds');
+    $servicesToFilter = $request->query('services');
+
     $hotels = Apartment::with('services')
         ->with('sponsors')
         ->with('views')
         ->with('user')
         ->with('images')
+        ->where('n_rooms', '>', $rooms)
+        ->where('n_guests', '>', $beds)
         ->get()
         ->toArray();
+    if ($servicesToFilter) {
+        $hotels = array_filter($hotels, function ($hotel) use ($servicesToFilter) {
+            $resultIncrement = 0;
+
+            foreach ($hotel["services"] as $hotelService) {
+                if (in_array($hotelService["id"], $servicesToFilter)) {
+                    $resultIncrement++;
+                }
+            }
+            if ($resultIncrement == count($servicesToFilter)) {
+                return true;
+            }
+        });
+    }
+
+
     $locationName = str_replace(' ', "%20", $locationName);
     $locationName = str_replace('/', '%2f', $locationName);
     $locationName = $locationName . "%20Italy";
