@@ -1932,20 +1932,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -1989,6 +1975,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2381,15 +2379,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Apartment.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-<<<<<<< HEAD
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\SIMO\\Spindox\\bookie-sloth\\resources\\js\\pages\\Apartment.vue: Identifier 'here' has already been declared. (52:12)\n\n\u001b[0m \u001b[90m 50 |\u001b[39m         console\u001b[33m.\u001b[39mlog(here\u001b[33m.\u001b[39mhref)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 51 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 52 |\u001b[39m         \u001b[36mlet\u001b[39m here \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mURL\u001b[39m(window\u001b[33m.\u001b[39mlocation\u001b[33m.\u001b[39mhref)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 53 |\u001b[39m         here\u001b[33m.\u001b[39msearchParams\u001b[33m.\u001b[39mid\u001b[0m\n\u001b[0m \u001b[90m 54 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 55 |\u001b[39m }\u001b[0m\n    at Parser._raise (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:476:17)\n    at Parser.raiseWithData (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:469:17)\n    at Parser.raise (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:430:17)\n    at ScopeHandler.checkRedeclarationInScope (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:1720:12)\n    at ScopeHandler.declareName (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:1686:12)\n    at Parser.checkLVal (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:11626:24)\n    at Parser.parseVarId (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:14852:10)\n    at Parser.parseVar (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:14823:12)\n    at Parser.parseVarStatement (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:14630:10)\n    at Parser.parseStatementContent (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:14188:21)\n    at Parser.parseStatement (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:14113:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:14739:25)\n    at Parser.parseBlockBody (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:14730:10)\n    at Parser.parseBlock (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:14714:10)\n    at Parser.parseFunctionBody (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:13440:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:13424:10)\n    at Parser.parseMethod (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:13374:10)\n    at Parser.parseObjectMethod (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:13250:19)\n    at Parser.parseObjPropValue (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:13291:23)\n    at Parser.parsePropertyDefinition (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:13208:10)\n    at Parser.parseObjectLike (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:13099:21)\n    at Parser.parseExprAtom (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:12498:23)\n    at Parser.parseExprSubscripts (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:12149:23)\n    at Parser.parseUpdate (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:12129:21)\n    at Parser.parseMaybeUnary (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:12104:23)\n    at Parser.parseMaybeUnaryOrPrivate (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:11901:61)\n    at Parser.parseExprOps (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:11908:23)\n    at Parser.parseMaybeConditional (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:11878:23)\n    at Parser.parseMaybeAssign (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:11833:21)\n    at C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:11791:39\n    at Parser.allowInAnd (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:13817:16)\n    at Parser.parseMaybeAssignAllowIn (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:11791:17)\n    at Parser.parseExportDefaultExpression (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:15465:22)\n    at Parser.parseExport (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:15353:31)\n    at Parser.parseStatementContent (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:14229:27)\n    at Parser.parseStatement (C:\\SIMO\\Spindox\\bookie-sloth\\node_modules\\@babel\\parser\\lib\\index.js:14113:17)");
-=======
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -2435,7 +2428,6 @@ __webpack_require__.r(__webpack_exports__);
     });
   }
 });
->>>>>>> dev
 
 /***/ }),
 
@@ -2534,14 +2526,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-<<<<<<< HEAD
-=======
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2559,7 +2543,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 
->>>>>>> dev
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2799,7 +2782,6 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Apartment.vue?vue&type=style&index=0&id=37b4720e&lang=scss&scoped=true& ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-<<<<<<< HEAD
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2808,30 +2790,6 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#map-div[data-v-37b4720e] {\n  height: 400px;\n  width: 400px;\n}\n.img_container[data-v-37b4720e] {\n  aspect-ratio: 1/1;\n}\n.img_container img[data-v-37b4720e] {\n  width: 100%;\n  height: 100%;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home.vue?vue&type=style&index=0&id=b3c5cf30&lang=scss&scoped=true&":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Home.vue?vue&type=style&index=0&id=b3c5cf30&lang=scss&scoped=true& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************/
-=======
->>>>>>> dev
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-<<<<<<< HEAD
-exports.push([module.i, "#map-div[data-v-b3c5cf30] {\n  height: 400px;\n  width: 400px;\n}\nsection#apartments-map-section[data-v-b3c5cf30] {\n  height: 60vh;\n}\nsection#apartments-slider-section[data-v-b3c5cf30] {\n  height: 60vh;\n}", ""]);
-=======
 exports.push([module.i, "#map-div[data-v-37b4720e] {\n  height: 400px;\n  width: 400px;\n}\n.img_container[data-v-37b4720e] {\n  aspect-ratio: 1/1;\n}\n.img_container img[data-v-37b4720e] {\n  width: 100%;\n  height: 100%;\n}", ""]);
 
 // exports
@@ -2890,7 +2848,6 @@ exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base
 
 // module
 exports.push([module.i, "\n@-webkit-keyframes dash-frame {\n100% {\n        stroke-dashoffset: 0;\n}\n}\n@keyframes dash-frame {\n100% {\n        stroke-dashoffset: 0;\n}\n}\n.p-knob-range {\n    fill: none;\n    transition: stroke .1s ease-in;\n}\n.p-knob-value {\n    -webkit-animation-name: dash-frame;\n            animation-name: dash-frame;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    fill: none;\n}\n.p-knob-text {\n    font-size: 1.3rem;\n    text-align: center;\n}\n", ""]);
->>>>>>> dev
 
 // exports
 
@@ -7235,39 +7192,6 @@ try {
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Apartment.vue?vue&type=style&index=0&id=37b4720e&lang=scss&scoped=true& ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-<<<<<<< HEAD
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Apartment.vue?vue&type=style&index=0&id=37b4720e&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Apartment.vue?vue&type=style&index=0&id=37b4720e&lang=scss&scoped=true&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home.vue?vue&type=style&index=0&id=b3c5cf30&lang=scss&scoped=true&":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Home.vue?vue&type=style&index=0&id=b3c5cf30&lang=scss&scoped=true& ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-=======
->>>>>>> dev
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12368,42 +12292,18 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-<<<<<<< HEAD
-  return _c("router-view")
-=======
   return _c(
     "div",
     { attrs: { id: "vue-root" } },
     [
-      _vm._v("\n<<<<<<< HEAD\n        "),
-      _c("Header", {
-        on: {
-          location: _vm.setLocationName,
-          radius: _vm.setRadius,
-          rooms: _vm.setRooms,
-        },
-      }),
-      _vm._v(" "),
-      _c("router-view", {
-        attrs: {
-          filters: {
-            location: _vm.locationName,
-            radius: _vm.radius,
-            rooms: _vm.rooms,
-          },
-        },
-      }),
-      _vm._v("\n=======\n        "),
       _c("Header", {
         on: { location: _vm.setLocationName, radius: _vm.setRadius },
       }),
       _vm._v(" "),
       _c("router-view", { attrs: { locationName: _vm.locationName } }),
-      _vm._v("\n>>>>>>> d46edf84ba3c737eed43231a84edbb0aa922e903\n\n        "),
     ],
     1
   )
->>>>>>> dev
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -12548,17 +12448,10 @@ render._withStripped = true
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Apartment.vue?vue&type=template&id=37b4720e&scoped=true&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Apartment.vue?vue&type=template&id=37b4720e&scoped=true& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-=======
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Services.vue?vue&type=template&id=30b0c6c9&":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Services.vue?vue&type=template&id=30b0c6c9& ***!
   \***********************************************************************************************************************************************************************************************************/
->>>>>>> dev
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12570,8 +12463,6 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-<<<<<<< HEAD
-=======
   return _c("div", [
     _c("form", { attrs: { action: "" } }, [
       _c("h2", [_vm._v("Servizi")]),
@@ -12881,18 +12772,9 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
->>>>>>> dev
   return _c("div", { staticClass: "container" }, [
     _c("h1", { staticClass: "text-primary text-center" }, [
-      _vm._v("\n            " + _vm._s(_vm.apartment.name) + "\n        "),
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "d-flex justify-content-around" }, [
-      _c("div", { staticClass: "img_container" }, [
-        _c("img", { attrs: { src: _vm.apartment.cover_img, alt: "" } }),
-      ]),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "map-div" } }),
+      _vm._v("\n        " + _vm._s(_vm.apartment.name) + "\n    "),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "d-flex justify-content-around" }, [
@@ -12976,81 +12858,16 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container h-100" }, [
     _c("div", { staticClass: "row h-100 align-items-center" }, [
-<<<<<<< HEAD
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "section",
-        {
-          staticClass: "col-5 overflow-auto bg-info",
-=======
       _c(
         "section",
         {
           staticClass: "col overflow-auto bg-info mt-5",
->>>>>>> dev
           attrs: { id: "apartments-slider-section" },
         },
         [
           _c(
             "div",
             { staticClass: "card-container" },
-<<<<<<< HEAD
-            _vm._l(_vm.hotelArray.data, function (hotel, index) {
-              return _c(
-                "div",
-                {
-                  key: "hotel-" + index,
-                  staticClass:
-                    "apartment-card py-5 border-top border-bottom border-primary",
-                },
-                [
-                  _c("h3", { staticClass: "text-white" }, [
-                    _vm._v(_vm._s(hotel.name)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "text-white" }, [
-                    _vm._v(
-                      _vm._s(hotel.address) +
-                        " - " +
-                        _vm._s(hotel.location) +
-                        " - " +
-                        _vm._s(hotel.cap)
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "w-50 py-3",
-                    attrs: { src: hotel.cover_img, alt: hotel.name },
-                  }),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-white" }, [
-                    _vm._v("price: "),
-                    _c("span", { staticClass: "text-primary" }, [
-                      _vm._v(_vm._s(hotel.price)),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-white" }, [
-                    _vm._v("bathrooms: " + _vm._s(hotel.n_bathrooms)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-white" }, [
-                    _vm._v("guests: " + _vm._s(hotel.n_guests)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-white" }, [
-                    _vm._v("rooms: " + _vm._s(hotel.n_rooms)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-white" }, [
-                    _vm._v("sizes: " + _vm._s(hotel.size) + " mq"),
-                  ]),
-                ]
-              )
-            }),
-            0
-=======
             [
               _vm._l(_vm.hotelArray, function (hotel, index) {
                 return _c(
@@ -13183,37 +13000,13 @@ var render = function () {
               ),
             ],
             2
->>>>>>> dev
           ),
         ]
       ),
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "section",
-      {
-        staticClass: "col-4 offset-1 bg-primary",
-        attrs: { id: "apartments-map-section" },
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "d-flex justify-content-center align-items-center h-100",
-          },
-          [_c("div", { attrs: { id: "map-div" } })]
-        ),
-      ]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -28922,14 +28715,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************!*\
   !*** ./resources/js/pages/Apartment.vue ***!
   \******************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Apartment_vue_vue_type_template_id_37b4720e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Apartment.vue?vue&type=template&id=37b4720e&scoped=true& */ "./resources/js/pages/Apartment.vue?vue&type=template&id=37b4720e&scoped=true&");
 /* harmony import */ var _Apartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Apartment.vue?vue&type=script&lang=js& */ "./resources/js/pages/Apartment.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Apartment_vue_vue_type_style_index_0_id_37b4720e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Apartment.vue?vue&type=style&index=0&id=37b4720e&lang=scss&scoped=true& */ "./resources/js/pages/Apartment.vue?vue&type=style&index=0&id=37b4720e&lang=scss&scoped=true&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Apartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Apartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _Apartment_vue_vue_type_style_index_0_id_37b4720e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Apartment.vue?vue&type=style&index=0&id=37b4720e&lang=scss&scoped=true& */ "./resources/js/pages/Apartment.vue?vue&type=style&index=0&id=37b4720e&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -28961,7 +28755,7 @@ component.options.__file = "resources/js/pages/Apartment.vue"
 /*!*******************************************************************!*\
   !*** ./resources/js/pages/Apartment.vue?vue&type=script&lang=js& ***!
   \*******************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29558,7 +29352,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\SIMO\Spindox\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
