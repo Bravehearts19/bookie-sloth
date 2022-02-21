@@ -2137,11 +2137,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     capitalizeFirstLetter: function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
-    selectService: function selectService(i) {
-      if (this.selectedServices.includes(i)) {
-        this.selectedServices.pop(i);
+    selectService: function selectService(id) {
+      if (this.selectedServices.includes(id)) {
+        var indexOfService = this.selectedServices.indexOf(id);
+        this.selectedServices.splice(indexOfService, 1);
       } else {
-        this.selectedServices.push(i);
+        this.selectedServices.push(id);
       }
 
       this.$emit('services', this.selectedServices);
@@ -12515,7 +12516,7 @@ var render = function () {
                 attrs: { type: "checkbox", id: "flexCheckDefault" },
                 on: {
                   click: function ($event) {
-                    return _vm.selectService(index + 1)
+                    return _vm.selectService(service.id)
                   },
                 },
               }),
@@ -29383,7 +29384,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })

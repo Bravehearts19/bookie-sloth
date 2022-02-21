@@ -11,7 +11,7 @@
           <input
             class="form-check-input"
             type="checkbox"
-            @click="selectService(index + 1)"
+            @click="selectService(service.id)"
             id="flexCheckDefault"
           />
           <h3 class="mb-0">
@@ -45,12 +45,13 @@ export default {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
-    selectService(i){
-      if(this.selectedServices.includes(i)){
-        this.selectedServices.pop(i)
+   selectService(id){
+      if(this.selectedServices.includes(id)){
+        const indexOfService = this.selectedServices.indexOf(id);
+        this.selectedServices.splice(indexOfService, 1)
       }
       else{
-        this.selectedServices.push(i)
+        this.selectedServices.push(id)
       }
       this.$emit('services' , this.selectedServices);
     }
