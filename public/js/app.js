@@ -27598,7 +27598,19 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //Script per mostrare prompt quando si manda il form delete di un appartamento.
+
+
+window.addEventListener("DOMContentLoaded", function () {
+  if (document.getElementById("formDelete")) {
+    var formDelete = document.getElementById("formDelete");
+    formDelete.addEventListener("submit", function (e) {
+      if (!confirm("Sicuro di voler eliminare questo appartamento?")) {
+        e.preventDefault();
+      }
+    });
+  }
+});
 
 /***/ }),
 
