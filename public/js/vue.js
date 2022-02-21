@@ -1932,6 +1932,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -1941,7 +1955,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       locationName: undefined,
-      radius: undefined
+      radius: 20,
+      rooms: 1
     };
   },
   methods: {
@@ -1956,6 +1971,9 @@ __webpack_require__.r(__webpack_exports__);
       console.log('radius: ');
       console.log(event);
       this.radius = event;
+    },
+    setRooms: function setRooms(event) {
+      this.rooms = event;
     }
   }
 });
@@ -2547,12 +2565,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       hotelArray: [],
       totalPages: undefined,
       activePage: 1,
-      PAGINATION_OFFSET: 5
+      PAGINATION_OFFSET: 5,
+      url: '/api/search/filters?'
     };
   },
   props: {
-    locationName: String,
-    radius: Number
+    filters: Object
+  },
+  computed: {
+    getLocationName: function getLocationName() {
+      return this.filters.location;
+    },
+    getRadius: function getRadius() {
+      return this.filters.radius;
+    },
+    getRooms: function getRooms() {
+      return this.filters.rooms;
+    },
+    getGuests: function getGuests() {
+      return this.filters.guests;
+    }
   },
   components: {
     Paginator: primevue_paginator__WEBPACK_IMPORTED_MODULE_3___default.a
@@ -2615,38 +2647,67 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     }
   },
-  updated: function updated() {
-    console.log('-------MOUNT HOME-------');
-    console.log('location:' + this.locationName + 'radius:' + this.radius);
-  },
   mounted: function mounted() {
     this.getRecordsCount();
     this.getHotelData();
     console.log(this.totalPages);
   },
   watch: {
-    locationName: function () {
-      var _locationName = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(val, old) {
+    getLocationName: function getLocationName(val, old) {
+      //get url
+      var url = this.url; //find the position of the start of the query
+
+      var queryPosition = url.indexOf('?'); //truncate params
+
+      url = url.slice(0, queryPosition); //set new location name
+
+      url += '?locationName=' + val + '&radius=20'; //update url
+
+      this.url = url;
+      console.log('updated location: ' + this.url);
+    },
+    getRadius: function getRadius(val, old) {
+      //get url
+      var url = this.url; //find query concat position
+
+      var concatPosition = url.indexOf('&radius'); //truncate 2nd param
+
+      url = url.slice(0, concatPosition); //set new radius
+
+      url += '&radius=' + val; //update url
+
+      this.url = url;
+    },
+    getRooms: function getRooms(val, old) {
+      //get url
+      var url = this.url; //find query concat position
+
+      var concatPosition = url.indexOf('&rooms'); //truncate 2nd param
+
+      url = url.slice(0, concatPosition); //set new radius
+
+      url += '&rooms=' + val + '&radius=' + this.radius; //update url
+
+      this.url = url;
+    },
+    url: function () {
+      var _url = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(val, old) {
         var _yield$axios$get3, data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20');
+                console.log('api endpoint: ' + val);
                 _context3.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20');
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get(val);
 
               case 3:
                 _yield$axios$get3 = _context3.sent;
                 data = _yield$axios$get3.data;
-                console.log('------new filtered data-------');
-                console.dir(data);
                 this.hotelArray = data;
-                console.dir(this.hotelArray);
-                this.totalPages = data.length;
 
-              case 10:
+              case 6:
               case "end":
                 return _context3.stop();
             }
@@ -2654,11 +2715,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3, this);
       }));
 
-      function locationName(_x, _x2) {
-        return _locationName.apply(this, arguments);
+      function url(_x, _x2) {
+        return _url.apply(this, arguments);
       }
 
-      return locationName;
+      return url;
     }()
   }
 });
@@ -12248,11 +12309,31 @@ var render = function () {
     "div",
     { attrs: { id: "vue-root" } },
     [
+      _vm._v("\n<<<<<<< HEAD\n        "),
+      _c("Header", {
+        on: {
+          location: _vm.setLocationName,
+          radius: _vm.setRadius,
+          rooms: _vm.setRooms,
+        },
+      }),
+      _vm._v(" "),
+      _c("router-view", {
+        attrs: {
+          filters: {
+            location: _vm.locationName,
+            radius: _vm.radius,
+            rooms: _vm.rooms,
+          },
+        },
+      }),
+      _vm._v("\n=======\n        "),
       _c("Header", {
         on: { location: _vm.setLocationName, radius: _vm.setRadius },
       }),
       _vm._v(" "),
       _c("router-view", { attrs: { locationName: _vm.locationName } }),
+      _vm._v("\n>>>>>>> d46edf84ba3c737eed43231a84edbb0aa922e903\n\n        "),
     ],
     1
   )
@@ -12425,7 +12506,10 @@ var render = function () {
         _vm._l(_vm.services, function (service, index) {
           return _c(
             "li",
-            { key: "service-" + index, staticClass: "m-1 d-flex" },
+            {
+              key: "service-" + index,
+              staticClass: "m-1 d-flex align-items-center",
+            },
             [
               _c("input", {
                 staticClass: "form-check-input",
@@ -12437,7 +12521,7 @@ var render = function () {
                 },
               }),
               _vm._v(" "),
-              _c("h3", [
+              _c("h3", { staticClass: "mb-0" }, [
                 _vm._v(
                   "\n          " +
                     _vm._s(_vm.capitalizeFirstLetter(service.name)) +

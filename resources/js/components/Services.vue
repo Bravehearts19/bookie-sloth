@@ -6,7 +6,7 @@
         <li
           v-for="(service, index) in services"
           :key="'service-' + index"
-          class="m-1 d-flex"
+          class="m-1 d-flex align-items-center"
         >
           <input
             class="form-check-input"
@@ -14,7 +14,7 @@
             @click="selectService(service.id)"
             id="flexCheckDefault"
           />
-          <h3>
+          <h3 class="mb-0">
             {{ capitalizeFirstLetter(service.name) }}
           </h3>
           <lord-icon
