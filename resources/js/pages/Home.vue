@@ -1,6 +1,7 @@
 <template>
   <div class="container h-100">
     <div class="row h-100 align-items-center">
+      
         <!--<section id="apartments-map-section" class="col-6 bg-primary">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div id="map-div"></div>

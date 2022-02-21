@@ -16,7 +16,7 @@
       </svg>
     </div>
     <div class="input-group mb-3 full-rounded-xl">
-      <span class="input-group-text bg-secondary" id="searchBar">
+      <span @click='startSearch()' class="input-group-text bg-secondary" id="searchBar">
         <lord-icon
           src="https://cdn.lordicon.com/msoeawqm.json"
           trigger="loop-on-hover"
@@ -34,53 +34,37 @@
         aria-label="hotelName"
         aria-describedby="searchBar"
       />
-    </div>
-    <button class="btn btn-secondary" @click="showFilters()">
-      Ricerca avanzata
-    </button>
-    <div v-if="displayFilters">
-      <h2>Servizi</h2>
-      <Services></Services>
-      <h2>Raggio</h2>
-      <Knob v-model="knobValue" :min="0" :max="50" valueColor="Brown" />
+      <router-link to='/advanced-research' class="input-group-text bg-secondary text-primary text-decoration-none">Ricerca Avanzata</router-link>
     </div>
   </header>
 </template>
 
 <script>
-import Services from "./Services";
-import Knob from "primevue/knob";
+
 
 export default {
-  name: "NavBar",
+  name: "Header",
   data() {
     return {
       toSearch: "",
       boolStartSearch: true,
-      knobValue: 20,
-      displayFilters: false,
+      
+      
     };
   },
   components: {
-    Services,
-    Knob,
+    
   },
   methods: {
     startSearch: function () {
       this.boolStartSearch = false;
-      console.log(this.boolStartSearch)
-      console.log(this.toSearch)
-      console.log(this.knobValue)
       this.$emit('location', this.toSearch)
-      this.$emit('radius', this.knobValue)
       //this.$router.push('/?ocationName=' + this.toSearch + '&radius' + this.knobValue)
       //http://localhost:8000/api/search/filters?locationName=milan&radius=20
       //this.$emit("catchBool", this.boolStartSearch);
       //this.$emit('searching', {toSearch : this.toSearch , knobValue :this.knobValue} )
     },
-    showFilters() {
-      this.displayFilters = !this.displayFilters;
-    },
+    
   },
 };
 </script>
