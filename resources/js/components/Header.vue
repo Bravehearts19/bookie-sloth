@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-primary d-flex flex-column align-items-center px-3 py-3">
+  <header class="bg-primary d-flex align-items-center justify-content-center px-3 py-3">
     <!-- Inizio logo container -->
     <div class="logo-container d-flex align-items-center p-3">
       <h1 class="mb-0 mx-3 ml-0">Slothel</h1>
@@ -19,7 +19,7 @@
     <!-- Fine logo container -->
 
     <!-- Inizio barra di ricerca -->
-    <div class="input-group mb-3 full-rounded-xl">
+    <div class="input-group ms-5 me-5">
       <span @click='startSearch()' class="input-group-text bg-secondary" id="searchBar">
         <lord-icon
           src="https://cdn.lordicon.com/msoeawqm.json"
@@ -43,7 +43,15 @@
     <!-- Fine barra di ricerca -->
 
     <!-- Inizio menu -->
-      
+    <div v-if="!window.App" class="d-flex align-items-center justify-content-between ps-3 pe-5">
+      <button class="btn btn-secondary text-primary ms-3">Accedi</button>
+      <button class="btn btn-secondary text-primary ms-3">Registrati</button>
+    </div>
+
+    <div v-else class="d-flex align-items-center justify-content-between ps-3 pe-5">
+      <button class="btn btn-secondary text-primary ms-3">Area Personale</button>
+      <button class="btn btn-secondary text-primary ms-3">Home</button>
+    </div>
     <!-- Fine menu -->
   </header>
 </template>
@@ -57,8 +65,10 @@ export default {
     return {
       toSearch: "",
       boolStartSearch: true,
-      
-      
+      user: null,
+      window: {
+        App: 0,
+      }
     };
   },
   components: {
@@ -73,8 +83,13 @@ export default {
       //this.$emit("catchBool", this.boolStartSearch);
       //this.$emit('searching', {toSearch : this.toSearch , knobValue :this.knobValue} )
     },
-    
+    getUserLogged() {
+      this.window.App = window.App;
+    }
   },
+  mounted() {
+    this.getUserLogged();
+  }
 };
 </script>
 <style>
