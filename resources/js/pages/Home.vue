@@ -89,19 +89,18 @@ export default {
 
             const {data} = await axios.get('api/hotel/index?page=' + page);
             this.hotelArray = data.data
-            console.log(data)
+            /* console.log(data) */
         },
         async getRecordsCount(){
             const {data} = await axios.get('api/hotel/index');
-            console.log(data.last_page)
+            /* console.log(data.last_page) */
             this.totalPages = data.last_page
         }
     },
     mounted() {
         this.getRecordsCount();
         this.getHotelData()
-        console.log(this.totalPages)
-       
+        /* console.log(this.totalPages) */
     },
     watch:{
         getLocationName: function(val, old) {

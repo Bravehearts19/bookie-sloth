@@ -2656,8 +2656,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     this.getRecordsCount();
     this.getHotelData();
-    /* console.log(this.totalPages)
-    */
+    /* console.log(this.totalPages) */
   },
   watch: {
     getLocationName: function getLocationName(val, old) {
