@@ -19,8 +19,8 @@
     <!-- Fine logo container -->
 
     <!-- Inizio barra di ricerca -->
-    <div class="input-group ms-5 me-5">
-      <span @click='startSearch()' class="input-group-text bg-secondary" id="searchBar">
+    <div class="input-group ms-5 me-5 bg-secondary border-radius-to-search-bar">
+      <span @click='startSearch()' class="input-group-text bg-transparent border-none" id="searchBar">
         <lord-icon
           src="https://cdn.lordicon.com/msoeawqm.json"
           trigger="loop-on-hover"
@@ -33,24 +33,41 @@
         v-model="toSearch"
         @keyup.enter="startSearch()"
         type="text"
-        class="form-control bg-secondary text-white"
+        class="form-control bg-transparent text-primary border-none"
         placeholder="Surf around over 1000 hotels..."
         aria-label="hotelName"
         aria-describedby="searchBar"
       />
-      <router-link to='/advanced-research' class="input-group-text bg-secondary text-primary text-decoration-none">Ricerca Avanzata</router-link>
+      <router-link to='/advanced-research' class="input-group-text bg-transparent text-primary text-decoration-none border-none pe-3">
+        Ricerca Avanzata
+      </router-link>
     </div>
     <!-- Fine barra di ricerca -->
 
     <!-- Inizio menu -->
     <div v-if="!window.App" class="d-flex align-items-center justify-content-between ps-3 pe-5">
-      <button class="btn btn-secondary text-primary ms-3">Accedi</button>
-      <button class="btn btn-secondary text-primary ms-3">Registrati</button>
+      <a :href="'/login'" class="btn btn-secondary text-primary px-3 py-2 ms-3 border-radius-to-a">Accedi</a>
+      <a :href="'/register'" class="btn btn-secondary text-primary px-3 py-2 ms-3 border-radius-to-a">Registrati</a>
     </div>
 
-    <div v-else class="d-flex align-items-center justify-content-between ps-3 pe-5">
-      <button class="btn btn-secondary text-primary ms-3">Area Personale</button>
-      <button class="btn btn-secondary text-primary ms-3">Home</button>
+    <div v-else class="d-flex align-items-center justify-content-between ps-3 pe-5">  <!-- Bottone della Home -->
+      <a :href="'/'" class="btn btn-secondary p-2 ms-3 border-radius-50">
+        <lord-icon
+          src="https://cdn.lordicon.com/gmzxduhd.json"
+          trigger="loop"
+          colors="primary:#b5d601,secondary:#c7ef00"    
+          style="width:36px;height:36px">
+        </lord-icon>  
+      </a>
+
+      <a :href="'/user'" class="btn btn-secondary p-2 ms-3 border-radius-50">  <!-- Bottone della Dashboard -->
+        <lord-icon
+          src="https://cdn.lordicon.com/dxjqoygy.json"
+          trigger="loop"
+          colors="primary:#b5d601,secondary:#c7ef00"
+          style="width:36px;height:36px">
+        </lord-icon>  
+      </a>
     </div>
     <!-- Fine menu -->
   </header>
@@ -92,5 +109,33 @@ export default {
   }
 };
 </script>
-<style>
+
+<style lang="scss">
+@import '../../sass/_variables.scss';
+
+.border-radius-to-search-bar {
+  border-top-left-radius: $border-radius-to-search-bar;
+  border-bottom-left-radius: $border-radius-to-search-bar;
+  border-top-right-radius: $border-radius-to-search-bar;
+  border-bottom-right-radius: $border-radius-to-search-bar;
+}
+.border-radius-to-a {
+  border-top-left-radius: $border-radius-to-search-bar;
+  border-bottom-left-radius: $border-radius-to-search-bar;
+  border-top-right-radius: $border-radius-to-search-bar;
+  border-bottom-right-radius: $border-radius-to-search-bar;
+}
+.border-radius-50 {
+  border-radius: 50%;
+}
+.border-none {
+  border: none;
+}
+#searchBar:hover {
+  cursor: pointer;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+
 </style>
