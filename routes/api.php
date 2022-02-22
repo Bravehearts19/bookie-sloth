@@ -233,6 +233,196 @@ Route::get("/search/filters", function (Request $request) {
                 return true;
             }
         });
+
+Route::get('/sponsors', function() {
+    $gateway = new Braintree\Gateway([
+        'environment' => config('services.braintree.environment'),
+        'merchantId' => config('services.braintree.merchantId'),
+        'publicKey' => config('services.braintree.publicKey'),
+        'privateKey' => config('services.braintree.privateKey')
+    ]);
+    $baseUrl = stripslashes(dirname($_SERVER['SCRIPT_NAME']));
+    $baseUrl = $baseUrl == '/' ? $baseUrl : $baseUrl . '/';
+
+    $token = $gateway->ClientToken()->generate();
+    return view('checkout', [
+        'token' => $token
+    ]);
+});
+
+Route::post('/checkout', function(Request $request) {
+    $gateway = new Braintree\Gateway([
+        'environment' => config('services.braintree.environment'),
+        'merchantId' => config('services.braintree.merchantId'),
+        'publicKey' => config('services.braintree.publicKey'),
+        'privateKey' => config('services.braintree.privateKey')
+    ]);
+    $baseUrl = stripslashes(dirname($_SERVER['SCRIPT_NAME']));
+    $baseUrl = $baseUrl == '/' ? $baseUrl : $baseUrl . '/';
+
+
+    $amount = $request->amount;
+    $nonce = $request->payment_method_nonce;
+
+    $result = $gateway->transaction()->sale([
+        'amount' => $amount,
+        'paymentMethodNonce' => $nonce,
+        'options' => [
+            'submitForSettlement' => true
+        ]
+    ]);
+
+    if ($result->success) {
+        $transaction = $result->transaction;
+        // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
+        return back()->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);
+    } else {
+        $errorString = "";
+
+        foreach($result->errors->deepAll() as $error) {
+            $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+        }
+
+        // $_SESSION["errors"] = $errorString;
+        // header("Location: " . $baseUrl . "index.php");
+        return back()->withErrors('An error occurred with the message:'. $result->message);
+        
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//echo "type: ". var_dump($data["suggestions"][0]["entities"]);
+//
+    //foreach($data["suggestions"][0]["entities"] as $hotel){
+    //    echo "<table>";
+    //    echo "<thead>";
+    //    echo "<tr>";
+    //    echo "<th>geoId</th>";
+    //    echo "<th>destinationId</th>";
+    //    echo "<th>city</th>";
+    //    echo "<th>longitude</th>";
+    //    echo "<th>latitude</th>";
+    //    echo "<th>caption</th>";
+    //    echo "<th>name</th>";
+    //    echo "</tr>";
+    //    echo "</thead>";
+    //    echo "<tbody>";
+    //    echo "<tr>";
+    //    echo "<td>" . $hotel["geoId"] ."</td>";
+    //    echo "<td>" . $hotel["destinationId"] ."</td>";
+    //    //echo "<td>" . $hotel["city"] ."</td>";
+    //    echo "<td>" . $hotel["longitude"] ."</td>";
+    //    echo "<td>" . $hotel["latitude"] ."</td>";
+    //    echo "<td>" . $hotel["caption"] ."</td>";
+    //    echo "<td>" . $hotel["name"] ."</td>";
+    //    echo "</tr>";
+    //    echo "</tbody>";
+    //}
+    /*
+    $apiKey = 'mqAzGfNws1URAH5wd6tY0kG3KacZiaN8';
+    $apiSecret = '6KVeWlre2OT3cZGZ';
+
+    $auth_data = array(
+        'client_id' 		=> $apiKey,
+        'client_secret' 	=> $apiSecret,
+        'grant_type' 		=> 'client_credentials'
+    );
+
+
+    //////////////////////////////
+    // BEARER TOKEN API CALL    //
+    //////////////////////////////
+
+
+    # create curl resource
+    $curls = curl_init();
+
+
+    #set curl endpoint
+    #curl_setopt($curls, CURLOPT_URL, 'https://test.api.amadeus.com/v1/security/oauth2/token');
+    curl_setopt($curls, CURLOPT_URL, 'https://hotels.cloudbeds.com/api/v1.1/access_token');
+
+    #set http request to POST
+    curl_setopt($curls, CURLOPT_POST, true);
+
+    #set http header with API key and API secret provided by Amadeus API
+    #curl_setopt($curls, CURLOPT_POSTFIELDS, "grant_type=client_credentials&client_id=" . $apiKey . "&client_secret=" . $apiSecret );
+
+    #set http header Content-Type
+    #curl_setopt($curls, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+
+    #Set http request to return content
+    curl_setopt($curls, CURLOPT_RETURNTRANSFER, true);
+
+    #SSL ERROR FIX
+    curl_setopt($curls, CURLOPT_SSL_VERIFYPEER, false);
+
+
+    #get request response
+    $token = curl_exec($curls);
+
+
+    #if request fails, throw exception
+    if(!$token){
+        throw new Exception(curl_error($curls), curl_errno($curls));
+    }
+
+    //var_dump($token);
+    #get data associative strings array
+    $data = json_decode($token, true);
+
+    var_dump($data);
+
+    curl_close ($curls);
+
+
+    #token output
+    //echo "token is ". var_dump($data) . '<br>';
+
+
+    //////////////////////
+    // DATA API CALL    //
+    //////////////////////
+
+    /*$ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, 'https://test.api.amadeus.com/v3/shopping/hotel-offers?hotelIds=HLLON101&adults=2');
+    //curl_setopt($ch, CURLOPT_URL, 'https://test.api.amadeus.com/v1/shopping/flight-destinations?origin=PAR&maxPrice=200');
+    //curl_setopt($ch, CURLOPT_POST, false);
+
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Authorization: Bearer '.$data['access_token'],
+        'Content-Type: application/json'
+    ));
+
+    #Set http request to return content
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    #SSL ERROR FIX
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+
+
+    $results = json_decode(curl_exec($ch), true);
+
+    //echo 'seconda chiamata';
+
+    if ($results === false) {
+        throw new Exception(curl_error($ch), curl_errno($ch));
     }
 
 
