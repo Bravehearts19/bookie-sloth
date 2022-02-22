@@ -4,22 +4,30 @@
         
         
         <div class="data-container">
-            <h1 class="pt-1">{{ apartment.name }}</h1>
-            <Rating v-model="stars" :cancel="false" />
-            <div class="pt-3 pb-3">
-                <h6 class="d-inline">{{ apartment.address}}</h6>
-                <h6 class="d-inline">,{{ apartment.location}}</h6>
+            <h1 class="pt-1 m-0 text-secondary">{{ apartment.name }}</h1>
+
+            <div class=" pb-1">
+                <h5 class="d-inline text-secondary">{{ apartment.address}}</h5>
+                <h5 class="d-inline text-secondary">,{{ apartment.location}}</h5>
             </div>
 
-            <Calendar v-model="dates" class="pb-3" selectionMode="range" />
+            <Rating class="pb-3 " v-model="stars" :cancel="false" />
 
-            <div class="services-container">
-                <p>{{apartment.services[0].id}}</p>
-            <!-- <lord-icon
-                src="https://cdn.lordicon.com/tkgyrmwc.json"
-                trigger="loop"
-                style="width:50px;height:50px">
-            </lord-icon> -->
+            <Calendar v-model="dates" class="pb-3" dateFormat="dd/mm/yy"  :showIcon='true' selectionMode="range" inputStyle="background-color: #A2BA02;border-radius:10px" />
+
+            <div class="services-container p-3">
+                <!-- ICONE SERVIZI -->
+                
+                    <div v-for='service in apartment.services' :key="'service-'+service.id" class="px-1">
+                        <lord-icon 
+                            :src="service.icon"
+                            trigger="hover"
+                            colors="primary:#B2CC03,secondary:#B2CC03"
+                            style="width:45px;height:45px;background-color:#4d1803;border-radius:50px;align-content: space-around;"
+                            >
+                        </lord-icon>
+                    </div>
+                
             </div>
            
            <!-- ROW PEOPLE AND PRICE -->
@@ -38,7 +46,7 @@
                     <lord-icon
                         src="https://cdn.lordicon.com/mecwbjnp.json"
                         trigger="hover"
-                        colors="primary:#A2BA02,secondary:#4d1803"
+                        colors="primary:#4d1803,secondary:#4d1803"
                         stroke="150"
                         style="width:50px;height:50px">
                     </lord-icon>
@@ -53,15 +61,26 @@
                         src="https://cdn.lordicon.com/dxjqoygy.json"
                         trigger="hover"
                         colors="primary:#c7ef00,secondary:#c7ef00"
-                        style="width:35px;height:35px">
+                        style="width:40px;height:40px">
                     </lord-icon>
                     <h6 class="text-primary m-0">{{ apartment.user.name }} {{ apartment.user.surname }}</h6>
                 </div>
 
+                <Button label="Contatta" @click="openPosition('right')" class="p-button-warning p-button-sm" />
                 
             </div> 
 
         </div>
+
+        <Dialog header="Header" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
+            <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <template #footer>
+                <Button label="No" icon="pi pi-times" @click="closePosition" class="p-button-text"/>
+                <Button label="Yes" icon="pi pi-check" @click="closePosition" autofocus />
+            </template>
+        </Dialog>
         
         <!-- <h1 class="text-secondary text-center">
             {{ apartment.name }}
@@ -80,6 +99,7 @@
 import Rating from 'primevue/rating';
 import Calendar from 'primevue/calendar';
 import Button from 'primevue/button';
+import Dialog from 'primevue/dialog';
 
 export default {
     name: 'Apartment',
@@ -88,11 +108,23 @@ export default {
             apartment: '',
             stars : '',
             dates : "",
+            displayPosition: false, //PRIME VUE DIALOG 
+            position: 'center', //PRIME VUE DIALOG 
         }
     },
 
     components:{
-        Rating,Calendar,Button,
+        Rating,Calendar,Button,Dialog,
+    },
+
+    methods:{
+         openPosition(position) {
+            this.position = position;
+            this.displayPosition = true;
+        },
+        closePosition() {
+            this.displayPosition = false;
+        }
     },
 
     mounted(){
@@ -120,6 +152,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 
 .my-container{
     background-color: #B5D601;
@@ -153,6 +186,17 @@ export default {
         align-content: center;
         /* background-color: red; */
 
+        
+
+        .p-calendar{
+           max-width: 300px;
+               
+           .p-button-icon{
+
+               background-color: #B2CC03;
+           }
+        }
+
         .services-container{
             display: flex;
             background-color: #A2BA02;
@@ -160,13 +204,27 @@ export default {
             width: 300px;
             margin: 10px 0;
             border-radius: 20px;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            
         }
 
         .user-container{
             background-color: #4D1803;
-            border-radius: 20px;
+            margin-top: 35px;
+            border-radius: 30px;
             display: flex;
-            /* justify-content: space-between; */
+            justify-content: center;
+            height: 50px;
+
+            .p-button{
+                background-color: #B2CC03; 
+                border: #B2CC03;
+                border-radius: 20px;
+                height: 30px !important;
+                margin-top: 8px;
+                margin-left: 20px;
+            }
         }
     }
 }
