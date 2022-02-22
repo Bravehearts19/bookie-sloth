@@ -25,6 +25,21 @@
     <!-- TomTom -->
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps.css'>
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps-web.min.js"></script>
+
+    @php
+        Auth::check();
+        $signedIn = false;
+        if(Auth::check()) {
+            $signedIn = 1;
+        } else {
+            $signedIn = 0;
+        }
+    @endphp
+
+    <script>
+        let user = {{$signedIn}};
+        window.App = user;
+    </script> {{-- Testing per l'autenticazione in Vue --}}
 </head>
 <body>
     <div class="bg-primary full-height d-flex flex-column">
