@@ -21,6 +21,45 @@
                 style="width:50px;height:50px">
             </lord-icon> -->
             </div>
+           
+           <!-- ROW PEOPLE AND PRICE -->
+            <div class="d-flex mt-4 justify-content-between align-items-center">     
+                <div class="d-flex align-items-center">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/rivoakkk.json"
+                        trigger="hover"
+                        colors="primary:#A2BA02,secondary:#4d1803"
+                        stroke="150"
+                        style="width:50px;height:50px">
+                    </lord-icon>
+
+                    <h2 class="mx-4 my-0">1</h2>
+                    
+                    <lord-icon
+                        src="https://cdn.lordicon.com/mecwbjnp.json"
+                        trigger="hover"
+                        colors="primary:#A2BA02,secondary:#4d1803"
+                        stroke="150"
+                        style="width:50px;height:50px">
+                    </lord-icon>
+                </div>
+
+                <h2 class="me-4">{{ apartment.price }}0$</h2>
+            </div>
+
+            <div class="user-container">
+               <div class="d-flex align-items-center">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/dxjqoygy.json"
+                        trigger="hover"
+                        colors="primary:#c7ef00,secondary:#c7ef00"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+                    <h6 class="text-primary m-0">{{ apartment.user.name }} {{ apartment.user.surname }}</h6>
+                </div>
+
+                
+            </div> 
 
         </div>
         
@@ -40,6 +79,7 @@
 <script>
 import Rating from 'primevue/rating';
 import Calendar from 'primevue/calendar';
+import Button from 'primevue/button';
 
 export default {
     name: 'Apartment',
@@ -52,7 +92,7 @@ export default {
     },
 
     components:{
-        Rating,Calendar,
+        Rating,Calendar,Button,
     },
 
     mounted(){
@@ -63,7 +103,7 @@ export default {
 
             const HOTEL_COORDINATES = {lng: this.apartment.x_coordinate, lat: this.apartment.y_coordinate};
 
-            const API_KEY = 'onx0t6tyRKJCe8Q2JIAWTMwu3Opxi7wH';
+            const API_KEY = 'on35t6tyRKJCe8Q2JIAWTMwu3Opxi7wH';
             const APPLICATION_NAME = 'bookie_sloth';
             const APPLICATION_VERSION = '1.0';
 
@@ -116,10 +156,17 @@ export default {
         .services-container{
             display: flex;
             background-color: #A2BA02;
-            height: 200px;
+            height: 150px;
             width: 300px;
             margin: 10px 0;
             border-radius: 20px;
+        }
+
+        .user-container{
+            background-color: #4D1803;
+            border-radius: 20px;
+            display: flex;
+            /* justify-content: space-between; */
         }
     }
 }

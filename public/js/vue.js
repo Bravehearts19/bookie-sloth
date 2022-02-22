@@ -2378,6 +2378,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primevue_rating__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(primevue_rating__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var primevue_calendar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! primevue/calendar */ "./node_modules/primevue/calendar/index.js");
 /* harmony import */ var primevue_calendar__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(primevue_calendar__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var primevue_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primevue/button */ "./node_modules/primevue/button/index.js");
+/* harmony import */ var primevue_button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primevue_button__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -2417,6 +2419,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2430,7 +2472,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     Rating: primevue_rating__WEBPACK_IMPORTED_MODULE_0___default.a,
-    Calendar: primevue_calendar__WEBPACK_IMPORTED_MODULE_1___default.a
+    Calendar: primevue_calendar__WEBPACK_IMPORTED_MODULE_1___default.a,
+    Button: primevue_button__WEBPACK_IMPORTED_MODULE_2___default.a
   },
   mounted: function mounted() {
     var _this = this;
@@ -2444,7 +2487,7 @@ __webpack_require__.r(__webpack_exports__);
         lng: _this.apartment.x_coordinate,
         lat: _this.apartment.y_coordinate
       };
-      var API_KEY = 'onx0t6tyRKJCe8Q2JIAWTMwu3Opxi7wH';
+      var API_KEY = 'on35t6tyRKJCe8Q2JIAWTMwu3Opxi7wH';
       var APPLICATION_NAME = 'bookie_sloth';
       var APPLICATION_VERSION = '1.0';
       tt.setProductInfo(APPLICATION_NAME, APPLICATION_VERSION);
@@ -2825,7 +2868,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #B5D601;\n  height: 550px;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #A2BA02;\n  height: 200px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
+exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #B5D601;\n  height: 550px;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #A2BA02;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #4D1803;\n  border-radius: 20px;\n  display: flex;\n  /* justify-content: space-between; */\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
 
 // exports
 
@@ -3968,6 +4011,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_Button_vue_vue_type_template_id_3339e4ae___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./node_modules/primevue/button/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/primevue/button/index.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = __webpack_require__(/*! ./Button.vue */ "./node_modules/primevue/button/Button.vue");
 
 /***/ }),
 
@@ -17178,6 +17234,74 @@ var render = function () {
         _vm._v(" "),
         _c("div", { staticClass: "services-container" }, [
           _c("p", [_vm._v(_vm._s(_vm.apartment.services[0].id))]),
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "d-flex mt-4 justify-content-between align-items-center",
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "d-flex align-items-center" },
+              [
+                _c("lord-icon", {
+                  staticStyle: { width: "50px", height: "50px" },
+                  attrs: {
+                    src: "https://cdn.lordicon.com/rivoakkk.json",
+                    trigger: "hover",
+                    colors: "primary:#A2BA02,secondary:#4d1803",
+                    stroke: "150",
+                  },
+                }),
+                _vm._v(" "),
+                _c("h2", { staticClass: "mx-4 my-0" }, [_vm._v("1")]),
+                _vm._v(" "),
+                _c("lord-icon", {
+                  staticStyle: { width: "50px", height: "50px" },
+                  attrs: {
+                    src: "https://cdn.lordicon.com/mecwbjnp.json",
+                    trigger: "hover",
+                    colors: "primary:#A2BA02,secondary:#4d1803",
+                    stroke: "150",
+                  },
+                }),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("h2", { staticClass: "me-4" }, [
+              _vm._v(_vm._s(_vm.apartment.price) + "0$"),
+            ]),
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "user-container" }, [
+          _c(
+            "div",
+            { staticClass: "d-flex align-items-center" },
+            [
+              _c("lord-icon", {
+                staticStyle: { width: "35px", height: "35px" },
+                attrs: {
+                  src: "https://cdn.lordicon.com/dxjqoygy.json",
+                  trigger: "hover",
+                  colors: "primary:#c7ef00,secondary:#c7ef00",
+                },
+              }),
+              _vm._v(" "),
+              _c("h6", { staticClass: "text-primary m-0" }, [
+                _vm._v(
+                  _vm._s(_vm.apartment.user.name) +
+                    " " +
+                    _vm._s(_vm.apartment.user.surname)
+                ),
+              ]),
+            ],
+            1
+          ),
         ]),
       ],
       1
