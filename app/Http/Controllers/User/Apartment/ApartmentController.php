@@ -48,6 +48,7 @@ class ApartmentController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|string',
             'price' => 'required|numeric|min:0|max:32767',
@@ -61,6 +62,7 @@ class ApartmentController extends Controller
         ]);
 
         $data = $request->all();
+        $data["services"] = explode(',', $data["services"]);
 
         $address = str_replace(' ', "%20", $data['address']);
         $address = str_replace('/', '%2f', $address);
@@ -147,7 +149,10 @@ class ApartmentController extends Controller
             'n_bathrooms' => 'integer|between:0,255'
         ]);
 
+
         $data = $request->all();
+
+        $data["services"] = explode(',', $data["services"]);
 
         $oldAddress = $apartment['address'];
         $oldCity = $apartment['location'];

@@ -1,7 +1,7 @@
-@extends ('layouts.app')
+@extends ('layouts.user')
 
 @section('content')
-<div class="container">
+<div class="container mt-3">
 
   <form action="{{ route('user.apartment.update', $apartment->id) }}" method="post" enctype='multipart/form-data'>
       @csrf
@@ -17,7 +17,8 @@
             @enderror
       </div>
       
-      <div class="mb-3">
+      <div class="row row-cols-3 mb-3">
+        <div class="col">
           <label for="n_guests" class="form-label text-primary">Numero Ospiti *</label>
           <input type="number" class="form-control @error('n_guests') is-invalid @enderror" name='n_guests' value="{{$apartment->n_guests}}" id="n_guests" min="0" max="127" aria-describedby="emailHelp">
             @error('n_guests')
@@ -25,19 +26,19 @@
                 <strong>{{ $message }}</strong>
               </span>
             @enderror
-      </div> 
+        </div>
 
-      <div class="mb-3">
-        <label for="n_rooms" class="form-label text-primary">Numero Stanze *</label>
-        <input type="number" class="form-control @error('n_rooms') is-invalid @enderror" name='n_rooms' value="{{$apartment->n_rooms}}" id="n_rooms" min="0" aria-describedby="emailHelp">
-          @error('n_rooms')
-          <span class="invalid-feedback">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-      </div>
+        <div class="col">
+          <label for="n_rooms" class="form-label text-primary">Numero Stanze *</label>
+          <input type="number" class="form-control @error('n_rooms') is-invalid @enderror" name='n_rooms' value="{{$apartment->n_rooms}}" id="n_rooms" min="0" aria-describedby="emailHelp">
+            @error('n_rooms')
+            <span class="invalid-feedback">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
 
-      <div class="mb-3">
+        <div class="col">
           <label for="n_bathrooms" class="form-label text-primary">Numero Bagni</label>
           <input type="number" class="form-control @error('n_bathrooms') is-invalid @enderror" name='n_bathrooms' value="{{$apartment->n_bathrooms}}" id="n_bathrooms" min="0" aria-describedby="emailHelp">
             @error('n_bathrooms')
@@ -45,6 +46,7 @@
                 <strong>{{ $message }}</strong>
               </span>
             @enderror
+        </div>
       </div>
 
       <div class="mb-3">
@@ -67,57 +69,91 @@
             @enderror   
       </div>
 
-      <div class="mb-3">
+      <div class="row row-cols-3 mb-3">
+        <div class="col">
           <label for="address" class="form-label text-primary">Indirizzo *</label>
           <input type="text" class="form-control @error('address') is-invalid @enderror" name='address' id="address" value="{{$apartment->address}}" aria-describedby="emailHelp">
             @error('address')
               <span class="invalid-feedback">
                 <strong>{{ $message }}</strong>
               </span>
-            @enderror   
-      </div>
+            @enderror
+          </div>
 
-      <div class="mb-3">
-          <label for="cover_img" class="form-label text-primary">Immagine di copertina *</label>
-          <div class="input-group mb-3">
-            <input type="file" class="form-control" name="cover_img" id="inputGroupFile02">
-            <label class="input-group-text" for="inputGroupFile02">Upload</label>
-        </div>
-          @error('cover_img')
-              <span class="invalid-feedback">
-                  <strong>{{ $message }}</strong>
-              </span>
-          @enderror 
-      </div>
-
-      <div class="mb-3">
-          <label for="location" class="form-label text-primary">Città *</label>
-          <input type="text" class="form-control @error('location') is-invalid @enderror" name='location' id="location" value="{{$apartment->location}}" aria-describedby="emailHelp">
-            @error('location')
+      <div class="col">
+        <label for="location" class="form-label text-primary">Città *</label>
+        <input type="text" class="form-control @error('location') is-invalid @enderror" name='location' id="location" value="{{$apartment->location}}" aria-describedby="emailHelp">
+        @error('location')
               <span class="invalid-feedback">
                 <strong>{{ $message }}</strong>
               </span>
-            @enderror   
-      </div>
+            @enderror
+        </div>
 
-      <div class="mb-3">
-          <label for="cap" class="form-label text-primary">CAP *</label>
+      <div class="col">
+        <label for="cap" class="form-label text-primary">CAP *</label>
           <input type="text" class="form-control @error('cap') is-invalid @enderror" name='cap' id="cap" value="{{$apartment->cap}}" aria-describedby="emailHelp">
             @error('cap')
-              <span class="invalid-feedback">
-                <strong>{{ $message }}</strong>
-              </span>
-            @enderror   
+            <span class="invalid-feedback">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
       </div>
+    </div>
+          
+          <div class="mb-3">
+              <label for="cover_img" class="form-label text-primary">Immagine di copertina *</label>
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="cover_img" id="inputGroupFile02">
+                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+            </div>
+              @error('cover_img')
+                  <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror 
+          </div>
 
       <h5 class="text-primary">Servizi:</h5>
-        <select name='services[]' multiple class="form-select" aria-label="Default select example">
-            
-            @foreach ($services as $service)
-             
-            <option  {{ $apartment->services->contains($service) ? 'selected' : '' }} value="{{$service->id}}">{{ $service->name}}</option>
-            @endforeach
-          </select>
+
+          <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+            <div class="row row-cols-12">
+                <input type="hidden" name="services" id="formServices">
+                @foreach ($services as $service)
+                <div class="col mt-3 h-100">
+                    <input onclick="addService({{($service->id)}}, {{$apartment->services->pluck('id')}})" type="checkbox" class="btn-check" id="btncheck{{$service->id}}" autocomplete="off" {{$apartment->services->contains($service) ? 'checked' : ''}}>
+                    <label class="btn btn-outline-primary" for="btncheck{{$service->id}}">
+                        <lord-icon
+                                src="{{$service->icon}}"
+                                trigger="hover"
+                                style="width:50px;height:50px">
+                        </lord-icon>
+                        <strong>{{$service->name}}</strong>
+                    </label>
+                </div>
+                @endforeach
+                <script>
+                    let services = [];
+                    let counter= 0;
+                    function addService(id, prev){
+                        if(counter===0){
+                          services= prev;
+                          counter++;
+                        }
+                        if(services.includes(id)){
+                        const indexOfService = services.indexOf(id)
+                        services.splice(indexOfService, 1);
+                        }
+                        else{
+                            services.push(id);
+                        }
+                        let servicesHidden= document.getElementById("formServices");
+                        servicesHidden.value=services
+                    }
+                </script>
+                
+            </div>
+        </div>
 
       <div class="mb-3">
         <label for="visibility" class="form-label text-primary">Visibilità *</label>
@@ -127,7 +163,7 @@
         </select>
       </div>
 
-      <button type="submit" class="btn btn-primary text-secondary">Modifica</button>
+        <button type="submit" class="btn btn-primary text-secondary">Modifica</button>
       
     </form>
 

@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", function () {
   if (document.getElementById("formDelete")) {
     const formDelete = document.getElementById("formDelete");
     formDelete.addEventListener("submit", function (e) {
-      if (!confirm("Sicuro di voler eliminare questo appartamento?")) {
+      if (!confirm("Sicuro di voler procedere?")) {
         e.preventDefault();
       }
     })

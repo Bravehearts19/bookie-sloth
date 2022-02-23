@@ -4,14 +4,89 @@ namespace App\Http\Controllers\User\Apartment;
 
 use App\Apartment;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use App\Message;
+use App\User;
+use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
-    public function index(Apartment $apartment) {
-        $apartmentId = $apartment->id;
-        $messages = DB::table('messages')->where('apartment_id', $apartmentId)->get();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
-        return view('user.apartment.messages.index', ['messages' => $messages, 'apartment' => $apartment]);
+    //show all messages for an apartment
+    public function index(Apartment $apartment)
+    {
+        $messages = Message::where('apartment_id', $apartment->id)->with('apartment')->get();
+
+        return view('user.apartment.messages.index', compact("messages"));
+    }
+
+    //show all user messages
+    public function showUserMessages(User $user)
+    {
+        $messages = Message::all();
+        $apartmentsIds = $user->apartments()->pluck('id')->toArray();
+        // dd($user->apartments()->pluck('id'), $messages);
+        $userMessages = [];
+        foreach ($messages as $message) {
+            if (in_array($message->apartment_id, $apartmentsIds));
+            array_push($userMessages, $message);
+        }
+        return view('user.apartment.messages.index', compact("messages"));
+    }
+
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function create()
+    // {
+    //     //
+    // }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($apartmentId, $messageId)
+    {
+        $message = Message::where('id', $messageId)
+            ->where('apartment_id', $apartmentId)
+            ->with('apartment')
+            ->first();
+        return view('user.apartment.messages.show', compact('message'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Apartment $apartment, Message $message)
+    {
+        $messageToDelete = Message::where('id', $message->id)
+            ->where('apartment_id', $apartment->id)
+            ->first();
+        Message::destroy($messageToDelete->id);
+
+        return redirect()->route('user.message.index', $apartment->id);
     }
 }
