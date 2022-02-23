@@ -19,6 +19,10 @@ Auth::routes();
 /* Route::get(
     return '/user/{id}/show';
     ) */
+Route::get('/glisponsor', function(){
+    return view('user\apartment\sponsors\index');
+});
+
 
 Route::namespace("User")
     ->prefix("user")
@@ -35,6 +39,8 @@ Route::namespace("User")
         Route::get('/apartment/statistics', 'Apartment\ViewController@index');
 
         Route::get('/apartment/sponsor', 'Apartment\SponsorController@index');
+
+
     });
 
 Route::get('{any?}', function () {
