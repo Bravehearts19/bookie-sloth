@@ -37,6 +37,10 @@ Route::namespace("User")
         Route::get('/apartment/sponsor', 'Apartment\SponsorController@index');
     });
 
+Route::get('/checkout', function() {
+    return view('user.apartments.sponsors.checkout');
+});
+
 Route::get('{any?}', function () {
     return view('welcome');
 })->where('any', '.*');
