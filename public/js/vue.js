@@ -2521,6 +2521,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2530,7 +2534,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       apartment: '',
-      stars: '',
+
+      /*  stars : '', */
+      rate: 5,
       dates: "",
       peopleCounter: 1,
       displayPosition: false,
@@ -3005,7 +3011,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #B5D601;\n  height: 550px;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .p-calendar[data-v-37b4720e] {\n  max-width: 300px;\n}\n.my-container .data-container .p-calendar .p-button-icon[data-v-37b4720e] {\n  background-color: #B2CC03;\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #A2BA02;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #4D1803;\n  margin-top: 35px;\n  border-radius: 30px;\n  display: flex;\n  justify-content: center;\n  height: 50px;\n}\n.my-container .data-container .user-container .p-button[data-v-37b4720e] {\n  background-color: #B2CC03;\n  border: #B2CC03;\n  border-radius: 20px;\n  height: 30px !important;\n  margin-top: 8px;\n  margin-left: 20px;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
+exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #B5D601;\n  height: 550px;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .p-calendar[data-v-37b4720e] {\n  max-width: 300px;\n}\n.my-container .data-container .p-calendar .p-button-icon[data-v-37b4720e] {\n  background-color: #B2CC03;\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #A2BA02;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #4D1803;\n  margin-top: 35px;\n  border-radius: 30px;\n  display: flex;\n  justify-content: center;\n  height: 50px;\n}\n.my-container .data-container .user-container .p-button[data-v-37b4720e] {\n  background-color: #B2CC03;\n  color: #4D1803;\n  border: #B2CC03;\n  border-radius: 20px;\n  height: 30px !important;\n  margin-top: 8px;\n  margin-left: 20px;\n}\n\n/* PRIME VUE */\n[data-v-37b4720e] .p-rating .p-rating-icon.pi-star-fill {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating .p-rating-icon:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-inputtext:enabled:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-button {\n  background-color: #4D1803;\n  color: #B5D601;\n  border: 0;\n  border-top-right-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n[data-v-37b4720e] .p-button:enabled:hover {\n  background-color: #722304;\n  color: #B5D601;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
 
 // exports
 
@@ -3031,7 +3037,7 @@ exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css?7252":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primeicons/primeicons.css ***!
   \********************************************************************************************************************************/
@@ -3051,7 +3057,7 @@ exports.push([module.i, "@font-face {\n    font-family: 'primeicons';\n    font-
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css?b370":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css":
 /*!******************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primevue/resources/primevue.min.css ***!
   \******************************************************************************************************************************************/
@@ -3071,7 +3077,7 @@ exports.push([module.i, ".p-component,.p-component *{box-sizing:border-box}.p-hi
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css?e88f":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css":
 /*!****************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primevue/resources/themes/saga-blue/theme.css ***!
   \****************************************************************************************************************************************************/
@@ -3389,7 +3395,7 @@ module.exports = "/fonts/vendor/primeicons/primeicons.woff?943c3597cd33be56d53df
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../css-loader??ref--7-1!../postcss-loader/src??ref--7-2!./primeicons.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css?7252");
+var content = __webpack_require__(/*! !../css-loader??ref--7-1!../postcss-loader/src??ref--7-2!./primeicons.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5678,7 +5684,7 @@ module.exports = "/images/vendor/primevue/resources/hue.png?0614c27197fc3ce572e1
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./primevue.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css?b370");
+var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./primevue.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5708,7 +5714,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../css-loader??ref--7-1!../../../../postcss-loader/src??ref--7-2!./theme.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css?e88f");
+var content = __webpack_require__(/*! !../../../../css-loader??ref--7-1!../../../../postcss-loader/src??ref--7-2!./theme.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -17198,25 +17204,42 @@ var render = function () {
             ]),
           ]),
           _vm._v(" "),
-          _c("Rating", {
-            staticClass: "pb-3 ",
-            attrs: { cancel: false },
-            model: {
-              value: _vm.stars,
-              callback: function ($$v) {
-                _vm.stars = $$v
-              },
-              expression: "stars",
-            },
-          }),
+          _c(
+            "div",
+            { staticClass: "d-flex" },
+            [
+              _c("Rating", {
+                attrs: {
+                  value: _vm.rate,
+                  readonly: true,
+                  stars: _vm.rate,
+                  cancel: false,
+                },
+              }),
+              _vm._v(" "),
+              _vm.rate > 0
+                ? _c("p", { staticClass: "ps-2" }, [
+                    _vm._v(
+                      _vm._s(_vm.rate) +
+                        ".0 | " +
+                        _vm._s(_vm.rate) +
+                        " recensioni"
+                    ),
+                  ])
+                : _vm._e(),
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("Calendar", {
             staticClass: "pb-3",
             attrs: {
               dateFormat: "dd/mm/yy",
+              placeholder: "Inserisci date",
               showIcon: true,
               selectionMode: "range",
-              inputStyle: "background-color: #A2BA02;border-radius:10px",
+              inputStyle:
+                "background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;",
             },
             model: {
               value: _vm.dates,
@@ -17308,7 +17331,7 @@ var render = function () {
               ),
               _vm._v(" "),
               _c("h2", { staticClass: "me-4 text-secondary" }, [
-                _vm._v(_vm._s(_vm.apartment.price) + "0$"),
+                _vm._v(_vm._s(_vm.apartment.price) + "0€"),
               ]),
             ]
           ),
@@ -17361,7 +17384,7 @@ var render = function () {
         "Dialog",
         {
           attrs: {
-            header: "Conttatami",
+            header: "Contattami",
             visible: _vm.displayPosition,
             containerStyle: { width: "50vw" },
             position: _vm.position,

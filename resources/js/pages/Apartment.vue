@@ -11,9 +11,13 @@
                 <h5 class="d-inline text-secondary">,{{ apartment.location}}</h5>
             </div>
 
-            <Rating class="pb-3 " v-model="stars" :cancel="false" />
+            <div class="d-flex">
+                <!-- <Rating class="pb-3 " v-model="stars" :cancel="false" /> -->
+                <Rating :value="rate" :readonly="true" :stars="rate" :cancel="false" />
+                <p v-if="rate > 0" class="ps-2">{{ rate }}.0 | {{ rate }} recensioni</p>
+            </div>    
 
-            <Calendar v-model="dates" class="pb-3" dateFormat="dd/mm/yy"  :showIcon='true' selectionMode="range" inputStyle="background-color: #A2BA02;border-radius:10px" />
+            <Calendar v-model="dates" class="pb-3" dateFormat="dd/mm/yy" placeholder='Inserisci date' :showIcon='true' selectionMode="range" inputStyle="background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;" />
 
             <div class="services-container p-3">
                 <!-- ICONE SERVIZI -->
@@ -52,7 +56,7 @@
                     </lord-icon>
                 </div>
 
-                <h2 class="me-4 text-secondary">{{ apartment.price }}0$</h2>
+                <h2 class="me-4 text-secondary">{{ apartment.price }}0€</h2>
             </div>
 
             <div class="user-container">
@@ -72,7 +76,7 @@
 
         </div>
 
-        <Dialog header="Conttatami" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
+        <Dialog header="Contattami" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
             <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -104,7 +108,8 @@ export default {
     data() {
         return {
             apartment: '',
-            stars : '',
+           /*  stars : '', */
+            rate: 5,
             dates : "",
             peopleCounter: 1,
             displayPosition: false, //PRIME VUE DIALOG 
@@ -228,6 +233,7 @@ export default {
 
             .p-button{
                 background-color: #B2CC03; 
+                color: #4D1803;
                 border: #B2CC03;
                 border-radius: 20px;
                 height: 30px !important;
@@ -238,6 +244,41 @@ export default {
     }
 }
 
+/* PRIME VUE */
+
+//STELLE
+::v-deep .p-rating .p-rating-icon.pi-star-fill{
+    color: #4D1803;
+}
+
+::v-deep .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover{
+    color: #4D1803;
+
+}
+
+::v-deep .p-rating .p-rating-icon:focus{
+    box-shadow: 0 0 0 0;
+}
+
+//INPUT CALENDARIO molti style sono stati inserirti Inline
+::v-deep .p-inputtext:enabled:focus{
+    box-shadow: 0 0 0 0;
+}
+
+//BOTTONE ICONA CALENDARIO
+::v-deep .p-button{
+    background-color: #4D1803;
+    color:#B5D601;
+    border: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+::v-deep .p-button:enabled:hover{
+    background-color: #722304;
+    color:#B5D601;
+}
         
 
 
