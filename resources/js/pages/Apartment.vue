@@ -76,13 +76,18 @@
 
         </div>
 
-        <Dialog header="Contattami" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
-            <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <Dialog header="Contattami!" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Indirizzo Email</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@esempio.com">
+                </div>
+                <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Messaggio</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
             <template #footer>
-                <Button label="No" icon="pi pi-times" @click="closePosition" class="p-button-text"/>
-                <Button label="Yes" icon="pi pi-check" @click="closePosition" autofocus />
+                <Button label="Annulla" icon="pi pi-times" @click="closePosition" class="p-button-text"/>
+                <Button label="Invia" icon="pi pi-check" @click="closePosition" autofocus />
             </template>
         </Dialog>
         
@@ -170,7 +175,7 @@ export default {
 
 .my-container{
     background-color: #B5D601;
-    height: 550px;
+    height: 75vh;
     width: 1400px;
     margin: auto;
     border-radius: 30px;
@@ -279,7 +284,21 @@ export default {
     background-color: #722304;
     color:#B5D601;
 }
-        
+    
+//DIALOG
+::v-deep .p-dialog .p-dialog-header{
+    background-color: #B2CC03;
+    /* margin-bottom: 10px; */
+}
+
+::v-deep .p-dialog .p-dialog-content{
+    padding-top: 20px;
+}
+
+::v-deep .p-dialog .p-dialog-footer{
+    background-color: #B2CC03;
+    padding: 5px;
+}
 
 
 
