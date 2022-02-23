@@ -94,6 +94,11 @@ Route::get('/services/index', function (Request $request) {
     $apartments = DB::table('services')->get();
     return json_encode($apartments);
 });
+Route::get('/apartment/services', function (Request $request) {
+    $apartmentId = $request->query('apartment');
+    $apartment = Apartment::where('id', $apartmentId)->with('services')->first();
+    return json_encode($apartment);
+});
 // nMinStanze
 // nMinPersone
 //
