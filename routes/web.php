@@ -29,6 +29,7 @@ Route::namespace("User")
 
         Route::resource('apartment', 'Apartment\ApartmentController');
 
+        Route::get('/{user}/messages', 'Apartment\MessageController@showUserMessages')->name('messages');
         Route::resource('/{apartment}/message', 'Apartment\MessageController');
 
         Route::get('/apartment/statistics', 'Apartment\ViewController@index');
