@@ -19,9 +19,11 @@ Auth::routes();
 /* Route::get(
     return '/user/{id}/show';
     ) */
-//Route::get('/glisponsor', function(){
-//    return view('user\apartment\sponsors\index');
-//});
+Route::get('/sponsors', function () {
+    return view('user\apartment\sponsors\index');
+});
+
+Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
 
 
 Route::namespace("User")
@@ -39,8 +41,6 @@ Route::namespace("User")
         Route::get('/apartment/statistics', 'Apartment\ViewController@index');
 
         Route::get('/apartment/sponsor', 'Apartment\SponsorController@index');
-
-
     });
 
 Route::get('{any?}', function () {
