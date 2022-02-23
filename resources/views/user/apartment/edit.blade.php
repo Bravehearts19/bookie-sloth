@@ -104,24 +104,30 @@
           <div class="mb-3">
               <label for="cover_img" class="form-label text-primary">Immagine di copertina *</label>
               <div class="input-group mb-3">
-                <input type="file" class="form-control" name="cover_img" id="inputGroupFile02">
+                <input type="file" class="form-control @error('cover_img') 'is-invalid' @enderror" name="cover_img" id="inputGroupFile02">
                 <label class="input-group-text" for="inputGroupFile02">Upload</label>
             </div>
               @error('cover_img')
-                  <span class="invalid-feedback">
+                  <span class="invalid-feedback d-block">
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror 
           </div>
 
+          @error('services')
+                <span class="invalid-feedback d-block">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
       <h5 class="text-primary">Servizi:</h5>
 
           <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
             <div class="row row-cols-12">
+              <input type="hidden" name="apartmentId" id="apartmentId" value="{{$apartment->id}}">
                 <input type="hidden" name="services" id="formServices">
                 @foreach ($services as $service)
-                <div class="col mt-3 h-100">
-                    <input onclick="addService({{($service->id)}}, {{$apartment->services->pluck('id')}})" type="checkbox" class="btn-check" id="btncheck{{$service->id}}" autocomplete="off" {{$apartment->services->contains($service) ? 'checked' : ''}}>
+                <div class="col mt-3 h-100 service" style="opacity:0; transition:opacity 0.5s">
+                    <input onclick="addService({{($service->id)}})" type="checkbox" class="btn-check" id="btncheck{{$service->id}}" autocomplete="off" {{$apartment->services->contains($service) ? 'checked' : ''}}>
                     <label class="btn btn-outline-primary" for="btncheck{{$service->id}}">
                         <lord-icon
                                 src="{{$service->icon}}"
@@ -132,26 +138,6 @@
                     </label>
                 </div>
                 @endforeach
-                <script>
-                    let services = [];
-                    let counter= 0;
-                    function addService(id, prev){
-                        if(counter===0){
-                          services= prev;
-                          counter++;
-                        }
-                        if(services.includes(id)){
-                        const indexOfService = services.indexOf(id)
-                        services.splice(indexOfService, 1);
-                        }
-                        else{
-                            services.push(id);
-                        }
-                        let servicesHidden= document.getElementById("formServices");
-                        servicesHidden.value=services
-                    }
-                </script>
-                
             </div>
         </div>
 
@@ -163,7 +149,7 @@
         </select>
       </div>
 
-        <button type="submit" class="btn btn-primary text-secondary">Modifica</button>
+        <button type="submit" onclick="setServices()" class="btn btn-primary text-secondary">Modifica</button>
       
     </form>
 
@@ -172,4 +158,37 @@
       @method("DELETE")
       <button type="submit" class="btn btn-danger text-white mt-3">Elimina</button>
     </form>
+
+
+    <script>
+      window.addEventListener("DOMContentLoaded", ()=>{
+        const apartmentId= document.getElementById('apartmentId').value;
+        window.axios.get("/api/apartment/services?apartment=" + apartmentId).then((resp)=>{
+          resp.data.services.forEach(service => {
+            services.push(service.id)
+          });
+        })
+        servicesBoxes.forEach((serviceBox)=>{
+            serviceBox.style.opacity="100%";   
+        })
+      })
+
+        let services = [];
+        let servicesBoxes = document.querySelectorAll("div.service");
+        let servicesHidden= document.getElementById("formServices");
+        let counter= 0;
+        function addService(id){
+            if(services.includes(id)){
+            const indexOfService = services.indexOf(id)
+            services.splice(indexOfService, 1);
+            }
+            else{
+                services.push(id);
+            }
+          }
+        function setServices(){
+          servicesHidden.value = services
+        }
+            
+    </script>
 @endsection
