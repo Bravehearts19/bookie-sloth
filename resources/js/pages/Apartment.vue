@@ -86,8 +86,8 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <template #footer>
-                <Button label="Annulla" icon="pi pi-times" @click="closePosition" class="p-button-text"/>
-                <Button label="Invia" icon="pi pi-check" @click="closePosition" autofocus />
+                <Button label="Annulla" icon="pi pi-times" @click="closePosition" class="p-button-text my-dialog" />
+                <Button label="Invia" icon="pi pi-check" @click="closePosition" autofocus class="my-dialog"/>
             </template>
         </Dialog>
         
@@ -210,9 +210,8 @@ export default {
         .p-calendar{
            max-width: 300px;
                
-           .p-button-icon{
-
-               background-color: #B2CC03;
+           .p-datepicker table td > span.p-highlight{
+               
            }
         }
 
@@ -270,7 +269,12 @@ export default {
     box-shadow: 0 0 0 0;
 }
 
+::v-deep .p-datepicker:not(.p-datepicker-inline) .p-datepicker-header{
+    background-color: #B2CC03;
+}
+
 //BOTTONE ICONA CALENDARIO
+
 ::v-deep .p-button{
     background-color: #4D1803;
     color:#B5D601;
@@ -299,6 +303,8 @@ export default {
     background-color: #B2CC03;
     padding: 5px;
 }
+
+
 
 
 
