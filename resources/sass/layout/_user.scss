@@ -1,0 +1,17 @@
+header{
+  border-bottom: 1px solid $brown;
+  .user-button{
+    border: 0;
+    background: none;
+    padding-right:0
+  }
+}
+
+.user-aside{
+  width: 200px;
+}
+
+.messages-card{
+  max-height: 800px;
+  overflow: auto;
+}
