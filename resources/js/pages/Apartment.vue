@@ -33,17 +33,17 @@
            <!-- ROW PEOPLE AND PRICE -->
             <div class="d-flex mt-4 justify-content-between align-items-center">     
                 <div class="d-flex align-items-center">
-                    <lord-icon
+                    <lord-icon  @click="decrementCounter()"
                         src="https://cdn.lordicon.com/rivoakkk.json"
                         trigger="hover"
-                        colors="primary:#A2BA02,secondary:#4d1803"
+                        :colors='peopleCounter === 1 ? "primary:#A2BA02,secondary:#4d1803" : "primary:#4d1803,secondary:#4d1803"'
                         stroke="150"
                         style="width:50px;height:50px">
                     </lord-icon>
 
-                    <h2 class="mx-4 my-0">1</h2>
+                    <h2 class="mx-4 my-0">{{ peopleCounter }}</h2>
                     
-                    <lord-icon
+                    <lord-icon  @click="incrementCounter()"
                         src="https://cdn.lordicon.com/mecwbjnp.json"
                         trigger="hover"
                         colors="primary:#4d1803,secondary:#4d1803"
@@ -52,12 +52,12 @@
                     </lord-icon>
                 </div>
 
-                <h2 class="me-4">{{ apartment.price }}0$</h2>
+                <h2 class="me-4 text-secondary">{{ apartment.price }}0$</h2>
             </div>
 
             <div class="user-container">
                <div class="d-flex align-items-center">
-                    <lord-icon
+                    <lord-icon 
                         src="https://cdn.lordicon.com/dxjqoygy.json"
                         trigger="hover"
                         colors="primary:#c7ef00,secondary:#c7ef00"
@@ -72,7 +72,7 @@
 
         </div>
 
-        <Dialog header="Header" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
+        <Dialog header="Conttatami" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
             <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -108,6 +108,7 @@ export default {
             apartment: '',
             stars : '',
             dates : "",
+            peopleCounter: 1,
             displayPosition: false, //PRIME VUE DIALOG 
             position: 'center', //PRIME VUE DIALOG 
         }
@@ -118,6 +119,19 @@ export default {
     },
 
     methods:{
+        decrementCounter(){
+            if(this.peopleCounter === 1 ){
+                return
+            }else{
+
+                this.peopleCounter--
+            }
+        },
+
+        incrementCounter(){
+            this.peopleCounter++
+        },
+
          openPosition(position) {
             this.position = position;
             this.displayPosition = true;

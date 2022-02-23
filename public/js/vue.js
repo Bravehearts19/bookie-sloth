@@ -2490,6 +2490,7 @@ __webpack_require__.r(__webpack_exports__);
       apartment: '',
       stars: '',
       dates: "",
+      peopleCounter: 1,
       displayPosition: false,
       //PRIME VUE DIALOG 
       position: 'center' //PRIME VUE DIALOG 
@@ -2503,6 +2504,16 @@ __webpack_require__.r(__webpack_exports__);
     Dialog: primevue_dialog__WEBPACK_IMPORTED_MODULE_3___default.a
   },
   methods: {
+    decrementCounter: function decrementCounter() {
+      if (this.peopleCounter === 1) {
+        return;
+      } else {
+        this.peopleCounter--;
+      }
+    },
+    incrementCounter: function incrementCounter() {
+      this.peopleCounter++;
+    },
     openPosition: function openPosition(position) {
       this.position = position;
       this.displayPosition = true;
@@ -17958,12 +17969,22 @@ var render = function () {
                     attrs: {
                       src: "https://cdn.lordicon.com/rivoakkk.json",
                       trigger: "hover",
-                      colors: "primary:#A2BA02,secondary:#4d1803",
+                      colors:
+                        _vm.peopleCounter === 1
+                          ? "primary:#A2BA02,secondary:#4d1803"
+                          : "primary:#4d1803,secondary:#4d1803",
                       stroke: "150",
+                    },
+                    on: {
+                      click: function ($event) {
+                        return _vm.decrementCounter()
+                      },
                     },
                   }),
                   _vm._v(" "),
-                  _c("h2", { staticClass: "mx-4 my-0" }, [_vm._v("1")]),
+                  _c("h2", { staticClass: "mx-4 my-0" }, [
+                    _vm._v(_vm._s(_vm.peopleCounter)),
+                  ]),
                   _vm._v(" "),
                   _c("lord-icon", {
                     staticStyle: { width: "50px", height: "50px" },
@@ -17973,12 +17994,17 @@ var render = function () {
                       colors: "primary:#4d1803,secondary:#4d1803",
                       stroke: "150",
                     },
+                    on: {
+                      click: function ($event) {
+                        return _vm.incrementCounter()
+                      },
+                    },
                   }),
                 ],
                 1
               ),
               _vm._v(" "),
-              _c("h2", { staticClass: "me-4" }, [
+              _c("h2", { staticClass: "me-4 text-secondary" }, [
                 _vm._v(_vm._s(_vm.apartment.price) + "0$"),
               ]),
             ]
@@ -18032,7 +18058,7 @@ var render = function () {
         "Dialog",
         {
           attrs: {
-            header: "Header",
+            header: "Conttatami",
             visible: _vm.displayPosition,
             containerStyle: { width: "50vw" },
             position: _vm.position,
