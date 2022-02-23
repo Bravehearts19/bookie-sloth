@@ -21,7 +21,10 @@ class MessageController extends Controller
     {
         $messages = Message::where('apartment_id', $apartment->id)->with('apartment')->get();
 
-        return view('user.apartment.messages.index', compact("messages"));
+        return view('user.apartment.messages.index', [
+            "messages" => $messages,
+            "showAll" => false
+        ]);
     }
 
     //show all user messages
@@ -32,10 +35,14 @@ class MessageController extends Controller
         // dd($user->apartments()->pluck('id'), $messages);
         $userMessages = [];
         foreach ($messages as $message) {
-            if (in_array($message->apartment_id, $apartmentsIds));
-            array_push($userMessages, $message);
+            if (in_array($message->apartment_id, $apartmentsIds)) {
+                array_push($userMessages, $message);
+            }
         }
-        return view('user.apartment.messages.index', compact("messages"));
+        return view('user.apartment.messages.index', [
+            "messages" => $userMessages,
+            "showAll" => true
+        ]);
     }
 
     // /**
