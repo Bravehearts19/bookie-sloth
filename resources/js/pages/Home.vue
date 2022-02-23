@@ -1,6 +1,43 @@
 <template>
-    <div class="h-100 bg-info">
-        <div class="row h-100 align-items-center bg-info">
+    <div class="hotel_container bg-info">
+        <div class="row row-cols-3">
+            <div class="col" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
+                <div class="card_container">
+                    <div class="py-5 d-flex align-items-center">
+                        <div class="image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg">
+                            <img :src="hotel.cover_img" :alt="hotel.name" class="w-100 py-3">
+                        </div>
+
+                        <div class="apartment-card-header bg-secondary py-3 rounded shadow-lg">
+                            <h1 class="text-white text-center mb-0">{{hotel.name}}</h1>
+                            <h4 class="text-white text-center mb-0">{{hotel.address}} - {{hotel.location}} - {{hotel.cap}}</h4>
+                        </div>
+
+                        <button class="btn btn-secondary mt-5 w-25 mx-auto">Discover</button>
+                        
+                        <div class="d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg">
+                            <h6 class="text-secondary mb-0">price: <span class="text-primary">{{hotel.price}}</span></h6>
+                            <h6 class="text-secondary mb-0">bathrooms: {{hotel.n_bathrooms}}</h6>
+                            <h6 class="text-secondary mb-0">guests: {{hotel.n_guests}}</h6>
+                            <h6 class="text-secondary mb-0">rooms: {{hotel.n_rooms}}</h6>
+                            <h6 class="text-secondary mb-0">sizes: {{hotel.size}} mq</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="pagination overflow-auto">
+            <li class="page-item"
+                :class="(index === activePage) ? 'active' : ''"
+                v-for="index in totalPages"
+                :key="'page-'+index">
+                <a href="#" class="page-link"
+                @click="getHotelData(index)">
+                    {{index}}
+                </a>
+            </li>
+        </ul>
+        <!-- <div class="row h-100 align-items-center bg-info">
             <div class="col">
                 <div class="card-container">
                     <div class="apartment-card py-5 border-top border-bottom border-primary d-flex flex-column justify-content-center"
@@ -39,13 +76,12 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
 
-import MegaMenu from 'primevue/megamenu';
 import axios from "axios";
 import Paginator from 'primevue/paginator';
 
@@ -167,5 +203,21 @@ export default {
 <style lang="scss" scoped>
 @import '../../sass/_variables.scss';
 
+.hotel_container {
+    background-image: url('/images/wood_template.svg');
+    background-repeat: repeat;
+    background-size: contain;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 0;
+}
+.row {
+    gap: 20px;
+}
+/* .card_container {
 
+} */
 </style>
