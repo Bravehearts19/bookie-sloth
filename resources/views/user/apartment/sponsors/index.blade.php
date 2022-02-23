@@ -22,11 +22,11 @@
                     <div class="d-flex mt-5 justify-content-around align-items-center">
                         <div class="input-group w-50 shadow-lg rounded">
                             <span class="input-group-text bg-secondary text-white border-secondary">$</span>
-                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="4" disabled>
-                            <span class="input-group-text bg-secondary text-white border-secondary">.99</span>
+                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="{{ $sponsors[1]->price }}" disabled>
+                            
                         </div>
-                        <button class="btn btn-outline-secondary">
-                            Purchase
+                        <button class="btn btn-outline-secondary purchase-btn" value="{{ $sponsors[1]->price }}">
+                            Acquista
                         </button>
                     </div>
                 </div>
@@ -51,11 +51,11 @@
                     <div class="d-flex mt-5 justify-content-around align-items-center">
                         <div class="input-group w-50 shadow-lg rounded">
                             <span class="input-group-text bg-secondary text-white border-secondary">$</span>
-                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="9" disabled>
-                            <span class="input-group-text bg-secondary text-white border-secondary">.99</span>
+                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="{{ $sponsors[2]->price }}" disabled>
+                            
                         </div>
-                        <button class="btn btn-outline-secondary">
-                            Purchase
+                        <button class="btn btn-outline-secondary purchase-btn" value="{{ $sponsors[2]->price }}">
+                            Acquista
                         </button>
                     </div>
                 </div>
@@ -79,26 +79,29 @@
                     <div class="d-flex mt-5 justify-content-around align-items-center">
                         <div class="input-group w-50 shadow-lg rounded">
                             <span class="input-group-text bg-secondary text-white border-secondary">$</span>
-                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="14" disabled>
-                            <span class="input-group-text bg-secondary text-white border-secondary">.99</span>
+                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="{{ $sponsors[3]->price }}" disabled>
+                            
                         </div>
-                        <button class="btn btn-outline-secondary">
-                            Purchase
+                        <button class="btn btn-outline-secondary purchase-btn" value="{{ $sponsors[3]->price }}">
+                            Acquista
                         </button>
                     </div>
                 </div>
             </div>
+
+            <div id="dropin-container"></div>
+            <button id="submit-button">Request payment method</button>
         </div>
 
-        <div class="container">
-        <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-        <div id="dropin-container"></div>
-        <button id="submit-button">Request payment method</button>
-        </div>
-        </div>
-        </div>
+       
+        
+        
         <script>
+        let amount = 0
+
+        const buttons = document.querySelectorAll('.purchase-btn')
+        buttons.forEach( button => { button.addEventListener('click', function() { amount = button.value; }) });
+
         var button = document.querySelector('#submit-button');
         braintree.dropin.create({
         authorization: "sandbox_x6gbkvj7_dw85tnr9p5v7xt7n",
@@ -106,7 +109,7 @@
         }, function (createErr, instance) {
         button.addEventListener('click', function () {
         instance.requestPaymentMethod(function (err, payload) {
-        $.get('{{ route('payment.make') }}', {payload}, function (response) {
+        $.get('{{ route('payment.make') }}', {payload,amount}, function (response) {
         if (response.success) {
         alert('Payment successfull!');
         } else {
@@ -116,6 +119,8 @@
         });
         });
         });
+
+        
         </script>
 
     </body>

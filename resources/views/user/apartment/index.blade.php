@@ -28,7 +28,7 @@
                     <a href="/apartment/{{$apartment->id}}" class="btn btn-secondary text-primary">Dettagli appartamento</a>
                     <a href="{{route('user.apartment.edit', $apartment->id)}}" class="btn btn-primary text-secondary">Modifica appartamento</a>
                     <a href="{{route('user.message.index', $apartment->id)}}" class="btn btn-white text-secondary">Visualizza messaggi</a>
-                    <a href="{{route('sponsors')}}" class="btn btn-dark text-white">Sponsorizza appartamento</a>
+                    <a href="{{route('user.sponsors', $apartment)}}" class="btn btn-dark text-white">Sponsorizza appartamento</a>
                 </div>
             </div>
             @endforeach
