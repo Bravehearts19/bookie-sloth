@@ -7,12 +7,10 @@
             <div class="img_container">
                 <img :src="apartment.cover_img" alt="">
             </div>
-
             <div id="map-div"></div>
         </div>
     </div>
 </template>
-
 <script>
 export default {
     name: 'Apartment',
@@ -26,13 +24,10 @@ export default {
         .then((resp) => {
             console.log(resp.data);
             this.apartment = resp.data[this.$route.params.id - 1]; /* la resp.data ritorna un oggetto con chiave id dell'oggetto -1 */
-
             const HOTEL_COORDINATES = {lng: this.apartment.x_coordinate, lat: this.apartment.y_coordinate};
-
             const API_KEY = 'onx0t6tyRKJCe8Q2JIAWTMwu3Opxi7wH';
             const APPLICATION_NAME = 'bookie_sloth';
             const APPLICATION_VERSION = '1.0';
-
             tt.setProductInfo(APPLICATION_NAME, APPLICATION_VERSION);
             var map = tt.map({
             key: API_KEY,
@@ -44,13 +39,11 @@ export default {
     }
 }
 </script>
-
 <style lang="scss" scoped>
 #map-div{
     height: 400px;
     width: 400px;
 }
-
 .img_container {
     aspect-ratio: 1/1;
     img {
