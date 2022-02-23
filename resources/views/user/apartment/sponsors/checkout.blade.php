@@ -1,20 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@if(session(success_message))
-    <div class="alert alert-success">
-        {{ session('success_message') }}
-    </div>
-@endif
-@if(count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach($errors->all() as $error)
-                <li> {{ $error }} </li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 <div>
     <form method="post" id="payment-form" action="{{ url('/checkout') }}">
             <section>
@@ -34,8 +20,6 @@
             <button class="button" type="submit"><span>Test Transaction</span></button>
     </form>
 </div>
-@endsection
-
 <script src="https://js.braintreegateway.com/web/dropin/1.33.0/js/dropin.min.js"></script>
 <script>
     var form = document.querySelector('#payment-form');
@@ -68,3 +52,6 @@
         });
     });
 </script>
+
+@endsection
+

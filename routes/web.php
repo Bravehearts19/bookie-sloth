@@ -38,7 +38,7 @@ Route::namespace("User")
     });
 
 Route::get('/checkout', function() {
-    return view('user.apartments.sponsors.checkout');
+    return view('user\apartment\sponsors\checkout');
 });
 
 Route::get('{any?}', function () {
