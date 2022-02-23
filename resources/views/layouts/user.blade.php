@@ -46,6 +46,13 @@
             </div>
             
             <div class="d-flex align-items-center m-3">
+                <a href="/">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/gmzxduhd.json"
+                        trigger="hover"
+                        style="width:50px;height:50px">
+                    </lord-icon>
+                </a>
                 <a href="{{route('user.messages', Auth::user()->id)}}">
                     <lord-icon
                         src="https://cdn.lordicon.com/rhvddzym.json"
@@ -53,10 +60,8 @@
                         style="width:50px;height:50px">
                     </lord-icon>
                 </a>
-                </a>
             <form action="{{route('logout')}}" method="post">
                 @csrf
-                <div class="d-flex align-items-center">
                     <button type="submit" class="user-button">
                         <lord-icon
                         src="https://cdn.lordicon.com/lywgqtim.json"
@@ -64,7 +69,6 @@
                         style="width:50px;height:50px">
                         </lord-icon>
                     </button>
-                </div>
             </form>
 
             <div class="d-flex align-items-center">
