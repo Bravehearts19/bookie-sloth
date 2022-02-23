@@ -19,9 +19,9 @@ Auth::routes();
 /* Route::get(
     return '/user/{id}/show';
     ) */
-Route::get('/glisponsor', function(){
-    return view('user\apartment\sponsors\index');
-});
+//Route::get('/glisponsor', function(){
+//    return view('user\apartment\sponsors\index');
+//});
 
 
 Route::namespace("User")
