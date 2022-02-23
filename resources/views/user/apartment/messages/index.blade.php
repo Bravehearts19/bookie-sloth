@@ -1,20 +1,31 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('content')
-<h2>Messaggi per </h2>
 <div class="container mt-5">
   <div class="row">
-    <ul class="list-group">
-      @foreach($messages as $message)
-      <a href="{{route('user.message.show', [$message->apartment->id, $message->id])}}" class="list-group-item">Messaggio da {{$message->name}}</a>
-      @endforeach
-    </ul>
+    <div class="card text-center messages-card">
+      <h3 class="card-header">
+        Messaggi
+      </h3>
+      <div class="card-body">
+        @if($messages->count() === 0)
+        <div class="alert alert-dark" role="alert">
+          Non hai nuovi messaggi.
+        </div>
+        @endif
+        <ul class="list-group">
+          @foreach($messages as $message)
+          <a href="{{route('user.message.show', [$message->apartment->id, $message->id])}}" class="list-group-item list-group-item-action" aria-current="true">
+            Messaggio da <strong>{{$message->name}}</strong>
+          </a>
+          @endforeach
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 @endsection
-{{-- <h2>Messaggi</h2>
-@foreach ($messages as $message)
-    {{$message->message}}
-    {{$message->name}}
-    {{$message->email}}
-@endforeach --}}
+
+{{-- @foreach($messages as $message)
+      <a href="{{route('user.message.show', [$message->apartment->id, $message->id])}}" class="list-group-item">Messaggio da {{$message->name}}</a>
+      @endforeach --}}

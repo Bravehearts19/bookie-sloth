@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Apartment;
 use App\Apartment;
 use App\Http\Controllers\Controller;
 use App\Message;
+use App\User;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -14,10 +15,26 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //show all messages for an apartment
     public function index(Apartment $apartment)
     {
         $messages = Message::where('apartment_id', $apartment->id)->with('apartment')->get();
 
+        return view('user.apartment.messages.index', compact("messages"));
+    }
+
+    //show all user messages
+    public function showUserMessages(User $user)
+    {
+        $messages = Message::all();
+        $apartmentsIds = $user->apartments()->pluck('id')->toArray();
+        // dd($user->apartments()->pluck('id'), $messages);
+        $userMessages = [];
+        foreach ($messages as $message) {
+            if (in_array($message->apartment_id, $apartmentsIds));
+            array_push($userMessages, $message);
+        }
         return view('user.apartment.messages.index', compact("messages"));
     }
 
