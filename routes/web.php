@@ -80,7 +80,7 @@ Route::namespace("User")
             if ($result->success) {
                 $transaction = $result->transaction;
                 // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
-                return back()->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);
+                return redirect()->route('user.apartment.index')->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);
             } else {
                 $errorString = "";
         
@@ -90,7 +90,7 @@ Route::namespace("User")
         
                 // $_SESSION["errors"] = $errorString;
                 // header("Location: " . $baseUrl . "index.php");
-                return back()->withErrors('An error occurred with the message:'. $result->message);
+                return redirect()->route('user.apartment.index')->withErrors('An error occurred with the message:'. $result->message);
                 
             }
         })->name('apartment.{apartment}.checkout');
