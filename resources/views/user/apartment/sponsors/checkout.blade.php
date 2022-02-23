@@ -1,8 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
+@if(session(success_message))
+    <div class="alert alert-success">
+        {{ session('success_message') }}
+    </div>
+@endif
+@if(count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li> {{ $error }} </li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div>
-    <form method="post" id="payment-form" action="{{ url('/checkout') }}">
+    <form method="post" id="payment-form" action="{{ route('user.apartment.{apartment}.checkout', $apartment_id) }}">
+        @csrf
             <section>
                 <label for="amount">
                     <span class="input-label">Amount</span>
