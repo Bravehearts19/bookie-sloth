@@ -9,17 +9,19 @@ use Illuminate\Http\Request;
 
 class SponsorController extends Controller
 {
-    public function index(Apartment $apartment) {
+    public function index(Apartment $apartment)
+    {
         $sponsors = Sponsor::all();
 
         return view('user.apartment.sponsors.index', ['sponsors' => $sponsors, 'apartment' => $apartment]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request, Apartment $apartment)
+    {
         $data = $request->all();
-        
-        $apartment->sponsors()->attach($data);
+        $sponsorToApply = Sponsor::where('id', $data["sponsor"])->first();
+        $apartment->sponsors()->attach($sponsorToApply->id);
 
-        return redirect()->route('user.apartment.index');  
+        return redirect()->route('user.apartment.index')->with('msg', 'Sponsor applicato!');
     }
 }
