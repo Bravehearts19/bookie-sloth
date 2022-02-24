@@ -1,6 +1,6 @@
 <template>
     <div class="hotel_container bg-info">
-    <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''">
+    <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
         <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
             <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
             <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
@@ -111,7 +111,8 @@ export default {
             PAGINATION_OFFSET: 5,
             url: '/api/search/filters?',
             pageLoaded: false,
-            hideLoading:false
+            hideLoading:false,
+            deleteLoading:false
         }
     },
     props : {
@@ -148,6 +149,9 @@ export default {
             setTimeout(()=>{
                 this.hideLoading = true;
             }, 3000)
+            setTimeout(()=>{
+                this.deleteLoading = true;
+            }, 5000)
         },
         async getRecordsCount(){
             const {data} = await axios.get('api/hotel/index');
