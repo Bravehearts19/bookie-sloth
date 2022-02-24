@@ -2766,7 +2766,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       PAGINATION_OFFSET: 5,
       url: '/api/search/filters?',
       pageLoaded: false,
-      hideLoading: false
+      hideLoading: false,
+      deleteLoading: false
     };
   },
   props: {
@@ -2813,8 +2814,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 setTimeout(function () {
                   _this.hideLoading = true;
                 }, 3000);
+                setTimeout(function () {
+                  _this.deleteLoading = true;
+                }, 5000);
 
-              case 9:
+              case 10:
               case "end":
                 return _context.stop();
             }
@@ -17502,6 +17506,7 @@ var render = function () {
       {
         staticClass:
           "loading-screen d-flex justify-content-center align-items-center",
+        class: _vm.deleteLoading === true ? "d-none" : "",
         style:
           _vm.hideLoading === true ? "opacity:0; transition:opacity 0.3s" : "",
       },
