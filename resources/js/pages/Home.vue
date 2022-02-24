@@ -22,10 +22,10 @@
         <div class="container">
             <div class="row row-cols-3" :style="hideLoading===false ? 'display:none' : ''">
                 <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
-                    <div class="card_container bg-primary">
+                    <div class="card_container bg-primary shadow-lg">
                         
                         <div class="d-flex flex-column align-items-center pt-3 w-50">
-                            <div class="image-container">
+                            <div class="image-container shadow-lg">
                                 <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
                             </div>
                             <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
