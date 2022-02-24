@@ -113,6 +113,14 @@ export default {
 <style lang="scss">
 @import '../../sass/_variables.scss';
 
+#searchBar:hover {
+  cursor: pointer;
+}
+
+header {
+  border-bottom: none;
+}
+
 .border-radius-to-search-bar {
   border-top-left-radius: $border-radius-to-search-bar;
   border-bottom-left-radius: $border-radius-to-search-bar;
@@ -131,11 +139,9 @@ export default {
 .border-none {
   border: none;
 }
-#searchBar:hover {
-  cursor: pointer;
-}
 .form-control:focus {
   box-shadow: none;
 }
+
 
 </style>
