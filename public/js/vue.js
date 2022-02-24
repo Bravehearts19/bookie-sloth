@@ -17595,7 +17595,10 @@ var render = function () {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "row row-cols-3" },
+      {
+        staticClass: "row row-cols-3",
+        style: _vm.hideLoading === false ? "display:none" : "",
+      },
       _vm._l(_vm.hotelArray, function (hotel, index) {
         return _c("div", { key: "hotel-" + index, staticClass: "col" }, [
           _c("div", { staticClass: "card_container" }, [
