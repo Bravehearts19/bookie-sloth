@@ -2530,6 +2530,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2578,9 +2585,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    console.log(this.$route.params.id);
     axios.get("/api/hotel/" + this.$route.params.id).then(function (resp) {
       console.log(resp.data);
-      _this.apartment = resp.data[_this.$route.params.id - 1];
+      _this.apartment = resp.data[0];
       /* la resp.data ritorna un oggetto con chiave id dell'oggetto -1 */
 
       var HOTEL_COORDINATES = {
@@ -17212,7 +17220,12 @@ var render = function () {
     [
       _c("div", { staticClass: "img-container" }, [
         _c("img", {
-          attrs: { src: _vm.apartment.cover_img, alt: _vm.apartment.name },
+          attrs: {
+            src: _vm.apartment.cover_img.includes("http")
+              ? _vm.apartment.cover_img
+              : "/storage/" + _vm.apartment.cover_img,
+            alt: _vm.apartment.name,
+          },
         }),
       ]),
       _vm._v(" "),
@@ -17425,68 +17438,102 @@ var render = function () {
               _vm.displayPosition = $event
             },
           },
-          scopedSlots: _vm._u([
-            {
-              key: "footer",
-              fn: function () {
-                return [
-                  _c("Button", {
-                    staticClass: "p-button-text my-dialog",
-                    attrs: { label: "Annulla", icon: "pi pi-times" },
-                    on: { click: _vm.closePosition },
-                  }),
-                  _vm._v(" "),
-                  _c("Button", {
-                    staticClass: "my-dialog",
-                    attrs: {
-                      label: "Invia",
-                      icon: "pi pi-check",
-                      autofocus: "",
-                    },
-                    on: { click: _vm.closePosition },
-                  }),
-                ]
-              },
-              proxy: true,
-            },
-          ]),
         },
         [
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              {
-                staticClass: "form-label",
-                attrs: { for: "exampleFormControlInput1" },
-              },
-              [_vm._v("Indirizzo Email")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
+          _c(
+            "form",
+            {
               attrs: {
-                type: "email",
-                id: "exampleFormControlInput1",
-                placeholder: "nome@esempio.com",
+                method: "post",
+                action: "/api/message/" + _vm.apartment.id + "/store",
               },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              {
-                staticClass: "form-label",
-                attrs: { for: "exampleFormControlTextarea1" },
-              },
-              [_vm._v("Messaggio")]
-            ),
-            _vm._v(" "),
-            _c("textarea", {
-              staticClass: "form-control",
-              attrs: { id: "exampleFormControlTextarea1", rows: "3" },
-            }),
-          ]),
+            },
+            [
+              _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleFormControlInput1" },
+                  },
+                  [_vm._v("Nome")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "name",
+                    id: "exampleFormControlInput1",
+                    placeholder: "nome",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleFormControlInput1" },
+                  },
+                  [_vm._v("Indirizzo Email")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    name: "email",
+                    id: "exampleFormControlInput1",
+                    placeholder: "nome@esempio.com",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleFormControlTextarea1" },
+                  },
+                  [_vm._v("Messaggio")]
+                ),
+                _vm._v(" "),
+                _c("textarea", {
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "message",
+                    id: "exampleFormControlTextarea1",
+                    rows: "3",
+                  },
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: { type: "hidden", name: "apartmentId" },
+                  domProps: { value: _vm.apartment.id },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("Button", {
+                staticClass: "p-button-text my-dialog",
+                attrs: { label: "Annulla", icon: "pi pi-times" },
+                on: { click: _vm.closePosition },
+              }),
+              _vm._v(" "),
+              _c("Button", {
+                staticClass: "my-dialog",
+                attrs: {
+                  label: "Invia",
+                  type: "submit",
+                  icon: "pi pi-check",
+                  autofocus: "",
+                },
+              }),
+            ],
+            1
+          ),
         ]
       ),
     ],
@@ -17683,7 +17730,12 @@ var render = function () {
                   [
                     _c("img", {
                       staticClass: "w-100 py-3",
-                      attrs: { src: hotel.cover_img, alt: hotel.name },
+                      attrs: {
+                        src: hotel.cover_img.includes("http")
+                          ? hotel.cover_img
+                          : "/storage/" + hotel.cover_img,
+                        alt: hotel.name,
+                      },
                     }),
                   ]
                 ),
@@ -34184,7 +34236,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
