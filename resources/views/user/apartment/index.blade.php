@@ -13,7 +13,7 @@
                 <div class="card mb-3 h-100">
                     <img src="{{asset('storage/' . $apartment->cover_img)}}" class="card-img-top h-100" alt="{{$apartment->name}}">
                     <div class="card-body">
-                        <h4 class="card-title">{{$apartment->name}}</h4>
+                        <h4 class="card-title d-flex justify-content-between align-items-center">{{$apartment->name}} @if($apartment->sponsors()->first()) <img src="/images/{{$apartment->sponsors()->first()->level}}_badge.svg" alt=""> @endif</h4>
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Prezzo: </strong> €{{$apartment->price}}</li>
                             <li class="list-group-item"><strong>Dimensione: </strong> {{$apartment->size}} mq.</li>
@@ -28,6 +28,7 @@
                     <a href="/apartment/{{$apartment->id}}" class="btn btn-secondary text-primary">Dettagli appartamento</a>
                     <a href="{{route('user.apartment.edit', $apartment->id)}}" class="btn btn-primary text-secondary">Modifica appartamento</a>
                     <a href="{{route('user.message.index', $apartment->id)}}" class="btn btn-white text-secondary">Visualizza messaggi</a>
+                    <a href="{{route('user.sponsors', $apartment)}}" class="btn btn-dark text-white">Sponsorizza appartamento</a>
                 </div>
             </div>
             @endforeach

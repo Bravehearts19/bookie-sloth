@@ -46,7 +46,7 @@
                     <div class="col-8">
                         <div class="card-body">
                             <h4 class="card-title">Sponsorizzati</h4>
-                            {{-- <h3 class="card-text">{{Auth::user()->apartments()->count()}}</h3> --}}
+                            <h3 class="card-text">{{Auth::user()->apartments()->has('sponsors')->count()}}</h3>
                         </div>
                     </div>
                     <div class="col-4 d-flex align-items-center justify-content-center">
