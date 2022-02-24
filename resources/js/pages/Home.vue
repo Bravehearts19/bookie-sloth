@@ -21,7 +21,7 @@
                 <div class="card_container">
                     <div class="py-5 d-flex align-items-center">
                         <div class="image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg">
-                            <img :src="hotel.cover_img" :alt="hotel.name" class="w-100 py-3">
+                            <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name" class="w-100 py-3">
                         </div>
 
                         <div class="apartment-card-header bg-secondary py-3 rounded shadow-lg">

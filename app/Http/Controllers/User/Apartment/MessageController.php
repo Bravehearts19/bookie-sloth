@@ -63,7 +63,15 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $newMessage = new Message;
+        $newMessage->name = $data["name"];
+        $newMessage->email = $data["email"];
+        $newMessage->message = $data["message"];
+        $newMessage->apartment_id = $data["apartmentId"];
+
+        $newMessage->save();
+        return redirect('/apartment/' . $data["apartmentId"])->with("msg", "Messaggio inviato correttamente");
     }
 
     /**
