@@ -1,6 +1,6 @@
 <template>
     <div class="my-container">
-        <div class="img-container"><img :src="apartment.cover_img" :alt="apartment.name"></div>
+        <div class="img-container"><img :src="apartment.cover_img.includes('http') ? apartment.cover_img :`/storage/${apartment.cover_img}`" :alt="apartment.name"></div>
         
         
         <div class="data-container">
@@ -77,18 +77,25 @@
         </div>
 
         <Dialog header="Contattami!" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Indirizzo Email</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@esempio.com">
+            <form method="post" :action="'/api/message/' + apartment.id + '/store'">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nome</label>
+                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="nome">
                 </div>
                 <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Messaggio</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <template #footer>
-                <Button label="Annulla" icon="pi pi-times" @click="closePosition" class="p-button-text my-dialog" />
-                <Button label="Invia" icon="pi pi-check" @click="closePosition" autofocus class="my-dialog"/>
-            </template>
+                    <label for="exampleFormControlInput1" class="form-label">Indirizzo Email</label>
+                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@esempio.com">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Messaggio</label>
+                    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <input type="hidden" name="apartmentId" :value="apartment.id">
+                </div>
+                
+                    <Button label="Annulla" icon="pi pi-times" @click="closePosition" class="p-button-text my-dialog" />
+                    <Button label="Invia" type="submit" icon="pi pi-check" autofocus class="my-dialog"/>
+                
+            </form>
         </Dialog>
         
         <!-- <h1 class="text-secondary text-center">
@@ -150,10 +157,11 @@ export default {
     },
 
     mounted(){
+        console.log(this.$route.params.id)
         axios.get(`/api/hotel/` + this.$route.params.id)
         .then((resp) => {
             console.log(resp.data);
-            this.apartment = resp.data[this.$route.params.id - 1]; /* la resp.data ritorna un oggetto con chiave id dell'oggetto -1 */
+            this.apartment = resp.data[0]; /* la resp.data ritorna un oggetto con chiave id dell'oggetto -1 */
             const HOTEL_COORDINATES = {lng: this.apartment.x_coordinate, lat: this.apartment.y_coordinate};
 
             const API_KEY = 'on35t6tyRKJCe8Q2JIAWTMwu3Opxi7wH';
