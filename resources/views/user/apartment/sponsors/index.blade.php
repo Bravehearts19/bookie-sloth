@@ -24,7 +24,7 @@
                     <div class="d-flex mt-5 justify-content-around align-items-center">
                         <div class="input-group w-50 shadow-lg rounded">
                             <span class="input-group-text bg-secondary text-white border-secondary">$</span>
-                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="{{ $sponsor->price }}" disabled>
+                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" id="price-{{$sponsor->id}}" value="{{ $sponsor->price }}" disabled>
                             
                         </div>
                         <button class="btn btn-outline-secondary purchase-btn" value="{{ $sponsor->id }}">
@@ -48,28 +48,17 @@
         
         
         <script>
-            function upTo(el, tagName) {
-                tagName = tagName.toLowerCase();
-
-                while (el && el.parentNode) {
-                    el = el.parentNode;
-                    if (el.tagName && el.tagName.toLowerCase() == tagName) {
-                    return el;
-                    }
-                }
-                return null;
-                }
+        var price;
         const buttons = document.querySelectorAll('.purchase-btn')
         buttons.forEach( button => { button.addEventListener('click', function() {
-                document.getElementById('sponsor').value = button.value; 
+                document.getElementById('sponsor').value = button.value;
+                price=document.getElementById('price-'+ button.value).value;
                 let card = ".sponsor-" + button.value;
                 for(let i=0; i<buttons.length; i++){
                     let currentCard = document.querySelector(`.sponsor-${i+2}`);
                     currentCard.classList.remove('active');
                     currentCard.classList.add('unactive');
                 }
-                
-                
                 document.querySelector(card).classList.remove('unactive');
                 document.querySelector(card).classList.add('active');
             }) });
@@ -81,7 +70,7 @@
             }, function (createErr, instance) {
             button.addEventListener('click', function () {
             instance.requestPaymentMethod(function (err, payload) {
-            $.get('{{ route('payment.make') }}', {payload}, function (response) {
+            $.get('{{ route('payment.make') }}', {payload,price}, function (response) {
             if (response.success) {
             document.getElementById('sponsorForm').submit();
             } else {
