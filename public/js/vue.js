@@ -2745,34 +2745,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3068,7 +3040,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.row[data-v-b3c5cf30] {\n  gap: 20px;\n}\n\n/* .card_container {\n\n} */", ""]);
+exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-b3c5cf30] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-b3c5cf30] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n}\n.image-container[data-v-b3c5cf30] {\n  width: 100%;\n  border-radius: 20px;\n}\n.image-container img[data-v-b3c5cf30] {\n  border-radius: 20px;\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -17611,125 +17583,25 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "loading-screen d-flex justify-content-center align-items-center",
-        class: _vm.deleteLoading === true ? "d-none" : "",
-        style:
-          _vm.hideLoading === true ? "opacity:0; transition:opacity 0.3s" : "",
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "d-flex flex-column align-items-center",
-            style:
-              _vm.pageLoaded === true
-                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
-                : "",
-          },
-          [
-            _c("img", {
-              staticClass: "mb-3",
-              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "d-flex",
-                style:
-                  _vm.pageLoaded === true
-                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
-                    : "",
-              },
-              [
-                _c(
-                  "h2",
-                  {
-                    staticClass: "text-white me-3",
-                    style:
-                      _vm.pageLoaded === true
-                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
-                        : "",
-                  },
-                  [_vm._v("Sloth")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h2",
-                  {
-                    staticClass: "text-white ms-3 d-flex",
-                    style:
-                      _vm.pageLoaded === true
-                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
-                        : "",
-                  },
-                  [
-                    _vm._v("h\n                "),
-                    _c(
-                      "span",
-                      { style: _vm.pageLoaded === true ? "opacity:0" : "" },
-                      [_vm._v("ot")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        style:
-                          _vm.pageLoaded === true
-                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
-                            : "",
-                      },
-                      [_vm._v("el")]
-                    ),
-                  ]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "spinner-border text-primary mt-3",
-                style: _vm.pageLoaded === true ? "opacity:0" : "",
-                attrs: { role: "status" },
-              },
-              [
-                _c("span", { staticClass: "visually-hidden" }, [
-                  _vm._v("Loading..."),
-                ]),
-              ]
-            ),
-          ]
-        ),
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "row row-cols-3",
-        style: _vm.hideLoading === false ? "display:none" : "",
-      },
-      _vm._l(_vm.hotelArray, function (hotel, index) {
-        return _c("div", { key: "hotel-" + index, staticClass: "col" }, [
-          _c("div", { staticClass: "card_container" }, [
-            _c(
-              "div",
-              { staticClass: "py-5 d-flex align-items-center" },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg",
-                  },
-                  [
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        {
+          staticClass: "row row-cols-3",
+          style: _vm.hideLoading === false ? "display:none" : "",
+        },
+        _vm._l(_vm.hotelArray, function (hotel, index) {
+          return _c("div", { key: "hotel-" + index, staticClass: "col py-3" }, [
+            _c("div", { staticClass: "card_container bg-primary" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex flex-column align-items-center pt-3 w-50",
+                },
+                [
+                  _c("div", { staticClass: "image-container" }, [
                     _c("img", {
-                      staticClass: "w-100 py-3",
                       attrs: {
                         src: hotel.cover_img.includes("http")
                           ? hotel.cover_img
@@ -17737,113 +17609,122 @@ var render = function () {
                         alt: hotel.name,
                       },
                     }),
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "apartment-card-header bg-secondary py-3 rounded shadow-lg",
-                  },
-                  [
-                    _c("h1", { staticClass: "text-white text-center mb-0" }, [
-                      _vm._v(_vm._s(hotel.name)),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
+                      attrs: {
+                        to: { name: "apartment", params: { id: hotel.id } },
+                      },
+                    },
+                    [_vm._v("Discover")]
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "d-flex flex-column align-items-center w-50" },
+                [
+                  _c("div", { staticClass: "py-3" }, [
+                    _c(
+                      "h5",
+                      { staticClass: "text-secondary text-center mb-0" },
+                      [_c("strong", [_vm._v(_vm._s(hotel.name))])]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h5",
+                      { staticClass: "text-secondary text-center mb-0" },
+                      [_vm._v(_vm._s(hotel.location))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h6",
+                      { staticClass: "text-secondary text-center mb-0" },
+                      [
+                        _vm._v(
+                          _vm._s(hotel.address) + " - " + _vm._s(hotel.cap)
+                        ),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-3" }, [
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Prezzo a persona: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
                     ]),
                     _vm._v(" "),
-                    _c("h4", { staticClass: "text-white text-center mb-0" }, [
-                      _vm._v(
-                        _vm._s(hotel.address) +
-                          " - " +
-                          _vm._s(hotel.location) +
-                          " - " +
-                          _vm._s(hotel.cap)
-                      ),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di ospiti: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
                     ]),
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-secondary mt-5 w-25 mx-auto",
-                    attrs: {
-                      to: { name: "apartment", params: { id: hotel.id } },
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di stanze: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di bagni: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_bathrooms))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Dimensioni: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.size) + " mq")]),
+                    ]),
+                  ]),
+                ]
+              ),
+            ]),
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "pagination overflow-auto" },
+        _vm._l(_vm.totalPages, function (index) {
+          return _c(
+            "li",
+            {
+              key: "page-" + index,
+              staticClass: "page-item",
+              class: index === _vm.activePage ? "active" : "",
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "page-link",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.getHotelData(index)
                     },
                   },
-                  [_vm._v("Discover")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg",
-                  },
-                  [
-                    _c("h6", { staticClass: "text-secondary mb-0" }, [
-                      _vm._v("price: "),
-                      _c("span", { staticClass: "text-primary" }, [
-                        _vm._v(_vm._s(hotel.price)),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary mb-0" }, [
-                      _vm._v("bathrooms: " + _vm._s(hotel.n_bathrooms)),
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary mb-0" }, [
-                      _vm._v("guests: " + _vm._s(hotel.n_guests)),
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary mb-0" }, [
-                      _vm._v("rooms: " + _vm._s(hotel.n_rooms)),
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary mb-0" }, [
-                      _vm._v("sizes: " + _vm._s(hotel.size) + " mq"),
-                    ]),
-                  ]
-                ),
-              ],
-              1
-            ),
-          ]),
-        ])
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "pagination overflow-auto" },
-      _vm._l(_vm.totalPages, function (index) {
-        return _c(
-          "li",
-          {
-            key: "page-" + index,
-            staticClass: "page-item",
-            class: index === _vm.activePage ? "active" : "",
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "page-link",
-                attrs: { href: "#" },
-                on: {
-                  click: function ($event) {
-                    return _vm.getHotelData(index)
-                  },
                 },
-              },
-              [_vm._v("\n                " + _vm._s(index) + "\n            ")]
-            ),
-          ]
-        )
-      }),
-      0
-    ),
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(index) +
+                      "\n                "
+                  ),
+                ]
+              ),
+            ]
+          )
+        }),
+        0
+      ),
+    ]),
   ])
 }
 var staticRenderFns = []
@@ -34236,11 +34117,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\SIMO\Spindox\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
->>>>>>> dev2
 
 
 /***/ })
