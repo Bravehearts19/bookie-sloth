@@ -1,5 +1,21 @@
 <template>
     <div class="hotel_container bg-info">
+    <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''">
+        <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
+            <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
+            <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
+                <h2 class="text-white me-3" :style="pageLoaded===true ? 'animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;' : ''">Sloth</h2>
+                <h2 class="text-white ms-3 d-flex" :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">h
+                    <span :style="pageLoaded===true ? 'opacity:0' : ''">ot</span>
+                    <div :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">el</div>
+                </h2>
+            </div>
+            <div class="spinner-border text-primary mt-3" role="status" :style="pageLoaded===true ? 'opacity:0' : ''">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            
+        </div>
+    </div>
         <div class="row row-cols-3">
             <div class="col" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
                 <div class="card_container">
@@ -93,7 +109,9 @@ export default {
             totalPages : undefined,
             activePage : 1,
             PAGINATION_OFFSET: 5,
-            url: '/api/search/filters?'
+            url: '/api/search/filters?',
+            pageLoaded: false,
+            hideLoading:false
         }
     },
     props : {
@@ -124,8 +142,11 @@ export default {
             this.activePage = page
 
             const {data} = await axios.get('api/hotel/index?page=' + page);
-            this.hotelArray = data.data
-            /* console.log(data) */
+            this.hotelArray = data.data;
+            this.pageLoaded= true;
+            setTimeout(()=>{
+                this.hideLoading = true;
+            }, 3000)
         },
         async getRecordsCount(){
             const {data} = await axios.get('api/hotel/index');
