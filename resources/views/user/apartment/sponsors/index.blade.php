@@ -9,7 +9,7 @@
                 @if($sponsor->id !== 1)         
                 <div class="badge d-flex flex-column bg-primary rounded shadow-lg py-5 sponsor-{{$sponsor->id}} unactive" style="transition:filter 0.3s">
                     <img src="/images/{{$sponsor->level}}_badge.svg" alt="{{$sponsor->level}} badge" class="w-75 d-block mx-auto">
-                    <h2 class="text-dark mt-5">{{$sponsor->level}}</h2>
+                    <h2 class="text-dark mt-5">{{ucfirst($sponsor->level)}}</h2>
                     <div class="d-flex align-items-center justify-content-around">
                         <div>
                             <h5 class="mb-0 bg-info text-dark shadow-lg rounded p-2">{{$sponsor->duration}}h</h5>
@@ -37,11 +37,11 @@
             </div>
             <form id='sponsorForm' action="{{route('user.sponsors.store', $apartment->id)}}" method="post">
                 @csrf
-                <input type="hidden" id="sponsor" name="sponsor">
+                <input type="hidden" id="sponsor" name="sponsor" value="0">
 
             </form>
-            <div id="dropin-container"></div>
-            <button id="submit-button">Request payment method</button>
+            <div id="dropin-container" style="opacity:0; transition: opacity 0.6s; display:none"></div>
+            <button id="submit-button" style="opacity:0; transition: opacity 0.6s; display:none" class="btn btn-primary text-secondary">Acquista</button>
         </div>
 
        
@@ -51,6 +51,12 @@
         var price;
         const buttons = document.querySelectorAll('.purchase-btn')
         buttons.forEach( button => { button.addEventListener('click', function() {
+                document.getElementById('dropin-container').style.display = "block";
+                document.getElementById('submit-button').style.display = "block";
+                setTimeout(() => {
+                    document.getElementById('dropin-container').style.opacity = "100%";
+                    document.getElementById('submit-button').style.opacity = "100%";
+                }, 200);
                 document.getElementById('sponsor').value = button.value;
                 price=document.getElementById('price-'+ button.value).value;
                 let card = ".sponsor-" + button.value;
