@@ -29,7 +29,7 @@
                             <h4 class="text-white text-center mb-0">{{hotel.address}} - {{hotel.location}} - {{hotel.cap}}</h4>
                         </div>
 
-                        <button class="btn btn-secondary mt-5 w-25 mx-auto">Discover</button>
+                        <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary mt-5 w-25 mx-auto">Discover</router-link>
                         
                         <div class="d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg">
                             <h6 class="text-secondary mb-0">price: <span class="text-primary">{{hotel.price}}</span></h6>
