@@ -2738,6 +2738,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2748,7 +2764,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       totalPages: undefined,
       activePage: 1,
       PAGINATION_OFFSET: 5,
-      url: '/api/search/filters?'
+      url: '/api/search/filters?',
+      pageLoaded: false,
+      hideLoading: false
     };
   },
   props: {
@@ -2791,9 +2809,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _yield$axios$get = _context.sent;
                 data = _yield$axios$get.data;
                 _this.hotelArray = data.data;
-                /* console.log(data) */
+                _this.pageLoaded = true;
+                setTimeout(function () {
+                  _this.hideLoading = true;
+                }, 3000);
 
-              case 7:
+              case 9:
               case "end":
                 return _context.stop();
             }
@@ -17476,6 +17497,102 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "loading-screen d-flex justify-content-center align-items-center",
+        style:
+          _vm.hideLoading === true ? "opacity:0; transition:opacity 0.3s" : "",
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "d-flex flex-column align-items-center",
+            style:
+              _vm.pageLoaded === true
+                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
+                : "",
+          },
+          [
+            _c("img", {
+              staticClass: "mb-3",
+              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "d-flex",
+                style:
+                  _vm.pageLoaded === true
+                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
+                    : "",
+              },
+              [
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white me-3",
+                    style:
+                      _vm.pageLoaded === true
+                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [_vm._v("Sloth")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white ms-3 d-flex",
+                    style:
+                      _vm.pageLoaded === true
+                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [
+                    _vm._v("h\n                "),
+                    _c(
+                      "span",
+                      { style: _vm.pageLoaded === true ? "opacity:0" : "" },
+                      [_vm._v("ot")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        style:
+                          _vm.pageLoaded === true
+                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                            : "",
+                      },
+                      [_vm._v("el")]
+                    ),
+                  ]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "spinner-border text-primary mt-3",
+                style: _vm.pageLoaded === true ? "opacity:0" : "",
+                attrs: { role: "status" },
+              },
+              [
+                _c("span", { staticClass: "visually-hidden" }, [
+                  _vm._v("Loading..."),
+                ]),
+              ]
+            ),
+          ]
+        ),
+      ]
+    ),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "row row-cols-3" },
@@ -33986,7 +34103,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Lorenzo Rottigni\Documents\Boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
