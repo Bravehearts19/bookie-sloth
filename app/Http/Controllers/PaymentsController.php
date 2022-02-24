@@ -10,11 +10,12 @@ class PaymentsController extends Controller
 
     function make(Request $request)
     {
+        $data = $request->all();
+        $price = $data["price"];
         $payload = $request->input('payload', false);
         $nonce = $payload['nonce'];
-        $amount = $request->amount;
         $status = Braintree\Transaction::sale([
-            'amount' => $amount,
+            'amount' => $price,
             'paymentMethodNonce' => $nonce,
             'options' => [
                 'submitForSettlement' => True
