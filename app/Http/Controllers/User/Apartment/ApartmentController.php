@@ -52,13 +52,14 @@ class ApartmentController extends Controller
         $request->validate([
             'name' => 'required|string',
             'price' => 'required|numeric|min:0|max:32767',
-            'cover_img' => 'required',
-            'size' => 'required|integer|between:0,32.767',
+            'cover_img' => 'file|required',
+            'size' => 'required|integer|between:0,32767',
             'address' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'n_guests' => 'required|integer|between:0,255',
             'n_rooms' => 'required|integer|between:0,255',
-            'n_bathrooms' => 'integer|between:0,255'
+            'n_bathrooms' => 'integer|between:0,255',
+            'services' => 'required'
         ]);
 
         $data = $request->all();
@@ -141,12 +142,13 @@ class ApartmentController extends Controller
             'name' => 'required|string',
             'price' => 'required|numeric|min:0|max:32767',
             'cover_img' => 'file',
-            'size' => 'required|integer|between:0,32.767',
+            'size' => 'required|integer|between:0,32767',
             'address' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'n_guests' => 'required|integer|between:0,255',
             'n_rooms' => 'required|integer|between:0,255',
-            'n_bathrooms' => 'integer|between:0,255'
+            'n_bathrooms' => 'integer|between:0,255',
+            'services' => 'required'
         ]);
 
 

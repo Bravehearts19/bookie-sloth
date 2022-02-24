@@ -26,7 +26,7 @@
 
             <div class="col">
                 <label for="n_rooms" class="form-label text-primary">Numero Stanze *</label>
-                <input type="number" class="form-control @error('n_rooms') is-invalid @enderror" name='n_rooms' id="n_rooms" min="0" aria-describedby="emailHelp" value="{{ old('n_rooms') }} required" >
+                <input type="number" class="form-control @error('n_rooms') is-invalid @enderror" name='n_rooms' id="n_rooms" min="0" aria-describedby="emailHelp" value="{{ old('n_rooms') }}" required>
                 @error('n_rooms')
                     <span class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -100,10 +100,10 @@
         <div class="mb-3">
             <label for="cover_img" class="form-label text-primary">Immagine di copertina *</label>
             <div class="input-group mb-3">
-                <input type="file" class="form-control" name="cover_img" id="file_upload">
+                <input type="file" class="form-control @error('cover_img') is-invalid @enderror" name="cover_img" id="file_upload">
             </div>
             @error('cover_img')
-                <span class="invalid-feedback">
+                <span class="invalid-feedback d-block">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
@@ -114,7 +114,7 @@
             <div class="row row-cols-12">
                 <input type="hidden" name="services" id="formServices">
                 @foreach ($services as $service)
-                <div class="col mt-3 h-100">
+                <div class="col mt-3 h-100 service" style="opacity:0; transition:opacity 0.5s">
                     <input onclick="addService({{($service->id)}})" type="checkbox" class="btn-check" id="btncheck{{$service->id}}" autocomplete="off">
                     <label class="btn btn-outline-primary" for="btncheck{{$service->id}}">
                         <lord-icon
@@ -126,8 +126,19 @@
                     </label>
                 </div>
                 @endforeach
+                @error('services')
+                <span class="invalid-feedback d-block">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
                 <script>
+                    window.addEventListener("DOMContentLoaded", ()=>{
+                        servicesBoxes.forEach((serviceBox)=>{
+                        serviceBox.style.opacity="100%";   
+                        })
+                    })
                     let services = [];
+                    let servicesBoxes = document.querySelectorAll("div.service");
                     function addService(id){
                         if(services.includes(id)){
                         const indexOfService = services.indexOf(id)
@@ -139,6 +150,7 @@
                         let servicesHidden= document.getElementById("formServices");
                         servicesHidden.value=services
                     }
+                    
                 </script>
                 
             </div>

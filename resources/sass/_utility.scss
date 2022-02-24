@@ -22,3 +22,13 @@
     border-bottom-right-radius: 20px;
 }
 
+.bg-pattern{
+    background-image: url('/images/wood_template.svg');
+    background-size: 140%;
+    background-color: $lime;
+}
+
+.radius-top{
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
