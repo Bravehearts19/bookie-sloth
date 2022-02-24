@@ -1,6 +1,6 @@
 <template>
     <div class="hotel_container bg-info">
-        <!-- Inizio loading screen -->
+        <!-- Inizio loading screen -->     <!-- SCHERMATA DI CARICAMENTO DA SCOMMENTARE QUANDO SARA' FINITO IL LAYOUT DELLA HOME -->
         <!-- <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
             <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
                 <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
@@ -19,7 +19,7 @@
         <!-- Fine loading screen -->
 
         <!-- Inizio container degli hotel -->
-        <div class="container">
+        <div class="container py-5">
             <div class="row row-cols-3" :style="hideLoading===false ? 'display:none' : ''">
                 <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
                     <div class="card_container bg-primary shadow-lg">
@@ -51,11 +51,11 @@
             </div>
 
             <!-- Inizio bottoni per la paginazione -->
-            <ul class="pagination overflow-auto">
+            <ul class="pagination overflow-auto pt-5">
                 <li class="page-item"
                     :class="(index === activePage) ? 'active' : ''"
                     v-for="index in totalPages"
-                    :key="'page-'+index">
+                    :key="'page-'+ index">
                     <a href="#" class="page-link"
                     @click="getHotelData(index)">
                         {{index}}
@@ -223,13 +223,18 @@ export default {
     align-items: center;
     padding: 10px;
     border-radius: 24px;
+    height: 300px;
 }
 .image-container {
     width: 100%;
     border-radius: 20px;
+    height: 150px;
+    aspect-ratio: 2/1.5;
     img {
         border-radius: 20px;
         width: 100%;
+        height: 100%;
+        aspect-ratio: 2/1.5;
     }
 }
 </style>
