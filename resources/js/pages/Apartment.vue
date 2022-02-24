@@ -11,9 +11,13 @@
                 <h5 class="d-inline text-secondary">,{{ apartment.location}}</h5>
             </div>
 
-            <Rating class="pb-3 " v-model="stars" :cancel="false" />
+            <div class="d-flex">
+                <!-- <Rating class="pb-3 " v-model="stars" :cancel="false" /> -->
+                <Rating :value="rate" :readonly="true" :stars="rate" :cancel="false" />
+                <p v-if="rate > 0" class="ps-2">{{ rate }}.0 | {{ rate }} recensioni</p>
+            </div>    
 
-            <Calendar v-model="dates" class="pb-3" dateFormat="dd/mm/yy"  :showIcon='true' selectionMode="range" inputStyle="background-color: #A2BA02;border-radius:10px" />
+            <Calendar v-model="dates" class="pb-3" dateFormat="dd/mm/yy" placeholder='Inserisci date' :showIcon='true' selectionMode="range" inputStyle="background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;" />
 
             <div class="services-container p-3">
                 <!-- ICONE SERVIZI -->
@@ -52,7 +56,7 @@
                     </lord-icon>
                 </div>
 
-                <h2 class="me-4 text-secondary">{{ apartment.price }}0$</h2>
+                <h2 class="me-4 text-secondary">{{ apartment.price }}0€</h2>
             </div>
 
             <div class="user-container">
@@ -72,13 +76,18 @@
 
         </div>
 
-        <Dialog header="Conttatami" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
-            <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <Dialog header="Contattami!" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Indirizzo Email</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@esempio.com">
+                </div>
+                <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Messaggio</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
             <template #footer>
-                <Button label="No" icon="pi pi-times" @click="closePosition" class="p-button-text"/>
-                <Button label="Yes" icon="pi pi-check" @click="closePosition" autofocus />
+                <Button label="Annulla" icon="pi pi-times" @click="closePosition" class="p-button-text my-dialog" />
+                <Button label="Invia" icon="pi pi-check" @click="closePosition" autofocus class="my-dialog"/>
             </template>
         </Dialog>
         
@@ -104,7 +113,8 @@ export default {
     data() {
         return {
             apartment: '',
-            stars : '',
+           /*  stars : '', */
+            rate: 5,
             dates : "",
             peopleCounter: 1,
             displayPosition: false, //PRIME VUE DIALOG 
@@ -165,7 +175,7 @@ export default {
 
 .my-container{
     background-color: #B5D601;
-    height: 550px;
+    height: 75vh;
     width: 1400px;
     margin: auto;
     border-radius: 30px;
@@ -200,9 +210,8 @@ export default {
         .p-calendar{
            max-width: 300px;
                
-           .p-button-icon{
-
-               background-color: #B2CC03;
+           .p-datepicker table td > span.p-highlight{
+               
            }
         }
 
@@ -228,6 +237,7 @@ export default {
 
             .p-button{
                 background-color: #B2CC03; 
+                color: #4D1803;
                 border: #B2CC03;
                 border-radius: 20px;
                 height: 30px !important;
@@ -238,7 +248,63 @@ export default {
     }
 }
 
-        
+/* PRIME VUE */
+
+//STELLE
+::v-deep .p-rating .p-rating-icon.pi-star-fill{
+    color: #4D1803;
+}
+
+::v-deep .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover{
+    color: #4D1803;
+
+}
+
+::v-deep .p-rating .p-rating-icon:focus{
+    box-shadow: 0 0 0 0;
+}
+
+//INPUT CALENDARIO molti style sono stati inserirti Inline
+::v-deep .p-inputtext:enabled:focus{
+    box-shadow: 0 0 0 0;
+}
+
+::v-deep .p-datepicker:not(.p-datepicker-inline) .p-datepicker-header{
+    background-color: #B2CC03;
+}
+
+//BOTTONE ICONA CALENDARIO
+
+::v-deep .p-button{
+    background-color: #4D1803;
+    color:#B5D601;
+    border: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+::v-deep .p-button:enabled:hover{
+    background-color: #722304;
+    color:#B5D601;
+}
+    
+//DIALOG
+::v-deep .p-dialog .p-dialog-header{
+    background-color: #B2CC03;
+    /* margin-bottom: 10px; */
+}
+
+::v-deep .p-dialog .p-dialog-content{
+    padding-top: 20px;
+}
+
+::v-deep .p-dialog .p-dialog-footer{
+    background-color: #B2CC03;
+    padding: 5px;
+}
+
+
 
 
 
