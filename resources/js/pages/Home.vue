@@ -1,11 +1,27 @@
 <template>
     <div class="hotel_container bg-info">
-        <div class="row row-cols-3">
+    <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
+        <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
+            <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
+            <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
+                <h2 class="text-white me-3" :style="pageLoaded===true ? 'animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;' : ''">Sloth</h2>
+                <h2 class="text-white ms-3 d-flex" :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">h
+                    <span :style="pageLoaded===true ? 'opacity:0' : ''">ot</span>
+                    <div :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">el</div>
+                </h2>
+            </div>
+            <div class="spinner-border text-primary mt-3" role="status" :style="pageLoaded===true ? 'opacity:0' : ''">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            
+        </div>
+    </div>
+        <div class="row row-cols-3" :style="hideLoading===false ? 'display:none' : ''">
             <div class="col" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
                 <div class="card_container">
                     <div class="py-5 d-flex align-items-center">
                         <div class="image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg">
-                            <img :src="hotel.cover_img" :alt="hotel.name" class="w-100 py-3">
+                            <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name" class="w-100 py-3">
                         </div>
 
                         <div class="apartment-card-header bg-secondary py-3 rounded shadow-lg">
@@ -13,7 +29,7 @@
                             <h4 class="text-white text-center mb-0">{{hotel.address}} - {{hotel.location}} - {{hotel.cap}}</h4>
                         </div>
 
-                        <button class="btn btn-secondary mt-5 w-25 mx-auto">Discover</button>
+                        <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary mt-5 w-25 mx-auto">Discover</router-link>
                         
                         <div class="d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg">
                             <h6 class="text-secondary mb-0">price: <span class="text-primary">{{hotel.price}}</span></h6>
@@ -93,7 +109,10 @@ export default {
             totalPages : undefined,
             activePage : 1,
             PAGINATION_OFFSET: 5,
-            url: '/api/search/filters?'
+            url: '/api/search/filters?',
+            pageLoaded: false,
+            hideLoading:false,
+            deleteLoading:false
         }
     },
     props : {
@@ -124,8 +143,15 @@ export default {
             this.activePage = page
 
             const {data} = await axios.get('api/hotel/index?page=' + page);
-            this.hotelArray = data.data
-            /* console.log(data) */
+            this.hotelArray = data.data;
+            
+            this.pageLoaded= true;
+            setTimeout(()=>{
+                this.hideLoading = true;
+            }, 3000)
+            setTimeout(()=>{
+                this.deleteLoading = true;
+            }, 5000)
         },
         async getRecordsCount(){
             const {data} = await axios.get('api/hotel/index');

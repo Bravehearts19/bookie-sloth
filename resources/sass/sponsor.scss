@@ -1,0 +1,27 @@
+.badge{
+    width: 70%;
+    border: double 5px;
+    &:first-of-type{
+        border-color: #bf8970
+    }
+    &:nth-child(2){
+        border-color: #c0c0c0
+    }
+    &:last-of-type{
+        border-color: #d4af37
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .badge{
+        width: 30%;
+    }
+}
+
+.active{
+    filter: brightness(100%);
+}
+
+.unactive{
+    filter:brightness(0.2)
+}

@@ -8,15 +8,21 @@
         Messaggi
       </h3>
       <div class="card-body">
-        @if($messages->count() === 0)
+        @if(count($messages) === 0)
         <div class="alert alert-dark" role="alert">
           Non hai nuovi messaggi.
         </div>
         @endif
         <ul class="list-group">
           @foreach($messages as $message)
-          <a href="{{route('user.message.show', [$message->apartment->id, $message->id])}}" class="list-group-item list-group-item-action" aria-current="true">
-            Messaggio da <strong>{{$message->name}}</strong>
+          <a href="{{route('user.message.show', [$message->apartment->id, $message->id])}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" aria-current="true">
+            <div>
+              Messaggio da <strong>{{$message->name}}</strong>
+            </div>
+          
+            @if($showAll)
+              <h5>{{$message->apartment->name}}</h5>
+            @endif
           </a>
           @endforeach
         </ul>

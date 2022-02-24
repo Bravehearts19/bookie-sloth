@@ -1,6 +1,7 @@
 
 
 <?php
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Apartment;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -83,14 +85,20 @@ Route::get('/hotel/{id}', function ($id) {
         ->with('views')
         ->with('user')
         ->with('images')
-        ->get()
-        ->where('id', $id);
+        ->where('id', $id)
+        ->get();
+
     return json_encode($apartment);
 });
 /* chiamata per prendere i servizi */
 Route::get('/services/index', function (Request $request) {
     $apartments = DB::table('services')->get();
     return json_encode($apartments);
+});
+Route::get('/apartment/services', function (Request $request) {
+    $apartmentId = $request->query('apartment');
+    $apartment = Apartment::where('id', $apartmentId)->with('services')->first();
+    return json_encode($apartment);
 });
 // nMinStanze
 // nMinPersone
@@ -261,3 +269,5 @@ Route::get("/search/filters", function (Request $request) {
     return $hotels;
     //return json_encode($results);
 });
+
+Route::post('/message/{message}/store', 'User\Apartment\MessageController@store')->name('api.message.store');

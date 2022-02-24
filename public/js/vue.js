@@ -2521,6 +2521,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2530,7 +2546,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       apartment: '',
-      stars: '',
+
+      /*  stars : '', */
+      rate: 5,
       dates: "",
       peopleCounter: 1,
       displayPosition: false,
@@ -2567,9 +2585,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    console.log(this.$route.params.id);
     axios.get("/api/hotel/" + this.$route.params.id).then(function (resp) {
       console.log(resp.data);
-      _this.apartment = resp.data[_this.$route.params.id - 1];
+      _this.apartment = resp.data[0];
       /* la resp.data ritorna un oggetto con chiave id dell'oggetto -1 */
 
       var HOTEL_COORDINATES = {
@@ -2738,6 +2757,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2748,7 +2783,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       totalPages: undefined,
       activePage: 1,
       PAGINATION_OFFSET: 5,
-      url: '/api/search/filters?'
+      url: '/api/search/filters?',
+      pageLoaded: false,
+      hideLoading: false,
+      deleteLoading: false
     };
   },
   props: {
@@ -2791,9 +2829,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _yield$axios$get = _context.sent;
                 data = _yield$axios$get.data;
                 _this.hotelArray = data.data;
-                /* console.log(data) */
+                _this.pageLoaded = true;
+                setTimeout(function () {
+                  _this.hideLoading = true;
+                }, 3000);
+                setTimeout(function () {
+                  _this.deleteLoading = true;
+                }, 5000);
 
-              case 7:
+              case 10:
               case "end":
                 return _context.stop();
             }
@@ -3005,7 +3049,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #B5D601;\n  height: 550px;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .p-calendar[data-v-37b4720e] {\n  max-width: 300px;\n}\n.my-container .data-container .p-calendar .p-button-icon[data-v-37b4720e] {\n  background-color: #B2CC03;\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #A2BA02;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #4D1803;\n  margin-top: 35px;\n  border-radius: 30px;\n  display: flex;\n  justify-content: center;\n  height: 50px;\n}\n.my-container .data-container .user-container .p-button[data-v-37b4720e] {\n  background-color: #B2CC03;\n  border: #B2CC03;\n  border-radius: 20px;\n  height: 30px !important;\n  margin-top: 8px;\n  margin-left: 20px;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
+exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #B5D601;\n  height: 75vh;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .p-calendar[data-v-37b4720e] {\n  max-width: 300px;\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #A2BA02;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #4D1803;\n  margin-top: 35px;\n  border-radius: 30px;\n  display: flex;\n  justify-content: center;\n  height: 50px;\n}\n.my-container .data-container .user-container .p-button[data-v-37b4720e] {\n  background-color: #B2CC03;\n  color: #4D1803;\n  border: #B2CC03;\n  border-radius: 20px;\n  height: 30px !important;\n  margin-top: 8px;\n  margin-left: 20px;\n}\n\n/* PRIME VUE */\n[data-v-37b4720e] .p-rating .p-rating-icon.pi-star-fill {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating .p-rating-icon:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-inputtext:enabled:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-datepicker:not(.p-datepicker-inline) .p-datepicker-header {\n  background-color: #B2CC03;\n}\n[data-v-37b4720e] .p-button {\n  background-color: #4D1803;\n  color: #B5D601;\n  border: 0;\n  border-top-right-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n[data-v-37b4720e] .p-button:enabled:hover {\n  background-color: #722304;\n  color: #B5D601;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-header {\n  background-color: #B2CC03;\n  /* margin-bottom: 10px; */\n}\n[data-v-37b4720e] .p-dialog .p-dialog-content {\n  padding-top: 20px;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-footer {\n  background-color: #B2CC03;\n  padding: 5px;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
 
 // exports
 
@@ -17176,7 +17220,12 @@ var render = function () {
     [
       _c("div", { staticClass: "img-container" }, [
         _c("img", {
-          attrs: { src: _vm.apartment.cover_img, alt: _vm.apartment.name },
+          attrs: {
+            src: _vm.apartment.cover_img.includes("http")
+              ? _vm.apartment.cover_img
+              : "/storage/" + _vm.apartment.cover_img,
+            alt: _vm.apartment.name,
+          },
         }),
       ]),
       _vm._v(" "),
@@ -17198,25 +17247,42 @@ var render = function () {
             ]),
           ]),
           _vm._v(" "),
-          _c("Rating", {
-            staticClass: "pb-3 ",
-            attrs: { cancel: false },
-            model: {
-              value: _vm.stars,
-              callback: function ($$v) {
-                _vm.stars = $$v
-              },
-              expression: "stars",
-            },
-          }),
+          _c(
+            "div",
+            { staticClass: "d-flex" },
+            [
+              _c("Rating", {
+                attrs: {
+                  value: _vm.rate,
+                  readonly: true,
+                  stars: _vm.rate,
+                  cancel: false,
+                },
+              }),
+              _vm._v(" "),
+              _vm.rate > 0
+                ? _c("p", { staticClass: "ps-2" }, [
+                    _vm._v(
+                      _vm._s(_vm.rate) +
+                        ".0 | " +
+                        _vm._s(_vm.rate) +
+                        " recensioni"
+                    ),
+                  ])
+                : _vm._e(),
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("Calendar", {
             staticClass: "pb-3",
             attrs: {
               dateFormat: "dd/mm/yy",
+              placeholder: "Inserisci date",
               showIcon: true,
               selectionMode: "range",
-              inputStyle: "background-color: #A2BA02;border-radius:10px",
+              inputStyle:
+                "background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;",
             },
             model: {
               value: _vm.dates,
@@ -17308,7 +17374,7 @@ var render = function () {
               ),
               _vm._v(" "),
               _c("h2", { staticClass: "me-4 text-secondary" }, [
-                _vm._v(_vm._s(_vm.apartment.price) + "0$"),
+                _vm._v(_vm._s(_vm.apartment.price) + "0€"),
               ]),
             ]
           ),
@@ -17361,7 +17427,7 @@ var render = function () {
         "Dialog",
         {
           attrs: {
-            header: "Conttatami",
+            header: "Contattami!",
             visible: _vm.displayPosition,
             containerStyle: { width: "50vw" },
             position: _vm.position,
@@ -17372,33 +17438,102 @@ var render = function () {
               _vm.displayPosition = $event
             },
           },
-          scopedSlots: _vm._u([
-            {
-              key: "footer",
-              fn: function () {
-                return [
-                  _c("Button", {
-                    staticClass: "p-button-text",
-                    attrs: { label: "No", icon: "pi pi-times" },
-                    on: { click: _vm.closePosition },
-                  }),
-                  _vm._v(" "),
-                  _c("Button", {
-                    attrs: { label: "Yes", icon: "pi pi-check", autofocus: "" },
-                    on: { click: _vm.closePosition },
-                  }),
-                ]
-              },
-              proxy: true,
-            },
-          ]),
         },
         [
-          _c("p", { staticClass: "m-0" }, [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            ),
-          ]),
+          _c(
+            "form",
+            {
+              attrs: {
+                method: "post",
+                action: "/api/message/" + _vm.apartment.id + "/store",
+              },
+            },
+            [
+              _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleFormControlInput1" },
+                  },
+                  [_vm._v("Nome")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "name",
+                    id: "exampleFormControlInput1",
+                    placeholder: "nome",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleFormControlInput1" },
+                  },
+                  [_vm._v("Indirizzo Email")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    name: "email",
+                    id: "exampleFormControlInput1",
+                    placeholder: "nome@esempio.com",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleFormControlTextarea1" },
+                  },
+                  [_vm._v("Messaggio")]
+                ),
+                _vm._v(" "),
+                _c("textarea", {
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "message",
+                    id: "exampleFormControlTextarea1",
+                    rows: "3",
+                  },
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: { type: "hidden", name: "apartmentId" },
+                  domProps: { value: _vm.apartment.id },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("Button", {
+                staticClass: "p-button-text my-dialog",
+                attrs: { label: "Annulla", icon: "pi pi-times" },
+                on: { click: _vm.closePosition },
+              }),
+              _vm._v(" "),
+              _c("Button", {
+                staticClass: "my-dialog",
+                attrs: {
+                  label: "Invia",
+                  type: "submit",
+                  icon: "pi pi-check",
+                  autofocus: "",
+                },
+              }),
+            ],
+            1
+          ),
         ]
       ),
     ],
@@ -17478,86 +17613,201 @@ var render = function () {
   return _c("div", { staticClass: "hotel_container bg-info" }, [
     _c(
       "div",
-      { staticClass: "row row-cols-3" },
+      {
+        staticClass:
+          "loading-screen d-flex justify-content-center align-items-center",
+        class: _vm.deleteLoading === true ? "d-none" : "",
+        style:
+          _vm.hideLoading === true ? "opacity:0; transition:opacity 0.3s" : "",
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "d-flex flex-column align-items-center",
+            style:
+              _vm.pageLoaded === true
+                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
+                : "",
+          },
+          [
+            _c("img", {
+              staticClass: "mb-3",
+              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "d-flex",
+                style:
+                  _vm.pageLoaded === true
+                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
+                    : "",
+              },
+              [
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white me-3",
+                    style:
+                      _vm.pageLoaded === true
+                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [_vm._v("Sloth")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white ms-3 d-flex",
+                    style:
+                      _vm.pageLoaded === true
+                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [
+                    _vm._v("h\n                "),
+                    _c(
+                      "span",
+                      { style: _vm.pageLoaded === true ? "opacity:0" : "" },
+                      [_vm._v("ot")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        style:
+                          _vm.pageLoaded === true
+                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                            : "",
+                      },
+                      [_vm._v("el")]
+                    ),
+                  ]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "spinner-border text-primary mt-3",
+                style: _vm.pageLoaded === true ? "opacity:0" : "",
+                attrs: { role: "status" },
+              },
+              [
+                _c("span", { staticClass: "visually-hidden" }, [
+                  _vm._v("Loading..."),
+                ]),
+              ]
+            ),
+          ]
+        ),
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "row row-cols-3",
+        style: _vm.hideLoading === false ? "display:none" : "",
+      },
       _vm._l(_vm.hotelArray, function (hotel, index) {
         return _c("div", { key: "hotel-" + index, staticClass: "col" }, [
           _c("div", { staticClass: "card_container" }, [
-            _c("div", { staticClass: "py-5 d-flex align-items-center" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg",
-                },
-                [
-                  _c("img", {
-                    staticClass: "w-100 py-3",
-                    attrs: { src: hotel.cover_img, alt: hotel.name },
-                  }),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "apartment-card-header bg-secondary py-3 rounded shadow-lg",
-                },
-                [
-                  _c("h1", { staticClass: "text-white text-center mb-0" }, [
-                    _vm._v(_vm._s(hotel.name)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "text-white text-center mb-0" }, [
-                    _vm._v(
-                      _vm._s(hotel.address) +
-                        " - " +
-                        _vm._s(hotel.location) +
-                        " - " +
-                        _vm._s(hotel.cap)
-                    ),
-                  ]),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-secondary mt-5 w-25 mx-auto" },
-                [_vm._v("Discover")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg",
-                },
-                [
-                  _c("h6", { staticClass: "text-secondary mb-0" }, [
-                    _vm._v("price: "),
-                    _c("span", { staticClass: "text-primary" }, [
-                      _vm._v(_vm._s(hotel.price)),
+            _c(
+              "div",
+              { staticClass: "py-5 d-flex align-items-center" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg",
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "w-100 py-3",
+                      attrs: {
+                        src: hotel.cover_img.includes("http")
+                          ? hotel.cover_img
+                          : "/storage/" + hotel.cover_img,
+                        alt: hotel.name,
+                      },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "apartment-card-header bg-secondary py-3 rounded shadow-lg",
+                  },
+                  [
+                    _c("h1", { staticClass: "text-white text-center mb-0" }, [
+                      _vm._v(_vm._s(hotel.name)),
                     ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary mb-0" }, [
-                    _vm._v("bathrooms: " + _vm._s(hotel.n_bathrooms)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary mb-0" }, [
-                    _vm._v("guests: " + _vm._s(hotel.n_guests)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary mb-0" }, [
-                    _vm._v("rooms: " + _vm._s(hotel.n_rooms)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary mb-0" }, [
-                    _vm._v("sizes: " + _vm._s(hotel.size) + " mq"),
-                  ]),
-                ]
-              ),
-            ]),
+                    _vm._v(" "),
+                    _c("h4", { staticClass: "text-white text-center mb-0" }, [
+                      _vm._v(
+                        _vm._s(hotel.address) +
+                          " - " +
+                          _vm._s(hotel.location) +
+                          " - " +
+                          _vm._s(hotel.cap)
+                      ),
+                    ]),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-secondary mt-5 w-25 mx-auto",
+                    attrs: {
+                      to: { name: "apartment", params: { id: hotel.id } },
+                    },
+                  },
+                  [_vm._v("Discover")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg",
+                  },
+                  [
+                    _c("h6", { staticClass: "text-secondary mb-0" }, [
+                      _vm._v("price: "),
+                      _c("span", { staticClass: "text-primary" }, [
+                        _vm._v(_vm._s(hotel.price)),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary mb-0" }, [
+                      _vm._v("bathrooms: " + _vm._s(hotel.n_bathrooms)),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary mb-0" }, [
+                      _vm._v("guests: " + _vm._s(hotel.n_guests)),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary mb-0" }, [
+                      _vm._v("rooms: " + _vm._s(hotel.n_rooms)),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary mb-0" }, [
+                      _vm._v("sizes: " + _vm._s(hotel.size) + " mq"),
+                    ]),
+                  ]
+                ),
+              ],
+              1
+            ),
           ]),
         ])
       }),
@@ -33986,7 +34236,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\SIMO\Spindox\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+>>>>>>> dev2
 
 
 /***/ })

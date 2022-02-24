@@ -14,6 +14,13 @@
 
     <script src="{{ asset('js/vue.js') }}" defer></script>
 
+    <!-- includes jQuery -->
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+
+    {{-- Braintree --}}
+    <script src="https://js.braintreegateway.com/web/dropin/1.8.1/js/dropin.min.js"></script>
+
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -46,6 +53,13 @@
             </div>
             
             <div class="d-flex align-items-center m-3">
+                <a href="/">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/gmzxduhd.json"
+                        trigger="hover"
+                        style="width:50px;height:50px">
+                    </lord-icon>
+                </a>
                 <a href="{{route('user.messages', Auth::user()->id)}}">
                     <lord-icon
                         src="https://cdn.lordicon.com/rhvddzym.json"
@@ -53,10 +67,8 @@
                         style="width:50px;height:50px">
                     </lord-icon>
                 </a>
-                </a>
             <form action="{{route('logout')}}" method="post">
                 @csrf
-                <div class="d-flex align-items-center">
                     <button type="submit" class="user-button">
                         <lord-icon
                         src="https://cdn.lordicon.com/lywgqtim.json"
@@ -64,7 +76,6 @@
                         style="width:50px;height:50px">
                         </lord-icon>
                     </button>
-                </div>
             </form>
 
             <div class="d-flex align-items-center">
