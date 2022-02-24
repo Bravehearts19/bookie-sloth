@@ -16,7 +16,7 @@
             
         </div>
     </div>
-        <div class="row row-cols-3">
+        <div class="row row-cols-3" :style="hideLoading===false ? 'display:none' : ''">
             <div class="col" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
                 <div class="card_container">
                     <div class="py-5 d-flex align-items-center">
@@ -143,6 +143,7 @@ export default {
 
             const {data} = await axios.get('api/hotel/index?page=' + page);
             this.hotelArray = data.data;
+            
             this.pageLoaded= true;
             setTimeout(()=>{
                 this.hideLoading = true;
