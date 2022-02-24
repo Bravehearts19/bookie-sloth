@@ -17670,82 +17670,92 @@ var render = function () {
       _vm._l(_vm.hotelArray, function (hotel, index) {
         return _c("div", { key: "hotel-" + index, staticClass: "col" }, [
           _c("div", { staticClass: "card_container" }, [
-            _c("div", { staticClass: "py-5 d-flex align-items-center" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg",
-                },
-                [
-                  _c("img", {
-                    staticClass: "w-100 py-3",
-                    attrs: { src: hotel.cover_img, alt: hotel.name },
-                  }),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "apartment-card-header bg-secondary py-3 rounded shadow-lg",
-                },
-                [
-                  _c("h1", { staticClass: "text-white text-center mb-0" }, [
-                    _vm._v(_vm._s(hotel.name)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "text-white text-center mb-0" }, [
-                    _vm._v(
-                      _vm._s(hotel.address) +
-                        " - " +
-                        _vm._s(hotel.location) +
-                        " - " +
-                        _vm._s(hotel.cap)
-                    ),
-                  ]),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-secondary mt-5 w-25 mx-auto" },
-                [_vm._v("Discover")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg",
-                },
-                [
-                  _c("h6", { staticClass: "text-secondary mb-0" }, [
-                    _vm._v("price: "),
-                    _c("span", { staticClass: "text-primary" }, [
-                      _vm._v(_vm._s(hotel.price)),
+            _c(
+              "div",
+              { staticClass: "py-5 d-flex align-items-center" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg",
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "w-100 py-3",
+                      attrs: { src: hotel.cover_img, alt: hotel.name },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "apartment-card-header bg-secondary py-3 rounded shadow-lg",
+                  },
+                  [
+                    _c("h1", { staticClass: "text-white text-center mb-0" }, [
+                      _vm._v(_vm._s(hotel.name)),
                     ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary mb-0" }, [
-                    _vm._v("bathrooms: " + _vm._s(hotel.n_bathrooms)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary mb-0" }, [
-                    _vm._v("guests: " + _vm._s(hotel.n_guests)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary mb-0" }, [
-                    _vm._v("rooms: " + _vm._s(hotel.n_rooms)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary mb-0" }, [
-                    _vm._v("sizes: " + _vm._s(hotel.size) + " mq"),
-                  ]),
-                ]
-              ),
-            ]),
+                    _vm._v(" "),
+                    _c("h4", { staticClass: "text-white text-center mb-0" }, [
+                      _vm._v(
+                        _vm._s(hotel.address) +
+                          " - " +
+                          _vm._s(hotel.location) +
+                          " - " +
+                          _vm._s(hotel.cap)
+                      ),
+                    ]),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-secondary mt-5 w-25 mx-auto",
+                    attrs: {
+                      to: { name: "apartment", params: { id: hotel.id } },
+                    },
+                  },
+                  [_vm._v("Discover")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg",
+                  },
+                  [
+                    _c("h6", { staticClass: "text-secondary mb-0" }, [
+                      _vm._v("price: "),
+                      _c("span", { staticClass: "text-primary" }, [
+                        _vm._v(_vm._s(hotel.price)),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary mb-0" }, [
+                      _vm._v("bathrooms: " + _vm._s(hotel.n_bathrooms)),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary mb-0" }, [
+                      _vm._v("guests: " + _vm._s(hotel.n_guests)),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary mb-0" }, [
+                      _vm._v("rooms: " + _vm._s(hotel.n_rooms)),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary mb-0" }, [
+                      _vm._v("sizes: " + _vm._s(hotel.size) + " mq"),
+                    ]),
+                  ]
+                ),
+              ],
+              1
+            ),
           ]),
         ])
       }),
@@ -34174,7 +34184,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
