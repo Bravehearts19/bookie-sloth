@@ -5,12 +5,14 @@
     <div class="row flex-shrink-0 h-100 align-items-center">
         <div class="col-10 offset-1">
             <div class="badges-container d-flex flex-wrap justify-content-center justify-content-lg-between">
-                <div class="badge d-flex flex-column bg-primary rounded shadow-lg py-5">
-                    <img src="/images/bronze_badge.svg" alt="bronze badge" class="w-75 d-block mx-auto">
-                    <h2 class="text-dark mt-5">Bronze</h2>
+                @foreach($sponsors as $sponsor)
+                @if($sponsor->id !== 1)         
+                <div class="badge d-flex flex-column bg-primary rounded shadow-lg py-5 sponsor-{{$sponsor->id}} unactive" style="transition:filter 0.3s">
+                    <img src="/images/{{$sponsor->level}}_badge.svg" alt="{{$sponsor->level}} badge" class="w-75 d-block mx-auto">
+                    <h2 class="text-dark mt-5">{{$sponsor->level}}</h2>
                     <div class="d-flex align-items-center justify-content-around">
                         <div>
-                            <h5 class="mb-0 bg-info text-dark shadow-lg rounded p-2">24h</h5>
+                            <h5 class="mb-0 bg-info text-dark shadow-lg rounded p-2">{{$sponsor->duration}}h</h5>
                         </div>
                         <div class="progress w-75 bg-info shadow-lg">
                             <div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" style="width: 33.33%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -22,80 +24,20 @@
                     <div class="d-flex mt-5 justify-content-around align-items-center">
                         <div class="input-group w-50 shadow-lg rounded">
                             <span class="input-group-text bg-secondary text-white border-secondary">$</span>
-                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="{{ $sponsors[1]->price }}" disabled>
+                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="{{ $sponsor->price }}" disabled>
                             
                         </div>
-                        <button class="btn btn-outline-secondary purchase-btn" value="{{ $sponsors[1]->price }}">
+                        <button class="btn btn-outline-secondary purchase-btn" value="{{ $sponsor->id }}">
                             Acquista
                         </button>
                     </div>
                 </div>
-
-
-
-               
-                <div class="badge d-flex flex-column bg-primary rounded shadow-lg py-5 mt-5 mt-lg-0">
-                    <img src="/images/silver_badge.svg" alt="silver badge" class="w-75 d-block mx-auto">
-                    <h2 class="text-dark mt-5">Silver</h2>
-                    <div class="d-flex align-items-center justify-content-around">
-                        <div>
-                            <h5 class="mb-0 bg-info text-dark shadow-lg rounded p-2">48h</h5>
-                        </div>
-                        <div class="progress w-75 bg-info shadow-lg">
-                            <div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" style="width: 66.66%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="mt-5 bg-info p-3">
-                        <h6 class="mb-0 text-wrap fw-normal text-dark">Vantages: your apartments will appear first (then bronze badge) in customers feed</h6>
-                    </div>
-                    <div class="d-flex mt-5 justify-content-around align-items-center">
-                        <div class="input-group w-50 shadow-lg rounded">
-                            <span class="input-group-text bg-secondary text-white border-secondary">$</span>
-                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="{{ $sponsors[2]->price }}" disabled>
-                            
-                        </div>
-                        <button class="btn btn-outline-secondary purchase-btn" value="{{ $sponsors[2]->price }}">
-                            Acquista
-                        </button>
-                    </div>
-                </div>
-
-
-
-                <div class="badge d-flex flex-column bg-primary rounded shadow-lg py-5 mt-5 mt-lg-0">
-                    <img src="/images/gold_badge.svg" alt="silver badge" class="w-75 d-block mx-auto">
-                    <h2 class="text-dark mt-5">Gold</h2>
-                    <div class="d-flex align-items-center justify-content-around">
-                        <div>
-                            <h5 class="mb-0 bg-info text-dark shadow-lg rounded p-2">72h</h5>
-                        </div>
-                        <div class="progress w-75 bg-info shadow-lg">
-                            <div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="mt-5 bg-info p-3">
-                        <h6 class="mb-0 text-wrap fw-normal text-dark">Vantages: your apartments will appear first (then bronze and badge) in customers feed</h6>
-                    </div>
-                    <div class="d-flex mt-5 justify-content-around align-items-center">
-                        <div class="input-group w-50 shadow-lg rounded">
-                            <span class="input-group-text bg-secondary text-white border-secondary">$</span>
-                            <input type="text" class="form-control bg-info text-dark text-center border-secondary" value="{{ $sponsors[3]->price }}" disabled>
-                            
-                        </div>
-                        <button class="btn btn-outline-secondary purchase-btn" value="{{ $sponsors[3]->price }}">
-                            Acquista
-                        </button>
-                    </div>
-                </div>
+                @endif
+                @endforeach
             </div>
-            <form id='sponsorForm' action="route('user.sponsors.store')" method='POST'>
+            <form id='sponsorForm' action="{{route('user.sponsors.store', $apartment->id)}}" method="post">
                 @csrf
-                <select class="form-select" multiple aria-label="multiple select example" name='sponsor_id'>
-                    <option selected>Open this select menu</option>
-                    <option value="1">{{ $sponsor.level }}</option>
-                    <option value="2">silver</option>
-                    <option value="3">gold</option>
-                  </select>
+                <input type="hidden" id="sponsor" name="sponsor">
 
             </form>
             <div id="dropin-container"></div>
@@ -106,30 +48,48 @@
         
         
         <script>
-        let amount = 0
+            function upTo(el, tagName) {
+                tagName = tagName.toLowerCase();
 
-        const form = document.getElementById('sponsorForm')
+                while (el && el.parentNode) {
+                    el = el.parentNode;
+                    if (el.tagName && el.tagName.toLowerCase() == tagName) {
+                    return el;
+                    }
+                }
+                return null;
+                }
         const buttons = document.querySelectorAll('.purchase-btn')
-        buttons.forEach( button => { button.addEventListener('click', function() { document.getElementById('sponsor').value = button.value; }) });
+        buttons.forEach( button => { button.addEventListener('click', function() {
+                document.getElementById('sponsor').value = button.value; 
+                let card = ".sponsor-" + button.value;
+                for(let i=0; i<buttons.length; i++){
+                    let currentCard = document.querySelector(`.sponsor-${i+2}`);
+                    currentCard.classList.remove('active');
+                    currentCard.classList.add('unactive');
+                }
+                
+                
+                document.querySelector(card).classList.remove('unactive');
+                document.querySelector(card).classList.add('active');
+            }) });
 
         var button = document.querySelector('#submit-button');
         braintree.dropin.create({
-        authorization: "sandbox_x6gbkvj7_dw85tnr9p5v7xt7n",
-        container: '#dropin-container'
-        }, function (createErr, instance) {
-        button.addEventListener('click', function () {
-        instance.requestPaymentMethod(function (err, payload) {
-        $.get('{{ route('payment.make') }}', {payload,amount}, function (response) {
-        if (response.success) {
-        alert('Payment successfull!');
-            
-        } else {
-        alert('Payment failed');
-        window.location.reload()
-        }
-        }, 'json');
-        });
-        });
+            authorization: "{{ 'sandbox_x6gbkvj7_dw85tnr9p5v7xt7n' }}",
+            container: '#dropin-container'
+            }, function (createErr, instance) {
+            button.addEventListener('click', function () {
+            instance.requestPaymentMethod(function (err, payload) {
+            $.get('{{ route('payment.make') }}', {payload}, function (response) {
+            if (response.success) {
+            document.getElementById('sponsorForm').submit();
+            } else {
+            alert('Payment failed');
+            }
+            }, 'json');
+            });
+            });
         });
 
         
