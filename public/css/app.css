@@ -112,6 +112,14 @@
   }
 }
 
+.active {
+  filter: brightness(100%);
+}
+
+.unactive {
+  filter: brightness(0.2);
+}
+
 header {
   border-bottom: 1px solid #4d1803;
 }
