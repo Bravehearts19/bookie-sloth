@@ -3040,7 +3040,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-b3c5cf30] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-b3c5cf30] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n}\n.image-container[data-v-b3c5cf30] {\n  width: 100%;\n  border-radius: 20px;\n}\n.image-container img[data-v-b3c5cf30] {\n  border-radius: 20px;\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-b3c5cf30] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-b3c5cf30] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n  height: 300px;\n}\n.image-container[data-v-b3c5cf30] {\n  width: 100%;\n  border-radius: 20px;\n  height: 150px;\n  aspect-ratio: 2/1.5;\n}\n.image-container img[data-v-b3c5cf30] {\n  border-radius: 20px;\n  width: 100%;\n  height: 100%;\n  aspect-ratio: 2/1.5;\n}", ""]);
 
 // exports
 
@@ -17583,7 +17583,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "container py-5" }, [
       _c(
         "div",
         {
@@ -17592,7 +17592,7 @@ var render = function () {
         },
         _vm._l(_vm.hotelArray, function (hotel, index) {
           return _c("div", { key: "hotel-" + index, staticClass: "col py-3" }, [
-            _c("div", { staticClass: "card_container bg-primary" }, [
+            _c("div", { staticClass: "card_container bg-primary shadow-lg" }, [
               _c(
                 "div",
                 {
@@ -17600,7 +17600,7 @@ var render = function () {
                     "d-flex flex-column align-items-center pt-3 w-50",
                 },
                 [
-                  _c("div", { staticClass: "image-container" }, [
+                  _c("div", { staticClass: "image-container shadow-lg" }, [
                     _c("img", {
                       attrs: {
                         src: hotel.cover_img.includes("http")
@@ -17690,7 +17690,7 @@ var render = function () {
       _vm._v(" "),
       _c(
         "ul",
-        { staticClass: "pagination overflow-auto" },
+        { staticClass: "pagination overflow-auto pt-5" },
         _vm._l(_vm.totalPages, function (index) {
           return _c(
             "li",
