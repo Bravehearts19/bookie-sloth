@@ -15,8 +15,9 @@ class SponsorController extends Controller
         return view('user.apartment.sponsors.index', ['sponsors' => $sponsors, 'apartment' => $apartment]);
     }
 
-    public function update(Request $request, Apartment $apartment) {
+    public function store(Request $request) {
         $data = $request->all();
+        
         $apartment->sponsors()->attach($data);
 
         return redirect()->route('user.apartment.index');  

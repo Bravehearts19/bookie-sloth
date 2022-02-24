@@ -33,7 +33,7 @@
 
 
 
-
+               
                 <div class="badge d-flex flex-column bg-primary rounded shadow-lg py-5 mt-5 mt-lg-0">
                     <img src="/images/silver_badge.svg" alt="silver badge" class="w-75 d-block mx-auto">
                     <h2 class="text-dark mt-5">Silver</h2>
@@ -88,7 +88,16 @@
                     </div>
                 </div>
             </div>
+            <form id='sponsorForm' action="route('user.sponsors.store')" method='POST'>
+                @csrf
+                <select class="form-select" multiple aria-label="multiple select example" name='sponsor_id'>
+                    <option selected>Open this select menu</option>
+                    <option value="1">{{ $sponsor.level }}</option>
+                    <option value="2">silver</option>
+                    <option value="3">gold</option>
+                  </select>
 
+            </form>
             <div id="dropin-container"></div>
             <button id="submit-button">Request payment method</button>
         </div>
@@ -99,8 +108,9 @@
         <script>
         let amount = 0
 
+        const form = document.getElementById('sponsorForm')
         const buttons = document.querySelectorAll('.purchase-btn')
-        buttons.forEach( button => { button.addEventListener('click', function() { amount = button.value; }) });
+        buttons.forEach( button => { button.addEventListener('click', function() { document.getElementById('sponsor').value = button.value; }) });
 
         var button = document.querySelector('#submit-button');
         braintree.dropin.create({
@@ -112,8 +122,10 @@
         $.get('{{ route('payment.make') }}', {payload,amount}, function (response) {
         if (response.success) {
         alert('Payment successfull!');
+            
         } else {
         alert('Payment failed');
+        window.location.reload()
         }
         }, 'json');
         });

@@ -41,6 +41,7 @@ Route::namespace("User")
         Route::get('/apartment/statistics', 'Apartment\ViewController@index');
 
         Route::get('/apartment/{apartment}/sponsor', 'Apartment\SponsorController@index')->name('sponsors');
+        Route::get('/apartment/{apartment}/sponsor/store', 'Apartment\SponsorController@store')->name('sponsors.store');
     });
 
 Route::get('{any?}', function () {
