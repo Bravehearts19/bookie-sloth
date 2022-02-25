@@ -2269,6 +2269,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2760,7 +2763,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       url: '/api/search/filters?',
       pageLoaded: false,
       hideLoading: false,
-      deleteLoading: false
+      deleteLoading: false,
+      paginationVisibility: false
     };
   },
   props: {
@@ -2803,6 +2807,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _yield$axios$get = _context.sent;
                 data = _yield$axios$get.data;
                 _this.hotelArray = data.data;
+                setTimeout(function () {
+                  _this.paginationVisibility = true;
+                }, 3000);
                 _this.pageLoaded = true;
                 setTimeout(function () {
                   _this.hideLoading = true;
@@ -2811,7 +2818,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.deleteLoading = true;
                 }, 5000);
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -3023,7 +3030,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".hotel_container[data-v-7a96c234] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-7a96c234] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-7a96c234] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n}\n.image-container[data-v-7a96c234] {\n  width: 100%;\n  border-radius: 20px;\n}\n.image-container img[data-v-7a96c234] {\n  border-radius: 20px;\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".hotel_container[data-v-7a96c234] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-7a96c234] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-7a96c234] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n  height: 300px;\n}\n.image-container[data-v-7a96c234] {\n  width: 100%;\n  border-radius: 20px;\n  height: 150px;\n  aspect-ratio: 2/1.5;\n}\n.image-container img[data-v-7a96c234] {\n  border-radius: 20px;\n  width: 100%;\n  height: 100%;\n  aspect-ratio: 2/1.5;\n}", ""]);
 
 // exports
 
@@ -17052,11 +17059,11 @@ var render = function () {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "container py-5" }, [
       _c(
         "div",
         {
-          staticClass: "row row-cols-3",
+          staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3 ",
           style: _vm.hideLoading === false ? "display:none" : "",
         },
         _vm._l(_vm.hotelArray, function (hotel, index) {
@@ -17160,7 +17167,7 @@ var render = function () {
       _c(
         "ul",
         {
-          staticClass: "pagination overflow-auto",
+          staticClass: "pagination overflow-auto pt-5",
           class: _vm.paginationVisibility === false ? "d-none" : "",
         },
         _vm._l(_vm.totalPages, function (index) {
@@ -17185,9 +17192,9 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    "\r\n                    " +
+                    "\r\n                        " +
                       _vm._s(index) +
-                      "\r\n                "
+                      "\r\n                    "
                   ),
                 ]
               ),
@@ -17725,7 +17732,10 @@ var render = function () {
       _vm._v(" "),
       _c(
         "ul",
-        { staticClass: "pagination overflow-auto pt-5" },
+        {
+          staticClass: "pagination overflow-auto pt-5",
+          class: _vm.paginationVisibility === false ? "d-none" : "",
+        },
         _vm._l(_vm.totalPages, function (index) {
           return _c(
             "li",

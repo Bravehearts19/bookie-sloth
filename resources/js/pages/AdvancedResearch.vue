@@ -13,51 +13,54 @@
       </div>
     </div>
 
+    
     <!-- Inizio container degli hotel -->
-    <div class="container">
-        <div class="row row-cols-3" :style="hideLoading===false ? 'display:none' : ''">
-            <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
-                <div class="card_container bg-primary shadow-lg">
-                    
-                    <div class="d-flex flex-column align-items-center pt-3 w-50">
-                        <div class="image-container shadow-lg">
-                            <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
-                        </div>
-                        <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
-                    </div>
-
-                    <div class="d-flex flex-column align-items-center w-50">
-                        <div class="py-3">
-                            <h5 class="text-secondary text-center mb-0"><strong>{{hotel.name}}</strong></h5>
-                            <h5 class="text-secondary text-center mb-0">{{hotel.location}}</h5>
-                            <h6 class="text-secondary text-center mb-0">{{hotel.address}} - {{hotel.cap}}</h6>
-                        </div>
+    <div class="container py-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 " :style="hideLoading===false ? 'display:none' : ''">
+                <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
+                    <div class="card_container bg-primary shadow-lg">
                         
-                        <div class="p-3">
-                            <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
-                            <h6 class="text-secondary py-1 mb-0">Numero di ospiti: <strong>{{hotel.n_guests}}</strong></h6>
-                            <h6 class="text-secondary py-1 mb-0">Numero di stanze: <strong>{{hotel.n_rooms}}</strong></h6>
-                            <h6 class="text-secondary py-1 mb-0">Numero di bagni: <strong>{{hotel.n_bathrooms}}</strong></h6>
-                            <h6 class="text-secondary py-1 mb-0">Dimensioni: <strong>{{hotel.size}} mq</strong></h6>
+                        <div class="d-flex flex-column align-items-center pt-3 w-50">
+                            <div class="image-container shadow-lg">
+                                <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
+                            </div>
+                            <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
+                        </div>
+
+                        <div class="d-flex flex-column align-items-center w-50">
+                            <div class="py-3">
+                                <h5 class="text-secondary text-center mb-0"><strong>{{hotel.name}}</strong></h5>
+                                <h5 class="text-secondary text-center mb-0">{{hotel.location}}</h5>
+                                <h6 class="text-secondary text-center mb-0">{{hotel.address}} - {{hotel.cap}}</h6>
+                            </div>
+                            
+                            <div class="p-3">
+                                <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
+                                <h6 class="text-secondary py-1 mb-0">Numero di ospiti: <strong>{{hotel.n_guests}}</strong></h6>
+                                <h6 class="text-secondary py-1 mb-0">Numero di stanze: <strong>{{hotel.n_rooms}}</strong></h6>
+                                <h6 class="text-secondary py-1 mb-0">Numero di bagni: <strong>{{hotel.n_bathrooms}}</strong></h6>
+                                <h6 class="text-secondary py-1 mb-0">Dimensioni: <strong>{{hotel.size}} mq</strong></h6>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Inizio bottoni per la paginazione -->
-        <ul class="pagination overflow-auto"  :class='paginationVisibility === false ? "d-none" : ""'   >
-            <li class="page-item"
-                :class="(index === activePage) ? 'active' : ''"
-                v-for="index in totalPages"
-                :key="'page-'+index">
-                <a href="#" class="page-link"
-                @click="getHotelData(index)">
-                    {{index}}
-                </a>
-            </li>
-        </ul>
-    </div>
+            <!-- Inizio bottoni per la paginazione -->
+            <ul class="pagination overflow-auto pt-5" :class='paginationVisibility === false ? "d-none" : ""'>
+                <li class="page-item"
+                    :class="(index === activePage) ? 'active' : ''"
+                    v-for="index in totalPages"
+                    :key="'page-'+ index">
+                    <a href="#" class="page-link"
+                    @click="getHotelData(index)">
+                        {{index}}
+                    </a>
+                </li>
+            </ul>
+            <!-- Fine bottoni per la paginazione -->
+        </div>
+        <!-- Fine container degli hotel -->
 
 </div>
 </template>
@@ -157,13 +160,18 @@ export default {
     align-items: center;
     padding: 10px;
     border-radius: 24px;
+    height: 300px;
 }
 .image-container {
     width: 100%;
     border-radius: 20px;
+    height: 150px;
+    aspect-ratio: 2/1.5;
     img {
         border-radius: 20px;
         width: 100%;
+        height: 100%;
+        aspect-ratio: 2/1.5;
     }
 }
 </style>

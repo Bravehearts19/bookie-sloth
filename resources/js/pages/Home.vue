@@ -51,7 +51,7 @@
             </div>
 
             <!-- Inizio bottoni per la paginazione -->
-            <ul class="pagination overflow-auto pt-5">
+            <ul class="pagination overflow-auto pt-5" :class='paginationVisibility === false ? "d-none" : ""'>
                 <li class="page-item"
                     :class="(index === activePage) ? 'active' : ''"
                     v-for="index in totalPages"
@@ -84,7 +84,8 @@ export default {
             url: '/api/search/filters?',
             pageLoaded: false,
             hideLoading:false,
-            deleteLoading:false
+            deleteLoading:false,
+            paginationVisibility : false,
         }
     },
     props : {
@@ -116,6 +117,9 @@ export default {
 
             const {data} = await axios.get('api/hotel/index?page=' + page);
             this.hotelArray = data.data;
+            setTimeout(()=>{
+                this.paginationVisibility = true
+            },3000)
             
             this.pageLoaded= true;
             setTimeout(()=>{
