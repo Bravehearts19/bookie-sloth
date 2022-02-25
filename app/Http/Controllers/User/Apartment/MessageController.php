@@ -19,7 +19,7 @@ class MessageController extends Controller
     //show all messages for an apartment
     public function index(Apartment $apartment)
     {
-        $messages = Message::where('apartment_id', $apartment->id)->with('apartment')->get();
+        $messages = Message::where('apartment_id', $apartment->id)->with('apartment')->orderBy('created_at', 'DESC')->get();
 
         return view('user.apartment.messages.index', [
             "messages" => $messages,
@@ -30,7 +30,7 @@ class MessageController extends Controller
     //show all user messages
     public function showUserMessages(User $user)
     {
-        $messages = Message::all();
+        $messages = Message::orderBy('created_at', 'DESC')->get();
         $apartmentsIds = $user->apartments()->pluck('id')->toArray();
         // dd($user->apartments()->pluck('id'), $messages);
         $userMessages = [];
