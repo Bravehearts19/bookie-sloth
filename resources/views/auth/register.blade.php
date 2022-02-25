@@ -1,10 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<header class="py-3 border-none d-flex justify-content-center align-items-center bg-primary shadow-lg">
+    <img src="/images/logo.svg" alt="slothel logo">
+    <h1>Slothel</h1>
+</header>
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card mt-5">
+        <div class="col-md-8 py-2 mt-1">
+            <div class="card">
                 <div class="card-header">{{ __('Registrazione') }}</div>
 
                 <div class="card-body">
