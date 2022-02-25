@@ -2284,7 +2284,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       radius: 20,
       roomsValue: 1,
       bedValue: 1,
-      servicesQueryString: ''
+      servicesQueryString: '',
+      paginationVisibility: false
     };
   },
   props: {
@@ -2315,7 +2316,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _yield$axios$get = _context.sent;
                 data = _yield$axios$get.data;
                 _this.hotelArray = data.data;
-                console.log(data);
+                _this.paginationVisibility = true;
 
               case 8:
               case "end":
@@ -17158,7 +17159,10 @@ var render = function () {
       _vm._v(" "),
       _c(
         "ul",
-        { staticClass: "pagination overflow-auto" },
+        {
+          staticClass: "pagination overflow-auto",
+          class: _vm.paginationVisibility === false ? "d-none" : "",
+        },
         _vm._l(_vm.totalPages, function (index) {
           return _c(
             "li",
@@ -17614,6 +17618,103 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "loading-screen d-flex justify-content-center align-items-center",
+        class: _vm.deleteLoading === true ? "d-none" : "",
+        style:
+          _vm.hideLoading === true ? "opacity:0; transition:opacity 0.3s" : "",
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "d-flex flex-column align-items-center",
+            style:
+              _vm.pageLoaded === true
+                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
+                : "",
+          },
+          [
+            _c("img", {
+              staticClass: "mb-3",
+              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "d-flex",
+                style:
+                  _vm.pageLoaded === true
+                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
+                    : "",
+              },
+              [
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white me-3",
+                    style:
+                      _vm.pageLoaded === true
+                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [_vm._v("Sloth")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white ms-3 d-flex",
+                    style:
+                      _vm.pageLoaded === true
+                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [
+                    _vm._v("h\n                    "),
+                    _c(
+                      "span",
+                      { style: _vm.pageLoaded === true ? "opacity:0" : "" },
+                      [_vm._v("ot")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        style:
+                          _vm.pageLoaded === true
+                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                            : "",
+                      },
+                      [_vm._v("el")]
+                    ),
+                  ]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "spinner-border text-primary mt-3",
+                style: _vm.pageLoaded === true ? "opacity:0" : "",
+                attrs: { role: "status" },
+              },
+              [
+                _c("span", { staticClass: "visually-hidden" }, [
+                  _vm._v("Loading..."),
+                ]),
+              ]
+            ),
+          ]
+        ),
+      ]
+    ),
+    _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c(
         "div",

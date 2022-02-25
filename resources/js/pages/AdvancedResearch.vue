@@ -46,7 +46,7 @@
         </div>
 
         <!-- Inizio bottoni per la paginazione -->
-        <ul class="pagination overflow-auto">
+        <ul class="pagination overflow-auto"  :class='paginationVisibility === false ? "d-none" : ""'   >
             <li class="page-item"
                 :class="(index === activePage) ? 'active' : ''"
                 v-for="index in totalPages"
@@ -79,7 +79,8 @@ export default {
             radius: 20,
             roomsValue: 1,
             bedValue: 1,
-            servicesQueryString: ''
+            servicesQueryString: '',
+            paginationVisibility: false
         }
     },
     props : {
@@ -95,7 +96,7 @@ export default {
             this.activePage = page
             const {data} = await axios.get('api/hotel/index?page=' + page);
             this.hotelArray = data.data
-            console.log(data)
+            this.paginationVisibility = true
         },
         async getRecordsCount(){
             const {data} = await axios.get('api/hotel/index');
