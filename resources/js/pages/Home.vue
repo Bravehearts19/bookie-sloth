@@ -20,7 +20,7 @@
 
         <!-- Inizio container degli hotel -->
         <div class="container py-5">
-            <div class="row row-cols-3" :style="hideLoading===false ? 'display:none' : ''">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 " :style="hideLoading===false ? 'display:none' : ''">
                 <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
                     <div class="card_container bg-primary shadow-lg">
                         
