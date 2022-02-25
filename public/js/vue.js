@@ -3061,7 +3061,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-b3c5cf30] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-b3c5cf30] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n}\n.image-container[data-v-b3c5cf30] {\n  width: 100%;\n  border-radius: 20px;\n}\n.image-container img[data-v-b3c5cf30] {\n  border-radius: 20px;\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-b3c5cf30] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-b3c5cf30] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n  height: 300px;\n}\n.image-container[data-v-b3c5cf30] {\n  width: 100%;\n  border-radius: 20px;\n  height: 150px;\n  aspect-ratio: 2/1.5;\n}\n.image-container img[data-v-b3c5cf30] {\n  border-radius: 20px;\n  width: 100%;\n  height: 100%;\n  aspect-ratio: 2/1.5;\n}", ""]);
 
 // exports
 
@@ -17618,108 +17618,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "loading-screen d-flex justify-content-center align-items-center",
-        class: _vm.deleteLoading === true ? "d-none" : "",
-        style:
-          _vm.hideLoading === true ? "opacity:0; transition:opacity 0.3s" : "",
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "d-flex flex-column align-items-center",
-            style:
-              _vm.pageLoaded === true
-                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
-                : "",
-          },
-          [
-            _c("img", {
-              staticClass: "mb-3",
-              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "d-flex",
-                style:
-                  _vm.pageLoaded === true
-                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
-                    : "",
-              },
-              [
-                _c(
-                  "h2",
-                  {
-                    staticClass: "text-white me-3",
-                    style:
-                      _vm.pageLoaded === true
-                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
-                        : "",
-                  },
-                  [_vm._v("Sloth")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h2",
-                  {
-                    staticClass: "text-white ms-3 d-flex",
-                    style:
-                      _vm.pageLoaded === true
-                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
-                        : "",
-                  },
-                  [
-                    _vm._v("h\n                    "),
-                    _c(
-                      "span",
-                      { style: _vm.pageLoaded === true ? "opacity:0" : "" },
-                      [_vm._v("ot")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        style:
-                          _vm.pageLoaded === true
-                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
-                            : "",
-                      },
-                      [_vm._v("el")]
-                    ),
-                  ]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "spinner-border text-primary mt-3",
-                style: _vm.pageLoaded === true ? "opacity:0" : "",
-                attrs: { role: "status" },
-              },
-              [
-                _c("span", { staticClass: "visually-hidden" }, [
-                  _vm._v("Loading..."),
-                ]),
-              ]
-            ),
-          ]
-        ),
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "container py-5" }, [
       _c(
         "div",
         {
-          staticClass: "row row-cols-3",
+          staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3 ",
           style: _vm.hideLoading === false ? "display:none" : "",
         },
         _vm._l(_vm.hotelArray, function (hotel, index) {
@@ -17822,7 +17725,7 @@ var render = function () {
       _vm._v(" "),
       _c(
         "ul",
-        { staticClass: "pagination overflow-auto" },
+        { staticClass: "pagination overflow-auto pt-5" },
         _vm._l(_vm.totalPages, function (index) {
           return _c(
             "li",

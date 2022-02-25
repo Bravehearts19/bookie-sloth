@@ -44,10 +44,10 @@
 <body>
     <div class="bg-primary full-height d-flex flex-column">
 
-        <header class="py-3 border-none d-flex justify-content-center align-items-center">
+        {{-- <header class="py-3 border-none d-flex justify-content-center align-items-center">
             <img src="/images/logo.svg" alt="slothel logo">
             <h1>Slothel</h1>
-        </header>
+        </header> --}}
         <main class="flex-grow-1 radius-top bg-pattern shadow-lg">
             @yield('content')
         </main>
