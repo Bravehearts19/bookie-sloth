@@ -1,98 +1,70 @@
 <template>
     <div class="hotel_container bg-info">
-    <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
-        <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
-            <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
-            <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
-                <h2 class="text-white me-3" :style="pageLoaded===true ? 'animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;' : ''">Sloth</h2>
-                <h2 class="text-white ms-3 d-flex" :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">h
-                    <span :style="pageLoaded===true ? 'opacity:0' : ''">ot</span>
-                    <div :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">el</div>
-                </h2>
-            </div>
-            <div class="spinner-border text-primary mt-3" role="status" :style="pageLoaded===true ? 'opacity:0' : ''">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            
-        </div>
-    </div>
-        <div class="row row-cols-3" :style="hideLoading===false ? 'display:none' : ''">
-            <div class="col" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
-                <div class="card_container">
-                    <div class="py-5 d-flex align-items-center">
-                        <div class="image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg">
-                            <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name" class="w-100 py-3">
-                        </div>
-
-                        <div class="apartment-card-header bg-secondary py-3 rounded shadow-lg">
-                            <h1 class="text-white text-center mb-0">{{hotel.name}}</h1>
-                            <h4 class="text-white text-center mb-0">{{hotel.address}} - {{hotel.location}} - {{hotel.cap}}</h4>
-                        </div>
-
-                        <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary mt-5 w-25 mx-auto">Discover</router-link>
-                        
-                        <div class="d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg">
-                            <h6 class="text-secondary mb-0">price: <span class="text-primary">{{hotel.price}}</span></h6>
-                            <h6 class="text-secondary mb-0">bathrooms: {{hotel.n_bathrooms}}</h6>
-                            <h6 class="text-secondary mb-0">guests: {{hotel.n_guests}}</h6>
-                            <h6 class="text-secondary mb-0">rooms: {{hotel.n_rooms}}</h6>
-                            <h6 class="text-secondary mb-0">sizes: {{hotel.size}} mq</h6>
-                        </div>
-                    </div>
+        <!-- Inizio loading screen -->
+        <!-- <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
+            <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
+                <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
+                <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
+                    <h2 class="text-white me-3" :style="pageLoaded===true ? 'animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;' : ''">Sloth</h2>
+                    <h2 class="text-white ms-3 d-flex" :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">h
+                        <span :style="pageLoaded===true ? 'opacity:0' : ''">ot</span>
+                        <div :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">el</div>
+                    </h2>
                 </div>
-            </div>
-        </div>
-        <ul class="pagination overflow-auto">
-            <li class="page-item"
-                :class="(index === activePage) ? 'active' : ''"
-                v-for="index in totalPages"
-                :key="'page-'+index">
-                <a href="#" class="page-link"
-                @click="getHotelData(index)">
-                    {{index}}
-                </a>
-            </li>
-        </ul>
-        <!-- <div class="row h-100 align-items-center bg-info">
-            <div class="col">
-                <div class="card-container">
-                    <div class="apartment-card py-5 border-top border-bottom border-primary d-flex flex-column justify-content-center"
-                        :key="'hotel-'+index"
-                        v-for="(hotel, index) in hotelArray">
-                        
-                        <div class="apartment-card-header bg-secondary py-3 rounded shadow-lg">
-                            <h1 class="text-white text-center mb-0">{{hotel.name}}</h1>
-                            <h4 class="text-white text-center mb-0">{{hotel.address}} - {{hotel.location}} - {{hotel.cap}}</h4>
-                        </div>
-
-                        <div class="image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg">
-                            <img :src="hotel.cover_img" :alt="hotel.name" class="w-100 py-3">
-                        </div>
-                        <button class="btn btn-secondary mt-5 w-25 mx-auto">Discover</button>
-                        <div class="d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg">
-                            <h6 class="text-secondary mb-0">price: <span class="text-primary">{{hotel.price}}</span></h6>
-                            <h6 class="text-secondary mb-0">bathrooms: {{hotel.n_bathrooms}}</h6>
-                            <h6 class="text-secondary mb-0">guests: {{hotel.n_guests}}</h6>
-                            <h6 class="text-secondary mb-0">rooms: {{hotel.n_rooms}}</h6>
-                            <h6 class="text-secondary mb-0">sizes: {{hotel.size}} mq</h6>
-                        </div>
-                        
-                    </div>
-
-                    <ul class="pagination overflow-auto">
-                        <li class="page-item"
-                            :class="(index === activePage) ? 'active' : ''"
-                            v-for="index in totalPages"
-                            :key="'page-'+index">
-                            <a href="#" class="page-link"
-                            @click="getHotelData(index)">
-                                {{index}}
-                            </a>
-                        </li>
-                    </ul>
+                <div class="spinner-border text-primary mt-3" role="status" :style="pageLoaded===true ? 'opacity:0' : ''">
+                    <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
         </div> -->
+        <!-- Fine loading screen -->
+
+        <!-- Inizio container degli hotel -->
+        <div class="container">
+            <div class="row row-cols-3" :style="hideLoading===false ? 'display:none' : ''">
+                <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
+                    <div class="card_container bg-primary shadow-lg">
+                        
+                        <div class="d-flex flex-column align-items-center pt-3 w-50">
+                            <div class="image-container shadow-lg">
+                                <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
+                            </div>
+                            <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
+                        </div>
+
+                        <div class="d-flex flex-column align-items-center w-50">
+                            <div class="py-3">
+                                <h5 class="text-secondary text-center mb-0"><strong>{{hotel.name}}</strong></h5>
+                                <h5 class="text-secondary text-center mb-0">{{hotel.location}}</h5>
+                                <h6 class="text-secondary text-center mb-0">{{hotel.address}} - {{hotel.cap}}</h6>
+                            </div>
+                            
+                            <div class="p-3">
+                                <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
+                                <h6 class="text-secondary py-1 mb-0">Numero di ospiti: <strong>{{hotel.n_guests}}</strong></h6>
+                                <h6 class="text-secondary py-1 mb-0">Numero di stanze: <strong>{{hotel.n_rooms}}</strong></h6>
+                                <h6 class="text-secondary py-1 mb-0">Numero di bagni: <strong>{{hotel.n_bathrooms}}</strong></h6>
+                                <h6 class="text-secondary py-1 mb-0">Dimensioni: <strong>{{hotel.size}} mq</strong></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inizio bottoni per la paginazione -->
+            <ul class="pagination overflow-auto">
+                <li class="page-item"
+                    :class="(index === activePage) ? 'active' : ''"
+                    v-for="index in totalPages"
+                    :key="'page-'+index">
+                    <a href="#" class="page-link"
+                    @click="getHotelData(index)">
+                        {{index}}
+                    </a>
+                </li>
+            </ul>
+            <!-- Fine bottoni per la paginazione -->
+        </div>
+        <!-- Fine container degli hotel -->
     </div>
 </template>
 
@@ -239,11 +211,25 @@ export default {
     flex-direction: column;
     align-items: center;
     flex-grow: 0;
+    .btn_router_link {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
 }
-.row {
-    gap: 20px;
+.card_container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 24px;
 }
-/* .card_container {
-
-} */
+.image-container {
+    width: 100%;
+    border-radius: 20px;
+    img {
+        border-radius: 20px;
+        width: 100%;
+    }
+}
 </style>
