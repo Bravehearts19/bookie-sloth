@@ -5,7 +5,9 @@ namespace App\Http\Controllers\User\Apartment;
 use App\Apartment;
 use App\Http\Controllers\Controller;
 use App\Sponsor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SponsorController extends Controller
 {
@@ -20,7 +22,17 @@ class SponsorController extends Controller
     {
         $data = $request->all();
         $sponsorToApply = Sponsor::where('id', $data["sponsor"])->first();
-        $apartment->sponsors()->attach($sponsorToApply->id);
+        $allSponsors = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->get()->toArray();
+
+        $expireDate = "";
+        if (empty($allSponsors)) {
+            $expireDate = Carbon::now()->addHours($sponsorToApply["duration"] + 1)->toDateTimeString();
+        } else {
+            $expireDate = Carbon::parse(end($allSponsors)->expires_at)->addHours($sponsorToApply["duration"])->toDateTimeString();
+        }
+
+
+        $apartment->sponsors()->attach($sponsorToApply->id, ['expires_at' => $expireDate, 'created_at' => Carbon::now()->addHours(1)]);
 
         return redirect()->route('user.apartment.index')->with('msg', 'Sponsor applicato!');
     }
