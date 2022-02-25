@@ -2268,6 +2268,52 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2530,6 +2576,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2578,9 +2631,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    console.log(this.$route.params.id);
     axios.get("/api/hotel/" + this.$route.params.id).then(function (resp) {
       console.log(resp.data);
-      _this.apartment = resp.data[_this.$route.params.id - 1];
+      _this.apartment = resp.data[0];
       /* la resp.data ritorna un oggetto con chiave id dell'oggetto -1 */
 
       var HOTEL_COORDINATES = {
@@ -2667,34 +2721,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3022,7 +3048,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".border-radius-to-search-bar {\n  border-top-left-radius: 24px;\n  border-bottom-left-radius: 24px;\n  border-top-right-radius: 24px;\n  border-bottom-right-radius: 24px;\n}\n.border-radius-to-a {\n  border-top-left-radius: 24px;\n  border-bottom-left-radius: 24px;\n  border-top-right-radius: 24px;\n  border-bottom-right-radius: 24px;\n}\n.border-radius-50 {\n  border-radius: 50%;\n}\n.border-none {\n  border: none;\n}\n#searchBar:hover {\n  cursor: pointer;\n}\n.form-control:focus {\n  box-shadow: none;\n}", ""]);
+exports.push([module.i, "#searchBar:hover {\n  cursor: pointer;\n}\nheader {\n  border-bottom: none;\n}\n.border-radius-to-search-bar {\n  border-top-left-radius: 24px;\n  border-bottom-left-radius: 24px;\n  border-top-right-radius: 24px;\n  border-bottom-right-radius: 24px;\n}\n.border-radius-to-a {\n  border-top-left-radius: 24px;\n  border-bottom-left-radius: 24px;\n  border-top-right-radius: 24px;\n  border-bottom-right-radius: 24px;\n}\n.border-radius-50 {\n  border-radius: 50%;\n}\n.border-none {\n  border: none;\n}\n.form-control:focus {\n  box-shadow: none;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".hotel_container[data-v-7a96c234] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-7a96c234] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-7a96c234] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n}\n.image-container[data-v-7a96c234] {\n  width: 100%;\n  border-radius: 20px;\n}\n.image-container img[data-v-7a96c234] {\n  border-radius: 20px;\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -3060,7 +3105,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.row[data-v-b3c5cf30] {\n  gap: 20px;\n}\n\n/* .card_container {\n\n} */", ""]);
+exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-b3c5cf30] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-b3c5cf30] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n}\n.image-container[data-v-b3c5cf30] {\n  width: 100%;\n  border-radius: 20px;\n}\n.image-container img[data-v-b3c5cf30] {\n  border-radius: 20px;\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -7985,6 +8030,36 @@ try {
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Header.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Header.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -17021,166 +17096,147 @@ var render = function () {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "container h-100" }, [
-      _c("div", { staticClass: "row  h-100 align-items-center" }, [
-        _c(
-          "section",
-          {
-            staticClass: "col overflow-auto bg-info mt-5",
-            attrs: { id: "apartments-slider-section" },
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "card-container" },
-              [
-                _vm._l(_vm.hotelArray, function (hotel, index) {
-                  return _c(
-                    "div",
-                    {
-                      key: "hotel-" + index,
-                      staticClass:
-                        "apartment-card py-5 border-top border-bottom border-primary d-flex flex-column justify-content-center",
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "apartment-card-header bg-secondary py-3 rounded shadow-lg",
-                        },
-                        [
-                          _c(
-                            "h1",
-                            { staticClass: "text-white text-center mb-0" },
-                            [_vm._v(_vm._s(hotel.name))]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h4",
-                            { staticClass: "text-white text-center mb-0" },
-                            [
-                              _vm._v(
-                                _vm._s(hotel.address) +
-                                  " - " +
-                                  _vm._s(hotel.location) +
-                                  " - " +
-                                  _vm._s(hotel.cap)
-                              ),
-                            ]
-                          ),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg",
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "w-100 py-3",
-                            attrs: { src: hotel.cover_img, alt: hotel.name },
-                          }),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-secondary mt-5 w-25 mx-auto",
-                          attrs: { to: "apartment/" + hotel.id },
-                        },
-                        [_vm._v("Discover")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg",
-                        },
-                        [
-                          _c("h6", { staticClass: "text-secondary mb-0" }, [
-                            _vm._v("Prezzo: "),
-                            _c("span", { staticClass: "text-secondary" }, [
-                              _vm._v("€" + _vm._s(hotel.price)),
-                            ]),
-                          ]),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "text-secondary mb-0" }, [
-                            _vm._v("Bagni: " + _vm._s(hotel.n_bathrooms)),
-                          ]),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "text-secondary mb-0" }, [
-                            _vm._v("Letti: " + _vm._s(hotel.n_guests)),
-                          ]),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "text-secondary mb-0" }, [
-                            _vm._v("Stanze: " + _vm._s(hotel.n_rooms)),
-                          ]),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "text-secondary mb-0" }, [
-                            _vm._v("Dimensioni: " + _vm._s(hotel.size) + " mq"),
-                          ]),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "ul",
-                        _vm._l(hotel.services, function (service) {
-                          return _c("li", [_vm._v(_vm._s(service.name))])
-                        }),
-                        0
-                      ),
-                    ],
-                    1
-                  )
-                }),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  { staticClass: "pagination overflow-auto" },
-                  _vm._l(_vm.totalPages, function (index) {
-                    return _c(
-                      "li",
-                      {
-                        key: "page-" + index,
-                        staticClass: "page-item",
-                        class: index === _vm.activePage ? "active" : "",
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        {
+          staticClass: "row row-cols-3",
+          style: _vm.hideLoading === false ? "display:none" : "",
+        },
+        _vm._l(_vm.hotelArray, function (hotel, index) {
+          return _c("div", { key: "hotel-" + index, staticClass: "col py-3" }, [
+            _c("div", { staticClass: "card_container bg-primary shadow-lg" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex flex-column align-items-center pt-3 w-50",
+                },
+                [
+                  _c("div", { staticClass: "image-container shadow-lg" }, [
+                    _c("img", {
+                      attrs: {
+                        src: hotel.cover_img.includes("http")
+                          ? hotel.cover_img
+                          : "/storage/" + hotel.cover_img,
+                        alt: hotel.name,
                       },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
+                      attrs: {
+                        to: { name: "apartment", params: { id: hotel.id } },
+                      },
+                    },
+                    [_vm._v("Discover")]
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "d-flex flex-column align-items-center w-50" },
+                [
+                  _c("div", { staticClass: "py-3" }, [
+                    _c(
+                      "h5",
+                      { staticClass: "text-secondary text-center mb-0" },
+                      [_c("strong", [_vm._v(_vm._s(hotel.name))])]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h5",
+                      { staticClass: "text-secondary text-center mb-0" },
+                      [_vm._v(_vm._s(hotel.location))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h6",
+                      { staticClass: "text-secondary text-center mb-0" },
                       [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function ($event) {
-                                return _vm.getHotelData(index)
-                              },
-                            },
-                          },
-                          [
-                            _vm._v(
-                              "\r\n                            " +
-                                _vm._s(index) +
-                                "\r\n                        "
-                            ),
-                          ]
+                        _vm._v(
+                          _vm._s(hotel.address) + " - " + _vm._s(hotel.cap)
                         ),
                       ]
-                    )
-                  }),
-                  0
-                ),
-              ],
-              2
-            ),
-          ]
-        ),
-      ]),
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-3" }, [
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Prezzo a persona: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di ospiti: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di stanze: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di bagni: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_bathrooms))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Dimensioni: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.size) + " mq")]),
+                    ]),
+                  ]),
+                ]
+              ),
+            ]),
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "pagination overflow-auto" },
+        _vm._l(_vm.totalPages, function (index) {
+          return _c(
+            "li",
+            {
+              key: "page-" + index,
+              staticClass: "page-item",
+              class: index === _vm.activePage ? "active" : "",
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "page-link",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.getHotelData(index)
+                    },
+                  },
+                },
+                [
+                  _vm._v(
+                    "\r\n                        " +
+                      _vm._s(index) +
+                      "\r\n                    "
+                  ),
+                ]
+              ),
+            ]
+          )
+        }),
+        0
+      ),
     ]),
   ])
 }
@@ -17212,7 +17268,12 @@ var render = function () {
     [
       _c("div", { staticClass: "img-container" }, [
         _c("img", {
-          attrs: { src: _vm.apartment.cover_img, alt: _vm.apartment.name },
+          attrs: {
+            src: _vm.apartment.cover_img.includes("http")
+              ? _vm.apartment.cover_img
+              : "/storage/" + _vm.apartment.cover_img,
+            alt: _vm.apartment.name,
+          },
         }),
       ]),
       _vm._v(" "),
@@ -17425,68 +17486,102 @@ var render = function () {
               _vm.displayPosition = $event
             },
           },
-          scopedSlots: _vm._u([
-            {
-              key: "footer",
-              fn: function () {
-                return [
-                  _c("Button", {
-                    staticClass: "p-button-text my-dialog",
-                    attrs: { label: "Annulla", icon: "pi pi-times" },
-                    on: { click: _vm.closePosition },
-                  }),
-                  _vm._v(" "),
-                  _c("Button", {
-                    staticClass: "my-dialog",
-                    attrs: {
-                      label: "Invia",
-                      icon: "pi pi-check",
-                      autofocus: "",
-                    },
-                    on: { click: _vm.closePosition },
-                  }),
-                ]
-              },
-              proxy: true,
-            },
-          ]),
         },
         [
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              {
-                staticClass: "form-label",
-                attrs: { for: "exampleFormControlInput1" },
-              },
-              [_vm._v("Indirizzo Email")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
+          _c(
+            "form",
+            {
               attrs: {
-                type: "email",
-                id: "exampleFormControlInput1",
-                placeholder: "nome@esempio.com",
+                method: "post",
+                action: "/api/message/" + _vm.apartment.id + "/store",
               },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              {
-                staticClass: "form-label",
-                attrs: { for: "exampleFormControlTextarea1" },
-              },
-              [_vm._v("Messaggio")]
-            ),
-            _vm._v(" "),
-            _c("textarea", {
-              staticClass: "form-control",
-              attrs: { id: "exampleFormControlTextarea1", rows: "3" },
-            }),
-          ]),
+            },
+            [
+              _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleFormControlInput1" },
+                  },
+                  [_vm._v("Nome")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "name",
+                    id: "exampleFormControlInput1",
+                    placeholder: "nome",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleFormControlInput1" },
+                  },
+                  [_vm._v("Indirizzo Email")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    name: "email",
+                    id: "exampleFormControlInput1",
+                    placeholder: "nome@esempio.com",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleFormControlTextarea1" },
+                  },
+                  [_vm._v("Messaggio")]
+                ),
+                _vm._v(" "),
+                _c("textarea", {
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "message",
+                    id: "exampleFormControlTextarea1",
+                    rows: "3",
+                  },
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: { type: "hidden", name: "apartmentId" },
+                  domProps: { value: _vm.apartment.id },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("Button", {
+                staticClass: "p-button-text my-dialog",
+                attrs: { label: "Annulla", icon: "pi pi-times" },
+                on: { click: _vm.closePosition },
+              }),
+              _vm._v(" "),
+              _c("Button", {
+                staticClass: "my-dialog",
+                attrs: {
+                  label: "Invia",
+                  type: "submit",
+                  icon: "pi pi-check",
+                  autofocus: "",
+                },
+              }),
+            ],
+            1
+          ),
         ]
       ),
     ],
@@ -17564,234 +17659,148 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "loading-screen d-flex justify-content-center align-items-center",
-        class: _vm.deleteLoading === true ? "d-none" : "",
-        style:
-          _vm.hideLoading === true ? "opacity:0; transition:opacity 0.3s" : "",
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "d-flex flex-column align-items-center",
-            style:
-              _vm.pageLoaded === true
-                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
-                : "",
-          },
-          [
-            _c("img", {
-              staticClass: "mb-3",
-              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "d-flex",
-                style:
-                  _vm.pageLoaded === true
-                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
-                    : "",
-              },
-              [
-                _c(
-                  "h2",
-                  {
-                    staticClass: "text-white me-3",
-                    style:
-                      _vm.pageLoaded === true
-                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
-                        : "",
-                  },
-                  [_vm._v("Sloth")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h2",
-                  {
-                    staticClass: "text-white ms-3 d-flex",
-                    style:
-                      _vm.pageLoaded === true
-                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
-                        : "",
-                  },
-                  [
-                    _vm._v("h\n                "),
-                    _c(
-                      "span",
-                      { style: _vm.pageLoaded === true ? "opacity:0" : "" },
-                      [_vm._v("ot")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        style:
-                          _vm.pageLoaded === true
-                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
-                            : "",
-                      },
-                      [_vm._v("el")]
-                    ),
-                  ]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "spinner-border text-primary mt-3",
-                style: _vm.pageLoaded === true ? "opacity:0" : "",
-                attrs: { role: "status" },
-              },
-              [
-                _c("span", { staticClass: "visually-hidden" }, [
-                  _vm._v("Loading..."),
-                ]),
-              ]
-            ),
-          ]
-        ),
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "row row-cols-3",
-        style: _vm.hideLoading === false ? "display:none" : "",
-      },
-      _vm._l(_vm.hotelArray, function (hotel, index) {
-        return _c("div", { key: "hotel-" + index, staticClass: "col" }, [
-          _c("div", { staticClass: "card_container" }, [
-            _c(
-              "div",
-              { staticClass: "py-5 d-flex align-items-center" },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "image-container p-3 mt-5 bg-primary border border-secondary my-3 mx-auto w-50 rounded shadow-lg",
-                  },
-                  [
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        {
+          staticClass: "row row-cols-3",
+          style: _vm.hideLoading === false ? "display:none" : "",
+        },
+        _vm._l(_vm.hotelArray, function (hotel, index) {
+          return _c("div", { key: "hotel-" + index, staticClass: "col py-3" }, [
+            _c("div", { staticClass: "card_container bg-primary shadow-lg" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex flex-column align-items-center pt-3 w-50",
+                },
+                [
+                  _c("div", { staticClass: "image-container shadow-lg" }, [
                     _c("img", {
-                      staticClass: "w-100 py-3",
-                      attrs: { src: hotel.cover_img, alt: hotel.name },
+                      attrs: {
+                        src: hotel.cover_img.includes("http")
+                          ? hotel.cover_img
+                          : "/storage/" + hotel.cover_img,
+                        alt: hotel.name,
+                      },
                     }),
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "apartment-card-header bg-secondary py-3 rounded shadow-lg",
-                  },
-                  [
-                    _c("h1", { staticClass: "text-white text-center mb-0" }, [
-                      _vm._v(_vm._s(hotel.name)),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
+                      attrs: {
+                        to: { name: "apartment", params: { id: hotel.id } },
+                      },
+                    },
+                    [_vm._v("Discover")]
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "d-flex flex-column align-items-center w-50" },
+                [
+                  _c("div", { staticClass: "py-3" }, [
+                    _c(
+                      "h5",
+                      { staticClass: "text-secondary text-center mb-0" },
+                      [_c("strong", [_vm._v(_vm._s(hotel.name))])]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h5",
+                      { staticClass: "text-secondary text-center mb-0" },
+                      [_vm._v(_vm._s(hotel.location))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h6",
+                      { staticClass: "text-secondary text-center mb-0" },
+                      [
+                        _vm._v(
+                          _vm._s(hotel.address) + " - " + _vm._s(hotel.cap)
+                        ),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-3" }, [
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Prezzo a persona: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
                     ]),
                     _vm._v(" "),
-                    _c("h4", { staticClass: "text-white text-center mb-0" }, [
-                      _vm._v(
-                        _vm._s(hotel.address) +
-                          " - " +
-                          _vm._s(hotel.location) +
-                          " - " +
-                          _vm._s(hotel.cap)
-                      ),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di ospiti: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
                     ]),
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-secondary mt-5 w-25 mx-auto",
-                    attrs: {
-                      to: { name: "apartment", params: { id: hotel.id } },
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di stanze: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di bagni: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_bathrooms))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Dimensioni: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.size) + " mq")]),
+                    ]),
+                  ]),
+                ]
+              ),
+            ]),
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "pagination overflow-auto" },
+        _vm._l(_vm.totalPages, function (index) {
+          return _c(
+            "li",
+            {
+              key: "page-" + index,
+              staticClass: "page-item",
+              class: index === _vm.activePage ? "active" : "",
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "page-link",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.getHotelData(index)
                     },
                   },
-                  [_vm._v("Discover")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "d-flex justify-content-around flex-wrap mt-5 py-3 border-top border-secondary bg-primary rounded shadow-lg",
-                  },
-                  [
-                    _c("h6", { staticClass: "text-secondary mb-0" }, [
-                      _vm._v("price: "),
-                      _c("span", { staticClass: "text-primary" }, [
-                        _vm._v(_vm._s(hotel.price)),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary mb-0" }, [
-                      _vm._v("bathrooms: " + _vm._s(hotel.n_bathrooms)),
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary mb-0" }, [
-                      _vm._v("guests: " + _vm._s(hotel.n_guests)),
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary mb-0" }, [
-                      _vm._v("rooms: " + _vm._s(hotel.n_rooms)),
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary mb-0" }, [
-                      _vm._v("sizes: " + _vm._s(hotel.size) + " mq"),
-                    ]),
-                  ]
-                ),
-              ],
-              1
-            ),
-          ]),
-        ])
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "pagination overflow-auto" },
-      _vm._l(_vm.totalPages, function (index) {
-        return _c(
-          "li",
-          {
-            key: "page-" + index,
-            staticClass: "page-item",
-            class: index === _vm.activePage ? "active" : "",
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "page-link",
-                attrs: { href: "#" },
-                on: {
-                  click: function ($event) {
-                    return _vm.getHotelData(index)
-                  },
                 },
-              },
-              [_vm._v("\n                " + _vm._s(index) + "\n            ")]
-            ),
-          ]
-        )
-      }),
-      0
-    ),
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(index) +
+                      "\n                "
+                  ),
+                ]
+              ),
+            ]
+          )
+        }),
+        0
+      ),
+    ]),
   ])
 }
 var staticRenderFns = []
@@ -33459,7 +33468,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AdvancedResearch_vue_vue_type_template_id_7a96c234_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdvancedResearch.vue?vue&type=template&id=7a96c234&scoped=true& */ "./resources/js/pages/AdvancedResearch.vue?vue&type=template&id=7a96c234&scoped=true&");
 /* harmony import */ var _AdvancedResearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdvancedResearch.vue?vue&type=script&lang=js& */ "./resources/js/pages/AdvancedResearch.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _AdvancedResearch_vue_vue_type_style_index_0_id_7a96c234_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true& */ "./resources/js/pages/AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -33467,7 +33478,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _AdvancedResearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _AdvancedResearch_vue_vue_type_template_id_7a96c234_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _AdvancedResearch_vue_vue_type_template_id_7a96c234_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -33496,6 +33507,22 @@ component.options.__file = "resources/js/pages/AdvancedResearch.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdvancedResearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AdvancedResearch.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/AdvancedResearch.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdvancedResearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/pages/AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdvancedResearch_vue_vue_type_style_index_0_id_7a96c234_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/AdvancedResearch.vue?vue&type=style&index=0&id=7a96c234&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdvancedResearch_vue_vue_type_style_index_0_id_7a96c234_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdvancedResearch_vue_vue_type_style_index_0_id_7a96c234_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdvancedResearch_vue_vue_type_style_index_0_id_7a96c234_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdvancedResearch_vue_vue_type_style_index_0_id_7a96c234_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
 
 /***/ }),
 
