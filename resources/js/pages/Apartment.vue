@@ -218,9 +218,7 @@ export default {
         .p-calendar{
            max-width: 300px;
                
-           .p-datepicker table td > span.p-highlight{
-               
-           }
+           
         }
 
         .services-container{
