@@ -3060,7 +3060,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-b3c5cf30] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-b3c5cf30] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n}\n.image-container[data-v-b3c5cf30] {\n  width: 100%;\n  border-radius: 20px;\n}\n.image-container img[data-v-b3c5cf30] {\n  border-radius: 20px;\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-b3c5cf30] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-b3c5cf30] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n  height: 300px;\n}\n.image-container[data-v-b3c5cf30] {\n  width: 100%;\n  border-radius: 20px;\n  height: 150px;\n  aspect-ratio: 2/1.5;\n}\n.image-container img[data-v-b3c5cf30] {\n  border-radius: 20px;\n  width: 100%;\n  height: 100%;\n  aspect-ratio: 2/1.5;\n}\n.h6.md[data-v-b3c5cf30] {\n  font-size: 14px;\n}\n.h6.xs[data-v-b3c5cf30] {\n  font-size: 12px;\n}\n.h5.md[data-v-b3c5cf30] {\n  font-size: 12px;\n}\n.h5.xs[data-v-b3c5cf30] {\n  font-size: 11px;\n}\n\n/* @media (max-width: 692px) {    MEDIA QUERY DOESN'T WORK\n    .hotel_container {\n        .container {\n            h5 {\n                font-size: 12px;\n            }\n            h6 {\n                font-size: 11px;\n            }\n        }\n    }\n} */", ""]);
 
 // exports
 
@@ -17614,11 +17614,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "container py-5" }, [
       _c(
         "div",
         {
-          staticClass: "row row-cols-3",
+          staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3 ",
           style: _vm.hideLoading === false ? "display:none" : "",
         },
         _vm._l(_vm.hotelArray, function (hotel, index) {
@@ -17664,19 +17664,28 @@ var render = function () {
                   _c("div", { staticClass: "py-3" }, [
                     _c(
                       "h5",
-                      { staticClass: "text-secondary text-center mb-0" },
+                      {
+                        staticClass: "text-secondary text-center mb-0 h5",
+                        class: _vm.$mq,
+                      },
                       [_c("strong", [_vm._v(_vm._s(hotel.name))])]
                     ),
                     _vm._v(" "),
                     _c(
                       "h5",
-                      { staticClass: "text-secondary text-center mb-0" },
+                      {
+                        staticClass: "text-secondary text-center mb-0 h5",
+                        class: _vm.$mq,
+                      },
                       [_vm._v(_vm._s(hotel.location))]
                     ),
                     _vm._v(" "),
                     _c(
                       "h6",
-                      { staticClass: "text-secondary text-center mb-0" },
+                      {
+                        staticClass: "text-secondary text-center mb-0 h6",
+                        class: _vm.$mq,
+                      },
                       [
                         _vm._v(
                           _vm._s(hotel.address) + " - " + _vm._s(hotel.cap)
@@ -17686,30 +17695,65 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "p-3" }, [
-                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                      _vm._v("Prezzo a persona: "),
-                      _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
-                    ]),
+                    _c(
+                      "h6",
+                      {
+                        staticClass: "text-secondary py-1 mb-0 h6",
+                        class: _vm.$mq,
+                      },
+                      [
+                        _vm._v("Prezzo a persona: "),
+                        _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                      _vm._v("Numero di ospiti: "),
-                      _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
-                    ]),
+                    _c(
+                      "h6",
+                      {
+                        staticClass: "text-secondary py-1 mb-0 h6",
+                        class: _vm.$mq,
+                      },
+                      [
+                        _vm._v("Numero di ospiti: "),
+                        _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                      _vm._v("Numero di stanze: "),
-                      _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
-                    ]),
+                    _c(
+                      "h6",
+                      {
+                        staticClass: "text-secondary py-1 mb-0 h6",
+                        class: _vm.$mq,
+                      },
+                      [
+                        _vm._v("Numero di stanze: "),
+                        _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                      _vm._v("Numero di bagni: "),
-                      _c("strong", [_vm._v(_vm._s(hotel.n_bathrooms))]),
-                    ]),
+                    _c(
+                      "h6",
+                      {
+                        staticClass: "text-secondary py-1 mb-0 h6",
+                        class: _vm.$mq,
+                      },
+                      [
+                        _vm._v("Numero di bagni: "),
+                        _c("strong", [_vm._v(_vm._s(hotel.n_bathrooms))]),
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                      _vm._v("Dimensioni: "),
-                      _c("strong", [_vm._v(_vm._s(hotel.size) + " mq")]),
-                    ]),
+                    _c(
+                      "h6",
+                      {
+                        staticClass: "text-secondary py-1 mb-0 h6",
+                        class: _vm.$mq,
+                      },
+                      [
+                        _vm._v("Dimensioni: "),
+                        _c("strong", [_vm._v(_vm._s(hotel.size) + " mq")]),
+                      ]
+                    ),
                   ]),
                 ]
               ),
@@ -17721,7 +17765,7 @@ var render = function () {
       _vm._v(" "),
       _c(
         "ul",
-        { staticClass: "pagination overflow-auto" },
+        { staticClass: "pagination overflow-auto pt-5" },
         _vm._l(_vm.totalPages, function (index) {
           return _c(
             "li",

@@ -67,7 +67,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * @param ?page={{pagination}}
  */
 Route::get('/hotel/index', function (Request $request) {
-    $apartments = Apartment::with('services')->paginate(10);
+    $apartments = Apartment::with('services')->paginate(12);
 
     return json_encode($apartments);
 });
