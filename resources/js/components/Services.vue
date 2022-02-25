@@ -1,12 +1,12 @@
 <template>
   <div>
     <form action="">
-    <h2>Servizi</h2>
-      <ul class="list-unstyled d-flex justify-content-around">
+    <h5 class="ms-3">Servizi</h5>
+      <ul class="list-unstyled d-flex flex-wrap justify-content-around my-row m-auto bg-secondary">
         <li
           v-for="(service, index) in services"
           :key="'service-' + index"
-          class="m-1 d-flex align-items-center"
+          class="d-flex align-items-center single-service"
         >
           <input
             class="form-check-input"
@@ -58,7 +58,16 @@ export default {
   },
 };
 </script>
-<style>
+<style lang='scss' scoped>
+  .my-row{
+    width: 100%;
+    border-radius: 30px;
+
+    .single-service{
+      width: calc((100% / 5) - 40px);
+    }
+  }
+
 </style>
 
 
