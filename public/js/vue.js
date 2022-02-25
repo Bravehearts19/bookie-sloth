@@ -17587,7 +17587,7 @@ var render = function () {
       _c(
         "div",
         {
-          staticClass: "row row-cols-3",
+          staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3 ",
           style: _vm.hideLoading === false ? "display:none" : "",
         },
         _vm._l(_vm.hotelArray, function (hotel, index) {
