@@ -1,12 +1,12 @@
 <template>
   <div>
     <form action="">
-    <h2>Servizi</h2>
-      <ul class="list-unstyled d-flex justify-content-around">
+    <h3 class="ms-4"><strong>Servizi :</strong></h3>
+      <ul class="list-unstyled d-flex flex-wrap justify-content-around my-row m-auto bg-secondary">
         <li
           v-for="(service, index) in services"
           :key="'service-' + index"
-          class="m-1 d-flex align-items-center"
+          class="d-flex align-items-center single-service"
         >
           <input
             class="form-check-input"
@@ -14,7 +14,7 @@
             @click="selectService(service.id)"
             id="flexCheckDefault"
           />
-          <h3 class="mb-0">
+          <h3 class="mb-0 ps-2 service_title">
             {{ capitalizeFirstLetter(service.name) }}
           </h3>
           <lord-icon
@@ -58,7 +58,20 @@ export default {
   },
 };
 </script>
-<style>
+<style lang='scss' scoped>
+  .my-row{
+    width: 100%;
+    
+
+    .single-service{
+      width: calc((100% / 5) - 40px);
+
+      .service_title{
+        min-width: 120px;
+      }
+    }
+  }
+
 </style>
 
 
