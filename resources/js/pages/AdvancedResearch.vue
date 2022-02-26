@@ -144,8 +144,8 @@ export default {
         }
     },
     updated(){
-        console.log('-------MOUNT HOME-------')
-        console.log('location:' + this.locationName + 'radius:' + this.radius)
+        /* console.log('-------MOUNT HOME-------')
+        console.log('location:' + this.locationName + 'radius:' + this.radius) */
     },
     mounted() {
         this.getRecordsCount();
@@ -154,12 +154,12 @@ export default {
     },
     watch:{
         locationName: async function(val, old) {
-            console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20')
+            /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
             const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
-            console.log('------new filtered data-------')
-            console.dir(data)
+            /* console.log('------new filtered data-------')
+            console.dir(data) */
             this.hotelArray = data
-            console.dir(this.hotelArray)
+            /* console.dir(this.hotelArray) */
             this.totalPages = data.length
         }
     }
