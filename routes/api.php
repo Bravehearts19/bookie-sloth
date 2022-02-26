@@ -67,7 +67,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * @param ?page={{pagination}}
  */
 Route::get('/hotel/index', function (Request $request) {
-    $apartments = Apartment::with('services')->paginate(12);
+    // $apartments = Apartment::with('services')->paginate(12);
+    $sponsoredApartments = DB::table('apartment_sponsor')->orderBy('sponsor_id', 'desc')
+        ->get();
+
+    $apartments = [];
+
+    foreach ($sponsoredApartments as $sponsoredApartment) {
+        $apartment = Apartment::where('id', $sponsoredApartment->apartment_id)->with('services')->first();
+        array_push($apartments, $apartment);
+    }
 
     return json_encode($apartments);
 });
