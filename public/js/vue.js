@@ -17592,7 +17592,7 @@ var render = function () {
         },
         _vm._l(_vm.hotelArray, function (hotel, index) {
           return _c("div", { key: "hotel-" + index, staticClass: "col py-3" }, [
-            _c("div", { staticClass: "card_container bg-primary" }, [
+            _c("div", { staticClass: "card_container bg-primary shadow-lg" }, [
               _c(
                 "div",
                 {
@@ -17600,7 +17600,7 @@ var render = function () {
                     "d-flex flex-column align-items-center pt-3 w-50",
                 },
                 [
-                  _c("div", { staticClass: "image-container" }, [
+                  _c("div", { staticClass: "image-container shadow-lg" }, [
                     _c("img", {
                       attrs: {
                         src: hotel.cover_img.includes("http")
@@ -34117,7 +34117,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\SIMO\Spindox\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\Lorenzo Rottigni\Documents\Boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })

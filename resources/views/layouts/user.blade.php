@@ -51,7 +51,7 @@
                 />
                 </svg>
             </div>
-            
+
             <div class="d-flex align-items-center m-3">
                 <a href="/">
                     <lord-icon
@@ -130,6 +130,7 @@
             <main class="bg-secondary flex-grow-1 overflow-auto">
                 @yield('content')
             </main>
+
         </div>
     </div>
 </body>

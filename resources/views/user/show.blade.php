@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
-    <div class="row row-cols-4 m-3">
+    <!--<div class="row row-cols-4 m-3">
         <div class="col">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -77,34 +77,127 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
-        <div class="col-8 mt-3">
-            <div id="map-div"></div>
-        </div>
-        <div class="col-4 mt-3">
-            <div class="card mb-3 h-100">
-                <div class="row g-0">
-                    <div class="col-8">
-                        <div class="card-body">
-                            <h4 class="card-title mb-3">I tuoi dati</h4>
-                            <h5><strong>Nome</strong>: {{Auth::user()->name}}</h5>
-                            <h5><strong>Cognome</strong>: {{Auth::user()->surname}}</h5>
-                            <h5><strong>Email</strong>: {{Auth::user()->email}}</h5>
-                            <h5><strong>Data di nascita</strong>: {{Auth::user()->date_of_birth}}</h5>
 
-                            <h2 class="text-danger">Da cambiare con statistiche utente(?)</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="stat-cards-container d-flex justify-content-around m-5 border-right border-left border-primary">
+
+                        <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
+                        <div class="stat-card-content d-flex flex-column">
+                            <div class="stat-card-header bg-secondary text-primary border-bottom border-primary p-2 px-5">
+                                <h3>Appartamenti</h3>
+                            </div>
+                            <div class="stat-card-value bg-primary text-center py-2">
+                                <h3 class="mb-0">{{Auth::user()->apartments()->count()}}</h3>
+                            </div>
+                        </div>
+                        <div class="stat-card-icon d-flex align-items-center shadow-lg bg-white px-2">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/gmzxduhd.json"
+                                trigger="loop"
+                                style="width:60px;height:60px"
+                                colors="primary:#4d1803,secondary:#c7ef00"
+                                >
+                            </lord-icon>
                         </div>
                     </div>
-                    <div class="col-4 d-flex align-items-center justify-content-center">
+
+                        <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
+                        <div class="stat-card-content d-flex flex-column">
+                            <div class="stat-card-header bg-secondary text-primary border-bottom border-primary p-2 px-5">
+                                <h3>Viste</h3>
+                            </div>
+                            <div class="stat-card-value bg-primary text-center py-2">
+                                <h3 class="mb-0">125</h3>
+                            </div>
+                        </div>
+                        <div class="stat-card-icon d-flex align-items-center shadow-lg bg-white px-2">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/tyounuzx.json"
+                                trigger="loop"
+                                style="width:60px;height:60px"
+                                colors="primary:#4d1803,secondary:#c7ef00"
+                                >
+                            </lord-icon>
+                        </div>
                     </div>
-                </div>
+
+                        <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
+                        <div class="stat-card-content d-flex flex-column">
+                            <div class="stat-card-header bg-secondary text-primary border-bottom border-primary p-2 px-5">
+                                <h3>Sponsorizzati</h3>
+                            </div>
+                            <div class="stat-card-value bg-primary text-center py-2">
+                                <h3 class="mb-0">{{Auth::user()->apartments()->has('sponsors')->count()}}</h3>
+                            </div>
+                        </div>
+                        <div class="stat-card-icon d-flex align-items-center shadow-lg bg-white px-2">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/rgyftmhc.json"
+                                trigger="loop"
+                                style="width:60px;height:60px"
+                                colors="primary:#4d1803,secondary:#c7ef00"
+                                >
+                            </lord-icon>
+                        </div>
+                    </div>
+
+                        <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
+                        <div class="stat-card-content d-flex flex-column">
+                            <div class="stat-card-header bg-secondary text-primary border-bottom border-primary p-2 px-5">
+                                <h3>Punteggio</h3>
+                            </div>
+                            <div class="stat-card-value bg-primary text-center py-2">
+                                <h3 class="mb-0">6</h3>
+                            </div>
+                        </div>
+                        <div class="stat-card-icon d-flex align-items-center shadow-lg bg-white px-2">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/mdgrhyca.json"
+                                trigger="loop"
+                                style="width:60px;height:60px"
+                                colors="primary:#4d1803,secondary:#c7ef00"
+                                >
+                            </lord-icon>
+                        </div>
+                    </div>
+
+                    </div>
+
             </div>
         </div>
+        <div class="row bg-info bg-wave py-3 mx-5 rounded shadow-lg mt-5">
+            <div class="col-6 offset-1 ">
+                <div id="map-div" class="rounded shadow-lg"></div>
+            </div>
+            <div class="col-4">
+                <div class="d-flex flex-column h-100 p-4 white-overlay rounded shadow-lg">
+                    <h3 class="border-bottom border-secondary card-title py-3">I tuoi dati</h3>
+                    <h5 class="border-bottom border-secondary py-3"><strong>Nome</strong>: {{Auth::user()->name}}</h5>
+                    <h5 class="border-bottom border-secondary py-3"><strong>Cognome</strong>: {{Auth::user()->surname}}</h5>
+                    <h5 class="border-bottom border-secondary py-3"><strong>Email</strong>: {{Auth::user()->email}}</h5>
+                    <h5 class="border-bottom border-secondary py-3"><strong>Data di nascita</strong>: {{Auth::user()->date_of_birth}}</h5>
+                </div>
+            </div>
 
-        
     </div>
-    
+
     <style>
         body, html { margin: 0; padding: 0; }
         #map-div { width: 100%; height: 700px; }
