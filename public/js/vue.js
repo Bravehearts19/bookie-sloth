@@ -17853,7 +17853,10 @@ var render = function () {
                       staticClass:
                         "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
                       attrs: {
-                        to: { name: "apartment", params: { id: hotel.id } },
+                        to: {
+                          name: "apartment",
+                          params: { id: hotel.apartment_id },
+                        },
                       },
                     },
                     [_vm._v("Discover")]
@@ -18428,7 +18431,10 @@ var render = function () {
                       staticClass:
                         "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
                       attrs: {
-                        to: { name: "apartment", params: { id: hotel.id } },
+                        to: {
+                          name: "apartment",
+                          params: { id: hotel.apartment_id },
+                        },
                       },
                     },
                     [_vm._v("Discover")]
