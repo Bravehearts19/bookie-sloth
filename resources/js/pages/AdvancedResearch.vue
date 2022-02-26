@@ -1,16 +1,42 @@
 <template>
 <div>
     <!-- inizio filtri -->
-    <div class="bg-primary py-3">
+    <div class="bg-secondary py-3 my_container">
       <Services @services="setServicesArray"></Services>
-      <div class="d-flex justify-content-center">
-        <h2>Raggio</h2>
-          <Knob v-model="radius" :min="0" :max="50" valueColor="Green" />
-        <h2>Stanze</h2>
-          <Knob v-model="roomsValue" :min="0" :max="100" valueColor="Green" />
-          <h2>Letti</h2>
-          <Knob v-model="bedValue" :min="0" :max="100" valueColor="Green" />
-      </div>
+
+        <div class="d-flex justify-content-start pt-2">
+            <div class="d-flex align-items-center mx-3">
+                <h4 class="ms-2"><strong>Raggio:</strong></h4>
+                <Knob v-model="radius" :min="0" :max="20" valueColor="LightGreen" textColor="1" :size="75" class="ps-2"/>
+            </div>
+
+            <!-- <div class="d-flex flex-column justify-content-center mx-3">
+                <Knob v-model="roomsValue" :min="0" :max="100" valueColor="LightGreen" :size="70" />
+                <h4>Stanze</h4>
+            </div>
+            <div class="d-flex flex-column justify-content-center mx-3">
+                <Knob v-model="bedValue" :min="0" :max="100" valueColor="LightGreen" :size="70" />
+                <h4>Letti</h4>
+            </div> -->
+            
+            <div class="ms-5 filter_slider">
+                <h4 ><strong>Stanze :</strong> {{ roomsValue }}</h4>
+                <Slider v-model="roomsValue" />
+            </div>
+
+            <div class="ms-5 filter_slider">
+                <h4><strong>Letti : </strong>{{ bedValue }}</h4>
+                <Slider v-model="bedValue" />
+            </div>
+
+            <!-- <div>
+
+                <h3>Raggio: {{radius}}</h3>
+                <Slider v-model="radius" />
+            </div> -->
+
+        </div>
+
     </div>
 
     
@@ -70,6 +96,8 @@ import Knob from "primevue/knob";
 import axios from "axios";
 import Paginator from 'primevue/paginator';
 import Services from "../components/Services.vue";
+import Slider from 'primevue/slider';
+
 
 export default {
     name: 'Home',
@@ -90,7 +118,7 @@ export default {
         locationName : String,
     },
     components: {
-        Paginator, Knob, Services
+        Paginator, Knob, Services, Slider,
     },
     methods:{
         async getHotelData(page){
@@ -138,6 +166,18 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.my_container{
+    border-radius: 50px;
+    margin:0 50px 20px 50px;
+
+    .filter_slider{
+        min-width: 140px;
+
+        
+    }
+    
+}
+
 .hotel_container {
     background-image: url('/images/wood_template.svg');
     background-repeat: repeat;
