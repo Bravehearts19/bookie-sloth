@@ -96,9 +96,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="stat-cards-container d-flex justify-content-around m-5 border-right border-left border-primary">
-
-                        <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
+                <div class="stat-cards-container d-flex flex-column flex-lg-row align-items-center gap-3 justify-content-lg-between m-5 px-5 border-right border-left border-primary">
+                    <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
                         <div class="stat-card-content d-flex flex-column">
                             <div class="stat-card-header bg-secondary text-primary border-bottom border-primary p-2 px-5">
                                 <h3>Appartamenti</h3>
@@ -112,7 +111,7 @@
                                 src="https://cdn.lordicon.com/gmzxduhd.json"
                                 trigger="loop"
                                 style="width:60px;height:60px"
-                                colors="primary:#4d1803,secondary:#c7ef00"
+
                                 >
                             </lord-icon>
                         </div>
@@ -182,17 +181,17 @@
 
             </div>
         </div>
-        <div class="row bg-info bg-wave py-3 mx-5 rounded shadow-lg mt-5">
-            <div class="col-6 offset-1 ">
+        <div class="row bg-info bg-wave py-3 mx-5 rounded shadow-lg mt-lg-5">
+            <div class="col-10 offset-1 col-lg-6 offset-lg-0">
                 <div id="map-div" class="rounded shadow-lg"></div>
             </div>
-            <div class="col-4">
+            <div class="col-10 offset-1 col-lg-5 offset-lg-1 mt-3 mt-lg-0">
                 <div class="d-flex flex-column h-100 p-4 white-overlay rounded shadow-lg">
-                    <h3 class="border-bottom border-secondary card-title py-3">I tuoi dati</h3>
-                    <h5 class="border-bottom border-secondary py-3"><strong>Nome</strong>: {{Auth::user()->name}}</h5>
-                    <h5 class="border-bottom border-secondary py-3"><strong>Cognome</strong>: {{Auth::user()->surname}}</h5>
-                    <h5 class="border-bottom border-secondary py-3"><strong>Email</strong>: {{Auth::user()->email}}</h5>
-                    <h5 class="border-bottom border-secondary py-3"><strong>Data di nascita</strong>: {{Auth::user()->date_of_birth}}</h5>
+                    <h3 class="border-bottom border-secondary card-title bg-secondary text-white rounded shadow-lg py-2 text-center">I tuoi dati</h3>
+                    <h5 class="border-bottom border-secondary py-2"><strong class="text-secondary">Nome</strong>: {{Auth::user()->name}}</h5>
+                    <h5 class="border-bottom border-secondary py-2"><strong class="text-secondary">Cognome</strong>: {{Auth::user()->surname}}</h5>
+                    <h5 class="border-bottom border-secondary py-2"><strong class="text-secondary">Email</strong>: {{Auth::user()->email}}</h5>
+                    <h5 class="border-bottom border-secondary py-2"><strong class="text-secondary">Data di nascita</strong>: {{Auth::user()->date_of_birth}}</h5>
                 </div>
             </div>
 
@@ -200,7 +199,7 @@
 
     <style>
         body, html { margin: 0; padding: 0; }
-        #map-div { width: 100%; height: 700px; }
+        #map-div { width: 100%; height: 50vh }
     </style>
 
     <script>
