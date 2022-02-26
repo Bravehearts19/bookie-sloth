@@ -1,7 +1,7 @@
 <template>
     <div id="vue-root">
         <!-- HEADER -->
-        <Header @location="setLocationName" @radius="setRadius"></Header>
+        <Header @location="setLocationName" @radius="radius"></Header>
         <router-view :locationName="locationName"></router-view>
 
         <!-- FOOTER -->
@@ -21,25 +21,18 @@ export default {
         return {
             locationName : undefined,
             radius : 20,
-            rooms : 1,
+            
         }
     },
     methods:{
         setLocationName(event){
-            console.log('------settingname-----')
+            /* console.log('------settingname-----')
             console.log('locationName: ')
-            console.log(event)
+            console.log(event) */
             this.locationName = event
         },
-        setRadius(event){
-            console.log('------settingragius-----')
-            console.log('radius: ')
-            console.log(event)
-            this.radius = event
-        },
-        setRooms(event){
-            this.rooms = event
-        }
+        
+        
     }
     
 }

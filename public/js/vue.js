@@ -1941,25 +1941,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       locationName: undefined,
-      radius: 20,
-      rooms: 1
+      radius: 20
     };
   },
   methods: {
     setLocationName: function setLocationName(event) {
-      console.log('------settingname-----');
-      console.log('locationName: ');
-      console.log(event);
+      /* console.log('------settingname-----')
+      console.log('locationName: ')
+      console.log(event) */
       this.locationName = event;
-    },
-    setRadius: function setRadius(event) {
-      console.log('------settingragius-----');
-      console.log('radius: ');
-      console.log(event);
-      this.radius = event;
-    },
-    setRooms: function setRooms(event) {
-      this.rooms = event;
     }
   }
 });
@@ -2395,8 +2385,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   updated: function updated() {
-    console.log('-------MOUNT HOME-------');
-    console.log('location:' + this.locationName + 'radius:' + this.radius);
+    /* console.log('-------MOUNT HOME-------')
+    console.log('location:' + this.locationName + 'radius:' + this.radius) */
   },
   mounted: function mounted() {
     this.getRecordsCount();
@@ -2412,20 +2402,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20');
-                _context3.next = 3;
+                _context3.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
 
-              case 3:
+              case 2:
                 _yield$axios$get3 = _context3.sent;
                 data = _yield$axios$get3.data;
-                console.log('------new filtered data-------');
-                console.dir(data);
+
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
                 this.hotelArray = data;
-                console.dir(this.hotelArray);
+                /* console.dir(this.hotelArray) */
+
                 this.totalPages = data.length;
 
-              case 10:
+              case 6:
               case "end":
                 return _context3.stop();
             }
@@ -2790,7 +2781,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       totalPages: undefined,
       activePage: 1,
       PAGINATION_OFFSET: 5,
-      url: '/api/search/filters?',
+      url: '',
       pageLoaded: false,
       hideLoading: false,
       deleteLoading: false,
@@ -2798,24 +2789,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   props: {
-    filters: Object
-  },
-  computed: {
-    getLocationName: function getLocationName() {
-      return this.filters.location;
-    },
-    getRadius: function getRadius() {
-      return this.filters.radius;
-    },
-    getRooms: function getRooms() {
-      return this.filters.rooms;
-    },
-    getGuests: function getGuests() {
-      return this.filters.guests;
-    }
+    locationName: String
   },
   components: {
     Paginator: primevue_paginator__WEBPACK_IMPORTED_MODULE_2___default.a
+  },
+  computed: {
+    /* getLocationName(){
+        return this.filters.location
+    },
+    getRadius(){
+        return this.filters.radius
+    },
+    getRooms(){
+        return this.filters.rooms
+    },
+    getGuests(){
+        return this.filters.guests
+    } */
   },
   methods: {
     getHotelData: function getHotelData(page) {
@@ -2891,61 +2882,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     /* console.log(this.totalPages) */
   },
   watch: {
-    getLocationName: function getLocationName(val, old) {
-      //get url
-      var url = this.url; //find the position of the start of the query
-
-      var queryPosition = url.indexOf('?'); //truncate params
-
-      url = url.slice(0, queryPosition); //set new location name
-
-      url += '?locationName=' + val + '&radius=20'; //update url
-
-      this.url = url;
-      console.log('updated location: ' + this.url);
-    },
-    getRadius: function getRadius(val, old) {
-      //get url
-      var url = this.url; //find query concat position
-
-      var concatPosition = url.indexOf('&radius'); //truncate 2nd param
-
-      url = url.slice(0, concatPosition); //set new radius
-
-      url += '&radius=' + val; //update url
-
-      this.url = url;
-    },
-    getRooms: function getRooms(val, old) {
-      //get url
-      var url = this.url; //find query concat position
-
-      var concatPosition = url.indexOf('&rooms'); //truncate 2nd param
-
-      url = url.slice(0, concatPosition); //set new radius
-
-      url += '&rooms=' + val + '&radius=' + this.radius; //update url
-
-      this.url = url;
-    },
-    url: function () {
-      var _url = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(val, old) {
+    /* locationName: function(val, old) {
+        //get url
+        let url = this.url
+        console.log(url)
+          //find the position of the start of the query
+        const queryPosition = url.indexOf('?')
+        console.log(queryPosition)
+        
+        //truncate params
+        url = url.slice(0, queryPosition)
+        console.log(url)
+        //set new location name
+        url += '?locationName=' + val + '&radius=20'
+          //update url
+        this.url = url
+          console.log('updated location: ' + this.url)
+    }, */
+    locationName: function () {
+      var _locationName = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(val, old) {
         var _yield$axios$get3, data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                console.log('api endpoint: ' + val);
-                _context3.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(val);
+                _context3.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1');
 
-              case 3:
+              case 2:
                 _yield$axios$get3 = _context3.sent;
                 data = _yield$axios$get3.data;
+
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
                 this.hotelArray = data;
 
-              case 6:
+              case 5:
               case "end":
                 return _context3.stop();
             }
@@ -2953,12 +2926,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3, this);
       }));
 
-      function url(_x, _x2) {
-        return _url.apply(this, arguments);
+      function locationName(_x, _x2) {
+        return _locationName.apply(this, arguments);
       }
 
-      return url;
+      return locationName;
     }()
+    /* getRadius: function(val, old) {
+        //get url
+        let url =  this.url
+          //find query concat position
+        const concatPosition = url.indexOf('&radius')
+          //truncate 2nd param
+        url = url.slice(0, concatPosition)
+          //set new radius
+        url += ('&radius=' + val)
+          //update url
+        this.url = url
+    }, */
+
+    /* getRooms: function(val, old) {
+        //get url
+        let url =  this.url
+          //find query concat position
+        const concatPosition = url.indexOf('&rooms')
+          //truncate 2nd param
+        url = url.slice(0, concatPosition)
+          //set new radius
+        url += ('&rooms=' + val + '&radius=' + this.radius)
+          //update url
+        this.url = url
+    }, */
+
+    /* url: async function(val, old) {
+        console.log('api endpoint: '+ val)
+        const {data} = await axios.get(val)
+          this.hotelArray = data
+    } */
+
   }
 });
 
@@ -17409,7 +17414,7 @@ var render = function () {
     { attrs: { id: "vue-root" } },
     [
       _c("Header", {
-        on: { location: _vm.setLocationName, radius: _vm.setRadius },
+        on: { location: _vm.setLocationName, radius: _vm.radius },
       }),
       _vm._v(" "),
       _c("router-view", { attrs: { locationName: _vm.locationName } }),
@@ -18393,103 +18398,6 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "loading-screen d-flex justify-content-center align-items-center",
-        class: _vm.deleteLoading === true ? "d-none" : "",
-        style:
-          _vm.hideLoading === true ? "opacity:0; transition:opacity 0.3s" : "",
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "d-flex flex-column align-items-center",
-            style:
-              _vm.pageLoaded === true
-                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
-                : "",
-          },
-          [
-            _c("img", {
-              staticClass: "mb-3",
-              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "d-flex",
-                style:
-                  _vm.pageLoaded === true
-                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
-                    : "",
-              },
-              [
-                _c(
-                  "h2",
-                  {
-                    staticClass: "text-white me-3",
-                    style:
-                      _vm.pageLoaded === true
-                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
-                        : "",
-                  },
-                  [_vm._v("Sloth")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h2",
-                  {
-                    staticClass: "text-white ms-3 d-flex",
-                    style:
-                      _vm.pageLoaded === true
-                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
-                        : "",
-                  },
-                  [
-                    _vm._v("h\n                    "),
-                    _c(
-                      "span",
-                      { style: _vm.pageLoaded === true ? "opacity:0" : "" },
-                      [_vm._v("ot")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        style:
-                          _vm.pageLoaded === true
-                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
-                            : "",
-                      },
-                      [_vm._v("el")]
-                    ),
-                  ]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "spinner-border text-primary mt-3",
-                style: _vm.pageLoaded === true ? "opacity:0" : "",
-                attrs: { role: "status" },
-              },
-              [
-                _c("span", { staticClass: "visually-hidden" }, [
-                  _vm._v("Loading..."),
-                ]),
-              ]
-            ),
-          ]
-        ),
-      ]
-    ),
-    _vm._v(" "),
     _c("div", { staticClass: "container py-5" }, [
       _c(
         "div",

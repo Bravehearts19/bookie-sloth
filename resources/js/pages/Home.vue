@@ -1,7 +1,7 @@
 <template>
     <div class="hotel_container bg-info">
         <!-- Inizio loading screen -->     <!-- SCHERMATA DI CARICAMENTO DA SCOMMENTARE QUANDO SARA' FINITO IL LAYOUT DELLA HOME -->
-        <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
+        <!-- <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
             <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
                 <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
                 <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
@@ -15,7 +15,7 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Fine loading screen -->
 
         <!-- Inizio container degli hotel -->
@@ -81,7 +81,7 @@ export default {
             totalPages : undefined,
             activePage : 1,
             PAGINATION_OFFSET: 5,
-            url: '/api/search/filters?',
+            url: '',
             pageLoaded: false,
             hideLoading:false,
             deleteLoading:false,
@@ -89,10 +89,14 @@ export default {
         }
     },
     props : {
-        filters : Object
+        locationName : String
+    },
+
+    components: {
+        Paginator
     },
     computed:{
-        getLocationName(){
+        /* getLocationName(){
             return this.filters.location
         },
         getRadius(){
@@ -103,11 +107,11 @@ export default {
         },
         getGuests(){
             return this.filters.guests
-        }
+        } */
+
+
     },
-    components: {
-        Paginator
-    },
+    
     methods:{
         async getHotelData(page){
             if(!page)
@@ -117,6 +121,7 @@ export default {
 
             const {data} = await axios.get('api/hotel/index?page=' + page);
             this.hotelArray = data.data;
+
             setTimeout(()=>{
                 this.paginationVisibility = true
             },3000)
@@ -141,16 +146,18 @@ export default {
         /* console.log(this.totalPages) */
     },
     watch:{
-        getLocationName: function(val, old) {
+        /* locationName: function(val, old) {
             //get url
             let url = this.url
+            console.log(url)
 
             //find the position of the start of the query
             const queryPosition = url.indexOf('?')
-
+            console.log(queryPosition)
+            
             //truncate params
             url = url.slice(0, queryPosition)
-
+            console.log(url)
             //set new location name
             url += '?locationName=' + val + '&radius=20'
 
@@ -158,8 +165,17 @@ export default {
             this.url = url
 
             console.log('updated location: ' + this.url)
-        },
-        getRadius: function(val, old) {
+        }, */
+
+        locationName: async function(val, old) {
+            /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
+            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1')
+            /* console.log('------new filtered data-------')
+            console.dir(data) */
+            this.hotelArray = data
+        }
+
+        /* getRadius: function(val, old) {
             //get url
             let url =  this.url
 
@@ -174,8 +190,8 @@ export default {
 
             //update url
             this.url = url
-        },
-        getRooms: function(val, old) {
+        }, */
+        /* getRooms: function(val, old) {
             //get url
             let url =  this.url
 
@@ -190,13 +206,13 @@ export default {
 
             //update url
             this.url = url
-        },
-        url: async function(val, old) {
+        }, */
+        /* url: async function(val, old) {
             console.log('api endpoint: '+ val)
             const {data} = await axios.get(val)
 
             this.hotelArray = data
-        }
+        } */
 
     }
 }
