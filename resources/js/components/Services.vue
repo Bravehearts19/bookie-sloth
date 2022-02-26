@@ -1,7 +1,7 @@
 <template>
   <div>
     <form action="">
-    <h5 class="ms-3">Servizi</h5>
+    <h3 class="ms-4"><strong>Servizi :</strong></h3>
       <ul class="list-unstyled d-flex flex-wrap justify-content-around my-row m-auto bg-secondary">
         <li
           v-for="(service, index) in services"
@@ -14,7 +14,7 @@
             @click="selectService(service.id)"
             id="flexCheckDefault"
           />
-          <h3 class="mb-0">
+          <h3 class="mb-0 ps-2 service_title">
             {{ capitalizeFirstLetter(service.name) }}
           </h3>
           <lord-icon
@@ -61,10 +61,14 @@ export default {
 <style lang='scss' scoped>
   .my-row{
     width: 100%;
-    border-radius: 30px;
+    
 
     .single-service{
       width: calc((100% / 5) - 40px);
+
+      .service_title{
+        min-width: 120px;
+      }
     }
   }
 
