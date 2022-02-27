@@ -2,7 +2,7 @@
 <div class="container-fluid h-100 d-flex align-items-center justify-content-center">
     <div class="row">
         <div class="col-4 offset-2 bg-info d-flex align-items-center">
-            <div class="img-container">
+            <div class="img-container mt-5">
                  <img :src="apartment.cover_img.includes('http') ? apartment.cover_img :`/storage/${apartment.cover_img}`" :alt="apartment.name"
                     class="w-100">
             </div>
@@ -60,7 +60,7 @@
         </div>
         <div class="col-8 offset-2 bg-info">
             <div class="user-container d-flex justify-content-center my-5">
-               <div class="d-flex align-items-center border-bottom border-top border-secondary px-5">
+               <div class="d-flex align-items-center border-bottom border-top border-secondary px-5 shadow-lg">
                     <lord-icon
                         src="https://cdn.lordicon.com/dxjqoygy.json"
                         trigger="hover"
@@ -69,7 +69,7 @@
                     </lord-icon>
                     <h6 class="text-secondary mb-0 mx-3">{{ apartment.user.name }} {{ apartment.user.surname }}</h6>
                 </div>
-                <Button label="Contatta" @click="openPosition('right')" class="p-button-warning p-button-lg" />
+                <Button label="Contatta" @click="openPosition('right')" class=" shadow-lg p-button-warning p-button-lg" />
             </div>
         </div>
     </div>
