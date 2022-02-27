@@ -119,8 +119,12 @@ export default {
             
             this.activePage = page
 
-            const {data} = await axios.get('api/hotel/index?page=' + page);
-            this.hotelArray = data.data;
+            if(!this.locationName){
+                
+                const {data} = await axios.get('api/hotel/index?page=' + page);
+                this.hotelArray = data.data;
+            }
+
 
             setTimeout(()=>{
                 this.paginationVisibility = true
@@ -135,9 +139,20 @@ export default {
             }, 5000)
         },
         async getRecordsCount(){
-            const {data} = await axios.get('api/hotel/index');
-            /* console.log(data.last_page) */
-            this.totalPages = data.last_page
+            
+            
+            /* console.dir(data) */
+            if(!this.locationName){
+                console.log('ciao');
+                const {data} = await axios.get('api/hotel/index');
+                this.totalPages = data.last_page
+            }else{
+                /* const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=%2020&rooms=1&beds=1')
+                console.dir(data);
+                console.log(Math.ceil(Object.keys(data).length / 12));
+                this.totalPages = Math.ceil(Object.keys(data).length / 12) */
+                this.totalPages = 0
+            }
         }
     },
     mounted() {
@@ -168,11 +183,34 @@ export default {
         }, */
 
         locationName: async function(val, old) {
-            /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
+            if(val === ''){
+                val = 'milano'
+            }
+
+            switch (val) {
+            case '':
+                val = 'milano'
+                    break;
+            case 'roma':
+                val = 'rome'
+                break;
+            case 'firenze':
+                val = 'florence'
+                break;
+            case 'torino':
+                val = 'turin'
+                break;
+            case 'napoli':
+                val = 'naples'
+                break;
+            }
+
             const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1')
-            /* console.log('------new filtered data-------')
-            console.dir(data) */
+           /*  console.log('------new filtered data-------')
+            console.dir(data[166]) */
+            console.dir(data);
             this.hotelArray = data
+            this.getRecordsCount()
         }
 
         /* getRadius: function(val, old) {

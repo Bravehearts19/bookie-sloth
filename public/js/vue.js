@@ -2821,13 +2821,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 if (!page) page = 1;
                 _this.activePage = page;
-                _context.next = 4;
+
+                if (_this.locationName) {
+                  _context.next = 8;
+                  break;
+                }
+
+                _context.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/hotel/index?page=' + page);
 
-              case 4:
+              case 5:
                 _yield$axios$get = _context.sent;
                 data = _yield$axios$get.data;
                 _this.hotelArray = data.data;
+
+              case 8:
                 setTimeout(function () {
                   _this.paginationVisibility = true;
                 }, 3000);
@@ -2839,7 +2847,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.deleteLoading = true;
                 }, 5000);
 
-              case 11:
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -2857,17 +2865,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                if (_this2.locationName) {
+                  _context2.next = 9;
+                  break;
+                }
+
+                console.log('ciao');
+                _context2.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/hotel/index');
 
-              case 2:
+              case 4:
                 _yield$axios$get2 = _context2.sent;
                 data = _yield$axios$get2.data;
-
-                /* console.log(data.last_page) */
                 _this2.totalPages = data.last_page;
+                _context2.next = 10;
+                break;
 
-              case 5:
+              case 9:
+                /* const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=%2020&rooms=1&beds=1')
+                console.dir(data);
+                console.log(Math.ceil(Object.keys(data).length / 12));
+                this.totalPages = Math.ceil(Object.keys(data).length / 12) */
+                _this2.totalPages = 0;
+
+              case 10:
               case "end":
                 return _context2.stop();
             }
@@ -2907,18 +2928,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.next = 2;
+                if (val === '') {
+                  val = 'milano';
+                }
+
+                _context3.t0 = val;
+                _context3.next = _context3.t0 === '' ? 4 : _context3.t0 === 'roma' ? 6 : _context3.t0 === 'firenze' ? 8 : _context3.t0 === 'torino' ? 10 : _context3.t0 === 'napoli' ? 12 : 14;
+                break;
+
+              case 4:
+                val = 'milano';
+                return _context3.abrupt("break", 14);
+
+              case 6:
+                val = 'rome';
+                return _context3.abrupt("break", 14);
+
+              case 8:
+                val = 'florence';
+                return _context3.abrupt("break", 14);
+
+              case 10:
+                val = 'turin';
+                return _context3.abrupt("break", 14);
+
+              case 12:
+                val = 'naples';
+                return _context3.abrupt("break", 14);
+
+              case 14:
+                _context3.next = 16;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1');
 
-              case 2:
+              case 16:
                 _yield$axios$get3 = _context3.sent;
                 data = _yield$axios$get3.data;
 
-                /* console.log('------new filtered data-------')
-                console.dir(data) */
+                /*  console.log('------new filtered data-------')
+                 console.dir(data[166]) */
+                console.dir(data);
                 this.hotelArray = data;
+                this.getRecordsCount();
 
-              case 5:
+              case 21:
               case "end":
                 return _context3.stop();
             }
