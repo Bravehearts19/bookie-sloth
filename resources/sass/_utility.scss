@@ -62,3 +62,17 @@
 .white-overlay{
     background-color: rgba(255, 255, 255, 0.8) !important;
 }
+
+.filters-container{
+    border-radius: 30px;
+}
+
+.form-check-input {
+    width: 2.3em !important;
+    height: 2.3em !important;
+    color: $brown !important;
+
+}
+.form-check-input:checked[type=checkbox] {
+    background-image: url('images/checkbox.svg') !important;
+}

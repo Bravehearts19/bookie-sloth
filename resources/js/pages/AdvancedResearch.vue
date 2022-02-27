@@ -1,75 +1,64 @@
 <template>
-<div>
-    <!-- inizio filtri -->
-    <div class="bg-secondary py-3 my_container">
-      <Services @services="setServicesArray"></Services>
-
-        <div class="d-flex justify-content-start pt-2">
-            <div class="d-flex align-items-center mx-3">
-                <h4 class="ms-2"><strong>Raggio:</strong></h4>
-                <Knob v-model="radius" :min="0" :max="20" valueColor="LightGreen" textColor="1" :size="75" class="ps-2"/>
-            </div>
-
-            <!-- <div class="d-flex flex-column justify-content-center mx-3">
-                <Knob v-model="roomsValue" :min="0" :max="100" valueColor="LightGreen" :size="70" />
-                <h4>Stanze</h4>
-            </div>
-            <div class="d-flex flex-column justify-content-center mx-3">
-                <Knob v-model="bedValue" :min="0" :max="100" valueColor="LightGreen" :size="70" />
-                <h4>Letti</h4>
-            </div> -->
-            
-            <div class="ms-5 filter_slider">
-                <h4 ><strong>Stanze :</strong> {{ roomsValue }}</h4>
-                <Slider v-model="roomsValue" />
-            </div>
-
-            <div class="ms-5 filter_slider">
-                <h4><strong>Letti : </strong>{{ bedValue }}</h4>
-                <Slider v-model="bedValue" />
-            </div>
-
-            <!-- <div>
-
-                <h3>Raggio: {{radius}}</h3>
-                <Slider v-model="radius" />
-            </div> -->
-
+<div class="container-fluid bg-secondary py-3">
+    <div class="row">
+        <div class="col-12">
+            <Services @services="setServicesArray"></Services>
         </div>
+        <div class="col-12">
+            <div class="d-flex justify-content-center border-bottom border-primary pb-5">
+                <div class="d-flex justify-content-center align-items-center py-3 bg-primary filters-container mt-5 w-fit-content px-5 shadow-lg">
+                    <div class="d-flex align-items-center mx-3">
+                        <h4 class="ms-2"><strong>Raggio:</strong></h4>
+                        <Knob v-model="radius" :min="0" :max="20" valueColor="#4d1803" textColor="1" :size="75" class="ps-2"/>
+                    </div>
 
-    </div>
+                    <div class="ms-5 filter_slider">
+                        <h4 ><strong>Stanze :</strong> {{ roomsValue }}</h4>
+                        <Slider v-model="roomsValue" />
+                    </div>
 
-    
-    <!-- Inizio container degli hotel -->
-    <div class="container py-5">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 " :style="hideLoading===false ? 'display:none' : ''">
-                <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
-                    <div class="card_container bg-primary shadow-lg">
-                        
-                        <div class="d-flex flex-column align-items-center pt-3 w-50">
-                            <div class="image-container shadow-lg">
-                                <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
-                            </div>
-                            <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
-                        </div>
-
-                        <div class="d-flex flex-column align-items-center w-50">
-                            <div class="py-3">
-                                <h5 class="text-secondary text-center mb-0"><strong>{{hotel.name}}</strong></h5>
-                                <h5 class="text-secondary text-center mb-0">{{hotel.location}}</h5>
-                                <h6 class="text-secondary text-center mb-0">{{hotel.address}} - {{hotel.cap}}</h6>
-                            </div>
-                            
-                            <div class="p-3">
-                                <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
-                                <h6 class="text-secondary py-1 mb-0">Numero di ospiti: <strong>{{hotel.n_guests}}</strong></h6>
-                                <h6 class="text-secondary py-1 mb-0">Numero di stanze: <strong>{{hotel.n_rooms}}</strong></h6>
-                                <h6 class="text-secondary py-1 mb-0">Numero di bagni: <strong>{{hotel.n_bathrooms}}</strong></h6>
-                                <h6 class="text-secondary py-1 mb-0">Dimensioni: <strong>{{hotel.size}} mq</strong></h6>
-                            </div>
-                        </div>
+                    <div class="ms-5 filter_slider">
+                        <h4><strong>Letti : </strong>{{ bedValue }}</h4>
+                        <Slider v-model="bedValue" />
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 " :style="hideLoading===false ? 'display:none' : ''">
+        <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
+            <div class="card_container bg-primary shadow-lg">
+
+                <div class="d-flex flex-column align-items-center pt-3 w-50">
+                    <div class="image-container shadow-lg">
+                        <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
+                    </div>
+                    <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
+                </div>
+                <div class="d-flex flex-column align-items-center w-50">
+                    <div class="py-3">
+                        <h5 class="text-secondary text-center mb-0"><strong>{{hotel.name}}</strong></h5>
+                        <h5 class="text-secondary text-center mb-0">{{hotel.location}}</h5>
+                        <h6 class="text-secondary text-center mb-0">{{hotel.address}} - {{hotel.cap}}</h6>
+                    </div>
+
+                    <div class="p-3">
+                        <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
+                        <h6 class="text-secondary py-1 mb-0">Numero di ospiti: <strong>{{hotel.n_guests}}</strong></h6>
+                        <h6 class="text-secondary py-1 mb-0">Numero di stanze: <strong>{{hotel.n_rooms}}</strong></h6>
+                        <h6 class="text-secondary py-1 mb-0">Numero di bagni: <strong>{{hotel.n_bathrooms}}</strong></h6>
+                        <h6 class="text-secondary py-1 mb-0">Dimensioni: <strong>{{hotel.size}} mq</strong></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inizio container degli hotel -->
+    <div class="">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 " :style="hideLoading===false ? 'display:none' : ''">
+
             </div>
 
             <!-- Inizio bottoni per la paginazione -->
@@ -166,6 +155,21 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
+::v-deep .p-slider
+    .p-slider-handle {
+        height: 1.143rem;
+        width: 1.143rem;
+        background: #ffffff;
+        border: 2px solid #4d1803 !important;
+        border-radius: 50%;
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+        &::hover{
+            background-color: #4d1803 !important
+        }
+
+}
+
 .my_container{
     border-radius: 50px;
     margin:0 50px 20px 50px;
@@ -173,9 +177,9 @@ export default {
     .filter_slider{
         min-width: 140px;
 
-        
+
     }
-    
+
 }
 
 .hotel_container {
