@@ -1,8 +1,108 @@
 <template>
+<div class="container-fluid h-100 d-flex align-items-center justify-content-center">
+    <div class="row">
+        <div class="col-4 offset-2 bg-info d-flex align-items-center">
+            <div class="img-container mt-5">
+                 <img :src="apartment.cover_img.includes('http') ? apartment.cover_img :`/storage/${apartment.cover_img}`" :alt="apartment.name"
+                    class="w-100">
+            </div>
+        </div>
+        <div class="col-4 bg-info">
+            <div class="text-container p-5">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h1 class="text-white"> {{ apartment.name }} </h1>
+                        <h5> {{ apartment.address }} </h5>
+                        <h6 class="text-secondary"> {{ apartment.location }} </h6>
+                        <div class="d-flex mt-3">
+                            <Rating :value="rate" :readonly="true" :stars="rate" :cancel="false" />
+                            <p v-if="rate > 0" class="ps-2">{{ rate }}.0 | {{ rate }} recensioni</p>
+                        </div>
+                        <Calendar v-model="dates" class="pb-3" dateFormat="dd/mm/yy" placeholder='Inserisci date' :showIcon='true' selectionMode="range" inputStyle="background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;" />
+                    </div>
+                    <div class="services-container p-3 mt-3 bg-secondary rounded shadow-lg w-fit-content">
+                        <div v-for='service in apartment.services' :key="'service-'+service.id"
+                            class="d-flex align-items-center py-2 border-bottom border-primary">
+                            <lord-icon
+                                :src="service.icon"
+                                trigger="hover"
+                                colors="primary:#4d1803,secondary:#ffffff"
+                                style="width:45px;height:45px;background-color:#c7ef00;border-radius:50px;align-content: space-around;"
+                            >
+                            </lord-icon>
+                            <h6 class="mb-0 mx-3 text-primary"> {{service.name}} </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-container mt-3">
+                    <div class="d-flex mt-5 justify-content-between align-items-center w-100 p-2 rounded border border-secondary shadow-lg">
+                        <div class="d-flex align-items-center">
+                            <lord-icon  @click="decrementCounter()"
+                                src="https://cdn.lordicon.com/rivoakkk.json"
+                                trigger="hover"
+                                :colors='peopleCounter === 1 ? "primary:#A2BA02,secondary:#4d1803" : "primary:#4d1803,secondary:#4d1803"'
+                                stroke="150"
+                                style="width:50px;height:50px">
+                            </lord-icon>
+                            <h5 class="mx-2 my-0">{{ peopleCounter }}</h5>
+                            <lord-icon  @click="incrementCounter()"
+                                src="https://cdn.lordicon.com/mecwbjnp.json"
+                                trigger="hover"
+                                colors="primary:#4d1803,secondary:#4d1803"
+                                stroke="150"
+                                style="width:35px;height:35px">
+                            </lord-icon>
+                        </div>
+                        <h5 class="text-secondary mb-0 px-5 pe-0">{{ apartment.price }}0€</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8 offset-2 bg-info">
+            <div class="user-container d-flex justify-content-center my-5">
+               <div class="d-flex align-items-center border-bottom border-top border-secondary px-5 shadow-lg">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/dxjqoygy.json"
+                        trigger="hover"
+                        colors="primary:#4d1803,secondary:#c7ef00"
+                        style="width:40px;height:40px">
+                    </lord-icon>
+                    <h6 class="text-secondary mb-0 mx-3">{{ apartment.user.name }} {{ apartment.user.surname }}</h6>
+                </div>
+                <Button label="Contatta" @click="openPosition('right')" class=" shadow-lg p-button-warning p-button-lg" />
+            </div>
+        </div>
+    </div>
+    <Dialog header="Contattami!" :visible.sync="displayPosition" :containerStyle="{width: '50vw'}" :position="position" :modal="true">
+        <form method="post" :action="'/api/message/' + apartment.id + '/store'">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nome</label>
+                <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="nome">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Indirizzo Email</label>
+                <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@esempio.com">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Messaggio</label>
+                <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <input type="hidden" name="apartmentId" :value="apartment.id">
+            </div>
+                <Button label="Annulla" icon="pi pi-times" @click="closePosition" class="p-button-text my-dialog" />
+                <Button label="Invia" type="submit" icon="pi pi-check" autofocus class="my-dialog"/>
+        </form>
+    </Dialog>
+</div>
+
+
+
+
+<!--
+
     <div class="my-container">
         <div class="img-container"><img :src="apartment.cover_img.includes('http') ? apartment.cover_img :`/storage/${apartment.cover_img}`" :alt="apartment.name"></div>
-        
-        
+
+
         <div class="data-container">
             <h1 class="pt-1 m-0 text-secondary">{{ apartment.name }}</h1>
 
@@ -12,18 +112,16 @@
             </div>
 
             <div class="d-flex">
-                <!-- <Rating class="pb-3 " v-model="stars" :cancel="false" /> -->
                 <Rating :value="rate" :readonly="true" :stars="rate" :cancel="false" />
                 <p v-if="rate > 0" class="ps-2">{{ rate }}.0 | {{ rate }} recensioni</p>
-            </div>    
+            </div>
 
             <Calendar v-model="dates" class="pb-3" dateFormat="dd/mm/yy" placeholder='Inserisci date' :showIcon='true' selectionMode="range" inputStyle="background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;" />
 
             <div class="services-container p-3">
-                <!-- ICONE SERVIZI -->
-                
+
                     <div v-for='service in apartment.services' :key="'service-'+service.id" class="px-1">
-                        <lord-icon 
+                        <lord-icon
                             :src="service.icon"
                             trigger="hover"
                             colors="primary:#B2CC03,secondary:#B2CC03"
@@ -31,11 +129,9 @@
                             >
                         </lord-icon>
                     </div>
-                
+
             </div>
-           
-           <!-- ROW PEOPLE AND PRICE -->
-            <div class="d-flex mt-4 justify-content-between align-items-center">     
+            <div class="d-flex mt-4 justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
                     <lord-icon  @click="decrementCounter()"
                         src="https://cdn.lordicon.com/rivoakkk.json"
@@ -46,7 +142,7 @@
                     </lord-icon>
 
                     <h2 class="mx-4 my-0">{{ peopleCounter }}</h2>
-                    
+
                     <lord-icon  @click="incrementCounter()"
                         src="https://cdn.lordicon.com/mecwbjnp.json"
                         trigger="hover"
@@ -61,7 +157,7 @@
 
             <div class="user-container">
                <div class="d-flex align-items-center">
-                    <lord-icon 
+                    <lord-icon
                         src="https://cdn.lordicon.com/dxjqoygy.json"
                         trigger="hover"
                         colors="primary:#c7ef00,secondary:#c7ef00"
@@ -71,8 +167,8 @@
                 </div>
 
                 <Button label="Contatta" @click="openPosition('right')" class="p-button-warning p-button-sm" />
-                
-            </div> 
+
+            </div>
 
         </div>
 
@@ -91,14 +187,14 @@
                     <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
                     <input type="hidden" name="apartmentId" :value="apartment.id">
                 </div>
-                
+
                     <Button label="Annulla" icon="pi pi-times" @click="closePosition" class="p-button-text my-dialog" />
                     <Button label="Invia" type="submit" icon="pi pi-check" autofocus class="my-dialog"/>
-                
+
             </form>
         </Dialog>
-        
-        <!-- <h1 class="text-secondary text-center">
+
+         <h1 class="text-secondary text-center">
             {{ apartment.name }}
         </h1>
         <div class="d-flex justify-content-around">
@@ -106,8 +202,8 @@
                 <img :src="apartment.cover_img" alt="">
             </div>
             <div id="map-div"></div>
-        </div> -->
-    </div>
+        </div>
+    </div> -->
 </template>
 <script>
 import Rating from 'primevue/rating';
@@ -124,8 +220,8 @@ export default {
             rate: 5,
             dates : "",
             peopleCounter: 1,
-            displayPosition: false, //PRIME VUE DIALOG 
-            position: 'center', //PRIME VUE DIALOG 
+            displayPosition: false, //PRIME VUE DIALOG
+            position: 'center', //PRIME VUE DIALOG
         }
     },
 
@@ -213,12 +309,12 @@ export default {
         align-content: center;
         /* background-color: red; */
 
-        
+
 
         .p-calendar{
            max-width: 300px;
-               
-           
+
+
         }
 
         .services-container{
@@ -230,7 +326,7 @@ export default {
             border-radius: 20px;
             flex-wrap: wrap;
             justify-content: flex-start;
-            
+
         }
 
         .user-container{
@@ -242,7 +338,7 @@ export default {
             height: 50px;
 
             .p-button{
-                background-color: #B2CC03; 
+                background-color: #B2CC03;
                 color: #4D1803;
                 border: #B2CC03;
                 border-radius: 20px;
@@ -294,7 +390,7 @@ export default {
     background-color: #722304;
     color:#B5D601;
 }
-    
+
 //DIALOG
 ::v-deep .p-dialog .p-dialog-header{
     background-color: #B2CC03;
