@@ -102,6 +102,7 @@ class ApartmentController extends Controller
         $newApartment->save();
 
         $newApartment->services()->attach($data['services']);
+        $newApartment->sponsors()->attach(1);
 
         return redirect()->route('user.apartment.index')->with('msg', 'Appartamento aggiunto correttamente.');;
     }
