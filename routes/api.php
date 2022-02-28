@@ -100,24 +100,7 @@ Route::get('/apartment/services', function (Request $request) {
     $apartment = Apartment::where('id', $apartmentId)->with('services')->first();
     return json_encode($apartment);
 });
-// nMinStanze
-// nMinPersone
-//
-/**
- * @description get 10 paginated hotel filtered by badge type
- * @param ?searchString={{ bronze | silver | gold}}
- */
-//Route::get('hotel/search/badge', function(Request $request){
-//
-//    //get query string
-//    $badge = $request->query('badge');
-//
-//    $apartments = Apartment::with('sponsors')
-//        ->where('level', 'like', ('%' . $badge . '%') )
-//        ->paginate(10);
-//
-//    return json_encode($apartments);
-//});
+
 Route::get('/destinationID', function (Request $request) {
     $curl = curl_init();
     $queryLocation = $request->query('location');

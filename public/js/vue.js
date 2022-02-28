@@ -18142,7 +18142,7 @@ var render = function () {
             staticClass: "form-control bg-transparent text-primary border-none",
             attrs: {
               type: "text",
-              placeholder: "Surf around over 1000 hotels...",
+              placeholder: "Cerca...",
               "aria-label": "hotelName",
               "aria-describedby": "searchBar",
             },
