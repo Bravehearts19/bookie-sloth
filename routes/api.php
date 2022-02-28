@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Apartment;
 use App\Service;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
@@ -67,8 +68,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * @param ?page={{pagination}}
  */
 Route::get('/hotel/index', function (Request $request) {
-    $apartments = Apartment::with(['services', 'sponsors'])
-        ->join('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+    $apartments = Apartment::join('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
         ->orderBy('apartment_sponsor.sponsor_id', 'desc')
         ->paginate(12);
 
