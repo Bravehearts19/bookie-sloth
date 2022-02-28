@@ -15,7 +15,7 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->enum('name', ['pets', 'wheelchair', 'hairdryer', 'heating', 'air_conditioner', 'beach', 'tv', 'pool', 'fire_alarm', 'gym', 'washing_machine', 'fireplace', 'coffee_machine', 'wifi', 'car_charger', 'vault', 'skiing', 'breakfast', 'kitchen', 'bathroom'])->unique();
+            $table->enum('name', ['Animali', 'Disabilità', 'Riscaldamento', 'Mare', 'Tv', 'Piscina', 'Palestra', 'Macchina del caffè', 'Wi-fi', 'Auto elettriche', 'Cassaforte', 'Colazione'])->unique();
             $table->string('icon');
             $table->timestamps();
         });
