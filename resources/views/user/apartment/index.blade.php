@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@php
+{{-- @php
 use Carbon\Carbon;
 use App\Sponsor;
 
@@ -26,11 +26,11 @@ function activeSponsors($apartment){
         return false;
     }
 }
-@endphp
+@endphp --}}
 
 @section('content')
     <div class="container mt-3">
-
+        
         @if(session("msg"))
             <div class="alert alert-primary d-flex justify-content-between" role="alert">{{session("msg")}}</div>
         @endif
@@ -41,7 +41,7 @@ function activeSponsors($apartment){
                 <div class="card mb-3 h-100">
                     <img src="{{asset('storage/' . $apartment->cover_img)}}" class="card-img-top h-100" alt="{{$apartment->name}}">
                     <div class="card-body">
-                        <h4 class="card-title d-flex justify-content-between align-items-center">{{$apartment->name}} @if(activeSponsors($apartment)) <img src="/images/{{getLatestSponsor($apartment)[0]['level']}}_badge.svg" alt=""> @endif</h4>
+                        <h4 class="card-title d-flex justify-content-between align-items-center">{{$apartment->name}} @if($apartment->sponsors->first()) <img src="/images/{{$apartment->sponsors->first()->level}}_badge.svg" alt=""> @endif</h4>
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Prezzo: </strong> €{{$apartment->price}}</li>
                             <li class="list-group-item"><strong>Dimensione: </strong> {{$apartment->size}} mq.</li>
@@ -56,7 +56,7 @@ function activeSponsors($apartment){
                     <a href="/apartment/{{$apartment->id}}" class="btn btn-secondary text-primary">Dettagli appartamento</a>
                     <a href="{{route('user.apartment.edit', $apartment->id)}}" class="btn btn-primary text-secondary">Modifica appartamento</a>
                     <a href="{{route('user.message.index', $apartment->id)}}" class="btn btn-white text-secondary">Visualizza messaggi</a>
-                    <a href="{{route('user.sponsors', $apartment)}}" class="btn btn-dark text-white">Sponsorizza appartamento</a>
+                    @if($apartment->sponsors->first()->level === 'no_sponsor') <a href="{{route('user.sponsors', $apartment)}}" class="btn btn-dark text-white">Sponsorizza appartamento</a> @endif
                 </div>
             </div>
             @endforeach
