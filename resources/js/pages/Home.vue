@@ -23,7 +23,7 @@
             <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 " :style="hideLoading===false ? 'display:none' : ''">
                 <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
                     <div class="card_container bg-primary shadow-lg">
-                        
+
                         <div class="d-flex flex-column align-items-center pt-3 w-50">
                             <div class="image-container shadow-lg">
                                 <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
@@ -37,7 +37,7 @@
                                 <h5 class="text-secondary text-center mb-0">{{hotel.location}}</h5>
                                 <h6 class="text-secondary text-center mb-0">{{hotel.address}} - {{hotel.cap}}</h6>
                             </div>
-                            
+
                             <div class="p-3">
                                 <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
                                 <h6 class="text-secondary py-1 mb-0">Numero di ospiti: <strong>{{hotel.n_guests}}</strong></h6>
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <!-- Inizio bottoni per la paginazione -->
+            <!-- Inizio bottoni per la paginazione
             <ul class="pagination overflow-auto pt-5" :class='paginationVisibility === false ? "d-none" : ""'>
                 <li class="page-item"
                     :class="(index === activePage) ? 'active' : ''"
@@ -61,7 +61,13 @@
                         {{index}}
                     </a>
                 </li>
-            </ul>
+            </ul>-->
+            <Paginator
+                :rows="12"
+                :totalRecords="totalPages*12"
+                @page="onPage($event)"
+                class="bg-secondary text-primary"
+            ></Paginator>
             <!-- Fine bottoni per la paginazione -->
         </div>
         <!-- Fine container degli hotel -->
@@ -112,7 +118,7 @@ export default {
         async getHotelData(page){
             if(!page)
                 page = 1
-            
+
             this.activePage = page
 
             const {data} = await axios.get('api/hotel/index?page=' + page);
@@ -120,7 +126,7 @@ export default {
             setTimeout(()=>{
                 this.paginationVisibility = true
             },3000)
-            
+
             this.pageLoaded= true;
             setTimeout(()=>{
                 this.hideLoading = true;
@@ -133,6 +139,17 @@ export default {
             const {data} = await axios.get('api/hotel/index');
             /* console.log(data.last_page) */
             this.totalPages = data.last_page
+        },
+        onPage(event) {
+            this.getHotelData(event.page)
+            console.log(event.page)
+            console.log(event.first)
+            console.log(event.rows)
+            console.log(event.pageCount)
+            //event.page: New page number
+            //event.first: Index of first record
+            //event.rows: Number of rows to display in new page
+            //event.pageCount: Total number of pages
         }
     },
     mounted() {
@@ -204,6 +221,12 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../sass/_variables.scss';
+
+::v-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: #c7ef00 !important;
+    border-color: #c7ef00 !important;
+    color: #495057;
+}
 
 .hotel_container {
     background-image: url('/images/wood_template.svg');
