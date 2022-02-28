@@ -2,103 +2,75 @@
 
     return [
                 [
-                    'name' => 'pets',
+                    'name' => 'Animali',
                     'source' => 'https://cdn.lordicon.com/jaghjelc.json',
-                    'api' => 'li'
+                    'api' => 'li',
+                    'description' => "Sono ammessi animali all'interno della struttura ospitante",
                 ],
                 [
-                    'name' => 'wheelchair',
+                    'name' => 'Disabilità',
                     'source' => 'https://cdn.lordicon.com/mbcrjouw.json',
-                    'api' => 'li'
+                    'api' => 'li',
+                    'description' => 'La struttura presenta rampe e/o ascensori per agevolare lo spostamento di persone con disabilità',
                 ],
                 [
-                    'name' => 'hairdryer',
-                    'source' => 'https://cdn.lordicon.com/ycnmpwon.json',
-                    'api' => 'li'
+                    'name' => 'Riscaldamento',
+                    'source' => 'https://cdn.lordicon.com/emjmorqk.json',   
+                    'api' => 'li',
+                    'description' => 'Nella struttura è presente riscaldamento autonomo',
                 ],
                 [
-                    'name' => 'heating',
-                    'source' => 'https://cdn.lordicon.com/emjmorqk.json',
-                    'api' => 'li'
+                    'name' => 'Mare',
+                    'source' => 'https://cdn.lordicon.com/jlpgasyu.json',   
+                    'api' => 'li',
+                    'description' => 'La struttura è nei pressi del mare',
                 ],
                 [
-                    'name' => 'air_conditioner',
-                    'source' => 'https://cdn.lordicon.com/fxxbbjbc.json',
-                    'api' => 'li'
+                    'name' => 'Tv',
+                    'source' => 'https://cdn.lordicon.com/isvvzjbf.json',   
+                    'api' => 'li',
+                    'description' => 'Nella struttura è presente una smart-tv di ultima generazione',
                 ],
                 [
-                    'name' => 'beach',
-                    'source' => 'https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js',
-                    'api' => 'li'
+                    'name' => 'Piscina',
+                    'source' => 'https://cdn.lordicon.com/bqvgsxxi.json',   
+                    'api' => 'li',
+                    'description' => 'Nella struttura è presente una piscina',
                 ],
                 [
-                    'name' => 'tv',
-                    'source' => 'https://cdn.lordicon.com/isvvzjbf.json',
-                    'api' => 'li'
-                ],
-                [
-                    'name' => 'pool',
-                    'source' => 'https://cdn.lordicon.com/jlpgasyu.json',
-                    'api' => 'li'
-                ],
-                [
-                    'name' => 'fire_alarm',
-                    'source' => 'https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js',
-                    'api' => 'li'
-                ],
-                [
-                    'name' => 'gym',
+                    'name' => 'Palestra',
                     'source' => 'https://cdn.lordicon.com/ouvpilty.json',
-                    'api' => 'fa'
+                    'api' => 'li',
+                    'description' => 'Nella struttura è presente una palestra',
                 ],
                 [
-                    'name' => 'washing_machine',
-                    'source' => 'fa-solid fa-washing-machine',
-                    'api' => 'fa'
+                    'name' => 'Macchina del caffè',
+                    'source' => 'https://cdn.lordicon.com/uxtcmjmu.json',   
+                    'api' => 'li',
+                    'description' => 'Nella struttura è presente la macchinetta per il caffè',
                 ],
                 [
-                    'name' => 'fireplace',
-                    'source' => 'fa-solid fa-fire',
-                    'api' => 'fa'
-                ],
-                [
-                    'name' => 'coffee_machine',
-                    'source' => 'https://cdn.lordicon.com/uxtcmjmu.json',
-                    'api' => 'li'
-                ],
-                [
-                    'name' => 'wifi',
+                    'name' => 'Wi-fi',
                     'source' => 'https://cdn.lordicon.com/yzctygpq.json',
-                    'api' => 'li'
+                    'api' => 'li',
+                    'description' => 'La struttura è dotata di rete wi-fi',
                 ],
                 [
-                    'name' => 'car_charger',
-                    'source' => 'https://cdn.lordicon.com/ckuogwdx.json',
-                    'api' => 'li'
+                    'name' => 'Auto elettriche',
+                    'source' => 'https://cdn.lordicon.com/ckuogwdx.json',   
+                    'api' => 'li',
+                    'description' => 'La struttura è dotata di caricatore per auto elettriche',
                 ],
                 [
-                    'name' => 'vault',
+                    'name' => 'Cassaforte',
                     'source' => 'https://cdn.lordicon.com/huwchbks.json',
-                    'api' => 'li'
+                    'api' => 'li',
+                    'description' => 'La struttura è dotata di cassaforte personale',
                 ],
                 [
-                    'name' => 'skiing',
-                    'source' => 'https://cdn.lordicon.com/lxlstztz.json',
-                    'api' => 'li'
-                ],
-                [
-                    'name' => 'breakfast',
+                    'name' => 'Colazione',
                     'source' => 'https://cdn.lordicon.com/xbyoroeu.json',
-                    'api' => 'li'
-                ],
-                [
-                    'name' => 'kitchen',
-                    'source' => 'fa-solid fa-oven',
-                    'api' => 'fa'
-                ],
-                [
-                    'name' => 'bathroom',
-                    'source' => 'https://cdn.lordicon.com/wfroncyf.json',
-                    'api' => 'li'
+                    'api' => 'li',
+                    'description' => 'Nella struttura è prevista la colazione',
                 ],
             ];

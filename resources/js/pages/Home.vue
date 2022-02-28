@@ -150,6 +150,16 @@ export default {
     color: #495057;
 }
 
+::v-deep .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {    
+    background: $lime !important; 
+    border-color: transparent;
+    color: #495057;
+}
+
+.p-link:focus {
+    box-shadow: 0;
+}
+
 .hotel_container {
     background-image: url('/images/wood_template.svg');
     background-repeat: repeat;
@@ -160,6 +170,7 @@ export default {
     flex-direction: column;
     align-items: center;
     flex-grow: 0;
+    
     .btn_router_link {
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;

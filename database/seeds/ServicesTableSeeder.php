@@ -16,10 +16,11 @@ class ServicesTableSeeder extends Seeder
     {
         $serviceArray = config('servicesDB');
 
-        for($i = 0; $i++<count($serviceArray);$i++){
+        for($i = 0; $i<count($serviceArray); $i++){
             $newService = new Service();
             $newService->name = $serviceArray[$i]["name"];
             $newService->icon = $serviceArray[$i]["source"];
+            $newService->description = $serviceArray[$i]["description"];
 
             $newService->save();
         }
