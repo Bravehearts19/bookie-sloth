@@ -48,7 +48,7 @@
                 ],
                 [
                     'name' => 'gym',
-                    'source' => 'fa-solid fa-dumbbell',
+                    'source' => 'https://cdn.lordicon.com/ouvpilty.json',
                     'api' => 'fa'
                 ],
                 [

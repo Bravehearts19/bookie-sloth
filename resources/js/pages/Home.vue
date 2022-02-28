@@ -1,7 +1,7 @@
 <template>
     <div class="hotel_container bg-info">
         <!-- Inizio loading screen -->     <!-- SCHERMATA DI CARICAMENTO DA SCOMMENTARE QUANDO SARA' FINITO IL LAYOUT DELLA HOME -->
-        <!-- <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
+        <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
             <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
                 <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
                 <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
@@ -15,7 +15,7 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- Fine loading screen -->
 
         <!-- Inizio container degli hotel -->
@@ -51,7 +51,7 @@
             </div>
 
             <!-- Inizio bottoni per la paginazione -->
-            <ul class="pagination overflow-auto pt-5">
+            <ul class="pagination overflow-auto pt-5" :class='paginationVisibility === false ? "d-none" : ""'>
                 <li class="page-item"
                     :class="(index === activePage) ? 'active' : ''"
                     v-for="index in totalPages"
@@ -84,7 +84,8 @@ export default {
             url: '/api/search/filters?',
             pageLoaded: false,
             hideLoading:false,
-            deleteLoading:false
+            deleteLoading:false,
+            paginationVisibility : false,
         }
     },
     props : {
@@ -116,6 +117,9 @@ export default {
 
             const {data} = await axios.get('api/hotel/index?page=' + page);
             this.hotelArray = data.data;
+            setTimeout(()=>{
+                this.paginationVisibility = true
+            },3000)
             
             this.pageLoaded= true;
             setTimeout(()=>{

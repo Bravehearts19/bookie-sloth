@@ -1,12 +1,14 @@
 <template>
-    <div id="vue-root">
+    <div id="vue-root" class="d-flex flex-column">
         <!-- HEADER -->
         <Header @location="setLocationName" @radius="setRadius"></Header>
-        <router-view :locationName="locationName"></router-view>
+        <div class="flex-grow-1">
+            <router-view :locationName="locationName"></router-view>
+        </div>
 
         <!-- FOOTER -->
     </div>
-        
+
 </template>
 
 <script>
@@ -41,9 +43,12 @@ export default {
             this.rooms = event
         }
     }
-    
+
 }
 </script>
 
 <style lang="scss">
+#vue-root{
+    height: 100vh
+}
 </style>

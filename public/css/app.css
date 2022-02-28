@@ -172,6 +172,38 @@
   border-top-right-radius: 50px;
 }
 
+.w-fit-content {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.border-left {
+  border-left: solid 1px !important;
+}
+
+.border-right {
+  border-right: solid 1px;
+}
+
+.border-top {
+  border-top: solid 1px;
+}
+
+.border-bottom {
+  border-bottom: solid 1px;
+}
+
+.bg-wave {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1002%26quot%3b)' fill='none'%3e%3cpath d='M -808.0900833358593%2c487 C -712.09%2c445.2 -520.09%2c300.2 -328.0900833358593%2c278 C -136.09%2c255.8 -40.09%2c394.4 151.90991666414072%2c376 C 343.91%2c357.6 439.91%2c186.4 631.9099166641407%2c186 C 823.91%2c185.6 950.29%2c370.4 1111.9099166641408%2c374 C 1273.53%2c377.6 1374.38%2c238 1440%2c204' stroke='rgba(77%2c 24%2c 3%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -582.9029057855183%2c284 C -486.9%2c280.8 -294.9%2c240.4 -102.90290578551833%2c268 C 89.1%2c295.6 185.1%2c421 377.0970942144817%2c422 C 569.1%2c423 665.1%2c279 857.0970942144817%2c273 C 1049.1%2c267 1220.52%2c401 1337.0970942144818%2c392 C 1453.68%2c383 1419.42%2c260.8 1440%2c228' stroke='rgba(77%2c 24%2c 3%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -526.5900180792299%2c244 C -430.59%2c275.2 -238.59%2c403.6 -46.59001807922998%2c400 C 145.41%2c396.4 241.41%2c248 433.40998192077%2c226 C 625.41%2c204 721.41%2c303.8 913.4099819207701%2c290 C 1105.41%2c276.2 1288.09%2c145 1393.40998192077%2c157 C 1498.73%2c169 1430.68%2c311.4 1440%2c350' stroke='rgba(77%2c 24%2c 3%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -55.754999845735426%2c106 C 40.25%2c146.6 232.25%2c289.6 424.2450001542646%2c309 C 616.25%2c328.4 712.25%2c178.6 904.2450001542645%2c203 C 1096.25%2c227.4 1192.25%2c428.6 1384.2450001542645%2c431 C 1576.25%2c433.4 1853.09%2c238 1864.2450001542645%2c215 C 1875.4%2c192 1524.85%2c295.8 1440%2c316' stroke='rgba(77%2c 24%2c 3%2c 1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1002'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.white-overlay {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
 #app {
   position: relative;
 }
