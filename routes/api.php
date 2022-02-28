@@ -223,15 +223,25 @@ Route::get("/search/filters", function (Request $request) {
     $beds = $request->query('beds');
     $servicesToFilter = $request->query('services');
 
-    $hotels = Apartment::with('services')
-        ->with('sponsors')
-        ->with('views')
-        ->with('user')
-        ->with('images')
+    $hotels = Apartment::with(['views', 'user', 'images', 'services'])
+        ->join('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+        ->orderBy('apartment_sponsor.sponsor_id', 'desc')
         ->where('n_rooms', '>', $rooms)
         ->where('n_guests', '>', $beds)
         ->get()
         ->toArray();
+
+    for ($i = 0; $i < count($hotels); $i++) {
+        $services = Apartment::where('id', $hotels[$i]['apartment_id'])
+            ->with('services')
+            ->first()
+            ->toArray();
+        // dd($services);
+
+        $hotels[$i]["services"] = $services['services'];
+    }
+
+
     if ($servicesToFilter) {
         $hotels = array_filter($hotels, function ($hotel) use ($servicesToFilter) {
             $resultIncrement = 0;
