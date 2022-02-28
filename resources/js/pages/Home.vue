@@ -1,7 +1,7 @@
 <template>
     <div class="hotel_container bg-info">
         <!-- Inizio loading screen -->     <!-- SCHERMATA DI CARICAMENTO DA SCOMMENTARE QUANDO SARA' FINITO IL LAYOUT DELLA HOME -->
-        <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
+        <!-- <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
             <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
                 <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
                 <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
@@ -15,7 +15,7 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Fine loading screen -->
 
         <!-- Inizio container degli hotel -->
@@ -87,18 +87,23 @@ export default {
             totalPages : undefined,
             activePage : 1,
             PAGINATION_OFFSET: 5,
-            url: '/api/search/filters?',
+            url: '',
             pageLoaded: false,
             hideLoading:false,
             deleteLoading:false,
             paginationVisibility : false,
+            error : false,
         }
     },
     props : {
-        filters : Object
+        locationName : String
+    },
+
+    components: {
+        Paginator
     },
     computed:{
-        getLocationName(){
+        /* getLocationName(){
             return this.filters.location
         },
         getRadius(){
@@ -109,11 +114,11 @@ export default {
         },
         getGuests(){
             return this.filters.guests
-        }
+        } */
+
+
     },
-    components: {
-        Paginator
-    },
+    
     methods:{
         async getHotelData(page){
             if(!page)
@@ -121,8 +126,13 @@ export default {
 
             this.activePage = page
 
-            const {data} = await axios.get('api/hotel/index?page=' + page);
-            this.hotelArray = data.data;
+            if(!this.locationName){
+                
+                const {data} = await axios.get('api/hotel/index?page=' + page);
+                this.hotelArray = data.data;
+            }
+
+
             setTimeout(()=>{
                 this.paginationVisibility = true
             },3000)
@@ -150,6 +160,7 @@ export default {
             //event.first: Index of first record
             //event.rows: Number of rows to display in new page
             //event.pageCount: Total number of pages
+            
         }
     },
     mounted() {
@@ -158,61 +169,46 @@ export default {
         /* console.log(this.totalPages) */
     },
     watch:{
-        getLocationName: function(val, old) {
-            //get url
-            let url = this.url
 
-            //find the position of the start of the query
-            const queryPosition = url.indexOf('?')
+        locationName: async function(val, old) {
+            if(val === ''){
+                val = 'milano'
+            }
 
-            //truncate params
-            url = url.slice(0, queryPosition)
+            switch (val) {
+            case '':
+                val = 'milano'
+                    break;
+            case 'roma':
+                val = 'rome'
+                break;
+            case 'firenze':
+                val = 'florence'
+                break;
+            case 'torino':
+                val = 'turin'
+                break;
+            case 'napoli':
+                val = 'naples'
+                break;
+            }
 
-            //set new location name
-            url += '?locationName=' + val + '&radius=20'
-
-            //update url
-            this.url = url
-
-            console.log('updated location: ' + this.url)
-        },
-        getRadius: function(val, old) {
-            //get url
-            let url =  this.url
-
-            //find query concat position
-            const concatPosition = url.indexOf('&radius')
-
-            //truncate 2nd param
-            url = url.slice(0, concatPosition)
-
-            //set new radius
-            url += ('&radius=' + val)
-
-            //update url
-            this.url = url
-        },
-        getRooms: function(val, old) {
-            //get url
-            let url =  this.url
-
-            //find query concat position
-            const concatPosition = url.indexOf('&rooms')
-
-            //truncate 2nd param
-            url = url.slice(0, concatPosition)
-
-            //set new radius
-            url += ('&rooms=' + val + '&radius=' + this.radius)
-
-            //update url
-            this.url = url
-        },
-        url: async function(val, old) {
-            console.log('api endpoint: '+ val)
-            const {data} = await axios.get(val)
-
+            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1').catch(function (error){
+                if (error.response) {
+            // Request made and server responded
+            console.log('errore');
+            /* this.error = true */
+            
+            
+            }
+            })
+                
+            
+           /*  console.log('------new filtered data-------')
+            console.dir(data[166]) */
+            console.dir(data);
             this.hotelArray = data
+            this.getRecordsCount()
         }
 
     }
