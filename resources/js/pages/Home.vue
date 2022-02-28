@@ -86,6 +86,7 @@ export default {
             hideLoading:false,
             deleteLoading:false,
             paginationVisibility : false,
+            error : false,
         }
     },
     props : {
@@ -161,26 +162,6 @@ export default {
         /* console.log(this.totalPages) */
     },
     watch:{
-        /* locationName: function(val, old) {
-            //get url
-            let url = this.url
-            console.log(url)
-
-            //find the position of the start of the query
-            const queryPosition = url.indexOf('?')
-            console.log(queryPosition)
-            
-            //truncate params
-            url = url.slice(0, queryPosition)
-            console.log(url)
-            //set new location name
-            url += '?locationName=' + val + '&radius=20'
-
-            //update url
-            this.url = url
-
-            console.log('updated location: ' + this.url)
-        }, */
 
         locationName: async function(val, old) {
             if(val === ''){
@@ -205,52 +186,23 @@ export default {
                 break;
             }
 
-            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1')
+            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1').catch(function (error){
+                if (error.response) {
+            // Request made and server responded
+            console.log('errore');
+            /* this.error = true */
+            
+            
+            }
+            })
+                
+            
            /*  console.log('------new filtered data-------')
             console.dir(data[166]) */
             console.dir(data);
             this.hotelArray = data
             this.getRecordsCount()
         }
-
-        /* getRadius: function(val, old) {
-            //get url
-            let url =  this.url
-
-            //find query concat position
-            const concatPosition = url.indexOf('&radius')
-
-            //truncate 2nd param
-            url = url.slice(0, concatPosition)
-
-            //set new radius
-            url += ('&radius=' + val)
-
-            //update url
-            this.url = url
-        }, */
-        /* getRooms: function(val, old) {
-            //get url
-            let url =  this.url
-
-            //find query concat position
-            const concatPosition = url.indexOf('&rooms')
-
-            //truncate 2nd param
-            url = url.slice(0, concatPosition)
-
-            //set new radius
-            url += ('&rooms=' + val + '&radius=' + this.radius)
-
-            //update url
-            this.url = url
-        }, */
-        /* url: async function(val, old) {
-            console.log('api endpoint: '+ val)
-            const {data} = await axios.get(val)
-
-            this.hotelArray = data
-        } */
 
     }
 }

@@ -2785,7 +2785,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       pageLoaded: false,
       hideLoading: false,
       deleteLoading: false,
-      paginationVisibility: false
+      paginationVisibility: false,
+      error: false
     };
   },
   props: {
@@ -2903,26 +2904,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     /* console.log(this.totalPages) */
   },
   watch: {
-    /* locationName: function(val, old) {
-        //get url
-        let url = this.url
-        console.log(url)
-          //find the position of the start of the query
-        const queryPosition = url.indexOf('?')
-        console.log(queryPosition)
-        
-        //truncate params
-        url = url.slice(0, queryPosition)
-        console.log(url)
-        //set new location name
-        url += '?locationName=' + val + '&radius=20'
-          //update url
-        this.url = url
-          console.log('updated location: ' + this.url)
-    }, */
     locationName: function () {
       var _locationName = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(val, old) {
-        var _yield$axios$get3, data;
+        var _yield$axios$get$catc, data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
@@ -2958,11 +2942,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 14:
                 _context3.next = 16;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1');
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1')["catch"](function (error) {
+                  if (error.response) {
+                    // Request made and server responded
+                    console.log('errore');
+                    /* this.error = true */
+                  }
+                });
 
               case 16:
-                _yield$axios$get3 = _context3.sent;
-                data = _yield$axios$get3.data;
+                _yield$axios$get$catc = _context3.sent;
+                data = _yield$axios$get$catc.data;
 
                 /*  console.log('------new filtered data-------')
                  console.dir(data[166]) */
@@ -2984,38 +2974,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return locationName;
     }()
-    /* getRadius: function(val, old) {
-        //get url
-        let url =  this.url
-          //find query concat position
-        const concatPosition = url.indexOf('&radius')
-          //truncate 2nd param
-        url = url.slice(0, concatPosition)
-          //set new radius
-        url += ('&radius=' + val)
-          //update url
-        this.url = url
-    }, */
-
-    /* getRooms: function(val, old) {
-        //get url
-        let url =  this.url
-          //find query concat position
-        const concatPosition = url.indexOf('&rooms')
-          //truncate 2nd param
-        url = url.slice(0, concatPosition)
-          //set new radius
-        url += ('&rooms=' + val + '&radius=' + this.radius)
-          //update url
-        this.url = url
-    }, */
-
-    /* url: async function(val, old) {
-        console.log('api endpoint: '+ val)
-        const {data} = await axios.get(val)
-          this.hotelArray = data
-    } */
-
   }
 });
 
