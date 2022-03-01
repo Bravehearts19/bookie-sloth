@@ -2,7 +2,7 @@
     <div id="vue-root" class="d-flex flex-column">
         <!-- HEADER -->
         <Header @location="setLocationName" @radius="setRadius"></Header>
-        <div class="flex-grow-1">
+        <div class="flex-grow-1 bg-white">
             <router-view :locationName="locationName"></router-view>
         </div>
 

@@ -1,12 +1,12 @@
 <template>
   <div>
     <form action="">
-    <h2 class="ms-4 text-white text-center mt-3"><strong>Servizi :</strong></h2>
-      <ul class="list-unstyled d-flex flex-wrap justify-content-around my-row m-auto bg-secondary mt-5">
+    <h2 class="ms-4 text-secondary text-center "><strong>Servizi :</strong></h2>
+      <ul class="list-unstyled d-flex flex-wrap justify-content-around my-row m-auto bg-secondary p-3" style="border-radius:25px">
         <li
           v-for="(service, index) in services"
           :key="'service-' + index"
-          class="d-flex align-items-center justify-content-around single-service border-left border-right border-bottom border-primary shadow-lg rounded mt-3"
+          class="d-flex align-items-center justify-content-around single-service shadow-lg rounded mt-3"
         >
             <input
                 class="form-check-input m-0 bg-primary"
@@ -19,7 +19,7 @@
                   :src="service.icon"
                   trigger="loop-on-hover"
                   style="width: 50px; height: 50px"
-                  colors="primary:#c7ef00,secondary:#ffffff"
+                  colors="primary:#109173,secondary:#109173"
               >
               </lord-icon>
               <h3 class="mb-0 text-primary ps-2 service_title">
