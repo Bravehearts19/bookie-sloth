@@ -2845,105 +2845,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -3495,7 +3396,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #B5D601;\n  height: 75vh;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .p-calendar[data-v-37b4720e] {\n  max-width: 300px;\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #A2BA02;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #4D1803;\n  margin-top: 35px;\n  border-radius: 30px;\n  display: flex;\n  justify-content: center;\n  height: 50px;\n}\n.my-container .data-container .user-container .p-button[data-v-37b4720e] {\n  background-color: #B2CC03;\n  color: #4D1803;\n  border: #B2CC03;\n  border-radius: 20px;\n  height: 30px !important;\n  margin-top: 8px;\n  margin-left: 20px;\n}\n\n/* PRIME VUE */\n[data-v-37b4720e] .p-rating .p-rating-icon.pi-star-fill {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating .p-rating-icon:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-inputtext:enabled:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-datepicker:not(.p-datepicker-inline) .p-datepicker-header {\n  background-color: #B2CC03;\n}\n[data-v-37b4720e] .p-button {\n  background-color: #4D1803;\n  color: #B5D601;\n  border: 0;\n  border-top-right-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n[data-v-37b4720e] .p-button:enabled:hover {\n  background-color: #722304;\n  color: #B5D601;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-header {\n  background-color: #B2CC03;\n  /* margin-bottom: 10px; */\n}\n[data-v-37b4720e] .p-dialog .p-dialog-content {\n  padding-top: 20px;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-footer {\n  background-color: #B2CC03;\n  padding: 5px;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
+exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #B5D601;\n  height: 75vh;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .p-calendar[data-v-37b4720e] {\n  max-width: 300px;\n}\n.my-container .data-container .p-calendar .p-button-icon[data-v-37b4720e] {\n  background-color: #B2CC03;\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #A2BA02;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #4D1803;\n  margin-top: 35px;\n  border-radius: 30px;\n  display: flex;\n  justify-content: center;\n  height: 50px;\n}\n.my-container .data-container .user-container .p-button[data-v-37b4720e] {\n  background-color: #B2CC03;\n  color: #4D1803;\n  border: #B2CC03;\n  border-radius: 20px;\n  height: 30px !important;\n  margin-top: 8px;\n  margin-left: 20px;\n}\n\n/* PRIME VUE */\n[data-v-37b4720e] .p-rating .p-rating-icon.pi-star-fill {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating .p-rating-icon:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-inputtext:enabled:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-button {\n  background-color: #4D1803;\n  color: #B5D601;\n  border: 0;\n  border-top-right-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n[data-v-37b4720e] .p-button:enabled:hover {\n  background-color: #722304;\n  color: #B5D601;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-header {\n  background-color: #B2CC03;\n  /* margin-bottom: 10px; */\n}\n[data-v-37b4720e] .p-dialog .p-dialog-content {\n  padding-top: 20px;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-footer {\n  background-color: #B2CC03;\n  padding: 5px;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
 
 // exports
 
@@ -3540,7 +3441,7 @@ exports.push([module.i, "[data-v-b3c5cf30] .p-paginator .p-paginator-pages .p-pa
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css?7252":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primeicons/primeicons.css ***!
   \********************************************************************************************************************************/
@@ -3560,7 +3461,7 @@ exports.push([module.i, "@font-face {\n    font-family: 'primeicons';\n    font-
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css?b370":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css":
 /*!******************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primevue/resources/primevue.min.css ***!
   \******************************************************************************************************************************************/
@@ -3580,7 +3481,7 @@ exports.push([module.i, ".p-component,.p-component *{box-sizing:border-box}.p-hi
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css?e88f":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css":
 /*!****************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primevue/resources/themes/saga-blue/theme.css ***!
   \****************************************************************************************************************************************************/
@@ -3917,7 +3818,7 @@ module.exports = "/fonts/vendor/primeicons/primeicons.woff?943c3597cd33be56d53df
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../css-loader??ref--7-1!../postcss-loader/src??ref--7-2!./primeicons.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css?7252");
+var content = __webpack_require__(/*! !../css-loader??ref--7-1!../postcss-loader/src??ref--7-2!./primeicons.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6288,7 +6189,7 @@ module.exports = "/images/vendor/primevue/resources/hue.png?0614c27197fc3ce572e1
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./primevue.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css?b370");
+var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./primevue.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6318,7 +6219,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../css-loader??ref--7-1!../../../../postcss-loader/src??ref--7-2!./theme.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css?e88f");
+var content = __webpack_require__(/*! !../../../../css-loader??ref--7-1!../../../../postcss-loader/src??ref--7-2!./theme.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -18775,230 +18676,182 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass:
-        "container-fluid h-100 d-flex align-items-center justify-content-center",
-    },
+    { staticClass: "my-container" },
     [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-4 offset-2 bg-info d-flex align-items-center" },
-          [
-            _c("div", { staticClass: "img-container mt-5" }, [
-              _c("img", {
-                staticClass: "w-100",
-                attrs: {
-                  src: _vm.apartment.cover_img.includes("http")
-                    ? _vm.apartment.cover_img
-                    : "/storage/" + _vm.apartment.cover_img,
-                  alt: _vm.apartment.name,
-                },
-              }),
+      _c("div", { staticClass: "img-container" }, [
+        _c("img", {
+          attrs: { src: _vm.apartment.cover_img, alt: _vm.apartment.name },
+        }),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "data-container" },
+        [
+          _c("h1", { staticClass: "pt-1 m-0 text-secondary" }, [
+            _vm._v(_vm._s(_vm.apartment.name)),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: " pb-1" }, [
+            _c("h5", { staticClass: "d-inline text-secondary" }, [
+              _vm._v(_vm._s(_vm.apartment.address)),
             ]),
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4 bg-info" }, [
-          _c("div", { staticClass: "text-container p-5" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "d-flex justify-content-between align-items-center",
-              },
-              [
-                _c(
-                  "div",
-                  [
-                    _c("h1", { staticClass: "text-white" }, [
-                      _vm._v(" " + _vm._s(_vm.apartment.name) + " "),
-                    ]),
-                    _vm._v(" "),
-                    _c("h5", [
-                      _vm._v(" " + _vm._s(_vm.apartment.address) + " "),
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary" }, [
-                      _vm._v(" " + _vm._s(_vm.apartment.location) + " "),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "d-flex mt-3" },
-                      [
-                        _c("Rating", {
-                          attrs: {
-                            value: _vm.rate,
-                            readonly: true,
-                            stars: _vm.rate,
-                            cancel: false,
-                          },
-                        }),
-                        _vm._v(" "),
-                        _vm.rate > 0
-                          ? _c("p", { staticClass: "ps-2" }, [
-                              _vm._v(
-                                _vm._s(_vm.rate) +
-                                  ".0 | " +
-                                  _vm._s(_vm.rate) +
-                                  " recensioni"
-                              ),
-                            ])
-                          : _vm._e(),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("Calendar", {
-                      staticClass: "pb-3",
-                      attrs: {
-                        dateFormat: "dd/mm/yy",
-                        placeholder: "Inserisci date",
-                        showIcon: true,
-                        selectionMode: "range",
-                        inputStyle:
-                          "background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;",
-                      },
-                      model: {
-                        value: _vm.dates,
-                        callback: function ($$v) {
-                          _vm.dates = $$v
-                        },
-                        expression: "dates",
-                      },
-                    }),
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "services-container p-3 mt-3 bg-secondary rounded shadow-lg w-fit-content",
-                  },
-                  _vm._l(_vm.apartment.services, function (service) {
-                    return _c(
-                      "div",
-                      {
-                        key: "service-" + service.id,
-                        staticClass:
-                          "d-flex align-items-center py-2 border-bottom border-primary",
-                      },
-                      [
-                        _c("lord-icon", {
-                          staticStyle: {
-                            width: "45px",
-                            height: "45px",
-                            "background-color": "#c7ef00",
-                            "border-radius": "50px",
-                            "align-content": "space-around",
-                          },
-                          attrs: {
-                            src: service.icon,
-                            trigger: "hover",
-                            colors: "primary:#4d1803,secondary:#ffffff",
-                          },
-                        }),
-                        _vm._v(" "),
-                        _c("h6", { staticClass: "mb-0 mx-3 text-primary" }, [
-                          _vm._v(" " + _vm._s(service.name) + " "),
-                        ]),
-                      ],
-                      1
-                    )
-                  }),
-                  0
-                ),
-              ]
-            ),
             _vm._v(" "),
-            _c("div", { staticClass: "shop-container mt-3" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "d-flex mt-5 justify-content-between align-items-center w-100 p-2 rounded border border-secondary shadow-lg",
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex align-items-center" },
-                    [
-                      _c("lord-icon", {
-                        staticStyle: { width: "50px", height: "50px" },
-                        attrs: {
-                          src: "https://cdn.lordicon.com/rivoakkk.json",
-                          trigger: "hover",
-                          colors:
-                            _vm.peopleCounter === 1
-                              ? "primary:#A2BA02,secondary:#4d1803"
-                              : "primary:#4d1803,secondary:#4d1803",
-                          stroke: "150",
-                        },
-                        on: {
-                          click: function ($event) {
-                            return _vm.decrementCounter()
-                          },
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c("h5", { staticClass: "mx-2 my-0" }, [
-                        _vm._v(_vm._s(_vm.peopleCounter)),
-                      ]),
-                      _vm._v(" "),
-                      _c("lord-icon", {
-                        staticStyle: { width: "35px", height: "35px" },
-                        attrs: {
-                          src: "https://cdn.lordicon.com/mecwbjnp.json",
-                          trigger: "hover",
-                          colors: "primary:#4d1803,secondary:#4d1803",
-                          stroke: "150",
-                        },
-                        on: {
-                          click: function ($event) {
-                            return _vm.incrementCounter()
-                          },
-                        },
-                      }),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("h5", { staticClass: "text-secondary mb-0 px-5 pe-0" }, [
-                    _vm._v(_vm._s(_vm.apartment.price) + "0€"),
-                  ]),
-                ]
-              ),
+            _c("h5", { staticClass: "d-inline text-secondary" }, [
+              _vm._v("," + _vm._s(_vm.apartment.location)),
             ]),
           ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-8 offset-2 bg-info" }, [
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "d-flex" },
+            [
+              _c("Rating", {
+                attrs: {
+                  value: _vm.rate,
+                  readonly: true,
+                  stars: _vm.rate,
+                  cancel: false,
+                },
+              }),
+              _vm._v(" "),
+              _vm.rate > 0
+                ? _c("p", { staticClass: "ps-2" }, [
+                    _vm._v(
+                      _vm._s(_vm.rate) +
+                        ".0 | " +
+                        _vm._s(_vm.rate) +
+                        " recensioni"
+                    ),
+                  ])
+                : _vm._e(),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("Calendar", {
+            staticClass: "pb-3",
+            attrs: {
+              dateFormat: "dd/mm/yy",
+              placeholder: "Inserisci date",
+              showIcon: true,
+              selectionMode: "range",
+              inputStyle:
+                "background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;",
+            },
+            model: {
+              value: _vm.dates,
+              callback: function ($$v) {
+                _vm.dates = $$v
+              },
+              expression: "dates",
+            },
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "services-container p-3" },
+            _vm._l(_vm.apartment.services, function (service) {
+              return _c(
+                "div",
+                { key: "service-" + service.id, staticClass: "px-1" },
+                [
+                  _c("lord-icon", {
+                    staticStyle: {
+                      width: "45px",
+                      height: "45px",
+                      "background-color": "#4d1803",
+                      "border-radius": "50px",
+                      "align-content": "space-around",
+                    },
+                    attrs: {
+                      src: service.icon,
+                      trigger: "hover",
+                      colors: "primary:#B2CC03,secondary:#B2CC03",
+                    },
+                  }),
+                ],
+                1
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
           _c(
             "div",
             {
-              staticClass: "user-container d-flex justify-content-center my-5",
+              staticClass:
+                "d-flex mt-4 justify-content-between align-items-center",
             },
             [
               _c(
                 "div",
-                {
-                  staticClass:
-                    "d-flex align-items-center border-bottom border-top border-secondary px-5 shadow-lg",
-                },
+                { staticClass: "d-flex align-items-center" },
+                [
+                  _c("lord-icon", {
+                    staticStyle: { width: "50px", height: "50px" },
+                    attrs: {
+                      src: "https://cdn.lordicon.com/rivoakkk.json",
+                      trigger: "hover",
+                      colors:
+                        _vm.peopleCounter === 1
+                          ? "primary:#A2BA02,secondary:#4d1803"
+                          : "primary:#4d1803,secondary:#4d1803",
+                      stroke: "150",
+                    },
+                    on: {
+                      click: function ($event) {
+                        return _vm.decrementCounter()
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("h2", { staticClass: "mx-4 my-0" }, [
+                    _vm._v(_vm._s(_vm.peopleCounter)),
+                  ]),
+                  _vm._v(" "),
+                  _c("lord-icon", {
+                    staticStyle: { width: "50px", height: "50px" },
+                    attrs: {
+                      src: "https://cdn.lordicon.com/mecwbjnp.json",
+                      trigger: "hover",
+                      colors: "primary:#4d1803,secondary:#4d1803",
+                      stroke: "150",
+                    },
+                    on: {
+                      click: function ($event) {
+                        return _vm.incrementCounter()
+                      },
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("h2", { staticClass: "me-4 text-secondary" }, [
+                _vm._v(_vm._s(_vm.apartment.price) + "€"),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "user-container" },
+            [
+              _c(
+                "div",
+                { staticClass: "d-flex align-items-center" },
                 [
                   _c("lord-icon", {
                     staticStyle: { width: "40px", height: "40px" },
                     attrs: {
                       src: "https://cdn.lordicon.com/dxjqoygy.json",
                       trigger: "hover",
-                      colors: "primary:#4d1803,secondary:#c7ef00",
+                      colors: "primary:#c7ef00,secondary:#c7ef00",
                     },
                   }),
                   _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary mb-0 mx-3" }, [
+                  _c("h6", { staticClass: "text-primary m-0" }, [
                     _vm._v(
                       _vm._s(_vm.apartment.user.name) +
                         " " +
@@ -19010,7 +18863,7 @@ var render = function () {
               ),
               _vm._v(" "),
               _c("Button", {
-                staticClass: " shadow-lg p-button-warning p-button-lg",
+                staticClass: "p-button-warning p-button-sm",
                 attrs: { label: "Contatta" },
                 on: {
                   click: function ($event) {
@@ -19021,8 +18874,9 @@ var render = function () {
             ],
             1
           ),
-        ]),
-      ]),
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "Dialog",
@@ -35977,7 +35831,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\SIMO\Spindox\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })

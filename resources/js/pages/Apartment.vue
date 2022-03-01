@@ -55,7 +55,7 @@
                     </lord-icon>
                 </div>
 
-                <h2 class="me-4 text-secondary">{{ apartment.price }}0€</h2>
+                <h2 class="me-4 text-secondary">{{ apartment.price }}€</h2>
             </div>
 
             <div class="user-container">
