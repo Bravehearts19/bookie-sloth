@@ -2,10 +2,10 @@
 
 @section('content')
 
-<header class="py-3 border-none d-flex justify-content-center align-items-center bg-primary shadow-lg">
+<a href="/" class="py-3 border-none d-flex justify-content-center align-items-center bg-primary shadow-lg text-decoration-none text-black">
     <img src="/images/logo.svg" alt="slothel logo">
     <h1>Slothel</h1>
-</header>
+</a>
 
 <div class="container container_login">
     <div class="login_card_positioning">
