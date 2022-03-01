@@ -3,9 +3,7 @@
         <!-- HEADER -->
         <Header @location="setLocationName" @radius="setRadius"></Header>
         <div class="flex-grow-1">
-        <transition name="scale" mode="out-in">
             <router-view :locationName="locationName"></router-view>
-        </transition>
         </div>
 
         <!-- FOOTER -->
@@ -49,15 +47,4 @@ export default {
     height: 100vh
 }
 
-.scale-enter-active,
-.scale-leave-active {
-  transition: all 0.5s ease;
-}
-
-
-.scale-enter-from,
-.scale-leave-to {
-  opacity: 0;
-  transform: scale(0.9);
-}
 </style>
