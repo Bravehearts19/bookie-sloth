@@ -34,7 +34,9 @@ export default {
             this.locationName = event
         },
         
-        
+        setRadius(val){
+            this.radius = val
+        }        
     }
 
 }

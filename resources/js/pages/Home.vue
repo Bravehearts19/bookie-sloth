@@ -1,5 +1,24 @@
 <template>
     <div class="hotel_container bg-info">
+        <!-- Inizio loading screen -->    
+         <!-- SCHERMATA DI CARICAMENTO DA SCOMMENTARE QUANDO SARA' FINITO IL LAYOUT DELLA HOME -->
+        <!--<div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
+            <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
+                <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
+                <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
+                    <h2 class="text-white me-3" :style="pageLoaded===true ? 'animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;' : ''">Sloth</h2>
+                    <h2 class="text-white ms-3 d-flex" :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">h
+                        <span :style="pageLoaded===true ? 'opacity:0' : ''">ot</span>
+                        <div :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">el</div>
+                    </h2>
+                </div>
+                <div class="spinner-border text-primary mt-3" role="status" :style="pageLoaded===true ? 'opacity:0' : ''">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+        -->
+        <!-- Fine loading screen -->
 
         <div class="container py-5">
             <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 ">
@@ -10,7 +29,7 @@
                             <div class="image-container shadow-lg">
                                 <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
                             </div>
-                            <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
+                            <router-link :to="{name : 'apartment', params : { id :hotel.apartment_id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
                         </div>
 
                         <div class="d-flex flex-column align-items-center w-50">

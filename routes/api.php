@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Apartment;
 use App\Service;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +68,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * @param ?page={{pagination}}
  */
 Route::get('/hotel/index', function (Request $request) {
-    $apartments = Apartment::with('services')->paginate(12);
+    $apartments = Apartment::join('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+        ->orderBy('apartment_sponsor.sponsor_id', 'desc')
+        ->paginate(12);
+
 
     return json_encode($apartments);
 });
@@ -100,24 +104,7 @@ Route::get('/apartment/services', function (Request $request) {
     $apartment = Apartment::where('id', $apartmentId)->with('services')->first();
     return json_encode($apartment);
 });
-// nMinStanze
-// nMinPersone
-//
-/**
- * @description get 10 paginated hotel filtered by badge type
- * @param ?searchString={{ bronze | silver | gold}}
- */
-//Route::get('hotel/search/badge', function(Request $request){
-//
-//    //get query string
-//    $badge = $request->query('badge');
-//
-//    $apartments = Apartment::with('sponsors')
-//        ->where('level', 'like', ('%' . $badge . '%') )
-//        ->paginate(10);
-//
-//    return json_encode($apartments);
-//});
+
 Route::get('/destinationID', function (Request $request) {
     $curl = curl_init();
     $queryLocation = $request->query('location');
@@ -219,15 +206,25 @@ Route::get("/search/filters", function (Request $request) {
     $beds = $request->query('beds');
     $servicesToFilter = $request->query('services');
 
-    $hotels = Apartment::with('services')
-        ->with('sponsors')
-        ->with('views')
-        ->with('user')
-        ->with('images')
+    $hotels = Apartment::with(['views', 'user', 'images', 'services'])
+        ->join('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+        ->orderBy('apartment_sponsor.sponsor_id', 'desc')
         ->where('n_rooms', '>', $rooms)
         ->where('n_guests', '>', $beds)
         ->get()
         ->toArray();
+
+    for ($i = 0; $i < count($hotels); $i++) {
+        $services = Apartment::where('id', $hotels[$i]['apartment_id'])
+            ->with('services')
+            ->first()
+            ->toArray();
+        // dd($services);
+
+        $hotels[$i]["services"] = $services['services'];
+    }
+
+
     if ($servicesToFilter) {
         $hotels = array_filter($hotels, function ($hotel) use ($servicesToFilter) {
             $resultIncrement = 0;
