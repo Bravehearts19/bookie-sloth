@@ -19429,7 +19429,7 @@ var render = function () {
                           "d-flex flex-column align-items-center w-50",
                       },
                       [
-                        _c("div", { staticClass: "py-3" }, [
+                        _c("div", { staticClass: "p-3" }, [
                           _c(
                             "h5",
                             { staticClass: "text-secondary text-center mb-0" },
@@ -19455,18 +19455,7 @@ var render = function () {
                           ),
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "p-3" }, [
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Prezzo a persona: "),
-                              _c("strong", [
-                                _vm._v(_vm._s(hotel.price) + " €"),
-                              ]),
-                            ]
-                          ),
-                          _vm._v(" "),
+                        _c("div", { staticClass: "px-3" }, [
                           _c(
                             "h6",
                             { staticClass: "text-secondary py-1 mb-0" },
@@ -19485,6 +19474,17 @@ var render = function () {
                               _vm._v("Numero di stanze: "),
                               _c("strong", [
                                 _vm._v(_vm._s(Math.ceil(hotel.n_rooms / 10))),
+                              ]),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "h6",
+                            { staticClass: "text-secondary py-1 mb-0" },
+                            [
+                              _vm._v("Prezzo a persona: "),
+                              _c("strong", [
+                                _vm._v(_vm._s(hotel.price) + " €"),
                               ]),
                             ]
                           ),
