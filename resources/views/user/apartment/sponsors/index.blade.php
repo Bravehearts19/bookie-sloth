@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
-<div class="container-fluid h-100">
+<div class="container-fluid h-100 position-relative">
     <div class="row flex-shrink-0 h-100 align-items-center">
         <div class="col-10 offset-1">
             <div class="badges-container d-flex flex-wrap justify-content-center justify-content-lg-between">
@@ -38,8 +38,15 @@
                 <input type="hidden" id="sponsor" name="sponsor" value="0">
 
             </form>
-            <div id="dropin-container" style="opacity:0; transition: opacity 0.6s; display:none"></div>
-            <button id="submit-button" style="opacity:0; transition: opacity 0.6s; display:none" class="btn btn-primary text-secondary">Acquista</button>
+            
+            <div class="position-absolute" style="top:0; left:0; bottom:0; right:0; display:none; transition:background 0.6s; background:rgba(0,0,0,0)" id="paymentOverlay">
+                    <div id="dropin-container" style="opacity:0; transition: opacity 0.6s; display:none; top:50%; left:50%; transform:translate(-50%,-50%); width:600px" class="position-absolute">
+                    </div>
+                <div>
+                    <button id="submit-button" style="opacity:0; transition: opacity 0.6s; display:none; position: absolute; bottom:250px; left:45%; transform:translateX(-50%)" class="btn btn-primary text-secondary">Acquista</button>
+                    <button id="close-button" style="opacity:0; transition: opacity 0.6s; display:none; position: absolute; bottom:250px; left:55%; transform:translateX(-50%)" class="btn btn-danger text-secondary">Annulla</button>
+                </div>
+            </div>
         </div>
 
        
@@ -51,12 +58,32 @@
         buttons.forEach( button => { button.addEventListener('click', function() {
                 document.getElementById('dropin-container').style.display = "block";
                 document.getElementById('submit-button').style.display = "block";
+                document.getElementById('close-button').style.display = "block";
+                document.getElementById('paymentOverlay').style.display = "block";
                 setTimeout(() => {
+                    document.getElementById('paymentOverlay').style.background = "rgba(0,0,0,0.6)";
                     document.getElementById('dropin-container').style.opacity = "100%";
                     document.getElementById('submit-button').style.opacity = "100%";
+                    document.getElementById('close-button').style.opacity = "100%";
                 }, 200);
                 document.getElementById('sponsor').value = button.value;
                 price=document.getElementById('price-'+ button.value).value;
+
+                document.getElementById('close-button').addEventListener('click', function(){
+                    document.getElementById('paymentOverlay').style.background = "rgba(0,0,0,0)";
+                    document.getElementById('dropin-container').style.opacity = "0";
+                    document.getElementById('submit-button').style.opacity = "0";
+                    document.getElementById('close-button').style.opacity = "0";
+
+                    setTimeout(() => {
+                    document.getElementById('paymentOverlay').style.display ="none";
+                    document.getElementById('dropin-container').style.display="none";
+                    document.getElementById('submit-button').style.display = "none";
+                    document.getElementById('close-button').style.display = "none";
+                }, 200);
+                })
+
+
                 let card = ".sponsor-" + button.value;
                 for(let i=0; i<buttons.length; i++){
                     let currentCard = document.querySelector(`.sponsor-${i+2}`);
