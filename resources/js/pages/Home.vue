@@ -32,16 +32,16 @@
                         </div>
 
                         <div class="d-flex flex-column align-items-center w-50">
-                            <div class="py-3">
+                            <div class="p-3">
                                 <h5 class="text-secondary text-center mb-0"><strong>{{hotel.name}}</strong></h5>
                                 <h5 class="text-secondary text-center mb-0">{{hotel.location}}</h5>
                                 <h6 class="text-secondary text-center mb-0">{{hotel.address}} - {{hotel.cap}}</h6>
                             </div>
 
-                            <div class="p-3">
-                                <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
+                            <div class="px-3">
                                 <h6 class="text-secondary py-1 mb-0">Numero di letti: <strong>{{Math.ceil(hotel.n_guests / 10)}}</strong></h6>
                                 <h6 class="text-secondary py-1 mb-0">Numero di stanze: <strong>{{Math.ceil(hotel.n_rooms / 10)}}</strong></h6>
+                                <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
                             </div>
                         </div>
                     </div>
