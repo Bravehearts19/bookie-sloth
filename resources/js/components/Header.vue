@@ -1,7 +1,7 @@
 <template>
   <header class="bg-primary d-flex align-items-center justify-content-center px-3 py-3">
     <!-- Inizio logo container -->
-    <div class="logo-container d-flex align-items-center p-3">
+    <a href="/" class="logo-container d-flex align-items-center p-3 text-decoration-none text-black">
       <h1 class="mb-0 mx-3 ml-0">Slothel</h1>
       <svg
         width="65"
@@ -15,7 +15,7 @@
           fill="#4D1803"
         />
       </svg>
-    </div>
+    </a>
     <!-- Fine logo container -->
 
     <!-- Inizio barra di ricerca -->
