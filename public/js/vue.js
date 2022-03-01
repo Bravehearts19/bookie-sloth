@@ -3041,8 +3041,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       activePage: 1,
       PAGINATION_OFFSET: 5,
       activeLocation: 'unset',
-      pageLoaded: false,
-      hideLoading: false
+      loadingScreen: {
+        pageLoaded: false,
+        hideLoading: false,
+        deleteLoading: false
+      }
     };
   },
   computed: {
@@ -3074,7 +3077,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 if (!(val === 'index')) {
-                  _context.next = 18;
+                  _context.next = 19;
                   break;
                 }
 
@@ -3088,47 +3091,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 console.dir(data.data);
                 console.log('got index data');
                 this.hotelArray = data.data;
-                this.pageLoaded = true;
+                this.loadingScreen.pageLoaded = true;
                 setTimeout(function () {
-                  _this.hideLoading = true;
+                  _this.loadingScreen.hideLoading = true;
                 }, 3000);
-                _context.next = 16;
+                setTimeout(function () {
+                  _this.loadingScreen.deleteLoading = true;
+                }, 5000);
+                _context.next = 17;
                 break;
 
-              case 13:
-                _context.prev = 13;
+              case 14:
+                _context.prev = 14;
                 _context.t0 = _context["catch"](1);
                 console.log('watcher query error' + _context.t0);
 
-              case 16:
-                _context.next = 31;
+              case 17:
+                _context.next = 32;
                 break;
 
-              case 18:
-                _context.prev = 18;
-                _context.next = 21;
+              case 19:
+                _context.prev = 19;
+                _context.next = 22;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1');
 
-              case 21:
+              case 22:
                 _yield$axios$get2 = _context.sent;
                 _data = _yield$axios$get2.data;
                 console.dir(_data);
                 console.log('got search data');
                 this.hotelArray = _data;
-                _context.next = 31;
+                _context.next = 32;
                 break;
 
-              case 28:
-                _context.prev = 28;
-                _context.t1 = _context["catch"](18);
+              case 29:
+                _context.prev = 29;
+                _context.t1 = _context["catch"](19);
                 console.log('watcher query error' + _context.t1);
 
-              case 31:
+              case 32:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[1, 13], [18, 28]]);
+        }, _callee, this, [[1, 14], [19, 29]]);
       }));
 
       function activeLocation(_x, _x2) {
@@ -19112,13 +19118,118 @@ var render = function () {
   return _c("div", { staticClass: "hotel_container bg-info" }, [
     _c(
       "div",
+      {
+        staticClass:
+          "loading-screen d-flex justify-content-center align-items-center",
+        class: _vm.loadingScreen.deleteLoading === true ? "d-none" : "",
+        style:
+          _vm.loadingScreen.hideLoading === true
+            ? "opacity:0; transition:opacity 0.3s"
+            : "",
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "d-flex flex-column align-items-center",
+            style:
+              _vm.loadingScreen.pageLoaded === true
+                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
+                : "",
+          },
+          [
+            _c("img", {
+              staticClass: "mb-3",
+              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "d-flex",
+                style:
+                  _vm.loadingScreen.pageLoaded === true
+                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
+                    : "",
+              },
+              [
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white me-3",
+                    style:
+                      _vm.loadingScreen.pageLoaded === true
+                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [_vm._v("Sloth")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white ms-3 d-flex",
+                    style:
+                      _vm.loadingScreen.pageLoaded === true
+                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [
+                    _vm._v("h\n                    "),
+                    _c(
+                      "span",
+                      {
+                        style:
+                          _vm.loadingScreen.pageLoaded === true
+                            ? "opacity:0"
+                            : "",
+                      },
+                      [_vm._v("ot")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        style:
+                          _vm.loadingScreen.pageLoaded === true
+                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                            : "",
+                      },
+                      [_vm._v("el")]
+                    ),
+                  ]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "spinner-border text-primary mt-3",
+                style: _vm.loadingScreen.pageLoaded === true ? "opacity:0" : "",
+                attrs: { role: "status" },
+              },
+              [
+                _c("span", { staticClass: "visually-hidden" }, [
+                  _vm._v("Loading..."),
+                ]),
+              ]
+            ),
+          ]
+        ),
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
       { staticClass: "container py-5" },
       [
         _c(
           "div",
           {
             staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3",
-            style: _vm.hideLoading === false ? "display:none" : "",
+            style:
+              _vm.loadingScreen.hideLoading === false ? "display:none" : "",
           },
           _vm._l(_vm.hotelArray, function (hotel, index) {
             return _c(
@@ -19176,6 +19287,7 @@ var render = function () {
                           "d-flex flex-column align-items-center w-50",
                       },
                       [
+                        _vm._v("loadingScreen.\n                        "),
                         _c("div", { staticClass: "py-3" }, [
                           _c(
                             "h5",
@@ -35740,7 +35852,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
