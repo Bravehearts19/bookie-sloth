@@ -18466,7 +18466,10 @@ var render = function () {
                     staticClass:
                       "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
                     attrs: {
-                      to: { name: "apartment", params: { id: hotel.id } },
+                      to: {
+                        name: "apartment",
+                        params: { id: hotel.apartment_id },
+                      },
                     },
                   },
                   [_vm._v("Discover")]
@@ -35699,7 +35702,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\SIMO\Spindox\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
