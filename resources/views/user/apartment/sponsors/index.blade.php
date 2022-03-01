@@ -7,19 +7,17 @@
             <div class="badges-container d-flex flex-wrap justify-content-center justify-content-lg-between">
                 @foreach($sponsors as $sponsor)
                 @if($sponsor->id !== 1)         
-                <div class="badge d-flex flex-column bg-primary rounded shadow-lg py-5 sponsor-{{$sponsor->id}} unactive" style="transition:filter 0.3s">
+                <div class="badge d-flex flex-column bg-primary rounded shadow-lg py-5 sponsor-{{$sponsor->id}} active" style="transition:filter 0.3s">
                     <img src="/images/{{$sponsor->level}}_badge.svg" alt="{{$sponsor->level}} badge" class="w-75 d-block mx-auto">
                     <h2 class="text-dark mt-5">{{ucfirst($sponsor->level)}}</h2>
                     <div class="d-flex align-items-center justify-content-around">
                         <div>
                             <h5 class="mb-0 bg-info text-dark shadow-lg rounded p-2">{{$sponsor->duration}}h</h5>
                         </div>
-                        <div class="progress w-75 bg-info shadow-lg">
-                            <div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" style="width: 33.33%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
+                        
                     </div>
                     <div class="mt-5 bg-info p-3">
-                        <h6 class="mb-0 text-wrap fw-normal text-dark">Vantages: your apartments will appear first in customers feed</h6>
+                        <h6 class="mb-0 text-wrap fw-normal text-dark">Vantaggi: i tuoi appartamenti verranno visualizzati per primi dagli utenti </h6>
                     </div>
                     <div class="d-flex mt-5 justify-content-around align-items-center">
                         <div class="input-group w-50 shadow-lg rounded">
