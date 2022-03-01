@@ -53,46 +53,25 @@
             </div>
 
             <div class="d-flex align-items-center m-3">
-                <a href="/">
+                <a href="/" class="btn btn-secondary p-2 ms-3 border-radius-50">
                     <lord-icon
-                        src="https://cdn.lordicon.com/gmzxduhd.json"
+                        src="https://cdn.lordicon.com/igpbsrza.json"
                         trigger="hover"
-                        style="width:50px;height:50px"
-                        colors="primary:#4d1803,secondary:#000000"
-                    >
-                    </lord-icon>
+                        colors="primary:#c7ef00"
+                        state="hover-1"
+                        style="width:36px;height:36px">
+                    </lord-icon>  
                 </a>
-                <a href="{{route('user.messages', Auth::user()->id)}}">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/rhvddzym.json"
-                        trigger="hover"
-                        style="width:50px;height:50px"
-                        colors="primary:#4d1803,secondary:#000000"
-                    >
-
-                    </lord-icon>
-                </a>
-            <form action="{{route('logout')}}" method="post">
-                @csrf
-                    <button type="submit" class="user-button">
-                        <lord-icon
-                            src="https://cdn.lordicon.com/lywgqtim.json"
-                            trigger="hover"
-                            style="width:50px;height:50px"
-                            colors="primary:#4d1803,secondary:#000000"
-                        >
-                        </lord-icon>
-                    </button>
-            </form>
 
             <div class="d-flex align-items-center">
-                <lord-icon
-                    src="https://cdn.lordicon.com/eszyyflr.json"
-                    trigger="hover"
-                    style="width:50px;height:50px"
-                    colors="primary:#4d1803,secondary:#000000"
-                >
-                </lord-icon>
+                <div class="bg-secondary p-2 ms-3 border-radius-50 me-2">  <!-- Bottone della Dashboard -->
+                    <lord-icon
+                        src="https://cdn.lordicon.com/dklbhvrt.json"
+                        trigger="hover"
+                        colors="primary:#c7ef00"
+                        style="width:36px;height:36px">
+                </lord-icon> 
+            </div>
 
                 <strong>{{Auth::user()->name}}</strong>
             </div>
@@ -102,37 +81,67 @@
             <aside class="bg-primary user-aside">
                 <div class="list-group">
                     <div>
-                        <a href="{{route('user.dashboard')}}" class="list-group-item list-group-item-action d-flex align-items-center bg-secondary" aria-current="true">
+                        <a href="{{route('user.dashboard')}}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('user')) ? 'bg-secondary' : 'bg-primary' }}" aria-current="true">
                             <lord-icon
                                 src="https://cdn.lordicon.com/gqdnbnwt.json"
                                 trigger="empty"
                                 style="width:50px;height:50px"
-                                colors="primary:#c7ef00,secondary:#ffffff">
+                                colors="primary:#ffffff,secondary:{{(request()->is('user')) ? '#c7ef00' : '#4d1803'}}">
                             </lord-icon>
-                            <strong class="text-primary">Dashboard</strong>
+                            <strong class="{{(request()->is('user')) ? 'text-primary' : 'text-secondary'}}">Dashboard</strong>
                         </a>
                     </div>
-                    <div class="mt-5">
+
+                    <div>
                         @if(Auth::user()->apartments->count() > 0)
-                        <a href="{{route('user.apartment.index')}}" class="list-group-item list-group-item-action d-flex align-items-center bg-secondary" aria-current="true">
+                        <a href="{{route('user.apartment.index')}}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('user/apartment')) ? 'bg-secondary' : 'bg-primary' }}" aria-current="true">
                             <lord-icon
                                 src="https://cdn.lordicon.com/gmzxduhd.json"
                                 trigger="empty"
                                 style="width:50px;height:50px"
-                                colors="primary:#c7ef00,secondary:#ffffff">
+                                colors="primary:#ffffff,secondary:{{(request()->is('user/apartment')) ? '#c7ef00' : '#4d1803'}}">
                             </lord-icon>
-                            <strong class="text-primary">Appartamenti</strong>
+                            <strong class="{{(request()->is('user/apartment')) ? 'text-primary' : 'text-secondary'}}">Appartamenti</strong>
                         </a>
                         @endif
-                        <a href="{{route("user.apartment.create")}}" class="list-group-item list-group-item-action d-flex align-items-center bg-secondary">
+                        <a href="{{route("user.apartment.create")}}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('user/apartment/create')) ? 'bg-secondary' : 'bg-primary' }}">
                             <lord-icon
                                 src="https://cdn.lordicon.com/mecwbjnp.json"
                                 trigger="empty"
                                 style="width:50px;height:50px"
-                                colors="primary:#c7ef00,secondary:#ffffff">
+                                colors="primary:#ffffff,secondary:{{(request()->is('user/apartment/create')) ? '#c7ef00' : '#4d1803'}}">
                             </lord-icon>
-                            <strong class="text-primary">Aggiungi appartamento</strong>
+                            <strong class="{{(request()->is('user/apartment/create')) ? 'text-primary' : 'text-secondary'}}">Aggiungi appartamento</strong>
                         </a>
+                    </div>
+
+                    <div>
+                        <a href="{{route('user.messages', Auth::user()->id)}}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('user/' . Auth::user()->id .'/messages')) ? 'bg-secondary' : 'bg-primary' }}" aria-current="true">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/rhvddzym.json"
+                                    trigger="hover"
+                                    style="width:50px;height:50px"
+                                    colors="primary:{{ (request()->is('user/' . Auth::user()->id .'/messages')) ? '#c7ef00' : '#4d1803' }}, secondary:#000000"
+                                >
+                                </lord-icon>
+                            <strong class="{{ (request()->is('user/' . Auth::user()->id .'/messages')) ? 'text-primary' : 'text-secondary' }}">Messaggi</strong>
+                        </a>
+                    </div>
+                    <div class="logout">
+                        <form action="{{route('logout')}}" method="post">
+                            @csrf
+                                <button type="submit" class="user-button w-100">
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/lywgqtim.json"
+                                        trigger="empty"
+                                        style="width:50px;height:50px"
+                                        colors="primary:#4d1803,secondary:#000000"
+                                    >
+                                    </lord-icon>
+                                    <strong>Logout</strong>
+                                </button>
+                        </form>
+                        
                     </div>
                 </div>
             </aside>
