@@ -3394,7 +3394,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #109173;\n  height: 75vh;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n  margin-top: 30px;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .p-calendar[data-v-37b4720e] {\n  max-width: 300px;\n}\n.my-container .data-container .p-calendar .p-button-icon[data-v-37b4720e] {\n  background-color: #109173;\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #0d7c62;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #FFFFFF;\n  margin-top: 35px;\n  border-radius: 30px;\n  display: flex;\n  justify-content: center;\n  height: 50px;\n}\n.my-container .data-container .user-container .p-button[data-v-37b4720e] {\n  background-color: #0d7c62;\n  color: #4D1803;\n  border: #B2CC03;\n  border-radius: 20px;\n  height: 30px !important;\n  margin-top: 8px;\n  margin-left: 20px;\n}\n\n/* PRIME VUE */\n[data-v-37b4720e] .p-rating .p-rating-icon.pi-star-fill {\n  color: #FFFFFF;\n}\n[data-v-37b4720e] .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {\n  color: #FFFFFF;\n}\n[data-v-37b4720e] .p-rating .p-rating-icon:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-inputtext:enabled:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-button {\n  background-color: #FFFFFF;\n  color: #109173;\n  border: 0;\n  border-top-right-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n[data-v-37b4720e] .p-button:enabled:hover {\n  background-color: #FFFFFF;\n  color: #109173;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-header {\n  background-color: #109173;\n  /* margin-bottom: 10px; */\n}\n[data-v-37b4720e] .p-dialog .p-dialog-content {\n  padding-top: 20px;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-footer {\n  background-color: #109173;\n  padding: 5px;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
+exports.push([module.i, "[data-v-37b4720e]::-moz-placeholder {\n  color: black;\n}\n[data-v-37b4720e]:-ms-input-placeholder {\n  color: black;\n}\n[data-v-37b4720e]::placeholder {\n  color: black;\n}\n.my-container[data-v-37b4720e] {\n  background-color: #109173;\n  height: 75vh;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n  margin-top: 30px;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .p-calendar[data-v-37b4720e] {\n  max-width: 300px;\n}\n.my-container .data-container .p-calendar .p-button-icon[data-v-37b4720e] {\n  background-color: #109173;\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #0d7c62;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #FFFFFF;\n  margin-top: 35px;\n  border-radius: 30px;\n  display: flex;\n  justify-content: center;\n  height: 50px;\n}\n.my-container .data-container .user-container .p-button[data-v-37b4720e] {\n  background-color: #0d7c62;\n  color: #4D1803;\n  border: #B2CC03;\n  border-radius: 20px;\n  height: 30px !important;\n  margin-top: 8px;\n  margin-left: 20px;\n}\n\n/* PRIME VUE */\n[data-v-37b4720e] .p-rating .p-rating-icon.pi-star-fill {\n  color: #FFFFFF;\n}\n[data-v-37b4720e] .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {\n  color: #FFFFFF;\n}\n[data-v-37b4720e] .p-rating .p-rating-icon:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-inputtext:enabled:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-button {\n  background-color: #FFFFFF;\n  color: #109173;\n  border: 0;\n  border-top-right-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n[data-v-37b4720e] .p-button:enabled:hover {\n  background-color: #FFFFFF;\n  color: #109173;\n}\n[data-v-37b4720e] .p-datepicker:not(.p-datepicker-inline) .p-datepicker-header {\n  background-color: #109173;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-header {\n  background-color: #109173;\n  /* margin-bottom: 10px; */\n}\n[data-v-37b4720e] .p-dialog .p-dialog-content {\n  padding-top: 20px;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-footer {\n  background-color: #109173;\n  padding: 5px;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
 
 // exports
 
@@ -18570,11 +18570,6 @@ var render = function () {
                 _vm._v(" "),
                 _c("div", { staticClass: "p-3" }, [
                   _c("h6", { staticClass: "text-primary py-1 mb-0" }, [
-                    _vm._v("Prezzo a persona: "),
-                    _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-primary py-1 mb-0" }, [
                     _vm._v("Numero di letti: "),
                     _c("strong", [
                       _vm._v(_vm._s(Math.ceil(hotel.n_guests / 10))),
@@ -18586,6 +18581,11 @@ var render = function () {
                     _c("strong", [
                       _vm._v(_vm._s(Math.ceil(hotel.n_rooms / 10))),
                     ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("h6", { staticClass: "text-primary py-1 mb-0" }, [
+                    _vm._v("Prezzo a notte: "),
+                    _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
                   ]),
                 ]),
               ]
@@ -19317,8 +19317,12 @@ var render = function () {
                           ]),
                           _vm._v(" "),
                           _c("h6", { staticClass: "text-primary py-1 mb-0" }, [
-                            _vm._v("Prezzo a persona: "),
-                            _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
+                            _vm._v("Prezzo a notte: "),
+                            _c("h3", [
+                              _c("strong", [
+                                _vm._v(_vm._s(hotel.price) + " €"),
+                              ]),
+                            ]),
                           ]),
                         ]),
                       ]

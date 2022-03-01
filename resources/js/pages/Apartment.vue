@@ -177,7 +177,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+::placeholder{
+    color: black;
+}
 
 .my-container{
     background-color: #109173;
@@ -290,6 +292,10 @@ export default {
 ::v-deep .p-button:enabled:hover{
     background-color: #FFFFFF;
     color:#109173;
+}
+
+::v-deep .p-datepicker:not(.p-datepicker-inline) .p-datepicker-header{
+    background-color: #109173;
 }
     
 //DIALOG
