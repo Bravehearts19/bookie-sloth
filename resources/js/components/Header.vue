@@ -34,7 +34,7 @@
         @keyup.enter="startSearch()"
         type="text"
         class="form-control bg-transparent text-primary border-none"
-        placeholder="Surf around over 1000 hotels..."
+        placeholder="Cerca..."
         aria-label="hotelName"
         aria-describedby="searchBar"
       />

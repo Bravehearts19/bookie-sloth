@@ -26,7 +26,8 @@
         </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 " :style="hideLoading===false ? 'display:none' : ''">
+    <!-- Inizio container degli hotel -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 ">
         <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
             <div class="card_container bg-primary shadow-lg">
 
@@ -47,35 +48,32 @@
                         <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
                         <h6 class="text-secondary py-1 mb-0">Numero di ospiti: <strong>{{hotel.n_guests}}</strong></h6>
                         <h6 class="text-secondary py-1 mb-0">Numero di stanze: <strong>{{hotel.n_rooms}}</strong></h6>
-                        <h6 class="text-secondary py-1 mb-0">Numero di bagni: <strong>{{hotel.n_bathrooms}}</strong></h6>
-                        <h6 class="text-secondary py-1 mb-0">Dimensioni: <strong>{{hotel.size}} mq</strong></h6>
+                        <!-- <h6 class="text-secondary py-1 mb-0">Numero di bagni: <strong>{{hotel.n_bathrooms}}</strong></h6> -->
+                        <!-- <h6 class="text-secondary py-1 mb-0">Dimensioni: <strong>{{hotel.size}} mq</strong></h6> -->
+                        
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
+            
 
-    <!-- Inizio container degli hotel -->
-    <div class="">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 " :style="hideLoading===false ? 'display:none' : ''">
-
-            </div>
-
-            <!-- Inizio bottoni per la paginazione -->
-            <ul class="pagination overflow-auto pt-5" :class='paginationVisibility === false ? "d-none" : ""'>
-                <li class="page-item"
-                    :class="(index === activePage) ? 'active' : ''"
-                    v-for="index in totalPages"
-                    :key="'page-'+ index">
-                    <a href="#" class="page-link"
-                    @click="getHotelData(index)">
-                        {{index}}
-                    </a>
-                </li>
-            </ul>
-            <!-- Fine bottoni per la paginazione -->
-        </div>
-        <!-- Fine container degli hotel -->
+    <!-- Inizio bottoni per la paginazione -->
+    <ul class="pagination overflow-auto pt-5" :class='paginationVisibility === false ? "d-none" : ""'>
+        <li class="page-item"
+            :class="(index === activePage) ? 'active' : ''"
+            v-for="index in totalPages"
+            :key="'page-'+ index">
+            <a href="#" class="page-link"
+            @click="getHotelData(index)">
+                {{index}}
+            </a>
+        </li>
+    </ul>
+    <!-- Fine bottoni per la paginazione -->
+       
+      
 
 </div>
 </template>
@@ -95,7 +93,7 @@ export default {
             hotelArray : [],
             totalPages : undefined,
             activePage : 1,
-            PAGINATION_OFFSET: 5,
+            /* PAGINATION_OFFSET: 5, */
             radius: 20,
             roomsValue: 1,
             bedValue: 1,
@@ -117,10 +115,11 @@ export default {
             const {data} = await axios.get('api/hotel/index?page=' + page);
             this.hotelArray = data.data
             this.paginationVisibility = true
+            this.getRecordsCount();
         },
         async getRecordsCount(){
             const {data} = await axios.get('api/hotel/index');
-            console.log(data.last_page)
+            /* console.log(data.last_page) */
             this.totalPages = data.last_page
         },
 
@@ -137,9 +136,9 @@ export default {
         console.log('location:' + this.locationName + 'radius:' + this.radius) */
     },
     mounted() {
-        this.getRecordsCount();
+        
         this.getHotelData()
-        console.log(this.totalPages)
+        /* console.log(this.totalPages) */
     },
     watch:{
         locationName: async function(val, old) {
@@ -149,8 +148,52 @@ export default {
             console.dir(data) */
             this.hotelArray = data
             /* console.dir(this.hotelArray) */
-            this.totalPages = data.length
-        }
+            this.totalPages = 0
+            
+            
+        },
+
+        servicesQueryString: async function() {
+        /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
+            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
+            /* console.log('------new filtered data-------')
+            console.dir(data) */
+            this.hotelArray = data
+            /* console.dir(this.hotelArray) */
+            this.totalPages = 0
+        },
+
+        radius: async function() {
+        /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
+            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
+            /* console.log('------new filtered data-------')
+            console.dir(data) */
+            this.hotelArray = data
+            /* console.dir(this.hotelArray) */
+            this.totalPages = 0
+        },
+
+        bedValue: async function() {
+        /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
+            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
+            /* console.log('------new filtered data-------')
+            console.dir(data) */
+            this.hotelArray = data
+            /* console.dir(this.hotelArray) */
+            this.totalPages = 0
+        },
+
+        roomsValue: async function() {
+        /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
+            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
+            /* console.log('------new filtered data-------')
+            console.dir(data) */
+            this.hotelArray = data
+            /* console.dir(this.hotelArray) */
+            this.totalPages = 0
+        },
+
+        
     }
 }
 </script>
