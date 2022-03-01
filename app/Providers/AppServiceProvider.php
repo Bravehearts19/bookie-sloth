@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         DB::table('apartment_sponsor')
-            ->where('expires_at', '<', Carbon::now())
+            ->where('expires_at', '<=', Carbon::now()->addHours(1)->toDateTimeString())
             ->update(['sponsor_id' => 1]);
 
         Braintree\Configuration::environment(env('BT_ENVIRONMENT'));
