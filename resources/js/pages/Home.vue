@@ -178,13 +178,13 @@ export default {
 @import '../../sass/_variables.scss';
 
 ::v-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
-    background: #c7ef00 !important;
-    border-color: #c7ef00 !important;
+    background: #109173 !important;
+    border-color: #109173 !important;
     color: #495057;
 }
 
 ::v-deep .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {    
-    background: $lime !important; 
+    background:#109173 !important; 
     border-color: transparent;
     color: #495057;
 }
