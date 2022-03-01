@@ -19287,7 +19287,6 @@ var render = function () {
                           "d-flex flex-column align-items-center w-50",
                       },
                       [
-                        _vm._v("loadingScreen.\n                        "),
                         _c("div", { staticClass: "py-3" }, [
                           _c(
                             "h5",

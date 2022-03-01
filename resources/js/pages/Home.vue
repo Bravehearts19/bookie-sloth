@@ -31,7 +31,7 @@
                             <router-link :to="{name : 'apartment', params : { id :hotel.apartment_id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
                         </div>
 
-                        <div class="d-flex flex-column align-items-center w-50">loadingScreen.
+                        <div class="d-flex flex-column align-items-center w-50">
                             <div class="py-3">
                                 <h5 class="text-secondary text-center mb-0"><strong>{{hotel.name}}</strong></h5>
                                 <h5 class="text-secondary text-center mb-0">{{hotel.location}}</h5>
