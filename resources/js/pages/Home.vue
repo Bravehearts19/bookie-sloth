@@ -185,11 +185,11 @@ export default {
 ::v-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
     background: #109173 !important;
     border-color: #109173 !important;
-    color: #495057;
+    color: #FFFFFF;
 }
 
 ::v-deep .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {    
-    background:#109173 !important; 
+    background:#06b88e !important; 
     border-color: transparent;
     color: #495057;
 }

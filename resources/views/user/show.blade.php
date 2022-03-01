@@ -93,7 +93,7 @@
 
 
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color: #84cbba42">
         <div class="row">
             <div class="col-12">
                 <div class="stat-cards-container d-flex flex-column flex-lg-row align-items-center gap-3 m-5">

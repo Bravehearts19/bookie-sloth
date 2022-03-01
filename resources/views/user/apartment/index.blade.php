@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
-    <div class="container mt-3">
+    <div class="container mt-3 vh-100" style="background-color: #84cbba42;">
         
         @if(session("msg"))
             <div class="alert alert-primary d-flex justify-content-between" role="alert">{{session("msg")}}</div>

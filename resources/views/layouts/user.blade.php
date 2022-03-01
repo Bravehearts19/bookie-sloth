@@ -84,7 +84,7 @@
                         <a href="{{route('user.dashboard')}}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('user')) ? 'bg-secondary' : 'bg-primary' }}" aria-current="true">
                             <lord-icon
                                 src="https://cdn.lordicon.com/gqdnbnwt.json"
-                                trigger="empty"
+                                trigger="loop-on-hover"
                                 style="width:50px;height:50px"
                                 colors="{{(request()->is('user')) ? 'primary:#109173,secondary:#109173' : 'primary:#ffffff,secondary:#ffffff'}}">
                             </lord-icon>
@@ -97,7 +97,7 @@
                         <a href="{{route('user.apartment.index')}}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('user/apartment')) ? 'bg-secondary' : 'bg-primary' }}" aria-current="true">
                             <lord-icon
                                 src="https://cdn.lordicon.com/gmzxduhd.json"
-                                trigger="empty"
+                                trigger="loop-on-hover"
                                 style="width:50px;height:50px"
                                 colors="{{(request()->is('user/apartment')) ? 'primary:#109173,secondary:#109173' : 'primary:#ffffff,secondary:#ffffff'}}">
                             </lord-icon>
@@ -107,7 +107,7 @@
                         <a href="{{route("user.apartment.create")}}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('user/apartment/create')) ? 'bg-secondary' : 'bg-primary' }}">
                             <lord-icon
                                 src="https://cdn.lordicon.com/mecwbjnp.json"
-                                trigger="empty"
+                                trigger="loop-on-hover"
                                 style="width:50px;height:50px"
                                 colors="{{(request()->is('user/apartment/create')) ? 'primary:#109173,secondary:#109173' : 'primary:#ffffff,secondary:#ffffff'}}">
                             </lord-icon>
@@ -133,7 +133,7 @@
                                 <button type="submit" class="user-button w-100">
                                     <lord-icon
                                         src="https://cdn.lordicon.com/lywgqtim.json"
-                                        trigger="empty"
+                                        trigger="loop-on-hover"
                                         style="width:50px;height:50px"
                                         colors="primary:#ffffff,secondary:#ffffff"
                                     >
