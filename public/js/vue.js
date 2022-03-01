@@ -2283,40 +2283,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2832,8 +2798,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
 //
 //
 //
@@ -18251,8 +18215,8 @@ var render = function () {
                     _c("Knob", {
                       staticClass: "ps-2",
                       attrs: {
-                        min: 0,
-                        max: 20,
+                        min: 1,
+                        max: 50,
                         valueColor: "#4d1803",
                         textColor: "1",
                         size: 75,
@@ -18279,6 +18243,7 @@ var render = function () {
                     ]),
                     _vm._v(" "),
                     _c("Slider", {
+                      attrs: { min: 1 },
                       model: {
                         value: _vm.roomsValue,
                         callback: function ($$v) {
@@ -18301,6 +18266,7 @@ var render = function () {
                     ]),
                     _vm._v(" "),
                     _c("Slider", {
+                      attrs: { min: 1 },
                       model: {
                         value: _vm.bedValue,
                         callback: function ($$v) {
@@ -18325,286 +18291,148 @@ var render = function () {
         staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3 ",
         style: _vm.hideLoading === false ? "display:none" : "",
       },
-      _vm._l(_vm.hotelArray, function (hotel, index) {
-        return _c("div", { key: "hotel-" + index, staticClass: "col py-3" }, [
-          _c("div", { staticClass: "card_container bg-primary shadow-lg" }, [
-            _c(
-              "div",
-              {
-                staticClass: "d-flex flex-column align-items-center pt-3 w-50",
-              },
-              [
-                _c("div", { staticClass: "image-container shadow-lg" }, [
-                  _c("img", {
-                    attrs: {
-                      src: hotel.cover_img.includes("http")
-                        ? hotel.cover_img
-                        : "/storage/" + hotel.cover_img,
-                      alt: hotel.name,
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass:
-                      "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
-                    attrs: {
-                      to: { name: "apartment", params: { id: hotel.id } },
-                    },
-                  },
-                  [_vm._v("Discover")]
-                ),
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "d-flex flex-column align-items-center w-50" },
-              [
-                _c("div", { staticClass: "py-3" }, [
-                  _c("h5", { staticClass: "text-secondary text-center mb-0" }, [
-                    _c("strong", [_vm._v(_vm._s(hotel.name))]),
-                  ]),
-                  _vm._v(" "),
-                  _c("h5", { staticClass: "text-secondary text-center mb-0" }, [
-                    _vm._v(_vm._s(hotel.location)),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary text-center mb-0" }, [
-                    _vm._v(_vm._s(hotel.address) + " - " + _vm._s(hotel.cap)),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-3" }, [
-                  _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                    _vm._v("Prezzo a persona: "),
-                    _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                    _vm._v("Numero di ospiti: "),
-                    _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                    _vm._v("Numero di stanze: "),
-                    _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                    _vm._v("Numero di bagni: "),
-                    _c("strong", [_vm._v(_vm._s(hotel.n_bathrooms))]),
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                    _vm._v("Dimensioni: "),
-                    _c("strong", [_vm._v(_vm._s(hotel.size) + " mq")]),
-                  ]),
-                ]),
-              ]
-            ),
-          ]),
-        ])
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c("div", {}, [
-      _c(
-        "div",
-        {
-          staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3 ",
-          style: _vm.hideLoading === false ? "display:none" : "",
-        },
-        [
-          _vm._v("\r\n<<<<<<< HEAD\r\n\r\n=======\r\n                "),
-          _vm._l(_vm.hotelArray, function (hotel, index) {
-            return _c(
-              "div",
-              { key: "hotel-" + index, staticClass: "col py-3" },
-              [
-                _c(
-                  "div",
-                  { staticClass: "card_container bg-primary shadow-lg" },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex flex-column align-items-center pt-3 w-50",
+      [
+        _vm._l(_vm.hotelArray, function (hotel, index) {
+          return _c("div", { key: "hotel-" + index, staticClass: "col py-3" }, [
+            _c("div", { staticClass: "card_container bg-primary shadow-lg" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex flex-column align-items-center pt-3 w-50",
+                },
+                [
+                  _c("div", { staticClass: "image-container shadow-lg" }, [
+                    _c("img", {
+                      attrs: {
+                        src: hotel.cover_img.includes("http")
+                          ? hotel.cover_img
+                          : "/storage/" + hotel.cover_img,
+                        alt: hotel.name,
                       },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "image-container shadow-lg" },
-                          [
-                            _c("img", {
-                              attrs: {
-                                src: hotel.cover_img.includes("http")
-                                  ? hotel.cover_img
-                                  : "/storage/" + hotel.cover_img,
-                                alt: hotel.name,
-                              },
-                            }),
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "router-link",
-                          {
-                            staticClass:
-                              "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
-                            attrs: {
-                              to: {
-                                name: "apartment",
-                                params: { id: hotel.apartment_id },
-                              },
-                            },
-                          },
-                          [_vm._v("Discover")]
-                        ),
-                      ],
-                      1
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
+                      attrs: {
+                        to: {
+                          name: "apartment",
+                          params: { id: hotel.apartment_id },
+                        },
+                      },
+                    },
+                    [_vm._v("Discover")]
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "d-flex flex-column align-items-center w-50" },
+                [
+                  _c("div", { staticClass: "py-3" }, [
+                    _c(
+                      "h5",
+                      { staticClass: "text-secondary text-center mb-0" },
+                      [_c("strong", [_vm._v(_vm._s(hotel.name))])]
                     ),
                     _vm._v(" "),
                     _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex flex-column align-items-center w-50",
-                      },
+                      "h5",
+                      { staticClass: "text-secondary text-center mb-0" },
+                      [_vm._v(_vm._s(hotel.location))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h6",
+                      { staticClass: "text-secondary text-center mb-0" },
                       [
-                        _c("div", { staticClass: "py-3" }, [
-                          _c(
-                            "h5",
-                            { staticClass: "text-secondary text-center mb-0" },
-                            [_c("strong", [_vm._v(_vm._s(hotel.name))])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h5",
-                            { staticClass: "text-secondary text-center mb-0" },
-                            [_vm._v(_vm._s(hotel.location))]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary text-center mb-0" },
-                            [
-                              _vm._v(
-                                _vm._s(hotel.address) +
-                                  " - " +
-                                  _vm._s(hotel.cap)
-                              ),
-                            ]
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "p-3" }, [
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Prezzo a persona: "),
-                              _c("strong", [
-                                _vm._v(_vm._s(hotel.price) + " €"),
-                              ]),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Numero di ospiti: "),
-                              _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Numero di stanze: "),
-                              _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Numero di bagni: "),
-                              _c("strong", [_vm._v(_vm._s(hotel.n_bathrooms))]),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Dimensioni: "),
-                              _c("strong", [
-                                _vm._v(_vm._s(hotel.size) + " mq"),
-                              ]),
-                            ]
-                          ),
-                        ]),
+                        _vm._v(
+                          _vm._s(hotel.address) + " - " + _vm._s(hotel.cap)
+                        ),
                       ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-3" }, [
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Prezzo a persona: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di ospiti: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di stanze: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Numero di bagni: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.n_bathrooms))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                      _vm._v("Dimensioni: "),
+                      _c("strong", [_vm._v(_vm._s(hotel.size) + " mq")]),
+                    ]),
+                  ]),
+                ]
+              ),
+            ]),
+          ])
+        }),
+        _vm._v(" "),
+        _c(
+          "ul",
+          {
+            staticClass: "pagination overflow-auto pt-5",
+            class: _vm.paginationVisibility === false ? "d-none" : "",
+          },
+          _vm._l(_vm.totalPages, function (index) {
+            return _c(
+              "li",
+              {
+                key: "page-" + index,
+                staticClass: "page-item",
+                class: index === _vm.activePage ? "active" : "",
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "page-link",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.getHotelData(index)
+                      },
+                    },
+                  },
+                  [
+                    _vm._v(
+                      "\r\n                        " +
+                        _vm._s(index) +
+                        "\r\n                    "
                     ),
                   ]
                 ),
               ]
             )
           }),
-          _vm._v("\r\n>>>>>>> giulio-sponsors\r\n            "),
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c(
-        "ul",
-        {
-          staticClass: "pagination overflow-auto pt-5",
-          class: _vm.paginationVisibility === false ? "d-none" : "",
-        },
-        _vm._l(_vm.totalPages, function (index) {
-          return _c(
-            "li",
-            {
-              key: "page-" + index,
-              staticClass: "page-item",
-              class: index === _vm.activePage ? "active" : "",
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "page-link",
-                  attrs: { href: "#" },
-                  on: {
-                    click: function ($event) {
-                      return _vm.getHotelData(index)
-                    },
-                  },
-                },
-                [
-                  _vm._v(
-                    "\r\n                        " +
-                      _vm._s(index) +
-                      "\r\n                    "
-                  ),
-                ]
-              ),
-            ]
-          )
-        }),
-        0
-      ),
-    ]),
+          0
+        ),
+      ],
+      2
+    ),
   ])
 }
 var staticRenderFns = [
@@ -19123,9 +18951,6 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
-    _vm._v("\n<<<<<<< HEAD\n=======\n        "),
-    _vm._v(" "),
-    _vm._v("\n>>>>>>> giulio-sponsors\n\n        "),
     _c(
       "div",
       { staticClass: "container py-5" },
