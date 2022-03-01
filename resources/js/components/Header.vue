@@ -25,7 +25,7 @@
         v-model="toSearch"
         @keyup.enter="startSearch()"
         type="text"
-        class="form-control bg-transparent text-primary border-none ps-3"
+        class="form-control bg-transparent text-primary border-none ps-5 fs-3"
         placeholder="Cerca..."
         aria-label="hotelName"
         aria-describedby="searchBar"
