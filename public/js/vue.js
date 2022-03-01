@@ -3025,7 +3025,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3041,7 +3040,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       hotelArray: [],
       activePage: 1,
       PAGINATION_OFFSET: 5,
-      activeLocation: 'unset'
+      activeLocation: 'unset',
+      pageLoaded: false,
+      hideLoading: false
     };
   },
   computed: {
@@ -3064,6 +3065,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   watch: {
     activeLocation: function () {
       var _activeLocation = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(val, old) {
+        var _this = this;
+
         var _yield$axios$get, data, _yield$axios$get2, _data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -3071,7 +3074,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 if (!(val === 'index')) {
-                  _context.next = 16;
+                  _context.next = 18;
                   break;
                 }
 
@@ -3085,43 +3088,47 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 console.dir(data.data);
                 console.log('got index data');
                 this.hotelArray = data.data;
-                _context.next = 14;
+                this.pageLoaded = true;
+                setTimeout(function () {
+                  _this.hideLoading = true;
+                }, 3000);
+                _context.next = 16;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 13:
+                _context.prev = 13;
                 _context.t0 = _context["catch"](1);
                 console.log('watcher query error' + _context.t0);
 
-              case 14:
-                _context.next = 29;
+              case 16:
+                _context.next = 31;
                 break;
 
-              case 16:
-                _context.prev = 16;
-                _context.next = 19;
+              case 18:
+                _context.prev = 18;
+                _context.next = 21;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1');
 
-              case 19:
+              case 21:
                 _yield$axios$get2 = _context.sent;
                 _data = _yield$axios$get2.data;
                 console.dir(_data);
                 console.log('got search data');
                 this.hotelArray = _data;
-                _context.next = 29;
+                _context.next = 31;
                 break;
 
-              case 26:
-                _context.prev = 26;
-                _context.t1 = _context["catch"](16);
+              case 28:
+                _context.prev = 28;
+                _context.t1 = _context["catch"](18);
                 console.log('watcher query error' + _context.t1);
 
-              case 29:
+              case 31:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[1, 11], [16, 26]]);
+        }, _callee, this, [[1, 13], [18, 28]]);
       }));
 
       function activeLocation(_x, _x2) {
@@ -19206,7 +19213,10 @@ var render = function () {
       [
         _c(
           "div",
-          { staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3 " },
+          {
+            staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3",
+            style: _vm.hideLoading === false ? "display:none" : "",
+          },
           _vm._l(_vm.hotelArray, function (hotel, index) {
             return _c(
               "div",
