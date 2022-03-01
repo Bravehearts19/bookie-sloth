@@ -1,26 +1,26 @@
 <template>
     <div class="hotel_container bg-info">
-        <!-- Inizio loading screen -->     <!-- SCHERMATA DI CARICAMENTO DA SCOMMENTARE QUANDO SARA' FINITO IL LAYOUT DELLA HOME -->
-        <div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
-            <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
+        <!-- Inizio loading screen -->    
+        <!-- SCHERMATA DI CARICAMENTO DA SCOMMENTARE QUANDO SARA' FINITO IL LAYOUT DELLA HOME -->
+        <div class="loading-screen d-flex justify-content-center align-items-center" :style="loadingScreen.hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="loadingScreen.deleteLoading===true ? 'd-none' : ''">
+            <div class="d-flex flex-column align-items-center" :style="loadingScreen.pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
                 <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
-                <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
-                    <h2 class="text-white me-3" :style="pageLoaded===true ? 'animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;' : ''">Sloth</h2>
-                    <h2 class="text-white ms-3 d-flex" :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">h
-                        <span :style="pageLoaded===true ? 'opacity:0' : ''">ot</span>
-                        <div :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">el</div>
+                <div class="d-flex" :style="loadingScreen.pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
+                    <h2 class="text-white me-3" :style="loadingScreen.pageLoaded===true ? 'animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;' : ''">Sloth</h2>
+                    <h2 class="text-white ms-3 d-flex" :style="loadingScreen.pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">h
+                        <span :style="loadingScreen.pageLoaded===true ? 'opacity:0' : ''">ot</span>
+                        <div :style="loadingScreen.pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">el</div>
                     </h2>
                 </div>
-                <div class="spinner-border text-primary mt-3" role="status" :style="pageLoaded===true ? 'opacity:0' : ''">
+                <div class="spinner-border text-primary mt-3" role="status" :style="loadingScreen.pageLoaded===true ? 'opacity:0' : ''">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
         </div>
         <!-- Fine loading screen -->
 
-        <!-- Inizio container degli hotel -->
         <div class="container py-5">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 " :style="hideLoading===false ? 'display:none' : ''">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3" :style="loadingScreen.hideLoading===false ? 'display:none' : ''">
                 <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
                     <div class="card_container bg-primary shadow-lg">
 
@@ -28,7 +28,7 @@
                             <div class="image-container shadow-lg">
                                 <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
                             </div>
-                            <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
+                            <router-link :to="{name : 'apartment', params : { id :hotel.apartment_id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
                         </div>
 
                         <div class="d-flex flex-column align-items-center w-50">
@@ -49,24 +49,12 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Inizio bottoni per la paginazione
-            <ul class="pagination overflow-auto pt-5" :class='paginationVisibility === false ? "d-none" : ""'>
-                <li class="page-item"
-                    :class="(index === activePage) ? 'active' : ''"
-                    v-for="index in totalPages"
-                    :key="'page-'+ index">
-                    <a href="#" class="page-link"
-                    @click="getHotelData(index)">
-                        {{index}}
-                    </a>
-                </li>
-            </ul>-->
             <Paginator
                 :rows="12"
-                :totalRecords="totalPages*12"
+                :totalRecords="getRecordsCount*12"
                 @page="onPage($event)"
-                class="bg-secondary text-primary"
+                class="bg-secondary text-primary mt-5 shadow-lg rounded"
+                v-if="activeLocation === 'index'"
             ></Paginator>
             <!-- Fine bottoni per la paginazione -->
         </div>
@@ -81,96 +69,76 @@ import Paginator from 'primevue/paginator';
 
 export default {
     name: 'Home',
+    props : { locationName : String },
+    components: { Paginator },
     data() {
         return {
             hotelArray : [],
-            totalPages : undefined,
             activePage : 1,
             PAGINATION_OFFSET: 5,
-            url: '',
-            pageLoaded: false,
-            hideLoading:false,
-            deleteLoading:false,
-            paginationVisibility : false,
-            error : false,
+            activeLocation : 'unset',
+
+            loadingScreen :{
+                pageLoaded: false,
+                hideLoading:false,
+                deleteLoading:false
+            }
+            
         }
     },
-    props : {
-        locationName : String
-    },
 
-    components: {
-        Paginator
-    },
     computed:{
-        /* getLocationName(){
-            return this.filters.location
+        getRecordsCount(){
+            return this.hotelArray.length
         },
-        getRadius(){
-            return this.filters.radius
-        },
-        getRooms(){
-            return this.filters.rooms
-        },
-        getGuests(){
-            return this.filters.guests
-        } */
-
-
     },
-    
     methods:{
-        async getHotelData(page){
-            if(!page)
-                page = 1
-
-            this.activePage = page
-
-            if(!this.locationName){
-                
-                const {data} = await axios.get('api/hotel/index?page=' + page);
-                this.hotelArray = data.data;
-            }
-
-
-            setTimeout(()=>{
-                this.paginationVisibility = true
-            },3000)
-
-            this.pageLoaded= true;
-            setTimeout(()=>{
-                this.hideLoading = true;
-            }, 3000)
-            setTimeout(()=>{
-                this.deleteLoading = true;
-            }, 5000)
-        },
-        async getRecordsCount(){
-            const {data} = await axios.get('api/hotel/index');
-            /* console.log(data.last_page) */
-            this.totalPages = data.last_page
-        },
+        
         onPage(event) {
-            this.getHotelData(event.page)
+
+            this.activePage = event.page
             console.log(event.page)
             console.log(event.first)
             console.log(event.rows)
             console.log(event.pageCount)
-            //event.page: New page number
-            //event.first: Index of first record
-            //event.rows: Number of rows to display in new page
-            //event.pageCount: Total number of pages
-            
         }
     },
     mounted() {
-        this.getRecordsCount();
-        this.getHotelData()
-        /* console.log(this.totalPages) */
+        this.activeLocation = 'index'
     },
     watch:{
+        activeLocation: async function(val, old){
+            if(val==='index'){
+                try{
+                    const {data} = await axios.get('http://localhost:8000/api/hotel/index?page=' + this.activePage)
+                    console.dir(data.data);
+                    console.log('got index data')
+                    this.hotelArray = data.data
 
-        locationName: async function(val, old) {
+                    this.loadingScreen.pageLoaded= true;
+                    setTimeout(()=>{
+                        this.loadingScreen.hideLoading = true;
+                    }, 3000)
+
+                    setTimeout(()=>{
+                        this.loadingScreen.deleteLoading = true;
+                    }, 5000)
+                }catch(err){
+                    console.log('watcher query error' + err)
+                }
+            }else{
+                try{
+                    const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1')
+                    console.dir(data);
+                    console.log('got search data')
+                    this.hotelArray = data
+                }catch(err){
+                    console.log('watcher query error' + err)
+                }
+            }
+        },
+        locationName: function(val, old) {
+
             if(val === ''){
                 val = 'milano'
             }
@@ -193,22 +161,15 @@ export default {
                 break;
             }
 
-            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1').catch(function (error){
-                if (error.response) {
-            // Request made and server responded
-            console.log('errore');
-            /* this.error = true */
-            
-            
+            this.activeLocation = val
+        },
+        activePage: async function(val, old){
+            try{
+                const {data} = await axios.get('http://localhost:8000/api/hotel/index?page=' + this.activePage)
+                this.hotelArray = data.data
+            }catch(err){
+                console.log(err)
             }
-            })
-                
-            
-           /*  console.log('------new filtered data-------')
-            console.dir(data[166]) */
-            console.dir(data);
-            this.hotelArray = data
-            this.getRecordsCount()
         }
 
     }
@@ -224,6 +185,16 @@ export default {
     color: #495057;
 }
 
+::v-deep .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {    
+    background: $lime !important; 
+    border-color: transparent;
+    color: #495057;
+}
+
+.p-link:focus {
+    box-shadow: 0;
+}
+
 .hotel_container {
     background-image: url('/images/wood_template.svg');
     background-repeat: repeat;
@@ -234,6 +205,7 @@ export default {
     flex-direction: column;
     align-items: center;
     flex-grow: 0;
+    
     .btn_router_link {
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;

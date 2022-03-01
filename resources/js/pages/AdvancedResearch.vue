@@ -9,17 +9,17 @@
                 <div class="d-flex justify-content-center align-items-center py-3 bg-primary filters-container mt-5 w-fit-content px-5 shadow-lg">
                     <div class="d-flex align-items-center mx-3">
                         <h4 class="ms-2"><strong>Raggio:</strong></h4>
-                        <Knob v-model="radius" :min="0" :max="20" valueColor="#4d1803" textColor="1" :size="75" class="ps-2"/>
+                        <Knob v-model="radius" :min="1" :max="50" valueColor="#4d1803" textColor="1" :size="75" class="ps-2"/>
                     </div>
 
                     <div class="ms-5 filter_slider">
                         <h4 ><strong>Stanze :</strong> {{ roomsValue }}</h4>
-                        <Slider v-model="roomsValue" />
+                        <Slider v-model="roomsValue" :min="1" />
                     </div>
 
                     <div class="ms-5 filter_slider">
                         <h4><strong>Letti : </strong>{{ bedValue }}</h4>
-                        <Slider v-model="bedValue" />
+                        <Slider v-model="bedValue" :min="1"/>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     <div class="image-container shadow-lg">
                         <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
                     </div>
-                    <router-link :to="{name : 'apartment', params : { id :hotel.id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
+                    <router-link :to="{name : 'apartment', params : { id :hotel.apartment_id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
                 </div>
                 <div class="d-flex flex-column align-items-center w-50">
                     <div class="py-3">
@@ -142,6 +142,28 @@ export default {
     },
     watch:{
         locationName: async function(val, old) {
+            if(val === ''){
+                val = 'milano'
+            }
+
+            switch (val) {
+            case '':
+                val = 'milano'
+                    break;
+            case 'roma':
+                val = 'rome'
+                break;
+            case 'firenze':
+                val = 'florence'
+                break;
+            case 'torino':
+                val = 'turin'
+                break;
+            case 'napoli':
+                val = 'naples'
+                break;
+            }
+
             /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
             const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
             /* console.log('------new filtered data-------')
