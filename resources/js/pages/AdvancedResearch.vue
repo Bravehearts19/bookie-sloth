@@ -60,17 +60,7 @@
             
 
     <!-- Inizio bottoni per la paginazione -->
-    <ul class="pagination overflow-auto pt-5" :class='paginationVisibility === false ? "d-none" : ""'>
-        <li class="page-item"
-            :class="(index === activePage) ? 'active' : ''"
-            v-for="index in totalPages"
-            :key="'page-'+ index">
-            <a href="#" class="page-link"
-            @click="getHotelData(index)">
-                {{index}}
-            </a>
-        </li>
-    </ul>
+   
     <!-- Fine bottoni per la paginazione -->
        
       
@@ -171,6 +161,9 @@ export default {
                 break;
             case 'napoli':
                 val = 'naples'
+                break;
+            case 'genova':
+                val = 'genoa'
                 break;
             }
 

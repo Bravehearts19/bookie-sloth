@@ -2289,16 +2289,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2429,34 +2419,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context3.t0 = val;
-                _context3.next = _context3.t0 === '' ? 4 : _context3.t0 === 'roma' ? 6 : _context3.t0 === 'firenze' ? 8 : _context3.t0 === 'torino' ? 10 : _context3.t0 === 'napoli' ? 12 : 14;
+                _context3.next = _context3.t0 === '' ? 4 : _context3.t0 === 'roma' ? 6 : _context3.t0 === 'firenze' ? 8 : _context3.t0 === 'torino' ? 10 : _context3.t0 === 'napoli' ? 12 : _context3.t0 === 'genova' ? 14 : 16;
                 break;
 
               case 4:
                 val = 'milano';
-                return _context3.abrupt("break", 14);
+                return _context3.abrupt("break", 16);
 
               case 6:
                 val = 'rome';
-                return _context3.abrupt("break", 14);
+                return _context3.abrupt("break", 16);
 
               case 8:
                 val = 'florence';
-                return _context3.abrupt("break", 14);
+                return _context3.abrupt("break", 16);
 
               case 10:
                 val = 'turin';
-                return _context3.abrupt("break", 14);
+                return _context3.abrupt("break", 16);
 
               case 12:
                 val = 'naples';
-                return _context3.abrupt("break", 14);
+                return _context3.abrupt("break", 16);
 
               case 14:
-                _context3.next = 16;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+                val = 'genoa';
+                return _context3.abrupt("break", 16);
 
               case 16:
+                _context3.next = 18;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 18:
                 _yield$axios$get3 = _context3.sent;
                 data = _yield$axios$get3.data;
 
@@ -2467,7 +2461,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 this.totalPages = 0;
 
-              case 20:
+              case 22:
               case "end":
                 return _context3.stop();
             }
@@ -3193,6 +3187,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         case 'napoli':
           val = 'naples';
+          break;
+
+        case 'genova':
+          val = 'genoa';
           break;
       }
 
@@ -18592,44 +18590,6 @@ var render = function () {
             ),
           ]),
         ])
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c(
-      "ul",
-      {
-        staticClass: "pagination overflow-auto pt-5",
-        class: _vm.paginationVisibility === false ? "d-none" : "",
-      },
-      _vm._l(_vm.totalPages, function (index) {
-        return _c(
-          "li",
-          {
-            key: "page-" + index,
-            staticClass: "page-item",
-            class: index === _vm.activePage ? "active" : "",
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "page-link",
-                attrs: { href: "#" },
-                on: {
-                  click: function ($event) {
-                    return _vm.getHotelData(index)
-                  },
-                },
-              },
-              [
-                _vm._v(
-                  "\r\n                " + _vm._s(index) + "\r\n            "
-                ),
-              ]
-            ),
-          ]
-        )
       }),
       0
     ),

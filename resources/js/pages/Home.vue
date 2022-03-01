@@ -157,6 +157,9 @@ export default {
             case 'napoli':
                 val = 'naples'
                 break;
+            case 'genova':
+                val = 'genoa'
+                break;
             }
 
             this.activeLocation = val
