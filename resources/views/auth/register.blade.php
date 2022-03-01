@@ -66,7 +66,7 @@
                             <label class="form-label">Conferma Password</label>
                             <input type="password" class="form-control" name="password_confirmation" required autocomplete="name">
                         </div>
-                        <button type="submit" class="btn btn-primary text-white">Submit</button>
+                        <button type="submit" class="btn btn-primary text-white">Registarti</button>
                     </form>
                 </div>
             </div>

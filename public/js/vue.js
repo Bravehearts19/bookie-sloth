@@ -2045,6 +2045,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
   data: function data() {
@@ -18106,30 +18117,6 @@ var render = function () {
             "input-group ms-5 me-5 bg-secondary border-radius-to-search-bar",
         },
         [
-          _c(
-            "span",
-            {
-              staticClass: "input-group-text bg-transparent border-none",
-              attrs: { id: "searchBar" },
-              on: {
-                click: function ($event) {
-                  return _vm.startSearch()
-                },
-              },
-            },
-            [
-              _c("lord-icon", {
-                staticStyle: { width: "40px", height: "40px" },
-                attrs: {
-                  src: "https://cdn.lordicon.com/msoeawqm.json",
-                  trigger: "loop-on-hover",
-                  colors: "primary:#c7ef00,secondary:#ffffff",
-                },
-              }),
-            ],
-            1
-          ),
-          _vm._v(" "),
           _c("input", {
             directives: [
               {
@@ -18139,7 +18126,8 @@ var render = function () {
                 expression: "toSearch",
               },
             ],
-            staticClass: "form-control bg-transparent text-primary border-none",
+            staticClass:
+              "form-control bg-transparent text-primary border-none ps-3",
             attrs: {
               type: "text",
               placeholder: "Cerca...",
@@ -18167,13 +18155,52 @@ var render = function () {
           }),
           _vm._v(" "),
           _c(
+            "span",
+            {
+              staticClass: "input-group-text bg-transparent border-none",
+              attrs: { id: "searchBar" },
+              on: {
+                click: function ($event) {
+                  return _vm.startSearch()
+                },
+              },
+            },
+            [
+              _c("lord-icon", {
+                staticStyle: { width: "40px", height: "40px" },
+                attrs: {
+                  src: "https://cdn.lordicon.com/pvbutfdk.json",
+                  trigger: "loop-on-hover",
+                  colors: "primary:#c7ef00",
+                  state: "hover",
+                },
+              }),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
             "router-link",
             {
               staticClass:
                 "input-group-text bg-transparent text-primary text-decoration-none border-none pe-3",
               attrs: { to: "/advanced-research" },
             },
-            [_vm._v("\n      Ricerca Avanzata\n    ")]
+            [
+              _c("lord-icon", {
+                staticClass: "me-1",
+                staticStyle: { width: "40px", height: "40px" },
+                attrs: {
+                  src: "https://cdn.lordicon.com/itykargr.json",
+                  trigger: "hover",
+                  colors: "primary:#c7ef00",
+                  state: "hover",
+                },
+              }),
+              _vm._v(" "),
+              _c("strong", [_vm._v("Filtri")]),
+            ],
+            1
           ),
         ],
         1
@@ -18225,9 +18252,10 @@ var render = function () {
                   _c("lord-icon", {
                     staticStyle: { width: "36px", height: "36px" },
                     attrs: {
-                      src: "https://cdn.lordicon.com/gmzxduhd.json",
-                      trigger: "loop",
-                      colors: "primary:#b5d601,secondary:#c7ef00",
+                      src: "https://cdn.lordicon.com/igpbsrza.json",
+                      trigger: "loop-on-hover",
+                      colors: "primary:#c7ef00",
+                      state: "hover-1",
                     },
                   }),
                 ],
@@ -18244,9 +18272,9 @@ var render = function () {
                   _c("lord-icon", {
                     staticStyle: { width: "36px", height: "36px" },
                     attrs: {
-                      src: "https://cdn.lordicon.com/dxjqoygy.json",
-                      trigger: "loop",
-                      colors: "primary:#b5d601,secondary:#c7ef00",
+                      src: "https://cdn.lordicon.com/dklbhvrt.json",
+                      trigger: "loop-on-hover",
+                      colors: "primary:#c7ef00",
                     },
                   }),
                 ],
@@ -19110,6 +19138,103 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "loading-screen d-flex justify-content-center align-items-center",
+        class: _vm.deleteLoading === true ? "d-none" : "",
+        style:
+          _vm.hideLoading === true ? "opacity:0; transition:opacity 0.3s" : "",
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "d-flex flex-column align-items-center",
+            style:
+              _vm.pageLoaded === true
+                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
+                : "",
+          },
+          [
+            _c("img", {
+              staticClass: "mb-3",
+              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "d-flex",
+                style:
+                  _vm.pageLoaded === true
+                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
+                    : "",
+              },
+              [
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white me-3",
+                    style:
+                      _vm.pageLoaded === true
+                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [_vm._v("Sloth")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white ms-3 d-flex",
+                    style:
+                      _vm.pageLoaded === true
+                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [
+                    _vm._v("h\n                    "),
+                    _c(
+                      "span",
+                      { style: _vm.pageLoaded === true ? "opacity:0" : "" },
+                      [_vm._v("ot")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        style:
+                          _vm.pageLoaded === true
+                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                            : "",
+                      },
+                      [_vm._v("el")]
+                    ),
+                  ]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "spinner-border text-primary mt-3",
+                style: _vm.pageLoaded === true ? "opacity:0" : "",
+                attrs: { role: "status" },
+              },
+              [
+                _c("span", { staticClass: "visually-hidden" }, [
+                  _vm._v("Loading..."),
+                ]),
+              ]
+            ),
+          ]
+        ),
+      ]
+    ),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "container py-5" },

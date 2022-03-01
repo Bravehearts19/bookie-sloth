@@ -20,26 +20,36 @@
 
     <!-- Inizio barra di ricerca -->
     <div class="input-group ms-5 me-5 bg-secondary border-radius-to-search-bar">
-      <span @click='startSearch()' class="input-group-text bg-transparent border-none" id="searchBar">
-        <lord-icon
-          src="https://cdn.lordicon.com/msoeawqm.json"
-          trigger="loop-on-hover"
-          colors="primary:#c7ef00,secondary:#ffffff"
-          style="width: 40px; height: 40px"
-        >
-        </lord-icon>
-      </span>
+      
       <input
         v-model="toSearch"
         @keyup.enter="startSearch()"
         type="text"
-        class="form-control bg-transparent text-primary border-none"
+        class="form-control bg-transparent text-primary border-none ps-3"
         placeholder="Cerca..."
         aria-label="hotelName"
         aria-describedby="searchBar"
       />
+      <span @click='startSearch()' class="input-group-text bg-transparent border-none" id="searchBar">
+        <lord-icon
+            src="https://cdn.lordicon.com/pvbutfdk.json"
+            trigger="loop-on-hover"
+            colors="primary:#c7ef00"
+            state="hover"
+            style="width:40px;height:40px">
+        </lord-icon>
+      </span>
+
       <router-link to='/advanced-research' class="input-group-text bg-transparent text-primary text-decoration-none border-none pe-3">
-        Ricerca Avanzata
+        <lord-icon
+          class="me-1"
+          src="https://cdn.lordicon.com/itykargr.json"
+          trigger="hover"
+          colors="primary:#c7ef00"
+          state="hover"
+          style="width:40px;height:40px">
+      </lord-icon>
+       <strong>Filtri</strong> 
       </router-link>
     </div>
     <!-- Fine barra di ricerca -->
@@ -53,20 +63,21 @@
     <div v-else class="d-flex align-items-center justify-content-between ps-3 pe-5">  <!-- Bottone della Home -->
       <a :href="'/'" class="btn btn-secondary p-2 ms-3 border-radius-50">
         <lord-icon
-          src="https://cdn.lordicon.com/gmzxduhd.json"
-          trigger="loop"
-          colors="primary:#b5d601,secondary:#c7ef00"    
+          src="https://cdn.lordicon.com/igpbsrza.json"
+          trigger="loop-on-hover"
+          colors="primary:#c7ef00"
+          state="hover-1"
           style="width:36px;height:36px">
-        </lord-icon>  
+      </lord-icon>  
       </a>
 
       <a :href="'/user'" class="btn btn-secondary p-2 ms-3 border-radius-50">  <!-- Bottone della Dashboard -->
         <lord-icon
-          src="https://cdn.lordicon.com/dxjqoygy.json"
-          trigger="loop"
-          colors="primary:#b5d601,secondary:#c7ef00"
+          src="https://cdn.lordicon.com/dklbhvrt.json"
+          trigger="loop-on-hover"
+          colors="primary:#c7ef00"
           style="width:36px;height:36px">
-        </lord-icon>  
+      </lord-icon> 
       </a>
     </div>
     <!-- Fine menu -->
