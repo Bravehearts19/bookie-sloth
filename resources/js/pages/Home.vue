@@ -196,8 +196,6 @@ export default {
 .hotel_container {
     background-repeat: repeat;
     background-size: contain;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
