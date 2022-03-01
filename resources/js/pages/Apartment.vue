@@ -16,7 +16,7 @@
                 <p v-if="rate > 0" class="ps-2">{{ rate }}.0 | {{ rate }} recensioni</p>
             </div>    
 
-            <Calendar v-model="dates" class="pb-3" dateFormat="dd/mm/yy" placeholder='Inserisci date' :showIcon='true' selectionMode="range" inputStyle="background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;" />
+            <Calendar v-model="dates" class="pb-3" dateFormat="dd/mm/yy" placeholder='Inserisci date' :showIcon='true' selectionMode="range" inputStyle="background-color: #0d7c62;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#0d7c62;color:white;" />
 
             <div class="services-container p-3">
                 <!-- ICONE SERVIZI -->
@@ -25,8 +25,8 @@
                         <lord-icon 
                             :src="service.icon"
                             trigger="hover"
-                            colors="primary:#B2CC03,secondary:#B2CC03"
-                            style="width:45px;height:45px;background-color:#4d1803;border-radius:50px;align-content: space-around;"
+                            colors="primary:#109173,secondary:#109173"
+                            style="width:45px;height:45px;background-color:#FFFFFF;border-radius:50px;align-content: space-around;"
                             >
                         </lord-icon>
                     </div>
@@ -38,8 +38,8 @@
                 <div class="d-flex align-items-center">
                     <lord-icon  @click="decrementCounter()"
                         src="https://cdn.lordicon.com/rivoakkk.json"
-                        trigger="hover"
-                        :colors='peopleCounter === 1 ? "primary:#A2BA02,secondary:#4d1803" : "primary:#4d1803,secondary:#4d1803"'
+                        :trigger='peopleCounter === 1 ? "" : "hover"'
+                        :colors='peopleCounter === 1 ? "primary:#d4d4d4,secondary:#d4d4d4" : "primary:#FFFFFF,secondary:#FFFFFF"'
                         stroke="150"
                         style="width:50px;height:50px">
                     </lord-icon>
@@ -49,7 +49,7 @@
                     <lord-icon  @click="incrementCounter()"
                         src="https://cdn.lordicon.com/mecwbjnp.json"
                         trigger="hover"
-                        colors="primary:#4d1803,secondary:#4d1803"
+                        colors="primary:#FFFFFF,secondary:#FFFFFF"
                         stroke="150"
                         style="width:50px;height:50px">
                     </lord-icon>
@@ -63,7 +63,7 @@
                     <lord-icon 
                         src="https://cdn.lordicon.com/dxjqoygy.json"
                         trigger="hover"
-                        colors="primary:#c7ef00,secondary:#c7ef00"
+                        colors="primary:#109173,secondary:#109173"
                         style="width:40px;height:40px">
                     </lord-icon>
                     <h6 class="text-primary m-0">{{ apartment.user.name }} {{ apartment.user.surname }}</h6>
@@ -177,10 +177,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+::placeholder{
+    color: black;
+}
 
 .my-container{
-    background-color: #B5D601;
+    background-color: #109173;
     height: 75vh;
     width: 1400px;
     margin: auto;
@@ -188,6 +190,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 30px ;
 
     .img-container{
         height: 520px;
@@ -218,13 +221,13 @@ export default {
                
            .p-button-icon{
 
-               background-color: #B2CC03;
+               background-color: #109173;
            }
         }
 
         .services-container{
             display: flex;
-            background-color: #A2BA02;
+            background-color: #0d7c62;
             height: 150px;
             width: 300px;
             margin: 10px 0;
@@ -235,7 +238,7 @@ export default {
         }
 
         .user-container{
-            background-color: #4D1803;
+            background-color: #FFFFFF;
             margin-top: 35px;
             border-radius: 30px;
             display: flex;
@@ -243,7 +246,7 @@ export default {
             height: 50px;
 
             .p-button{
-                background-color: #B2CC03; 
+                background-color: #0d7c62; 
                 color: #4D1803;
                 border: #B2CC03;
                 border-radius: 20px;
@@ -259,11 +262,11 @@ export default {
 
 //STELLE
 ::v-deep .p-rating .p-rating-icon.pi-star-fill{
-    color: #4D1803;
+    color: #FFFFFF;
 }
 
 ::v-deep .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover{
-    color: #4D1803;
+    color: #FFFFFF;
 
 }
 
@@ -278,8 +281,8 @@ export default {
 
 //BOTTONE ICONA CALENDARIO
 ::v-deep .p-button{
-    background-color: #4D1803;
-    color:#B5D601;
+    background-color: #FFFFFF;
+    color:#109173;
     border: 0;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -287,13 +290,17 @@ export default {
 }
 
 ::v-deep .p-button:enabled:hover{
-    background-color: #722304;
-    color:#B5D601;
+    background-color: #FFFFFF;
+    color:#109173;
+}
+
+::v-deep .p-datepicker:not(.p-datepicker-inline) .p-datepicker-header{
+    background-color: #109173;
 }
     
 //DIALOG
 ::v-deep .p-dialog .p-dialog-header{
-    background-color: #B2CC03;
+    background-color: #109173;
     /* margin-bottom: 10px; */
 }
 
@@ -302,7 +309,7 @@ export default {
 }
 
 ::v-deep .p-dialog .p-dialog-footer{
-    background-color: #B2CC03;
+    background-color: #109173;
     padding: 5px;
 }
 

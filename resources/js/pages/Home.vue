@@ -41,7 +41,7 @@
                             <div class="px-3">
                                 <h6 class="text-primary py-1 mb-0">Numero di letti: <strong>{{Math.ceil(hotel.n_guests / 10)}}</strong></h6>
                                 <h6 class="text-primary py-1 mb-0">Numero di stanze: <strong>{{Math.ceil(hotel.n_rooms / 10)}}</strong></h6>
-                                <h6 class="text-primary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
+                                <h6 class="text-primary py-1 mb-0">Prezzo a notte: <h3><strong>{{hotel.price}} €</strong></h3></h6>
                             </div>
                         </div>
                     </div>
@@ -157,6 +157,9 @@ export default {
             case 'napoli':
                 val = 'naples'
                 break;
+            case 'genova':
+                val = 'genoa'
+                break;
             }
 
             this.activeLocation = val
@@ -177,14 +180,16 @@ export default {
 <style lang="scss" scoped>
 @import '../../sass/_variables.scss';
 
+
+
 ::v-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
-    background: #c7ef00 !important;
-    border-color: #c7ef00 !important;
-    color: #495057;
+    background: #109173 !important;
+    border-color: #109173 !important;
+    color: #FFFFFF;
 }
 
 ::v-deep .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {    
-    background: $lime !important; 
+    background:#06b88e !important; 
     border-color: transparent;
     color: #495057;
 }
@@ -196,8 +201,6 @@ export default {
 .hotel_container {
     background-repeat: repeat;
     background-size: contain;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
