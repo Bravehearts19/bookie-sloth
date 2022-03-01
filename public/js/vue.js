@@ -18189,8 +18189,12 @@ var render = function () {
     },
     [
       _c(
-        "div",
-        { staticClass: "logo-container d-flex align-items-center p-3" },
+        "a",
+        {
+          staticClass:
+            "logo-container d-flex align-items-center p-3 text-decoration-none text-black",
+          attrs: { href: "/" },
+        },
         [
           _c("h1", { staticClass: "mb-0 mx-3 ml-0" }, [_vm._v("Slothel")]),
           _vm._v(" "),
