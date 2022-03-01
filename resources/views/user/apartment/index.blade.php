@@ -1,33 +1,5 @@
 @extends('layouts.user')
 
-{{-- @php
-use Carbon\Carbon;
-use App\Sponsor;
-
-function getLatestSponsor($apartment){
-    $allSponsors = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->get()->toArray();
-    
-    $actualSponsor = "";
-    $finalSponsor = null;
-    foreach ($allSponsors as $sponsor) {
-        if (Carbon::parse($sponsor->expires_at) >= Carbon::now()) {
-            $actualSponsor = $sponsor;
-            return $finalSponsor = Sponsor::where('id', $actualSponsor->sponsor_id)->get()->toArray();
-        }
-    }
-    return false;
-}
-
-function activeSponsors($apartment){
-    if(getLatestSponsor($apartment)){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
-@endphp --}}
-
 @section('content')
     <div class="container mt-3">
         
@@ -40,23 +12,48 @@ function activeSponsors($apartment){
             <div class="col mb-3">
                 <div class="card mb-3 h-100">
                     <img src="{{asset('storage/' . $apartment->cover_img)}}" class="card-img-top h-100" alt="{{$apartment->name}}">
-                    <div class="card-body">
-                        <h4 class="card-title d-flex justify-content-between align-items-center">{{$apartment->name}} @if($apartment->sponsors->first()) <img src="/images/{{$apartment->sponsors->first()->level}}_badge.svg" alt=""> @endif</h4>
-                        <ul class="list-group">
-                            <li class="list-group-item"><strong>Prezzo: </strong> €{{$apartment->price}}</li>
-                            <li class="list-group-item"><strong>Dimensione: </strong> {{$apartment->size}} mq.</li>
-                            <li class="list-group-item"><strong>Numero di ospiti: </strong> {{$apartment->n_guests}}</li>
-                            <li class="list-group-item"><strong>Numero di bagni: </strong> {{$apartment->n_bathrooms}}</li>
-                            <li class="list-group-item"><strong>Numero di stanze: </strong> {{$apartment->n_rooms}}</li>
-                            <li class="list-group-item"><strong>Indirizzo </strong> {{$apartment->address}}</li>
-                            <li class="list-group-item"><strong>Città: </strong> {{$apartment->location}}</li>
-                            <li class="list-group-item"><strong>CAP: </strong> {{$apartment->cap}}</li>
-                        </ul>
+                    <div class="card-body bg-secondary">
+                        <h4 class="card-title d-flex justify-content-between align-items-center text-white mb-3">{{$apartment->name}} @if($apartment->sponsors->first()) <img src="/images/{{$apartment->sponsors->first()->level}}_badge.svg" alt=""> @endif</h4>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="/apartment/{{$apartment->id}}" class="btn btn-primary text-primary card-btn rounded-circle">
+                                <lord-icon
+                                src="https://cdn.lordicon.com/tyounuzx.json"
+                                trigger="empty"
+                                style="width:30px;height:30px"
+                                colors="primary:#4d1803,secondary:#4d1803"
+                                >
+                                </lord-icon>
+                            </a>
+                            <a href="{{route('user.apartment.edit', $apartment->id)}}" class="btn btn-primary text-secondary rounded-circle">
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/wloilxuq.json"
+                                    trigger="empty"
+                                    style="width:30px;height:30px">
+                                </lord-icon>
+                            </a>
+                            <a href="{{route('user.message.index', $apartment->id)}}" class="btn btn-primary text-secondary rounded-circle">
+                                <lord-icon
+                                src="https://cdn.lordicon.com/rhvddzym.json"
+                                trigger="empty"
+                                style="width:30px;height:30px">
+                            </lord-icon>
+                            </a>
+                            @if($apartment->sponsors->first()->level === 'no_sponsor') <a href="{{route('user.sponsors', $apartment)}}" class="btn btn-primary text-white rounded-circle">
+                                <lord-icon
+                                src="https://cdn.lordicon.com/rgyftmhc.json"
+                                trigger="empty"
+                                style="width:30px;height:30px"
+                                colors="primary:#4d1803,secondary:#4d1803"
+                                >
+                                </lord-icon>
+                            </a> 
+                            @endif
+                        </div>
                     </div>
-                    <a href="/apartment/{{$apartment->id}}" class="btn btn-secondary text-primary">Dettagli appartamento</a>
+                    {{-- <a href="/apartment/{{$apartment->id}}" class="btn btn-secondary text-primary">Dettagli appartamento</a>
                     <a href="{{route('user.apartment.edit', $apartment->id)}}" class="btn btn-primary text-secondary">Modifica appartamento</a>
                     <a href="{{route('user.message.index', $apartment->id)}}" class="btn btn-white text-secondary">Visualizza messaggi</a>
-                    @if($apartment->sponsors->first()->level === 'no_sponsor') <a href="{{route('user.sponsors', $apartment)}}" class="btn btn-dark text-white">Sponsorizza appartamento</a> @endif
+                    @if($apartment->sponsors->first()->level === 'no_sponsor') <a href="{{route('user.sponsors', $apartment)}}" class="btn btn-dark text-white">Sponsorizza appartamento</a> @endif --}}
                 </div>
             </div>
             @endforeach

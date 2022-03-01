@@ -14,12 +14,12 @@
 
                     <div class="ms-5 filter_slider">
                         <h4 ><strong>Stanze :</strong> {{ roomsValue }}</h4>
-                        <Slider v-model="roomsValue" :min="1" />
+                        <Slider v-model="roomsValue" :min="1" :max="13"/>
                     </div>
 
                     <div class="ms-5 filter_slider">
                         <h4><strong>Letti : </strong>{{ bedValue }}</h4>
-                        <Slider v-model="bedValue" :min="1"/>
+                        <Slider v-model="bedValue" :min="1" :max="13"/>
                     </div>
                 </div>
             </div>
@@ -46,8 +46,8 @@
 
                     <div class="p-3">
                         <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
-                        <h6 class="text-secondary py-1 mb-0">Numero di ospiti: <strong>{{hotel.n_guests}}</strong></h6>
-                        <h6 class="text-secondary py-1 mb-0">Numero di stanze: <strong>{{hotel.n_rooms}}</strong></h6>
+                        <h6 class="text-secondary py-1 mb-0">Numero di letti: <strong>{{Math.ceil(hotel.n_guests / 10)}}</strong></h6>
+                        <h6 class="text-secondary py-1 mb-0">Numero di stanze: <strong>{{Math.ceil(hotel.n_rooms / 10)}}</strong></h6>
                         <!-- <h6 class="text-secondary py-1 mb-0">Numero di bagni: <strong>{{hotel.n_bathrooms}}</strong></h6> -->
                         <!-- <h6 class="text-secondary py-1 mb-0">Dimensioni: <strong>{{hotel.size}} mq</strong></h6> -->
                         
@@ -107,6 +107,16 @@ export default {
     components: {
         Paginator, Knob, Services, Slider,
     },
+    computed: {
+        initialBedValue: function() {
+            let initialBedValue = this.bedValue * 10;
+            return initialBedValue;
+        },
+        initialRoomsValue: function() {
+            let initialRoomsValue = this.roomsValue * 10;
+            return initialRoomsValue;
+        },
+    },
     methods:{
         async getHotelData(page){
             if(!page)
@@ -165,7 +175,7 @@ export default {
             }
 
             /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
-            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
+            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString)
             /* console.log('------new filtered data-------')
             console.dir(data) */
             this.hotelArray = data
@@ -177,42 +187,78 @@ export default {
 
         servicesQueryString: async function() {
         /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
-            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
-            /* console.log('------new filtered data-------')
-            console.dir(data) */
-            this.hotelArray = data
-            /* console.dir(this.hotelArray) */
-            this.totalPages = 0
+            if(this.locationName !== undefined) {
+                const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString)
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = data
+                /* console.dir(this.hotelArray) */
+                this.totalPages = 0
+            } else {
+                const {data} = await axios.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString)
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = data
+                /* console.dir(this.hotelArray) */
+                this.totalPages = 0
+            }
         },
 
         radius: async function() {
         /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
-            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
-            /* console.log('------new filtered data-------')
-            console.dir(data) */
-            this.hotelArray = data
-            /* console.dir(this.hotelArray) */
-            this.totalPages = 0
+            if(this.locationName !== undefined) {
+                const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString)
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = data
+                /* console.dir(this.hotelArray) */
+                this.totalPages = 0
+            } else {
+                const {data} = await axios.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString)
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = data
+                /* console.dir(this.hotelArray) */
+                this.totalPages = 0
+            }
         },
 
         bedValue: async function() {
         /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
-            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
-            /* console.log('------new filtered data-------')
-            console.dir(data) */
-            this.hotelArray = data
-            /* console.dir(this.hotelArray) */
-            this.totalPages = 0
+            if(this.locationName !== undefined) {
+                const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString)
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = data
+                /* console.dir(this.hotelArray) */
+                this.totalPages = 0
+            } else {
+                const {data} = await axios.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString)
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = data
+                /* console.dir(this.hotelArray) */
+                this.totalPages = 0
+            }
         },
 
         roomsValue: async function() {
         /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
-            const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
-            /* console.log('------new filtered data-------')
-            console.dir(data) */
-            this.hotelArray = data
-            /* console.dir(this.hotelArray) */
-            this.totalPages = 0
+            if(this.locationName !== undefined) {
+                const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString)
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = data
+                /* console.dir(this.hotelArray) */
+                this.totalPages = 0
+            } else {
+                const {data} = await axios.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString)
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = data
+                /* console.dir(this.hotelArray) */
+                this.totalPages = 0
+            }
         },
 
         

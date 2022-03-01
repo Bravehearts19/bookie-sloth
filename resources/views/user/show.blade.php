@@ -96,7 +96,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="stat-cards-container d-flex flex-column flex-lg-row align-items-center gap-3 justify-content-lg-between m-5 px-5 border-right border-left border-primary">
+                <div class="stat-cards-container d-flex flex-column flex-lg-row align-items-center gap-3 m-5">
                     <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
                         <div class="stat-card-content d-flex flex-column">
                             <div class="stat-card-header bg-secondary text-primary border-bottom border-primary p-2 px-5">
@@ -109,7 +109,7 @@
                         <div class="stat-card-icon d-flex align-items-center shadow-lg bg-white px-2">
                             <lord-icon
                                 src="https://cdn.lordicon.com/gmzxduhd.json"
-                                trigger="loop"
+                                trigger="loop-on-hover"
                                 style="width:60px;height:60px"
 
                                 >
@@ -117,7 +117,7 @@
                         </div>
                     </div>
 
-                        <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
+                        {{-- <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
                         <div class="stat-card-content d-flex flex-column">
                             <div class="stat-card-header bg-secondary text-primary border-bottom border-primary p-2 px-5">
                                 <h3>Viste</h3>
@@ -129,13 +129,13 @@
                         <div class="stat-card-icon d-flex align-items-center shadow-lg bg-white px-2">
                             <lord-icon
                                 src="https://cdn.lordicon.com/tyounuzx.json"
-                                trigger="loop"
+                                trigger="loop-on-hover"
                                 style="width:60px;height:60px"
                                 colors="primary:#4d1803,secondary:#c7ef00"
                                 >
                             </lord-icon>
                         </div>
-                    </div>
+                    </div> --}}
 
                         <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
                         <div class="stat-card-content d-flex flex-column">
@@ -149,7 +149,7 @@
                         <div class="stat-card-icon d-flex align-items-center shadow-lg bg-white px-2">
                             <lord-icon
                                 src="https://cdn.lordicon.com/rgyftmhc.json"
-                                trigger="loop"
+                                trigger="loop-on-hover"
                                 style="width:60px;height:60px"
                                 colors="primary:#4d1803,secondary:#c7ef00"
                                 >
@@ -157,7 +157,7 @@
                         </div>
                     </div>
 
-                        <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
+                        {{-- <div class="stat-card d-flex w-fit-content shadow-lg overflow-hidden border border-primary rounded">
                         <div class="stat-card-content d-flex flex-column">
                             <div class="stat-card-header bg-secondary text-primary border-bottom border-primary p-2 px-5">
                                 <h3>Punteggio</h3>
@@ -169,13 +169,13 @@
                         <div class="stat-card-icon d-flex align-items-center shadow-lg bg-white px-2">
                             <lord-icon
                                 src="https://cdn.lordicon.com/mdgrhyca.json"
-                                trigger="loop"
+                                trigger="loop-on-hover"
                                 style="width:60px;height:60px"
                                 colors="primary:#4d1803,secondary:#c7ef00"
                                 >
                             </lord-icon>
                         </div>
-                    </div>
+                    </div> --}}
 
                     </div>
 
@@ -183,7 +183,7 @@
         </div>
         <div class="row bg-info bg-wave py-3 mx-5 rounded shadow-lg mt-lg-5">
             <div class="col-10 offset-1 col-lg-6 offset-lg-0">
-                <div id="map-div" class="rounded shadow-lg"></div>
+                <div id="map-div" class="rounded shadow-lg map"></div>
             </div>
             <div class="col-10 offset-1 col-lg-5 offset-lg-1 mt-3 mt-lg-0">
                 <div class="d-flex flex-column h-100 p-4 white-overlay rounded shadow-lg">
