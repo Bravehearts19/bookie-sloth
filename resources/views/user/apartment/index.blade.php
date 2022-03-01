@@ -45,9 +45,9 @@ function activeSponsors($apartment){
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Prezzo: </strong> €{{$apartment->price}}</li>
                             <li class="list-group-item"><strong>Dimensione: </strong> {{$apartment->size}} mq.</li>
-                            <li class="list-group-item"><strong>Numero di ospiti: </strong> {{$apartment->n_guests}}</li>
-                            <li class="list-group-item"><strong>Numero di bagni: </strong> {{$apartment->n_bathrooms}}</li>
-                            <li class="list-group-item"><strong>Numero di stanze: </strong> {{$apartment->n_rooms}}</li>
+                            <li class="list-group-item"><strong>Numero di letti: </strong> {{ceil($apartment->n_guests / 10)}}</li>
+                            <li class="list-group-item"><strong>Numero di bagni: </strong> {{ceil($apartment->n_bathrooms / 10)}}</li>
+                            <li class="list-group-item"><strong>Numero di stanze: </strong> {{ceil($apartment->n_rooms / 10)}}</li>
                             <li class="list-group-item"><strong>Indirizzo </strong> {{$apartment->address}}</li>
                             <li class="list-group-item"><strong>Città: </strong> {{$apartment->location}}</li>
                             <li class="list-group-item"><strong>CAP: </strong> {{$apartment->cap}}</li>
