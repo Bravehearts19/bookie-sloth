@@ -103,7 +103,7 @@
                                 <h3>Appartamenti</h3>
                             </div>
                             <div class="stat-card-value bg-primary text-center py-2">
-                                <h3 class="mb-0">{{Auth::user()->apartments()->count()}}</h3>
+                                <h3 class="mb-0 text-white">{{Auth::user()->apartments()->count()}}</h3>
                             </div>
                         </div>
                         <div class="stat-card-icon d-flex align-items-center shadow-lg bg-white px-2">
@@ -111,7 +111,7 @@
                                 src="https://cdn.lordicon.com/gmzxduhd.json"
                                 trigger="loop-on-hover"
                                 style="width:60px;height:60px"
-
+                                colors="primary:#109173,secondary:#109173"
                                 >
                             </lord-icon>
                         </div>
@@ -143,7 +143,7 @@
                                 <h3>Sponsorizzati</h3>
                             </div>
                             <div class="stat-card-value bg-primary text-center py-2">
-                                <h3 class="mb-0">{{Auth::user()->apartments()->has('sponsors')->count()}}</h3>
+                                <h3 class="mb-0 text-white">{{Auth::user()->apartments()->has('sponsors')->count()}}</h3>
                             </div>
                         </div>
                         <div class="stat-card-icon d-flex align-items-center shadow-lg bg-white px-2">
@@ -151,7 +151,7 @@
                                 src="https://cdn.lordicon.com/rgyftmhc.json"
                                 trigger="loop-on-hover"
                                 style="width:60px;height:60px"
-                                colors="primary:#4d1803,secondary:#c7ef00"
+                                colors="primary:#109173,secondary:#109173"
                                 >
                             </lord-icon>
                         </div>
@@ -187,11 +187,11 @@
             </div>
             <div class="col-10 offset-1 col-lg-5 offset-lg-1 mt-3 mt-lg-0">
                 <div class="d-flex flex-column h-100 p-4 white-overlay rounded shadow-lg">
-                    <h3 class="border-bottom border-secondary card-title bg-secondary text-white rounded shadow-lg py-2 text-center">I tuoi dati</h3>
-                    <h5 class="border-bottom border-secondary py-2"><strong class="text-secondary">Nome</strong>: {{Auth::user()->name}}</h5>
-                    <h5 class="border-bottom border-secondary py-2"><strong class="text-secondary">Cognome</strong>: {{Auth::user()->surname}}</h5>
-                    <h5 class="border-bottom border-secondary py-2"><strong class="text-secondary">Email</strong>: {{Auth::user()->email}}</h5>
-                    <h5 class="border-bottom border-secondary py-2"><strong class="text-secondary">Data di nascita</strong>: {{Auth::user()->date_of_birth}}</h5>
+                    <h3 class="border-bottom border-secondary card-title bg-secondary text-primary rounded shadow-lg py-2 text-center">I tuoi dati</h3>
+                    <h5 class="border-bottom border-secondary py-2"><strong class="text-primary">Nome</strong>: {{Auth::user()->name}}</h5>
+                    <h5 class="border-bottom border-secondary py-2"><strong class="text-primary">Cognome</strong>: {{Auth::user()->surname}}</h5>
+                    <h5 class="border-bottom border-secondary py-2"><strong class="text-primary">Email</strong>: {{Auth::user()->email}}</h5>
+                    <h5 class="border-bottom border-secondary py-2"><strong class="text-primary">Data di nascita</strong>: {{Auth::user()->date_of_birth}}</h5>
                 </div>
             </div>
 
