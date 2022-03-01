@@ -1934,6 +1934,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -3321,7 +3323,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "#vue-root {\n  height: 100vh;\n}", ""]);
+exports.push([module.i, "#vue-root {\n  height: 100vh;\n}\n.scale-enter-active,\n.scale-leave-active {\n  transition: all 0.5s ease;\n}\n.scale-enter-from,\n.scale-leave-to {\n  opacity: 0;\n  transform: scale(0.9);\n}", ""]);
 
 // exports
 
@@ -18047,7 +18049,14 @@ var render = function () {
       _c(
         "div",
         { staticClass: "flex-grow-1" },
-        [_c("router-view", { attrs: { locationName: _vm.locationName } })],
+        [
+          _c(
+            "transition",
+            { attrs: { name: "scale", mode: "out-in" } },
+            [_c("router-view", { attrs: { locationName: _vm.locationName } })],
+            1
+          ),
+        ],
         1
       ),
     ],
