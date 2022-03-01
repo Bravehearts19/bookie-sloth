@@ -18087,7 +18087,7 @@ var render = function () {
               },
             ],
             staticClass:
-              "form-control bg-transparent text-primary border-none ps-3",
+              "form-control bg-transparent text-primary border-none ps-5 fs-3",
             attrs: {
               type: "text",
               placeholder: "Cerca...",
@@ -19103,103 +19103,6 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "hotel_container bg-info" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "loading-screen d-flex justify-content-center align-items-center",
-        class: _vm.deleteLoading === true ? "d-none" : "",
-        style:
-          _vm.hideLoading === true ? "opacity:0; transition:opacity 0.3s" : "",
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "d-flex flex-column align-items-center",
-            style:
-              _vm.pageLoaded === true
-                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
-                : "",
-          },
-          [
-            _c("img", {
-              staticClass: "mb-3",
-              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "d-flex",
-                style:
-                  _vm.pageLoaded === true
-                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
-                    : "",
-              },
-              [
-                _c(
-                  "h2",
-                  {
-                    staticClass: "text-white me-3",
-                    style:
-                      _vm.pageLoaded === true
-                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
-                        : "",
-                  },
-                  [_vm._v("Sloth")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h2",
-                  {
-                    staticClass: "text-white ms-3 d-flex",
-                    style:
-                      _vm.pageLoaded === true
-                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
-                        : "",
-                  },
-                  [
-                    _vm._v("h\n                    "),
-                    _c(
-                      "span",
-                      { style: _vm.pageLoaded === true ? "opacity:0" : "" },
-                      [_vm._v("ot")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        style:
-                          _vm.pageLoaded === true
-                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
-                            : "",
-                      },
-                      [_vm._v("el")]
-                    ),
-                  ]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "spinner-border text-primary mt-3",
-                style: _vm.pageLoaded === true ? "opacity:0" : "",
-                attrs: { role: "status" },
-              },
-              [
-                _c("span", { staticClass: "visually-hidden" }, [
-                  _vm._v("Loading..."),
-                ]),
-              ]
-            ),
-          ]
-        ),
-      ]
-    ),
-    _vm._v(" "),
     _c(
       "div",
       { staticClass: "container py-5" },
@@ -35827,7 +35730,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
