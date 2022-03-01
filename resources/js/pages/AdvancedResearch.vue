@@ -142,6 +142,28 @@ export default {
     },
     watch:{
         locationName: async function(val, old) {
+            if(val === ''){
+                val = 'milano'
+            }
+
+            switch (val) {
+            case '':
+                val = 'milano'
+                    break;
+            case 'roma':
+                val = 'rome'
+                break;
+            case 'firenze':
+                val = 'florence'
+                break;
+            case 'torino':
+                val = 'turin'
+                break;
+            case 'napoli':
+                val = 'naples'
+                break;
+            }
+
             /* console.log('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=20') */
             const {data} = await axios.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString)
             /* console.log('------new filtered data-------')
