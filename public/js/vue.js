@@ -1934,8 +1934,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -2331,6 +2329,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Services: _components_Services_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     Slider: primevue_slider__WEBPACK_IMPORTED_MODULE_5___default.a
   },
+  computed: {
+    initialBedValue: function initialBedValue() {
+      var initialBedValue = this.bedValue * 10;
+      return initialBedValue;
+    },
+    initialRoomsValue: function initialRoomsValue() {
+      var initialRoomsValue = this.roomsValue * 10;
+      return initialRoomsValue;
+    }
+  },
   methods: {
     getHotelData: function getHotelData(page) {
       var _this = this;
@@ -2446,7 +2454,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 14:
                 _context3.next = 16;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
 
               case 16:
                 _yield$axios$get3 = _context3.sent;
@@ -2475,16 +2483,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     servicesQueryString: function () {
       var _servicesQueryString = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var _yield$axios$get4, data;
+        var _yield$axios$get4, data, _yield$axios$get5, _data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _context4.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
+                if (!(this.locationName !== undefined)) {
+                  _context4.next = 9;
+                  break;
+                }
 
-              case 2:
+                _context4.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 3:
                 _yield$axios$get4 = _context4.sent;
                 data = _yield$axios$get4.data;
 
@@ -2494,8 +2507,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 /* console.dir(this.hotelArray) */
 
                 this.totalPages = 0;
+                _context4.next = 15;
+                break;
 
-              case 6:
+              case 9:
+                _context4.next = 11;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 11:
+                _yield$axios$get5 = _context4.sent;
+                _data = _yield$axios$get5.data;
+
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = _data;
+                /* console.dir(this.hotelArray) */
+
+                this.totalPages = 0;
+
+              case 15:
               case "end":
                 return _context4.stop();
             }
@@ -2511,18 +2541,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     radius: function () {
       var _radius = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var _yield$axios$get5, data;
+        var _yield$axios$get6, data, _yield$axios$get7, _data2;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                _context5.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
+                if (!(this.locationName !== undefined)) {
+                  _context5.next = 9;
+                  break;
+                }
 
-              case 2:
-                _yield$axios$get5 = _context5.sent;
-                data = _yield$axios$get5.data;
+                _context5.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 3:
+                _yield$axios$get6 = _context5.sent;
+                data = _yield$axios$get6.data;
 
                 /* console.log('------new filtered data-------')
                 console.dir(data) */
@@ -2530,8 +2565,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 /* console.dir(this.hotelArray) */
 
                 this.totalPages = 0;
+                _context5.next = 15;
+                break;
 
-              case 6:
+              case 9:
+                _context5.next = 11;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 11:
+                _yield$axios$get7 = _context5.sent;
+                _data2 = _yield$axios$get7.data;
+
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = _data2;
+                /* console.dir(this.hotelArray) */
+
+                this.totalPages = 0;
+
+              case 15:
               case "end":
                 return _context5.stop();
             }
@@ -2547,18 +2599,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     bedValue: function () {
       var _bedValue = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-        var _yield$axios$get6, data;
+        var _yield$axios$get8, data, _yield$axios$get9, _data3;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
-                _context6.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
+                if (!(this.locationName !== undefined)) {
+                  _context6.next = 9;
+                  break;
+                }
 
-              case 2:
-                _yield$axios$get6 = _context6.sent;
-                data = _yield$axios$get6.data;
+                _context6.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 3:
+                _yield$axios$get8 = _context6.sent;
+                data = _yield$axios$get8.data;
 
                 /* console.log('------new filtered data-------')
                 console.dir(data) */
@@ -2566,8 +2623,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 /* console.dir(this.hotelArray) */
 
                 this.totalPages = 0;
+                _context6.next = 15;
+                break;
 
-              case 6:
+              case 9:
+                _context6.next = 11;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 11:
+                _yield$axios$get9 = _context6.sent;
+                _data3 = _yield$axios$get9.data;
+
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = _data3;
+                /* console.dir(this.hotelArray) */
+
+                this.totalPages = 0;
+
+              case 15:
               case "end":
                 return _context6.stop();
             }
@@ -2583,18 +2657,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     roomsValue: function () {
       var _roomsValue = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
-        var _yield$axios$get7, data;
+        var _yield$axios$get10, data, _yield$axios$get11, _data4;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                _context7.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
+                if (!(this.locationName !== undefined)) {
+                  _context7.next = 9;
+                  break;
+                }
 
-              case 2:
-                _yield$axios$get7 = _context7.sent;
-                data = _yield$axios$get7.data;
+                _context7.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 3:
+                _yield$axios$get10 = _context7.sent;
+                data = _yield$axios$get10.data;
 
                 /* console.log('------new filtered data-------')
                 console.dir(data) */
@@ -2602,8 +2681,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 /* console.dir(this.hotelArray) */
 
                 this.totalPages = 0;
+                _context7.next = 15;
+                break;
 
-              case 6:
+              case 9:
+                _context7.next = 11;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 11:
+                _yield$axios$get11 = _context7.sent;
+                _data4 = _yield$axios$get11.data;
+
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = _data4;
+                /* console.dir(this.hotelArray) */
+
+                this.totalPages = 0;
+
+              case 15:
               case "end":
                 return _context7.stop();
             }
@@ -2639,105 +2735,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primevue_button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(primevue_button__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var primevue_dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primevue/dialog */ "./node_modules/primevue/dialog/index.js");
 /* harmony import */ var primevue_dialog__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primevue_dialog__WEBPACK_IMPORTED_MODULE_3__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2992,8 +2989,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
 //
 //
 //
@@ -3323,7 +3318,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "#vue-root {\n  height: 100vh;\n}\n.scale-enter-active,\n.scale-leave-active {\n  transition: all 0.5s ease;\n}\n.scale-enter-from,\n.scale-leave-to {\n  opacity: 0;\n  transform: scale(0.9);\n}", ""]);
+exports.push([module.i, "#vue-root {\n  height: 100vh;\n}", ""]);
 
 // exports
 
@@ -3399,7 +3394,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #B5D601;\n  height: 75vh;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .p-calendar[data-v-37b4720e] {\n  max-width: 300px;\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #A2BA02;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #4D1803;\n  margin-top: 35px;\n  border-radius: 30px;\n  display: flex;\n  justify-content: center;\n  height: 50px;\n}\n.my-container .data-container .user-container .p-button[data-v-37b4720e] {\n  background-color: #B2CC03;\n  color: #4D1803;\n  border: #B2CC03;\n  border-radius: 20px;\n  height: 30px !important;\n  margin-top: 8px;\n  margin-left: 20px;\n}\n\n/* PRIME VUE */\n[data-v-37b4720e] .p-rating .p-rating-icon.pi-star-fill {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating .p-rating-icon:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-inputtext:enabled:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-datepicker:not(.p-datepicker-inline) .p-datepicker-header {\n  background-color: #B2CC03;\n}\n[data-v-37b4720e] .p-button {\n  background-color: #4D1803;\n  color: #B5D601;\n  border: 0;\n  border-top-right-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n[data-v-37b4720e] .p-button:enabled:hover {\n  background-color: #722304;\n  color: #B5D601;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-header {\n  background-color: #B2CC03;\n  /* margin-bottom: 10px; */\n}\n[data-v-37b4720e] .p-dialog .p-dialog-content {\n  padding-top: 20px;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-footer {\n  background-color: #B2CC03;\n  padding: 5px;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
+exports.push([module.i, ".my-container[data-v-37b4720e] {\n  background-color: #B5D601;\n  height: 75vh;\n  width: 1400px;\n  margin: auto;\n  border-radius: 30px;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.my-container .img-container[data-v-37b4720e] {\n  height: 520px;\n  width: 800px;\n  /* margin-left: 15px; */\n  border-radius: 25px;\n  overflow: hidden;\n}\n.my-container .img-container img[data-v-37b4720e] {\n  height: 100%;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.my-container .data-container[data-v-37b4720e] {\n  height: 520px;\n  width: 550px;\n  display: flex;\n  flex-direction: column;\n  align-content: center;\n  /* background-color: red; */\n}\n.my-container .data-container .p-calendar[data-v-37b4720e] {\n  max-width: 300px;\n}\n.my-container .data-container .p-calendar .p-button-icon[data-v-37b4720e] {\n  background-color: #B2CC03;\n}\n.my-container .data-container .services-container[data-v-37b4720e] {\n  display: flex;\n  background-color: #A2BA02;\n  height: 150px;\n  width: 300px;\n  margin: 10px 0;\n  border-radius: 20px;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.my-container .data-container .user-container[data-v-37b4720e] {\n  background-color: #4D1803;\n  margin-top: 35px;\n  border-radius: 30px;\n  display: flex;\n  justify-content: center;\n  height: 50px;\n}\n.my-container .data-container .user-container .p-button[data-v-37b4720e] {\n  background-color: #B2CC03;\n  color: #4D1803;\n  border: #B2CC03;\n  border-radius: 20px;\n  height: 30px !important;\n  margin-top: 8px;\n  margin-left: 20px;\n}\n\n/* PRIME VUE */\n[data-v-37b4720e] .p-rating .p-rating-icon.pi-star-fill {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {\n  color: #4D1803;\n}\n[data-v-37b4720e] .p-rating .p-rating-icon:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-inputtext:enabled:focus {\n  box-shadow: 0 0 0 0;\n}\n[data-v-37b4720e] .p-button {\n  background-color: #4D1803;\n  color: #B5D601;\n  border: 0;\n  border-top-right-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n[data-v-37b4720e] .p-button:enabled:hover {\n  background-color: #722304;\n  color: #B5D601;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-header {\n  background-color: #B2CC03;\n  /* margin-bottom: 10px; */\n}\n[data-v-37b4720e] .p-dialog .p-dialog-content {\n  padding-top: 20px;\n}\n[data-v-37b4720e] .p-dialog .p-dialog-footer {\n  background-color: #B2CC03;\n  padding: 5px;\n}\n\n/* #map-div{\n    height: 400px;\n    width: 400px;\n}\n.img_container {\n    aspect-ratio: 1/1;\n    img {\n        width: 100%;\n        height: 100%;\n    }\n} */", ""]);
 
 // exports
 
@@ -3437,14 +3432,14 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "[data-v-b3c5cf30] .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {\n  background: #c7ef00 !important;\n  border-color: #c7ef00 !important;\n  color: #495057;\n}\n[data-v-b3c5cf30] .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {\n  background: #c7ef00 !important;\n  border-color: transparent;\n  color: #495057;\n}\n.p-link[data-v-b3c5cf30]:focus {\n  box-shadow: 0;\n}\n.hotel_container[data-v-b3c5cf30] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-b3c5cf30] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-b3c5cf30] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n  height: 300px;\n}\n.image-container[data-v-b3c5cf30] {\n  width: 100%;\n  border-radius: 20px;\n  height: 150px;\n  aspect-ratio: 2/1.5;\n}\n.image-container img[data-v-b3c5cf30] {\n  border-radius: 20px;\n  width: 100%;\n  height: 100%;\n  aspect-ratio: 2/1.5;\n}", ""]);
+exports.push([module.i, "[data-v-b3c5cf30] .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {\n  background: #c7ef00 !important;\n  border-color: #c7ef00 !important;\n  color: #495057;\n}\n[data-v-b3c5cf30] .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {\n  background: #c7ef00 !important;\n  border-color: transparent;\n  color: #495057;\n}\n.p-link[data-v-b3c5cf30]:focus {\n  box-shadow: 0;\n}\n.hotel_container[data-v-b3c5cf30] {\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-b3c5cf30] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-b3c5cf30] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n  height: 300px;\n}\n.image-container[data-v-b3c5cf30] {\n  width: 100%;\n  border-radius: 20px;\n  height: 150px;\n  aspect-ratio: 2/1.5;\n}\n.image-container img[data-v-b3c5cf30] {\n  border-radius: 20px;\n  width: 100%;\n  height: 100%;\n  aspect-ratio: 2/1.5;\n}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css?7252":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primeicons/primeicons.css ***!
   \********************************************************************************************************************************/
@@ -3464,7 +3459,7 @@ exports.push([module.i, "@font-face {\n    font-family: 'primeicons';\n    font-
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css?b370":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css":
 /*!******************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primevue/resources/primevue.min.css ***!
   \******************************************************************************************************************************************/
@@ -3484,7 +3479,7 @@ exports.push([module.i, ".p-component,.p-component *{box-sizing:border-box}.p-hi
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css?e88f":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css":
 /*!****************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primevue/resources/themes/saga-blue/theme.css ***!
   \****************************************************************************************************************************************************/
@@ -3821,7 +3816,7 @@ module.exports = "/fonts/vendor/primeicons/primeicons.woff?943c3597cd33be56d53df
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../css-loader??ref--7-1!../postcss-loader/src??ref--7-2!./primeicons.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css?7252");
+var content = __webpack_require__(/*! !../css-loader??ref--7-1!../postcss-loader/src??ref--7-2!./primeicons.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6192,7 +6187,7 @@ module.exports = "/images/vendor/primevue/resources/hue.png?0614c27197fc3ce572e1
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./primevue.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css?b370");
+var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./primevue.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6222,7 +6217,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../css-loader??ref--7-1!../../../../postcss-loader/src??ref--7-2!./theme.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css?e88f");
+var content = __webpack_require__(/*! !../../../../css-loader??ref--7-1!../../../../postcss-loader/src??ref--7-2!./theme.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -18049,14 +18044,7 @@ var render = function () {
       _c(
         "div",
         { staticClass: "flex-grow-1" },
-        [
-          _c(
-            "transition",
-            { attrs: { name: "scale", mode: "out-in" } },
-            [_c("router-view", { attrs: { locationName: _vm.locationName } })],
-            1
-          ),
-        ],
+        [_c("router-view", { attrs: { locationName: _vm.locationName } })],
         1
       ),
     ],
@@ -18093,8 +18081,12 @@ var render = function () {
     },
     [
       _c(
-        "div",
-        { staticClass: "logo-container d-flex align-items-center p-3" },
+        "a",
+        {
+          staticClass:
+            "logo-container d-flex align-items-center p-3 text-decoration-none text-black",
+          attrs: { href: "/" },
+        },
         [
           _c("h1", { staticClass: "mb-0 mx-3 ml-0" }, [_vm._v("Slothel")]),
           _vm._v(" "),
@@ -18474,7 +18466,7 @@ var render = function () {
                     ]),
                     _vm._v(" "),
                     _c("Slider", {
-                      attrs: { min: 1 },
+                      attrs: { min: 1, max: 13 },
                       model: {
                         value: _vm.roomsValue,
                         callback: function ($$v) {
@@ -18497,7 +18489,7 @@ var render = function () {
                     ]),
                     _vm._v(" "),
                     _c("Slider", {
-                      attrs: { min: 1 },
+                      attrs: { min: 1, max: 13 },
                       model: {
                         value: _vm.bedValue,
                         callback: function ($$v) {
@@ -18582,13 +18574,17 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                    _vm._v("Numero di ospiti: "),
-                    _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
+                    _vm._v("Numero di letti: "),
+                    _c("strong", [
+                      _vm._v(_vm._s(Math.ceil(hotel.n_guests / 10))),
+                    ]),
                   ]),
                   _vm._v(" "),
                   _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
                     _vm._v("Numero di stanze: "),
-                    _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
+                    _c("strong", [
+                      _vm._v(_vm._s(Math.ceil(hotel.n_rooms / 10))),
+                    ]),
                   ]),
                 ]),
               ]
@@ -18671,230 +18667,182 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass:
-        "container-fluid h-100 d-flex align-items-center justify-content-center",
-    },
+    { staticClass: "my-container" },
     [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-4 offset-2 bg-info d-flex align-items-center" },
-          [
-            _c("div", { staticClass: "img-container mt-5" }, [
-              _c("img", {
-                staticClass: "w-100",
-                attrs: {
-                  src: _vm.apartment.cover_img.includes("http")
-                    ? _vm.apartment.cover_img
-                    : "/storage/" + _vm.apartment.cover_img,
-                  alt: _vm.apartment.name,
-                },
-              }),
+      _c("div", { staticClass: "img-container" }, [
+        _c("img", {
+          attrs: { src: _vm.apartment.cover_img, alt: _vm.apartment.name },
+        }),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "data-container" },
+        [
+          _c("h1", { staticClass: "pt-1 m-0 text-secondary" }, [
+            _vm._v(_vm._s(_vm.apartment.name)),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: " pb-1" }, [
+            _c("h5", { staticClass: "d-inline text-secondary" }, [
+              _vm._v(_vm._s(_vm.apartment.address)),
             ]),
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4 bg-info" }, [
-          _c("div", { staticClass: "text-container p-5" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "d-flex justify-content-between align-items-center",
-              },
-              [
-                _c(
-                  "div",
-                  [
-                    _c("h1", { staticClass: "text-white" }, [
-                      _vm._v(" " + _vm._s(_vm.apartment.name) + " "),
-                    ]),
-                    _vm._v(" "),
-                    _c("h5", [
-                      _vm._v(" " + _vm._s(_vm.apartment.address) + " "),
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "text-secondary" }, [
-                      _vm._v(" " + _vm._s(_vm.apartment.location) + " "),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "d-flex mt-3" },
-                      [
-                        _c("Rating", {
-                          attrs: {
-                            value: _vm.rate,
-                            readonly: true,
-                            stars: _vm.rate,
-                            cancel: false,
-                          },
-                        }),
-                        _vm._v(" "),
-                        _vm.rate > 0
-                          ? _c("p", { staticClass: "ps-2" }, [
-                              _vm._v(
-                                _vm._s(_vm.rate) +
-                                  ".0 | " +
-                                  _vm._s(_vm.rate) +
-                                  " recensioni"
-                              ),
-                            ])
-                          : _vm._e(),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("Calendar", {
-                      staticClass: "pb-3",
-                      attrs: {
-                        dateFormat: "dd/mm/yy",
-                        placeholder: "Inserisci date",
-                        showIcon: true,
-                        selectionMode: "range",
-                        inputStyle:
-                          "background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;",
-                      },
-                      model: {
-                        value: _vm.dates,
-                        callback: function ($$v) {
-                          _vm.dates = $$v
-                        },
-                        expression: "dates",
-                      },
-                    }),
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "services-container p-3 mt-3 bg-secondary rounded shadow-lg w-fit-content",
-                  },
-                  _vm._l(_vm.apartment.services, function (service) {
-                    return _c(
-                      "div",
-                      {
-                        key: "service-" + service.id,
-                        staticClass:
-                          "d-flex align-items-center py-2 border-bottom border-primary",
-                      },
-                      [
-                        _c("lord-icon", {
-                          staticStyle: {
-                            width: "45px",
-                            height: "45px",
-                            "background-color": "#c7ef00",
-                            "border-radius": "50px",
-                            "align-content": "space-around",
-                          },
-                          attrs: {
-                            src: service.icon,
-                            trigger: "hover",
-                            colors: "primary:#4d1803,secondary:#ffffff",
-                          },
-                        }),
-                        _vm._v(" "),
-                        _c("h6", { staticClass: "mb-0 mx-3 text-primary" }, [
-                          _vm._v(" " + _vm._s(service.name) + " "),
-                        ]),
-                      ],
-                      1
-                    )
-                  }),
-                  0
-                ),
-              ]
-            ),
             _vm._v(" "),
-            _c("div", { staticClass: "shop-container mt-3" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "d-flex mt-5 justify-content-between align-items-center w-100 p-2 rounded border border-secondary shadow-lg",
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "d-flex align-items-center" },
-                    [
-                      _c("lord-icon", {
-                        staticStyle: { width: "50px", height: "50px" },
-                        attrs: {
-                          src: "https://cdn.lordicon.com/rivoakkk.json",
-                          trigger: "hover",
-                          colors:
-                            _vm.peopleCounter === 1
-                              ? "primary:#A2BA02,secondary:#4d1803"
-                              : "primary:#4d1803,secondary:#4d1803",
-                          stroke: "150",
-                        },
-                        on: {
-                          click: function ($event) {
-                            return _vm.decrementCounter()
-                          },
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c("h5", { staticClass: "mx-2 my-0" }, [
-                        _vm._v(_vm._s(_vm.peopleCounter)),
-                      ]),
-                      _vm._v(" "),
-                      _c("lord-icon", {
-                        staticStyle: { width: "35px", height: "35px" },
-                        attrs: {
-                          src: "https://cdn.lordicon.com/mecwbjnp.json",
-                          trigger: "hover",
-                          colors: "primary:#4d1803,secondary:#4d1803",
-                          stroke: "150",
-                        },
-                        on: {
-                          click: function ($event) {
-                            return _vm.incrementCounter()
-                          },
-                        },
-                      }),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("h5", { staticClass: "text-secondary mb-0 px-5 pe-0" }, [
-                    _vm._v(_vm._s(_vm.apartment.price) + "0€"),
-                  ]),
-                ]
-              ),
+            _c("h5", { staticClass: "d-inline text-secondary" }, [
+              _vm._v("," + _vm._s(_vm.apartment.location)),
             ]),
           ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-8 offset-2 bg-info" }, [
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "d-flex" },
+            [
+              _c("Rating", {
+                attrs: {
+                  value: _vm.rate,
+                  readonly: true,
+                  stars: _vm.rate,
+                  cancel: false,
+                },
+              }),
+              _vm._v(" "),
+              _vm.rate > 0
+                ? _c("p", { staticClass: "ps-2" }, [
+                    _vm._v(
+                      _vm._s(_vm.rate) +
+                        ".0 | " +
+                        _vm._s(_vm.rate) +
+                        " recensioni"
+                    ),
+                  ])
+                : _vm._e(),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("Calendar", {
+            staticClass: "pb-3",
+            attrs: {
+              dateFormat: "dd/mm/yy",
+              placeholder: "Inserisci date",
+              showIcon: true,
+              selectionMode: "range",
+              inputStyle:
+                "background-color: #A2BA02;border-radius:10px; border-top-right-radius: 0 ;border-bottom-right-radius: 0 ;border-color:#A2BA02;",
+            },
+            model: {
+              value: _vm.dates,
+              callback: function ($$v) {
+                _vm.dates = $$v
+              },
+              expression: "dates",
+            },
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "services-container p-3" },
+            _vm._l(_vm.apartment.services, function (service) {
+              return _c(
+                "div",
+                { key: "service-" + service.id, staticClass: "px-1" },
+                [
+                  _c("lord-icon", {
+                    staticStyle: {
+                      width: "45px",
+                      height: "45px",
+                      "background-color": "#4d1803",
+                      "border-radius": "50px",
+                      "align-content": "space-around",
+                    },
+                    attrs: {
+                      src: service.icon,
+                      trigger: "hover",
+                      colors: "primary:#B2CC03,secondary:#B2CC03",
+                    },
+                  }),
+                ],
+                1
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
           _c(
             "div",
             {
-              staticClass: "user-container d-flex justify-content-center my-5",
+              staticClass:
+                "d-flex mt-4 justify-content-between align-items-center",
             },
             [
               _c(
                 "div",
-                {
-                  staticClass:
-                    "d-flex align-items-center border-bottom border-top border-secondary px-5 shadow-lg",
-                },
+                { staticClass: "d-flex align-items-center" },
+                [
+                  _c("lord-icon", {
+                    staticStyle: { width: "50px", height: "50px" },
+                    attrs: {
+                      src: "https://cdn.lordicon.com/rivoakkk.json",
+                      trigger: "hover",
+                      colors:
+                        _vm.peopleCounter === 1
+                          ? "primary:#A2BA02,secondary:#4d1803"
+                          : "primary:#4d1803,secondary:#4d1803",
+                      stroke: "150",
+                    },
+                    on: {
+                      click: function ($event) {
+                        return _vm.decrementCounter()
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("h2", { staticClass: "mx-4 my-0" }, [
+                    _vm._v(_vm._s(_vm.peopleCounter)),
+                  ]),
+                  _vm._v(" "),
+                  _c("lord-icon", {
+                    staticStyle: { width: "50px", height: "50px" },
+                    attrs: {
+                      src: "https://cdn.lordicon.com/mecwbjnp.json",
+                      trigger: "hover",
+                      colors: "primary:#4d1803,secondary:#4d1803",
+                      stroke: "150",
+                    },
+                    on: {
+                      click: function ($event) {
+                        return _vm.incrementCounter()
+                      },
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("h2", { staticClass: "me-4 text-secondary" }, [
+                _vm._v(_vm._s(_vm.apartment.price) + "€"),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "user-container" },
+            [
+              _c(
+                "div",
+                { staticClass: "d-flex align-items-center" },
                 [
                   _c("lord-icon", {
                     staticStyle: { width: "40px", height: "40px" },
                     attrs: {
                       src: "https://cdn.lordicon.com/dxjqoygy.json",
                       trigger: "hover",
-                      colors: "primary:#4d1803,secondary:#c7ef00",
+                      colors: "primary:#c7ef00,secondary:#c7ef00",
                     },
                   }),
                   _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary mb-0 mx-3" }, [
+                  _c("h6", { staticClass: "text-primary m-0" }, [
                     _vm._v(
                       _vm._s(_vm.apartment.user.name) +
                         " " +
@@ -18906,7 +18854,7 @@ var render = function () {
               ),
               _vm._v(" "),
               _c("Button", {
-                staticClass: " shadow-lg p-button-warning p-button-lg",
+                staticClass: "p-button-warning p-button-sm",
                 attrs: { label: "Contatta" },
                 on: {
                   click: function ($event) {
@@ -18917,8 +18865,9 @@ var render = function () {
             ],
             1
           ),
-        ]),
-      ]),
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "Dialog",
@@ -19178,7 +19127,7 @@ var render = function () {
           [
             _c("img", {
               staticClass: "mb-3",
-              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
+              attrs: { src: "/images/logo-white.svg", alt: "slothel-logo" },
             }),
             _vm._v(" "),
             _c(
@@ -19243,7 +19192,7 @@ var render = function () {
             _c(
               "div",
               {
-                staticClass: "spinner-border text-primary mt-3",
+                staticClass: "spinner-border text-secondary mt-3",
                 style: _vm.loadingScreen.pageLoaded === true ? "opacity:0" : "",
                 attrs: { role: "status" },
               },
@@ -19276,7 +19225,7 @@ var render = function () {
               [
                 _c(
                   "div",
-                  { staticClass: "card_container bg-primary shadow-lg" },
+                  { staticClass: "card_container bg-secondary shadow-lg" },
                   [
                     _c(
                       "div",
@@ -19304,7 +19253,7 @@ var render = function () {
                           "router-link",
                           {
                             staticClass:
-                              "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
+                              "btn btn-primary btn_router_link text-secondary w-50 mt-3 mx-auto",
                             attrs: {
                               to: {
                                 name: "apartment",
@@ -19325,22 +19274,22 @@ var render = function () {
                           "d-flex flex-column align-items-center w-50",
                       },
                       [
-                        _c("div", { staticClass: "py-3" }, [
+                        _c("div", { staticClass: "p-3" }, [
                           _c(
                             "h5",
-                            { staticClass: "text-secondary text-center mb-0" },
+                            { staticClass: "text-primary text-center mb-0" },
                             [_c("strong", [_vm._v(_vm._s(hotel.name))])]
                           ),
                           _vm._v(" "),
                           _c(
                             "h5",
-                            { staticClass: "text-secondary text-center mb-0" },
+                            { staticClass: "text-primary text-center mb-0" },
                             [_vm._v(_vm._s(hotel.location))]
                           ),
                           _vm._v(" "),
                           _c(
                             "h6",
-                            { staticClass: "text-secondary text-center mb-0" },
+                            { staticClass: "text-primary text-center mb-0" },
                             [
                               _vm._v(
                                 _vm._s(hotel.address) +
@@ -19351,55 +19300,25 @@ var render = function () {
                           ),
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "p-3" }, [
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Prezzo a persona: "),
-                              _c("strong", [
-                                _vm._v(_vm._s(hotel.price) + " €"),
-                              ]),
-                            ]
-                          ),
+                        _c("div", { staticClass: "px-3" }, [
+                          _c("h6", { staticClass: "text-primary py-1 mb-0" }, [
+                            _vm._v("Numero di letti: "),
+                            _c("strong", [
+                              _vm._v(_vm._s(Math.ceil(hotel.n_guests / 10))),
+                            ]),
+                          ]),
                           _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Numero di ospiti: "),
-                              _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
-                            ]
-                          ),
+                          _c("h6", { staticClass: "text-primary py-1 mb-0" }, [
+                            _vm._v("Numero di stanze: "),
+                            _c("strong", [
+                              _vm._v(_vm._s(Math.ceil(hotel.n_rooms / 10))),
+                            ]),
+                          ]),
                           _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Numero di stanze: "),
-                              _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Numero di bagni: "),
-                              _c("strong", [_vm._v(_vm._s(hotel.n_bathrooms))]),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Dimensioni: "),
-                              _c("strong", [
-                                _vm._v(_vm._s(hotel.size) + " mq"),
-                              ]),
-                            ]
-                          ),
+                          _c("h6", { staticClass: "text-primary py-1 mb-0" }, [
+                            _vm._v("Prezzo a persona: "),
+                            _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
+                          ]),
                         ]),
                       ]
                     ),
@@ -35889,7 +35808,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })

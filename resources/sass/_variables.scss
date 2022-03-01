@@ -22,7 +22,10 @@ $brown: #4d1803;
 $dark-lime: #b5d601;
 $gold: #a2ba02;
 $light-brown: #782d0f;
-$dark-gold: #9b7f00;
+$dark-gold: #af9211;
+$black: #000000;
+$sloth1:#109173;
+$sloth2:#FFFFFF;
 
 $pagination-color: $lime;
 $pagination-bg: $brown;
@@ -31,7 +34,7 @@ $pagination-active-color: $brown;
 $pagination-hover-bg: $dark-lime;
 $pagination-hover-color: $brown;
 
-$theme-colors: ("primary": $lime, "secondary": $brown, "info": $dark-lime, "danger": $red, "dark": #41464b, "warning": coral);
+$theme-colors: ("primary": $sloth1, "secondary": $sloth2, "info": $sloth1, "danger": $red, "dark": #41464b, "warning": coral);
 
 // Misures
 $border-radius-to-search-bar: 24px;

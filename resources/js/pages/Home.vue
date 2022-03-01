@@ -4,7 +4,7 @@
         <!-- SCHERMATA DI CARICAMENTO DA SCOMMENTARE QUANDO SARA' FINITO IL LAYOUT DELLA HOME -->
         <div class="loading-screen d-flex justify-content-center align-items-center" :style="loadingScreen.hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="loadingScreen.deleteLoading===true ? 'd-none' : ''">
             <div class="d-flex flex-column align-items-center" :style="loadingScreen.pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
-                <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
+                <img src="/images/logo-white.svg" alt="slothel-logo" class="mb-3">
                 <div class="d-flex" :style="loadingScreen.pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
                     <h2 class="text-white me-3" :style="loadingScreen.pageLoaded===true ? 'animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;' : ''">Sloth</h2>
                     <h2 class="text-white ms-3 d-flex" :style="loadingScreen.pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">h
@@ -12,7 +12,7 @@
                         <div :style="loadingScreen.pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">el</div>
                     </h2>
                 </div>
-                <div class="spinner-border text-primary mt-3" role="status" :style="loadingScreen.pageLoaded===true ? 'opacity:0' : ''">
+                <div class="spinner-border text-secondary mt-3" role="status" :style="loadingScreen.pageLoaded===true ? 'opacity:0' : ''">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
@@ -22,28 +22,26 @@
         <div class="container py-5">
             <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3" :style="loadingScreen.hideLoading===false ? 'display:none' : ''">
                 <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
-                    <div class="card_container bg-primary shadow-lg">
+                    <div class="card_container bg-secondary shadow-lg">
 
                         <div class="d-flex flex-column align-items-center pt-3 w-50">
                             <div class="image-container shadow-lg">
                                 <img :src="hotel.cover_img.includes('http') ? hotel.cover_img :`/storage/${hotel.cover_img}`" :alt="hotel.name">
                             </div>
-                            <router-link :to="{name : 'apartment', params : { id :hotel.apartment_id} }" class="btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto">Discover</router-link>
+                            <router-link :to="{name : 'apartment', params : { id :hotel.apartment_id} }" class="btn btn-primary btn_router_link text-secondary w-50 mt-3 mx-auto">Discover</router-link>
                         </div>
 
                         <div class="d-flex flex-column align-items-center w-50">
-                            <div class="py-3">
-                                <h5 class="text-secondary text-center mb-0"><strong>{{hotel.name}}</strong></h5>
-                                <h5 class="text-secondary text-center mb-0">{{hotel.location}}</h5>
-                                <h6 class="text-secondary text-center mb-0">{{hotel.address}} - {{hotel.cap}}</h6>
+                            <div class="p-3">
+                                <h5 class="text-primary text-center mb-0"><strong>{{hotel.name}}</strong></h5>
+                                <h5 class="text-primary text-center mb-0">{{hotel.location}}</h5>
+                                <h6 class="text-primary text-center mb-0">{{hotel.address}} - {{hotel.cap}}</h6>
                             </div>
 
-                            <div class="p-3">
-                                <h6 class="text-secondary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
-                                <h6 class="text-secondary py-1 mb-0">Numero di ospiti: <strong>{{hotel.n_guests}}</strong></h6>
-                                <h6 class="text-secondary py-1 mb-0">Numero di stanze: <strong>{{hotel.n_rooms}}</strong></h6>
-                                <h6 class="text-secondary py-1 mb-0">Numero di bagni: <strong>{{hotel.n_bathrooms}}</strong></h6>
-                                <h6 class="text-secondary py-1 mb-0">Dimensioni: <strong>{{hotel.size}} mq</strong></h6>
+                            <div class="px-3">
+                                <h6 class="text-primary py-1 mb-0">Numero di letti: <strong>{{Math.ceil(hotel.n_guests / 10)}}</strong></h6>
+                                <h6 class="text-primary py-1 mb-0">Numero di stanze: <strong>{{Math.ceil(hotel.n_rooms / 10)}}</strong></h6>
+                                <h6 class="text-primary py-1 mb-0">Prezzo a persona: <strong>{{hotel.price}} €</strong></h6>
                             </div>
                         </div>
                     </div>
@@ -196,7 +194,6 @@ export default {
 }
 
 .hotel_container {
-    background-image: url('/images/wood_template.svg');
     background-repeat: repeat;
     background-size: contain;
     border-top-left-radius: 50px;
