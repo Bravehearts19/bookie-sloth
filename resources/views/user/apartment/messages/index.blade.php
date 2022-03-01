@@ -4,12 +4,12 @@
 <div class="container mt-5">
   <div class="row">
     <div class="card text-center messages-card">
-      <h3 class="card-header">
+      <h3 class="card-header text-primary">
         Messaggi
       </h3>
       <div class="card-body">
         @if(count($messages) === 0)
-        <div class="alert alert-dark" role="alert">
+        <div class="alert alert-primary" role="alert">
           Non hai nuovi messaggi.
         </div>
         @endif

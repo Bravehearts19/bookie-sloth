@@ -86,7 +86,7 @@
                                 src="https://cdn.lordicon.com/gqdnbnwt.json"
                                 trigger="empty"
                                 style="width:50px;height:50px"
-                                colors="primary:#ffffff,secondary:{{(request()->is('user')) ? '#c7ef00' : '#4d1803'}}">
+                                colors="{{(request()->is('user')) ? 'primary:#109173,secondary:#109173' : 'primary:#ffffff,secondary:#ffffff'}}">
                             </lord-icon>
                             <strong class="{{(request()->is('user')) ? 'text-primary' : 'text-secondary'}}">Dashboard</strong>
                         </a>
@@ -99,7 +99,7 @@
                                 src="https://cdn.lordicon.com/gmzxduhd.json"
                                 trigger="empty"
                                 style="width:50px;height:50px"
-                                colors="primary:#ffffff,secondary:{{(request()->is('user/apartment')) ? '#c7ef00' : '#4d1803'}}">
+                                colors="{{(request()->is('user/apartment')) ? 'primary:#109173,secondary:#109173' : 'primary:#ffffff,secondary:#ffffff'}}">
                             </lord-icon>
                             <strong class="{{(request()->is('user/apartment')) ? 'text-primary' : 'text-secondary'}}">Appartamenti</strong>
                         </a>
@@ -109,7 +109,7 @@
                                 src="https://cdn.lordicon.com/mecwbjnp.json"
                                 trigger="empty"
                                 style="width:50px;height:50px"
-                                colors="primary:#ffffff,secondary:{{(request()->is('user/apartment/create')) ? '#c7ef00' : '#4d1803'}}">
+                                colors="{{(request()->is('user/apartment/create')) ? 'primary:#109173,secondary:#109173' : 'primary:#ffffff,secondary:#ffffff'}}">
                             </lord-icon>
                             <strong class="{{(request()->is('user/apartment/create')) ? 'text-primary' : 'text-secondary'}}">Aggiungi appartamento</strong>
                         </a>
@@ -121,7 +121,7 @@
                                     src="https://cdn.lordicon.com/rhvddzym.json"
                                     trigger="hover"
                                     style="width:50px;height:50px"
-                                    colors="primary:{{ (request()->is('user/' . Auth::user()->id .'/messages')) ? '#c7ef00' : '#4d1803' }}, secondary:#000000"
+                                    colors="primary:{{ (request()->is('user/' . Auth::user()->id .'/messages')) ? '#109173' : '#ffffff' }}, secondary:#000000"
                                 >
                                 </lord-icon>
                             <strong class="{{ (request()->is('user/' . Auth::user()->id .'/messages')) ? 'text-primary' : 'text-secondary' }}">Messaggi</strong>
@@ -135,10 +135,10 @@
                                         src="https://cdn.lordicon.com/lywgqtim.json"
                                         trigger="empty"
                                         style="width:50px;height:50px"
-                                        colors="primary:#4d1803,secondary:#000000"
+                                        colors="primary:#ffffff,secondary:#ffffff"
                                     >
                                     </lord-icon>
-                                    <strong>Logout</strong>
+                                    <strong class="text-white">Logout</strong>
                                 </button>
                         </form>
                         
