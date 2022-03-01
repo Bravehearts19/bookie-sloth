@@ -2045,6 +2045,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
   data: function data() {
@@ -3014,7 +3025,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3030,7 +3040,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       hotelArray: [],
       activePage: 1,
       PAGINATION_OFFSET: 5,
-      activeLocation: 'unset'
+      activeLocation: 'unset',
+      loadingScreen: {
+        pageLoaded: false,
+        hideLoading: false,
+        deleteLoading: false
+      }
     };
   },
   computed: {
@@ -3053,6 +3068,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   watch: {
     activeLocation: function () {
       var _activeLocation = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(val, old) {
+        var _this = this;
+
         var _yield$axios$get, data, _yield$axios$get2, _data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -3060,7 +3077,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 if (!(val === 'index')) {
-                  _context.next = 16;
+                  _context.next = 19;
                   break;
                 }
 
@@ -3074,43 +3091,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 console.dir(data.data);
                 console.log('got index data');
                 this.hotelArray = data.data;
-                _context.next = 14;
+                this.loadingScreen.pageLoaded = true;
+                setTimeout(function () {
+                  _this.loadingScreen.hideLoading = true;
+                }, 3000);
+                setTimeout(function () {
+                  _this.loadingScreen.deleteLoading = true;
+                }, 5000);
+                _context.next = 17;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 14:
+                _context.prev = 14;
                 _context.t0 = _context["catch"](1);
                 console.log('watcher query error' + _context.t0);
 
-              case 14:
-                _context.next = 29;
+              case 17:
+                _context.next = 32;
                 break;
 
-              case 16:
-                _context.prev = 16;
-                _context.next = 19;
+              case 19:
+                _context.prev = 19;
+                _context.next = 22;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=%2020&rooms=1&beds=1');
 
-              case 19:
+              case 22:
                 _yield$axios$get2 = _context.sent;
                 _data = _yield$axios$get2.data;
                 console.dir(_data);
                 console.log('got search data');
                 this.hotelArray = _data;
-                _context.next = 29;
+                _context.next = 32;
                 break;
 
-              case 26:
-                _context.prev = 26;
-                _context.t1 = _context["catch"](16);
+              case 29:
+                _context.prev = 29;
+                _context.t1 = _context["catch"](19);
                 console.log('watcher query error' + _context.t1);
 
-              case 29:
+              case 32:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[1, 11], [16, 26]]);
+        }, _callee, this, [[1, 14], [19, 29]]);
       }));
 
       function activeLocation(_x, _x2) {
@@ -18066,30 +18090,6 @@ var render = function () {
             "input-group ms-5 me-5 bg-secondary border-radius-to-search-bar",
         },
         [
-          _c(
-            "span",
-            {
-              staticClass: "input-group-text bg-transparent border-none",
-              attrs: { id: "searchBar" },
-              on: {
-                click: function ($event) {
-                  return _vm.startSearch()
-                },
-              },
-            },
-            [
-              _c("lord-icon", {
-                staticStyle: { width: "40px", height: "40px" },
-                attrs: {
-                  src: "https://cdn.lordicon.com/msoeawqm.json",
-                  trigger: "loop-on-hover",
-                  colors: "primary:#c7ef00,secondary:#ffffff",
-                },
-              }),
-            ],
-            1
-          ),
-          _vm._v(" "),
           _c("input", {
             directives: [
               {
@@ -18099,7 +18099,8 @@ var render = function () {
                 expression: "toSearch",
               },
             ],
-            staticClass: "form-control bg-transparent text-primary border-none",
+            staticClass:
+              "form-control bg-transparent text-primary border-none ps-5 fs-3",
             attrs: {
               type: "text",
               placeholder: "Cerca...",
@@ -18127,13 +18128,52 @@ var render = function () {
           }),
           _vm._v(" "),
           _c(
+            "span",
+            {
+              staticClass: "input-group-text bg-transparent border-none",
+              attrs: { id: "searchBar" },
+              on: {
+                click: function ($event) {
+                  return _vm.startSearch()
+                },
+              },
+            },
+            [
+              _c("lord-icon", {
+                staticStyle: { width: "40px", height: "40px" },
+                attrs: {
+                  src: "https://cdn.lordicon.com/pvbutfdk.json",
+                  trigger: "loop-on-hover",
+                  colors: "primary:#c7ef00",
+                  state: "hover",
+                },
+              }),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
             "router-link",
             {
               staticClass:
                 "input-group-text bg-transparent text-primary text-decoration-none border-none pe-3",
               attrs: { to: "/advanced-research" },
             },
-            [_vm._v("\n      Ricerca Avanzata\n    ")]
+            [
+              _c("lord-icon", {
+                staticClass: "me-1",
+                staticStyle: { width: "40px", height: "40px" },
+                attrs: {
+                  src: "https://cdn.lordicon.com/itykargr.json",
+                  trigger: "hover",
+                  colors: "primary:#c7ef00",
+                  state: "hover",
+                },
+              }),
+              _vm._v(" "),
+              _c("strong", [_vm._v("Filtri")]),
+            ],
+            1
           ),
         ],
         1
@@ -18185,9 +18225,10 @@ var render = function () {
                   _c("lord-icon", {
                     staticStyle: { width: "36px", height: "36px" },
                     attrs: {
-                      src: "https://cdn.lordicon.com/gmzxduhd.json",
-                      trigger: "loop",
-                      colors: "primary:#b5d601,secondary:#c7ef00",
+                      src: "https://cdn.lordicon.com/igpbsrza.json",
+                      trigger: "loop-on-hover",
+                      colors: "primary:#c7ef00",
+                      state: "hover-1",
                     },
                   }),
                 ],
@@ -18204,9 +18245,9 @@ var render = function () {
                   _c("lord-icon", {
                     staticStyle: { width: "36px", height: "36px" },
                     attrs: {
-                      src: "https://cdn.lordicon.com/dxjqoygy.json",
-                      trigger: "loop",
-                      colors: "primary:#b5d601,secondary:#c7ef00",
+                      src: "https://cdn.lordicon.com/dklbhvrt.json",
+                      trigger: "loop-on-hover",
+                      colors: "primary:#c7ef00",
                     },
                   }),
                 ],
@@ -18466,7 +18507,10 @@ var render = function () {
                     staticClass:
                       "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
                     attrs: {
-                      to: { name: "apartment", params: { id: hotel.id } },
+                      to: {
+                        name: "apartment",
+                        params: { id: hotel.apartment_id },
+                      },
                     },
                   },
                   [_vm._v("Discover")]
@@ -19074,11 +19118,119 @@ var render = function () {
   return _c("div", { staticClass: "hotel_container bg-info" }, [
     _c(
       "div",
+      {
+        staticClass:
+          "loading-screen d-flex justify-content-center align-items-center",
+        class: _vm.loadingScreen.deleteLoading === true ? "d-none" : "",
+        style:
+          _vm.loadingScreen.hideLoading === true
+            ? "opacity:0; transition:opacity 0.3s"
+            : "",
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "d-flex flex-column align-items-center",
+            style:
+              _vm.loadingScreen.pageLoaded === true
+                ? "animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;"
+                : "",
+          },
+          [
+            _c("img", {
+              staticClass: "mb-3",
+              attrs: { src: "/images/logo-lime.svg", alt: "slothel-logo" },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "d-flex",
+                style:
+                  _vm.loadingScreen.pageLoaded === true
+                    ? "animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;"
+                    : "",
+              },
+              [
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white me-3",
+                    style:
+                      _vm.loadingScreen.pageLoaded === true
+                        ? "animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [_vm._v("Sloth")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h2",
+                  {
+                    staticClass: "text-white ms-3 d-flex",
+                    style:
+                      _vm.loadingScreen.pageLoaded === true
+                        ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                        : "",
+                  },
+                  [
+                    _vm._v("h\n                    "),
+                    _c(
+                      "span",
+                      {
+                        style:
+                          _vm.loadingScreen.pageLoaded === true
+                            ? "opacity:0"
+                            : "",
+                      },
+                      [_vm._v("ot")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        style:
+                          _vm.loadingScreen.pageLoaded === true
+                            ? "animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;"
+                            : "",
+                      },
+                      [_vm._v("el")]
+                    ),
+                  ]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "spinner-border text-primary mt-3",
+                style: _vm.loadingScreen.pageLoaded === true ? "opacity:0" : "",
+                attrs: { role: "status" },
+              },
+              [
+                _c("span", { staticClass: "visually-hidden" }, [
+                  _vm._v("Loading..."),
+                ]),
+              ]
+            ),
+          ]
+        ),
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
       { staticClass: "container py-5" },
       [
         _c(
           "div",
-          { staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3 " },
+          {
+            staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3",
+            style:
+              _vm.loadingScreen.hideLoading === false ? "display:none" : "",
+          },
           _vm._l(_vm.hotelArray, function (hotel, index) {
             return _c(
               "div",
@@ -35699,7 +35851,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\SIMO\Spindox\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })

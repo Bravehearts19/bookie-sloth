@@ -1,27 +1,26 @@
 <template>
     <div class="hotel_container bg-info">
         <!-- Inizio loading screen -->    
-         <!-- SCHERMATA DI CARICAMENTO DA SCOMMENTARE QUANDO SARA' FINITO IL LAYOUT DELLA HOME -->
-        <!--<div class="loading-screen d-flex justify-content-center align-items-center" :style="hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="deleteLoading===true ? 'd-none' : ''">
-            <div class="d-flex flex-column align-items-center" :style="pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
+        <!-- SCHERMATA DI CARICAMENTO DA SCOMMENTARE QUANDO SARA' FINITO IL LAYOUT DELLA HOME -->
+        <div class="loading-screen d-flex justify-content-center align-items-center" :style="loadingScreen.hideLoading===true ? 'opacity:0; transition:opacity 0.3s' : ''" :class="loadingScreen.deleteLoading===true ? 'd-none' : ''">
+            <div class="d-flex flex-column align-items-center" :style="loadingScreen.pageLoaded===true ? 'animation-name:loaded; animation-duration:2s; animation-fill-mode: forwards;' : ''">
                 <img src="/images/logo-lime.svg" alt="slothel-logo" class="mb-3">
-                <div class="d-flex" :style="pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
-                    <h2 class="text-white me-3" :style="pageLoaded===true ? 'animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;' : ''">Sloth</h2>
-                    <h2 class="text-white ms-3 d-flex" :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">h
-                        <span :style="pageLoaded===true ? 'opacity:0' : ''">ot</span>
-                        <div :style="pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">el</div>
+                <div class="d-flex" :style="loadingScreen.pageLoaded===true ? 'animation-name:bring-right; animation-duration:0.3s; animation-fill-mode: forwards;' : ''">
+                    <h2 class="text-white me-3" :style="loadingScreen.pageLoaded===true ? 'animation-name:join-right; animation-duration:2s; animation-fill-mode: forwards;' : ''">Sloth</h2>
+                    <h2 class="text-white ms-3 d-flex" :style="loadingScreen.pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">h
+                        <span :style="loadingScreen.pageLoaded===true ? 'opacity:0' : ''">ot</span>
+                        <div :style="loadingScreen.pageLoaded===true ? 'animation-name:join-left; animation-duration:2s; animation-fill-mode: forwards;' : ''">el</div>
                     </h2>
                 </div>
-                <div class="spinner-border text-primary mt-3" role="status" :style="pageLoaded===true ? 'opacity:0' : ''">
+                <div class="spinner-border text-primary mt-3" role="status" :style="loadingScreen.pageLoaded===true ? 'opacity:0' : ''">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
         </div>
-        -->
         <!-- Fine loading screen -->
 
         <div class="container py-5">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 ">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3" :style="loadingScreen.hideLoading===false ? 'display:none' : ''">
                 <div class="col py-3" :key="'hotel-'+index" v-for="(hotel, index) in hotelArray">
                     <div class="card_container bg-primary shadow-lg">
 
@@ -77,7 +76,14 @@ export default {
             hotelArray : [],
             activePage : 1,
             PAGINATION_OFFSET: 5,
-            activeLocation : 'unset'
+            activeLocation : 'unset',
+
+            loadingScreen :{
+                pageLoaded: false,
+                hideLoading:false,
+                deleteLoading:false
+            }
+            
         }
     },
 
@@ -87,6 +93,7 @@ export default {
         },
     },
     methods:{
+        
         onPage(event) {
 
             this.activePage = event.page
@@ -107,6 +114,15 @@ export default {
                     console.dir(data.data);
                     console.log('got index data')
                     this.hotelArray = data.data
+
+                    this.loadingScreen.pageLoaded= true;
+                    setTimeout(()=>{
+                        this.loadingScreen.hideLoading = true;
+                    }, 3000)
+
+                    setTimeout(()=>{
+                        this.loadingScreen.deleteLoading = true;
+                    }, 5000)
                 }catch(err){
                     console.log('watcher query error' + err)
                 }
