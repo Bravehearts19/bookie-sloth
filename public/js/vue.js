@@ -2331,6 +2331,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Services: _components_Services_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     Slider: primevue_slider__WEBPACK_IMPORTED_MODULE_5___default.a
   },
+  computed: {
+    initialBedValue: function initialBedValue() {
+      var initialBedValue = this.bedValue * 10;
+      return initialBedValue;
+    },
+    initialRoomsValue: function initialRoomsValue() {
+      var initialRoomsValue = this.roomsValue * 10;
+      return initialRoomsValue;
+    }
+  },
   methods: {
     getHotelData: function getHotelData(page) {
       var _this = this;
@@ -2446,7 +2456,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 14:
                 _context3.next = 16;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + val + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
 
               case 16:
                 _yield$axios$get3 = _context3.sent;
@@ -2475,16 +2485,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     servicesQueryString: function () {
       var _servicesQueryString = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var _yield$axios$get4, data;
+        var _yield$axios$get4, data, _yield$axios$get5, _data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _context4.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
+                if (!(this.locationName !== undefined)) {
+                  _context4.next = 9;
+                  break;
+                }
 
-              case 2:
+                _context4.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 3:
                 _yield$axios$get4 = _context4.sent;
                 data = _yield$axios$get4.data;
 
@@ -2494,8 +2509,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 /* console.dir(this.hotelArray) */
 
                 this.totalPages = 0;
+                _context4.next = 15;
+                break;
 
-              case 6:
+              case 9:
+                _context4.next = 11;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 11:
+                _yield$axios$get5 = _context4.sent;
+                _data = _yield$axios$get5.data;
+
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = _data;
+                /* console.dir(this.hotelArray) */
+
+                this.totalPages = 0;
+
+              case 15:
               case "end":
                 return _context4.stop();
             }
@@ -2511,18 +2543,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     radius: function () {
       var _radius = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var _yield$axios$get5, data;
+        var _yield$axios$get6, data, _yield$axios$get7, _data2;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                _context5.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
+                if (!(this.locationName !== undefined)) {
+                  _context5.next = 9;
+                  break;
+                }
 
-              case 2:
-                _yield$axios$get5 = _context5.sent;
-                data = _yield$axios$get5.data;
+                _context5.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 3:
+                _yield$axios$get6 = _context5.sent;
+                data = _yield$axios$get6.data;
 
                 /* console.log('------new filtered data-------')
                 console.dir(data) */
@@ -2530,8 +2567,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 /* console.dir(this.hotelArray) */
 
                 this.totalPages = 0;
+                _context5.next = 15;
+                break;
 
-              case 6:
+              case 9:
+                _context5.next = 11;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 11:
+                _yield$axios$get7 = _context5.sent;
+                _data2 = _yield$axios$get7.data;
+
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = _data2;
+                /* console.dir(this.hotelArray) */
+
+                this.totalPages = 0;
+
+              case 15:
               case "end":
                 return _context5.stop();
             }
@@ -2547,18 +2601,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     bedValue: function () {
       var _bedValue = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-        var _yield$axios$get6, data;
+        var _yield$axios$get8, data, _yield$axios$get9, _data3;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
-                _context6.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
+                if (!(this.locationName !== undefined)) {
+                  _context6.next = 9;
+                  break;
+                }
 
-              case 2:
-                _yield$axios$get6 = _context6.sent;
-                data = _yield$axios$get6.data;
+                _context6.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 3:
+                _yield$axios$get8 = _context6.sent;
+                data = _yield$axios$get8.data;
 
                 /* console.log('------new filtered data-------')
                 console.dir(data) */
@@ -2566,8 +2625,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 /* console.dir(this.hotelArray) */
 
                 this.totalPages = 0;
+                _context6.next = 15;
+                break;
 
-              case 6:
+              case 9:
+                _context6.next = 11;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 11:
+                _yield$axios$get9 = _context6.sent;
+                _data3 = _yield$axios$get9.data;
+
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = _data3;
+                /* console.dir(this.hotelArray) */
+
+                this.totalPages = 0;
+
+              case 15:
               case "end":
                 return _context6.stop();
             }
@@ -2583,18 +2659,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     roomsValue: function () {
       var _roomsValue = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
-        var _yield$axios$get7, data;
+        var _yield$axios$get10, data, _yield$axios$get11, _data4;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                _context7.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.roomsValue + "&beds=" + this.bedValue + this.servicesQueryString);
+                if (!(this.locationName !== undefined)) {
+                  _context7.next = 9;
+                  break;
+                }
 
-              case 2:
-                _yield$axios$get7 = _context7.sent;
-                data = _yield$axios$get7.data;
+                _context7.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?locationName=' + this.locationName + '&radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 3:
+                _yield$axios$get10 = _context7.sent;
+                data = _yield$axios$get10.data;
 
                 /* console.log('------new filtered data-------')
                 console.dir(data) */
@@ -2602,8 +2683,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 /* console.dir(this.hotelArray) */
 
                 this.totalPages = 0;
+                _context7.next = 15;
+                break;
 
-              case 6:
+              case 9:
+                _context7.next = 11;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/search/filters?radius=' + this.radius + "&rooms=" + this.initialRoomsValue + "&beds=" + this.initialBedValue + this.servicesQueryString);
+
+              case 11:
+                _yield$axios$get11 = _context7.sent;
+                _data4 = _yield$axios$get11.data;
+
+                /* console.log('------new filtered data-------')
+                console.dir(data) */
+                this.hotelArray = _data4;
+                /* console.dir(this.hotelArray) */
+
+                this.totalPages = 0;
+
+              case 15:
               case "end":
                 return _context7.stop();
             }
@@ -3054,8 +3152,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3444,7 +3540,7 @@ exports.push([module.i, "[data-v-b3c5cf30] .p-paginator .p-paginator-pages .p-pa
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css?7252":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primeicons/primeicons.css ***!
   \********************************************************************************************************************************/
@@ -3464,7 +3560,7 @@ exports.push([module.i, "@font-face {\n    font-family: 'primeicons';\n    font-
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css?b370":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css":
 /*!******************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primevue/resources/primevue.min.css ***!
   \******************************************************************************************************************************************/
@@ -3484,7 +3580,7 @@ exports.push([module.i, ".p-component,.p-component *{box-sizing:border-box}.p-hi
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css?e88f":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css":
 /*!****************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/postcss-loader/src??ref--7-2!./node_modules/primevue/resources/themes/saga-blue/theme.css ***!
   \****************************************************************************************************************************************************/
@@ -3821,7 +3917,7 @@ module.exports = "/fonts/vendor/primeicons/primeicons.woff?943c3597cd33be56d53df
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../css-loader??ref--7-1!../postcss-loader/src??ref--7-2!./primeicons.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css?7252");
+var content = __webpack_require__(/*! !../css-loader??ref--7-1!../postcss-loader/src??ref--7-2!./primeicons.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primeicons/primeicons.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6192,7 +6288,7 @@ module.exports = "/images/vendor/primevue/resources/hue.png?0614c27197fc3ce572e1
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./primevue.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css?b370");
+var content = __webpack_require__(/*! !../../css-loader??ref--7-1!../../postcss-loader/src??ref--7-2!./primevue.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/primevue.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6222,7 +6318,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../css-loader??ref--7-1!../../../../postcss-loader/src??ref--7-2!./theme.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css?e88f");
+var content = __webpack_require__(/*! !../../../../css-loader??ref--7-1!../../../../postcss-loader/src??ref--7-2!./theme.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/primevue/resources/themes/saga-blue/theme.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -18474,7 +18570,7 @@ var render = function () {
                     ]),
                     _vm._v(" "),
                     _c("Slider", {
-                      attrs: { min: 1 },
+                      attrs: { min: 1, max: 13 },
                       model: {
                         value: _vm.roomsValue,
                         callback: function ($$v) {
@@ -18497,7 +18593,7 @@ var render = function () {
                     ]),
                     _vm._v(" "),
                     _c("Slider", {
-                      attrs: { min: 1 },
+                      attrs: { min: 1, max: 13 },
                       model: {
                         value: _vm.bedValue,
                         callback: function ($$v) {
@@ -18582,13 +18678,17 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
-                    _vm._v("Numero di ospiti: "),
-                    _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
+                    _vm._v("Numero di letti: "),
+                    _c("strong", [
+                      _vm._v(_vm._s(Math.ceil(hotel.n_guests / 10))),
+                    ]),
                   ]),
                   _vm._v(" "),
                   _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
                     _vm._v("Numero di stanze: "),
-                    _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
+                    _c("strong", [
+                      _vm._v(_vm._s(Math.ceil(hotel.n_rooms / 10))),
+                    ]),
                   ]),
                 ]),
               ]
@@ -19367,8 +19467,10 @@ var render = function () {
                             "h6",
                             { staticClass: "text-secondary py-1 mb-0" },
                             [
-                              _vm._v("Numero di ospiti: "),
-                              _c("strong", [_vm._v(_vm._s(hotel.n_guests))]),
+                              _vm._v("Numero di letti: "),
+                              _c("strong", [
+                                _vm._v(_vm._s(Math.ceil(hotel.n_guests / 10))),
+                              ]),
                             ]
                           ),
                           _vm._v(" "),
@@ -19377,26 +19479,8 @@ var render = function () {
                             { staticClass: "text-secondary py-1 mb-0" },
                             [
                               _vm._v("Numero di stanze: "),
-                              _c("strong", [_vm._v(_vm._s(hotel.n_rooms))]),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Numero di bagni: "),
-                              _c("strong", [_vm._v(_vm._s(hotel.n_bathrooms))]),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "h6",
-                            { staticClass: "text-secondary py-1 mb-0" },
-                            [
-                              _vm._v("Dimensioni: "),
                               _c("strong", [
-                                _vm._v(_vm._s(hotel.size) + " mq"),
+                                _vm._v(_vm._s(Math.ceil(hotel.n_rooms / 10))),
                               ]),
                             ]
                           ),
@@ -35889,7 +35973,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\npala\boolean\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\SIMO\Spindox\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
