@@ -3375,7 +3375,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "[data-v-7a96c234] .p-slider .p-slider-handle {\n  height: 1.143rem;\n  width: 1.143rem;\n  background: #ffffff;\n  border: 2px solid #4d1803 !important;\n  border-radius: 50%;\n  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;\n}\n[data-v-7a96c234] .p-slider .p-slider-handle::hover {\n  background-color: #4d1803 !important;\n}\n.my_container[data-v-7a96c234] {\n  border-radius: 50px;\n  margin: 0 50px 20px 50px;\n}\n.my_container .filter_slider[data-v-7a96c234] {\n  min-width: 140px;\n}\n.hotel_container[data-v-7a96c234] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-7a96c234] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-7a96c234] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n  height: 300px;\n}\n.image-container[data-v-7a96c234] {\n  width: 100%;\n  border-radius: 20px;\n  height: 150px;\n  aspect-ratio: 2/1.5;\n}\n.image-container img[data-v-7a96c234] {\n  border-radius: 20px;\n  width: 100%;\n  height: 100%;\n  aspect-ratio: 2/1.5;\n}", ""]);
+exports.push([module.i, "[data-v-7a96c234] .p-slider .p-slider-handle {\n  height: 1.143rem;\n  width: 1.143rem;\n  background: #ffffff;\n  border: 2px solid #ffffff !important;\n  border-radius: 50%;\n  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;\n}\n[data-v-7a96c234] .p-slider .p-slider-handle::hover {\n  background-color: #4d1803 !important;\n}\n.my_container[data-v-7a96c234] {\n  border-radius: 50px;\n  margin: 0 50px 20px 50px;\n}\n.my_container .filter_slider[data-v-7a96c234] {\n  min-width: 140px;\n}\n.hotel_container[data-v-7a96c234] {\n  background-image: url(\"/images/wood_template.svg\");\n  background-repeat: repeat;\n  background-size: contain;\n  border-top-left-radius: 50px;\n  border-top-right-radius: 50px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  flex-grow: 0;\n}\n.hotel_container .btn_router_link[data-v-7a96c234] {\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n}\n.card_container[data-v-7a96c234] {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border-radius: 24px;\n  height: 300px;\n}\n.image-container[data-v-7a96c234] {\n  width: 100%;\n  border-radius: 20px;\n  height: 150px;\n  aspect-ratio: 2/1.5;\n}\n.image-container img[data-v-7a96c234] {\n  border-radius: 20px;\n  width: 100%;\n  height: 100%;\n  aspect-ratio: 2/1.5;\n}", ""]);
 
 // exports
 
@@ -18318,7 +18318,8 @@ var render = function () {
         "ul",
         {
           staticClass:
-            "list-unstyled d-flex flex-wrap justify-content-around my-row m-auto bg-secondary mt-5",
+            "list-unstyled d-flex flex-wrap justify-content-around my-row m-auto bg-secondary p-3",
+          staticStyle: { "border-radius": "25px" },
         },
         _vm._l(_vm.services, function (service, index) {
           return _c(
@@ -18326,7 +18327,7 @@ var render = function () {
             {
               key: "service-" + index,
               staticClass:
-                "d-flex align-items-center justify-content-around single-service border-left border-right border-bottom border-primary shadow-lg rounded mt-3",
+                "d-flex align-items-center justify-content-around single-service shadow-lg rounded mt-3",
             },
             [
               _c("input", {
@@ -18348,7 +18349,7 @@ var render = function () {
                     attrs: {
                       src: service.icon,
                       trigger: "loop-on-hover",
-                      colors: "primary:#c7ef00,secondary:#ffffff",
+                      colors: "primary:#109173,secondary:#109173",
                     },
                   }),
                   _vm._v(" "),
@@ -18379,7 +18380,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "ms-4 text-white text-center mt-3" }, [
+    return _c("h2", { staticClass: "ms-4 text-secondary text-center " }, [
       _c("strong", [_vm._v("Servizi :")]),
     ])
   },
@@ -18405,7 +18406,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid bg-secondary py-3" }, [
+  return _c("div", { staticClass: "container-fluid bg-primary " }, [
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
@@ -18440,7 +18441,7 @@ var render = function () {
                       attrs: {
                         min: 1,
                         max: 50,
-                        valueColor: "#4d1803",
+                        valueColor: "#FFFFFF",
                         textColor: "1",
                         size: 75,
                       },
@@ -18513,7 +18514,7 @@ var render = function () {
       { staticClass: "row row-cols-1 row-cols-md-2 row-cols-xl-3 " },
       _vm._l(_vm.hotelArray, function (hotel, index) {
         return _c("div", { key: "hotel-" + index, staticClass: "col py-3" }, [
-          _c("div", { staticClass: "card_container bg-primary shadow-lg" }, [
+          _c("div", { staticClass: "card_container bg-secondary shadow-lg" }, [
             _c(
               "div",
               {
@@ -18535,7 +18536,7 @@ var render = function () {
                   "router-link",
                   {
                     staticClass:
-                      "btn btn-secondary btn_router_link text-primary w-50 mt-3 mx-auto",
+                      "btn btn-primary btn_router_link text-secondary w-50 mt-3 mx-auto",
                     attrs: {
                       to: {
                         name: "apartment",
@@ -18554,33 +18555,33 @@ var render = function () {
               { staticClass: "d-flex flex-column align-items-center w-50" },
               [
                 _c("div", { staticClass: "py-3" }, [
-                  _c("h5", { staticClass: "text-secondary text-center mb-0" }, [
+                  _c("h5", { staticClass: "text-primary text-center mb-0" }, [
                     _c("strong", [_vm._v(_vm._s(hotel.name))]),
                   ]),
                   _vm._v(" "),
-                  _c("h5", { staticClass: "text-secondary text-center mb-0" }, [
+                  _c("h5", { staticClass: "text-primary text-center mb-0" }, [
                     _vm._v(_vm._s(hotel.location)),
                   ]),
                   _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary text-center mb-0" }, [
+                  _c("h6", { staticClass: "text-primary text-center mb-0" }, [
                     _vm._v(_vm._s(hotel.address) + " - " + _vm._s(hotel.cap)),
                   ]),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "p-3" }, [
-                  _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                  _c("h6", { staticClass: "text-primary py-1 mb-0" }, [
                     _vm._v("Prezzo a persona: "),
                     _c("strong", [_vm._v(_vm._s(hotel.price) + " €")]),
                   ]),
                   _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                  _c("h6", { staticClass: "text-primary py-1 mb-0" }, [
                     _vm._v("Numero di letti: "),
                     _c("strong", [
                       _vm._v(_vm._s(Math.ceil(hotel.n_guests / 10))),
                     ]),
                   ]),
                   _vm._v(" "),
-                  _c("h6", { staticClass: "text-secondary py-1 mb-0" }, [
+                  _c("h6", { staticClass: "text-primary py-1 mb-0" }, [
                     _vm._v("Numero di stanze: "),
                     _c("strong", [
                       _vm._v(_vm._s(Math.ceil(hotel.n_rooms / 10))),
