@@ -18997,7 +18997,7 @@ var staticRenderFns = [
               "d-flex flex-column justify-content-center align-items-center w-50 flex_grow_0 flex_shrink_0",
           },
           [
-            _c("h1", { staticClass: "text-secondary" }, [
+            _c("h1", { staticClass: "text-primary" }, [
               _c("strong", [_vm._v("Error 404")]),
             ]),
             _vm._v(" "),
@@ -19014,11 +19014,11 @@ var staticRenderFns = [
         ),
         _vm._v(" "),
         _c("div", { staticClass: "flex_grow_0 flex_shrink_0 w-50" }, [
-          _c("h2", { staticClass: "text-secondary text-center" }, [
+          _c("h2", { staticClass: "text-primary text-center" }, [
             _c("strong", [_vm._v("Sorry")]),
           ]),
           _vm._v(" "),
-          _c("h2", { staticClass: "text-secondary text-center" }, [
+          _c("h2", { staticClass: "text-primary text-center" }, [
             _vm._v("We can't find the page "),
             _c("br"),
             _vm._v(" you're looking for..."),
@@ -35783,7 +35783,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Work\Desktop\Boolean\Progetto Finale\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\SIMO\Spindox\bookie-sloth\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })
