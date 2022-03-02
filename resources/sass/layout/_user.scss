@@ -31,3 +31,17 @@ header{
 .map{
   border: 8px solid $brown;
 }
+
+@media screen and (max-width: 540px) {
+
+  .logo-text{
+    display: none;
+  }
+  .user-aside{
+    width: 60px;
+
+    .aside-item{
+      display:none;
+    }
+  }
+}

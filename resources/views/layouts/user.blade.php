@@ -37,7 +37,7 @@
     <div class="bg-primary full-height d-flex flex-column">
        <header class="d-flex align-items-center justify-content-between">
             <div class="logo-container d-flex align-items-center p-3">
-                <h1 class="mb-0 mx-3 ml-0 text-white">Slothel</h1>
+                <h1 class="mb-0 mx-3 ml-0 text-white logo-text">Slothel</h1>
                 <svg
                 width="65"
                 height="60"
@@ -88,7 +88,7 @@
                                 style="width:50px;height:50px"
                                 colors="{{(request()->is('user')) ? 'primary:#109173,secondary:#109173' : 'primary:#ffffff,secondary:#ffffff'}}">
                             </lord-icon>
-                            <strong class="{{(request()->is('user')) ? 'text-primary' : 'text-secondary'}}">Dashboard</strong>
+                            <strong class="{{(request()->is('user')) ? 'text-primary' : 'text-secondary'}} aside-item">Dashboard</strong>
                         </a>
                     </div>
 
@@ -101,7 +101,7 @@
                                 style="width:50px;height:50px"
                                 colors="{{(request()->is('user/apartment')) ? 'primary:#109173,secondary:#109173' : 'primary:#ffffff,secondary:#ffffff'}}">
                             </lord-icon>
-                            <strong class="{{(request()->is('user/apartment')) ? 'text-primary' : 'text-secondary'}}">Appartamenti</strong>
+                            <strong class="{{(request()->is('user/apartment')) ? 'text-primary' : 'text-secondary'}} aside-item">Appartamenti</strong>
                         </a>
                         @endif
                         <a href="{{route("user.apartment.create")}}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('user/apartment/create')) ? 'bg-secondary' : 'bg-primary' }}">
@@ -111,7 +111,7 @@
                                 style="width:50px;height:50px"
                                 colors="{{(request()->is('user/apartment/create')) ? 'primary:#109173,secondary:#109173' : 'primary:#ffffff,secondary:#ffffff'}}">
                             </lord-icon>
-                            <strong class="{{(request()->is('user/apartment/create')) ? 'text-primary' : 'text-secondary'}}">Aggiungi appartamento</strong>
+                            <strong class="{{(request()->is('user/apartment/create')) ? 'text-primary' : 'text-secondary'}} aside-item">Aggiungi appartamento</strong>
                         </a>
                     </div>
 
@@ -124,7 +124,7 @@
                                     colors="primary:{{ (request()->is('user/' . Auth::user()->id .'/messages')) ? '#109173' : '#ffffff' }}, secondary:#000000"
                                 >
                                 </lord-icon>
-                            <strong class="{{ (request()->is('user/' . Auth::user()->id .'/messages')) ? 'text-primary' : 'text-secondary' }}">Messaggi</strong>
+                            <strong class="{{ (request()->is('user/' . Auth::user()->id .'/messages')) ? 'text-primary' : 'text-secondary' }} aside-item">Messaggi</strong>
                         </a>
                     </div>
                     <div class="logout">
@@ -138,7 +138,7 @@
                                         colors="primary:#ffffff,secondary:#ffffff"
                                     >
                                     </lord-icon>
-                                    <strong class="text-white">Logout</strong>
+                                    <strong class="text-white aside-item">Logout</strong>
                                 </button>
                         </form>
                         

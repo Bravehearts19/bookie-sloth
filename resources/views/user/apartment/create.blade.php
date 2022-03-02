@@ -114,7 +114,7 @@
             <div class="row row-cols-12">
                 <input type="hidden" name="services" id="formServices">
                 @foreach ($services as $service)
-                <div class="col mt-3 h-100 service" style="opacity:0; transition:opacity 0.5s">
+                <div class="col mt-3 service" style="opacity:0; transition:opacity 0.5s">
                     <input onclick="addService({{($service->id)}})" type="checkbox" class="btn-check" id="btncheck{{$service->id}}" autocomplete="off">
                     <label class="btn btn-outline-primary" for="btncheck{{$service->id}}">
                         <lord-icon

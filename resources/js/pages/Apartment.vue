@@ -1,6 +1,6 @@
 <template>
     <div class="my-container">
-        <div class="img-container"><img :src="apartment.cover_img" :alt="apartment.name"></div>
+        <div class="img-container"><img :src="apartment.cover_img.includes('http') ? apartment.cover_img : `/storage/${apartment.cover_img}`" :alt="apartment.name"></div>
         
         <div class="data-container">
             <h1 class="pt-1 m-0 text-secondary">{{ apartment.name }}</h1>
@@ -34,28 +34,29 @@
             </div>
            
            <!-- ROW PEOPLE AND PRICE -->
-            <div class="d-flex mt-4 justify-content-between align-items-center">     
-                <div class="d-flex align-items-center">
-                    <lord-icon  @click="decrementCounter()"
-                        src="https://cdn.lordicon.com/rivoakkk.json"
-                        :trigger='peopleCounter === 1 ? "" : "hover"'
-                        :colors='peopleCounter === 1 ? "primary:#d4d4d4,secondary:#d4d4d4" : "primary:#FFFFFF,secondary:#FFFFFF"'
-                        stroke="150"
-                        style="width:50px;height:50px">
-                    </lord-icon>
+            <h2 class="text-secondary mt-2">Persone:</h2>
+                <div class="d-flex mt-1 justify-content-between align-items-center">     
+                    <div class="d-flex align-items-center">
+                        <lord-icon  @click="decrementCounter()"
+                            src="https://cdn.lordicon.com/rivoakkk.json"
+                            :trigger='peopleCounter === 1 ? "" : "hover"'
+                            :colors='peopleCounter === 1 ? "primary:#d4d4d4,secondary:#d4d4d4" : "primary:#FFFFFF,secondary:#FFFFFF"'
+                            stroke="150"
+                            style="width:50px;height:50px">
+                        </lord-icon>
 
-                    <h2 class="mx-4 my-0">{{ peopleCounter }}</h2>
-                    
-                    <lord-icon  @click="incrementCounter()"
-                        src="https://cdn.lordicon.com/mecwbjnp.json"
-                        trigger="hover"
-                        colors="primary:#FFFFFF,secondary:#FFFFFF"
-                        stroke="150"
-                        style="width:50px;height:50px">
-                    </lord-icon>
-                </div>
+                            <h2 class="mx-4 my-0 text-white">{{ peopleCounter }}</h2>
+                        
+                        <lord-icon  @click="incrementCounter()"
+                            src="https://cdn.lordicon.com/mecwbjnp.json"
+                            trigger="hover"
+                            colors="primary:#FFFFFF,secondary:#FFFFFF"
+                            stroke="150"
+                            style="width:50px;height:50px">
+                        </lord-icon>
+                    </div>
 
-                <h2 class="me-4 text-secondary">{{ apartment.price }}€</h2>
+                <h2 class="me-4 text-secondary">{{ apartment.price }}€ / notte</h2>
             </div>
 
             <div class="user-container">
@@ -69,7 +70,7 @@
                     <h6 class="text-primary m-0">{{ apartment.user.name }} {{ apartment.user.surname }}</h6>
                 </div>
 
-                <Button label="Contatta" @click="openPosition('right')" class="p-button-warning p-button-sm" />
+                <Button label="Contatta" @click="openPosition('right')" class="text-white p-button-sm" />
                 
             </div> 
 
