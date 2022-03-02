@@ -2837,6 +2837,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -18632,7 +18633,12 @@ var render = function () {
     [
       _c("div", { staticClass: "img-container" }, [
         _c("img", {
-          attrs: { src: _vm.apartment.cover_img, alt: _vm.apartment.name },
+          attrs: {
+            src: _vm.apartment.cover_img.includes("http")
+              ? _vm.apartment.cover_img
+              : "/storage/" + _vm.apartment.cover_img,
+            alt: _vm.apartment.name,
+          },
         }),
       ]),
       _vm._v(" "),
@@ -18729,11 +18735,15 @@ var render = function () {
             0
           ),
           _vm._v(" "),
+          _c("h2", { staticClass: "text-secondary mt-2" }, [
+            _vm._v("Persone:"),
+          ]),
+          _vm._v(" "),
           _c(
             "div",
             {
               staticClass:
-                "d-flex mt-4 justify-content-between align-items-center",
+                "d-flex mt-1 justify-content-between align-items-center",
             },
             [
               _c(
@@ -18758,7 +18768,7 @@ var render = function () {
                     },
                   }),
                   _vm._v(" "),
-                  _c("h2", { staticClass: "mx-4 my-0" }, [
+                  _c("h2", { staticClass: "mx-4 my-0 text-white" }, [
                     _vm._v(_vm._s(_vm.peopleCounter)),
                   ]),
                   _vm._v(" "),
@@ -18781,7 +18791,7 @@ var render = function () {
               ),
               _vm._v(" "),
               _c("h2", { staticClass: "me-4 text-secondary" }, [
-                _vm._v(_vm._s(_vm.apartment.price) + "€"),
+                _vm._v(_vm._s(_vm.apartment.price) + "€ / notte"),
               ]),
             ]
           ),
@@ -18815,7 +18825,7 @@ var render = function () {
               ),
               _vm._v(" "),
               _c("Button", {
-                staticClass: "p-button-warning p-button-sm",
+                staticClass: "text-white p-button-sm",
                 attrs: { label: "Contatta" },
                 on: {
                   click: function ($event) {

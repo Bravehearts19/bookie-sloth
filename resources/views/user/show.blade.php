@@ -181,7 +181,7 @@
 
             </div>
         </div>
-        <div class="row bg-info bg-wave py-3 mx-5 rounded shadow-lg mt-lg-2">
+        <div class="row bg-info bg-wave py-3 mx-sm-1 mx-md-5 rounded shadow-lg mt-lg-5">
             <div class="col-10 offset-1 col-lg-6 offset-lg-0">
                 <div id="map-div" class="rounded shadow-lg map"></div>
             </div>
